@@ -1,0 +1,15 @@
+{
+  "/": "pages/index.js",
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js",
+  "/_error": "pages/_error.js",
+  "/about": "pages/about.html",
+  "/all": "pages/all.js",
+  "/api/hello": "pages/api/hello.js",
+  "/contact": "pages/contact.html",
+  "/gym/[uid]": "pages/gym/[uid].js",
+  "/p-[prefectureSlug]": "pages/p-[prefectureSlug].js",
+  "/privacy": "pages/privacy.html",
+  "/sitemap.xml": "pages/sitemap.xml.js",
+  "/404": "pages/404.html"
+}
