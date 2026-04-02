@@ -1,0 +1,3231 @@
+{
+  "gyms": [
+    {
+      "name": "Apple GYM 新宿店",
+      "areas": [
+        "新宿"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "海外式ボディメイク",
+      "description": "新宿西口駅から徒歩30秒",
+      "programs": [],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "THE PERSONAL GYM 新宿御苑店",
+      "areas": [
+        "新宿"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 6500,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医師と理学療法士が監修",
+      "description": "全分野でプロがサポート",
+      "programs": [],
+      "website_url": "https://the-personal-gym.com/studio/shinjukugyoen/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "24/7Workout 渋谷店",
+      "areas": [
+        "渋谷"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "3食食べるダイエット",
+      "description": "2023年9月オープン、完全個室型",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": true,
+      "options_diet": true
+    },
+    {
+      "name": "MIYAZAKI GYM 渋谷店",
+      "areas": [
+        "渋谷"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "資格保持者・体育大卒",
+      "description": "渋谷駅から徒歩5分",
+      "programs": [],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ライムパーソナルジム 渋谷店",
+      "areas": [
+        "渋谷"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "ゆるダイエット",
+      "description": "渋谷駅から徒歩4分、自重トレーニング",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ExerciseCoach 池袋店",
+      "areas": [
+        "池袋"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": 90200,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "業界平均の約1/2",
+      "description": "2ヶ月わずか90,200円（税込）",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Apple GYM 池袋店",
+      "areas": [
+        "池袋"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 9900,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "業界最安値水準",
+      "description": "4回プラン9,900円",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "PEAK'S GYM 池袋店",
+      "areas": [
+        "池袋"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "高品質トレーニング",
+      "description": "",
+      "programs": [],
+      "website_url": "https://peaksgym.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Lastyle 池袋店",
+      "areas": [
+        "池袋"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "完全個室",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://www.last-style.com/ikebukuro/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ACCEPT 銀座店",
+      "areas": [
+        "銀座"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "リバウンドしない体作り",
+      "description": "銀座駅徒歩5分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://www.accept-gym.jp/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ゴーズジム 銀座店",
+      "areas": [
+        "銀座"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "DNA検査対応",
+      "description": "東銀座駅から徒歩2分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://gos-gym.com/ginza/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "24/7Workout 銀座店",
+      "areas": [
+        "銀座"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "3食食べるダイエット",
+      "description": "完全個室型",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": true,
+      "options_diet": true
+    },
+    {
+      "name": "BODY DIRECTOR 表参道",
+      "areas": [
+        "表参道"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "完全個室",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://bodydirector.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "AGLAIA 表参道",
+      "areas": [
+        "表参道"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "美尻の聖地",
+      "description": "女性専用",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://aglaia-gym.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "GYM CUBE 表参道",
+      "areas": [
+        "表参道"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "トレーニング×食事×筋膜リリース",
+      "description": "女性向け",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "UNDEUX SUPERBODY 表参道",
+      "areas": [
+        "表参道"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "女性トレーナー+管理栄養士",
+      "description": "女性専用",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "eviGym 表参道店",
+      "areas": [
+        "表参道"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "継続しやすい料金",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://evigym.com/stores/omotesandou/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BEYOND 恵比寿店",
+      "areas": [
+        "恵比寿"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "大会入賞者中心",
+      "description": "無理のない食事管理",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://beyond-ebisu.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Dr.トレーニング 恵比寿本店",
+      "areas": [
+        "恵比寿"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医学的エビデンス",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Apple GYM 恵比寿東口店",
+      "areas": [
+        "恵比寿"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 9900,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "業界最安値水準",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "COMPASS 恵比寿店",
+      "areas": [
+        "恵比寿"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "完全個室",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "HABIT PERSONAL GYM 恵比寿本店",
+      "areas": [
+        "恵比寿"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医師監修",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "PEAK'S GYM 恵比寿店",
+      "areas": [
+        "恵比寿"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "高品質トレーニング",
+      "description": "",
+      "programs": [],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BEYOND 六本木店",
+      "areas": [
+        "六本木"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "採用倍率50倍以上",
+      "description": "六本木駅より徒歩3分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "THE PERSONAL GYM 六本木店",
+      "areas": [
+        "六本木"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医師と理学療法士が監修",
+      "description": "初めてトレーニングされるお客様が8割以上",
+      "programs": [],
+      "website_url": "https://the-personal-gym.com/studio/roppongi/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "eviGym 六本木店",
+      "areas": [
+        "六本木"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "継続しやすい料金",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Dee GYM 六本木店",
+      "areas": [
+        "六本木"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "続けやすさ重視",
+      "description": "リーズナブルな価格",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Total Workout 六本木ヒルズ店",
+      "areas": [
+        "六本木"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "高級パーソナルジム",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://totalworkout.jp/roppongi/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "カリスジム 赤坂",
+      "areas": [
+        "赤坂"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "女性専用",
+      "description": "赤坂駅徒歩2分、女性トレーナー指導",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://www.chalis-gym.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "UNDEUX SUPERBODY 赤坂",
+      "areas": [
+        "赤坂"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "女性向け、管理栄養士付き",
+      "description": "96%が目標体重達成",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BOOTY FITNESS 東京赤坂",
+      "areas": [
+        "赤坂"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "美尻・美脚特化",
+      "description": "女性専用、赤坂駅から徒歩4分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "かたぎり塾 赤坂",
+      "areas": [
+        "赤坂"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "安価で高品質",
+      "description": "月単位で変更可能",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "HONEST 赤坂",
+      "areas": [
+        "赤坂"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": 0,
+      "trial_available": true,
+      "catchphrase": "入会金なし",
+      "description": "回数券制",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://honest-gym.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ゴーズジム 品川店",
+      "areas": [
+        "品川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "DNA検査対応",
+      "description": "品川駅から徒歩4分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://gos-gym.com/shinagawa/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Dee GYM 品川店",
+      "areas": [
+        "品川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 6600,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "リーズナブルな価格",
+      "description": "月1回からOK",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "FIGO PERSONAL TRAINING 品川",
+      "areas": [
+        "品川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "進化型パーソナルジム",
+      "description": "HIIT、ファンクショナルトレーニング対応",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://figo-personal.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BEYOND 品川店",
+      "areas": [
+        "品川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "大会入賞者中心",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "24/7Workout 目黒",
+      "areas": [
+        "目黒"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "3食食べるダイエット",
+      "description": "完全個室型",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": true,
+      "options_diet": true
+    },
+    {
+      "name": "かたぎり塾 目黒",
+      "areas": [
+        "目黒"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "完全個室",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "UNDEUX SUPERBODY 目黒",
+      "areas": [
+        "目黒"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "女性向け",
+      "description": "目黒駅から徒歩1分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Dr.トレーニング 目黒店",
+      "areas": [
+        "目黒"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医師と専門家監修",
+      "description": "目黒駅より徒歩3分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "NEXT GYM TOKYO 目黒・白金台",
+      "areas": [
+        "目黒"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "パーソナルトレーニング",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://www.next-gym.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Apple GYM 中目黒店",
+      "areas": [
+        "目黒"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 9900,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "月額9900円",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://applegym.jp/shop/nakameguro/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "RIZAP 上野店",
+      "areas": [
+        "上野"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "業界最高峰",
+      "description": "上野駅から徒歩5分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ASPI 上野店",
+      "areas": [
+        "上野"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "国家資格保有",
+      "description": "上野駅から徒歩3分、継続率98%",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://aspirest.com/access/tokyo/akihabara/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "24/7Workout 上野店",
+      "areas": [
+        "上野"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "3食食べるダイエット",
+      "description": "上野駅から徒歩10分、7時～24時営業",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Reborn Myself 上野店",
+      "areas": [
+        "上野"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "女性専用",
+      "description": "上野駅から徒歩3分",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "3BEAUTY 上野",
+      "areas": [
+        "上野"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 6250,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "業界最安クラス",
+      "description": "プロテイン無料",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://ueno-gym.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": true,
+      "options_diet": true
+    },
+    {
+      "name": "THE PERSONAL GYM 秋葉原店",
+      "areas": [
+        "秋葉原"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医師と理学療法士が監修",
+      "description": "",
+      "programs": [],
+      "website_url": "https://the-personal-gym.com/studio/akihabara/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ASPI 秋葉原",
+      "areas": [
+        "秋葉原"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "国際認証資格保有",
+      "description": "秋葉原駅から徒歩5分、最大級",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://aspirest.com/access/tokyo/akihabara/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Apple GYM 秋葉原店",
+      "areas": [
+        "秋葉原"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 9900,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "月額9900円",
+      "description": "AI マシン + パーソナルトレーニング",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://applegym.jp/shop/akihabara/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "GASY 秋葉原店",
+      "areas": [
+        "秋葉原"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "完全個室",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BEYOND 秋葉原店",
+      "areas": [
+        "秋葉原"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "採用倍率50倍以上",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "PEACH 秋葉原店",
+      "areas": [
+        "秋葉原"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "美尻・美脚特化",
+      "description": "女性専用",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": true,
+      "options_diet": true
+    },
+    {
+      "name": "BEYOND 北千住店",
+      "areas": [
+        "北千住"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "大会受賞トレーナー",
+      "description": "清潔感のある空間、手ぶらで通える",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://beyond-kitasenju.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ASPI 北千住",
+      "areas": [
+        "北千住"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "国際認証資格保有",
+      "description": "北千住駅から徒歩2分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://aspirest.com/access/tokyo/kitasenju/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "24/7Workout 北千住店",
+      "areas": [
+        "北千住"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "3食食べるダイエット",
+      "description": "北千住駅から徒歩5-6分、7時～24時",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Apple GYM 北千住店",
+      "areas": [
+        "北千住"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 9900,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "月額9900円",
+      "description": "AI マシン対応",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://applegym.jp/shop/kitasenju/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "THE PERSONAL GYM 錦糸町店",
+      "areas": [
+        "錦糸町"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医師と理学療法士が監修",
+      "description": "",
+      "programs": [],
+      "website_url": "https://the-personal-gym.com/studio/kinshicho/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BEYOND 錦糸町店",
+      "areas": [
+        "錦糸町"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "大会入賞者中心",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://beyond-kinshichou.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Apple GYM 錦糸町店",
+      "areas": [
+        "錦糸町"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 9900,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "月額9900円",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://applegym.jp/shop/kinshicho/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "24/7Workout 錦糸町店",
+      "areas": [
+        "錦糸町"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "3食食べるダイエット",
+      "description": "完全個室",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "MEXTR 錦糸町",
+      "areas": [
+        "錦糸町"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "都度払い制",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://mextr.jp/tenpo/kinshicho/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Apple GYM 中野店",
+      "areas": [
+        "中野"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 9900,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "月額9900円",
+      "description": "中野駅から徒歩1分",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://applegym.jp/shop/nakano/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "THE PERSONAL GYM 中野店",
+      "areas": [
+        "中野"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医師と理学療法士が監修",
+      "description": "",
+      "programs": [],
+      "website_url": "https://the-personal-gym.com/studio/nakano/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "かたぎり塾 中野",
+      "areas": [
+        "中野"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "有資格者の指導",
+      "description": "低価格でリバウンドしにくい",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "WAPLE 中野店",
+      "areas": [
+        "中野"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "完全個室",
+      "description": "JR中野駅北口から徒歩9分",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://waple.jp/nakano.php",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "HORNET GYM 中野",
+      "areas": [
+        "中野"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "30～50代専門",
+      "description": "脂肪減らし筋肉増加",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://www.hornet-gym.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "THE PERSONAL GYM 吉祥寺店",
+      "areas": [
+        "吉祥寺"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医師と理学療法士が監修",
+      "description": "",
+      "programs": [],
+      "website_url": "https://the-personal-gym.com/studio/kichijoji/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BEYOND 吉祥寺店",
+      "areas": [
+        "吉祥寺"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "採用倍率50倍以上",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://beyond-kichijoji.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "24/7Workout 吉祥寺",
+      "areas": [
+        "吉祥寺"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "3食食べるダイエット",
+      "description": "完全個室",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Apple GYM 吉祥寺店",
+      "areas": [
+        "吉祥寺"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 9900,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "月額9900円",
+      "description": "業界最安値水準",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Dr.トレーニング 吉祥寺店",
+      "areas": [
+        "吉祥寺"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医学的根拠",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://drtraining.jp/location/kichijoji/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "PANAM 立川",
+      "areas": [
+        "立川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "完全個室",
+      "description": "立川駅徒歩3分、低価格",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://panam-gym.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BEYOND 立川店",
+      "areas": [
+        "立川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "コスパ最高評価No.1",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://beyond-tachikawa.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "グリーンフィールド 立川",
+      "areas": [
+        "立川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "初心者大歓迎",
+      "description": "動作改善特化型",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://www.gf-top.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "パーソナルジム Rat 立川店",
+      "areas": [
+        "立川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "完全個室",
+      "description": "立川駅から徒歩2分",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://ratgym.jp/shop/tokyo/tachikawa/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "パーソナルジム STREAM 町田店",
+      "areas": [
+        "町田"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "完全個室",
+      "description": "町田最安値",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://personalgym-stream.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Achieve 町田",
+      "areas": [
+        "町田"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": 5500,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "完全個室",
+      "description": "初心者向け充実",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://gym-achieve.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BEYOND 町田店",
+      "areas": [
+        "町田"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "大会入賞者中心",
+      "description": "清潔な空間、手ぶらで通える",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://beyond-machida.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "&8 町田店",
+      "areas": [
+        "町田"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "キッチン付き",
+      "description": "栄養バランスの食事提供",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://and-eight-gym.net/machida",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BEYOND 八王子店",
+      "areas": [
+        "八王子"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "大会入賞者中心",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://beyond-hachioji.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "THE PERSONAL GYM 八王子店",
+      "areas": [
+        "八王子"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医師と理学療法士が監修",
+      "description": "",
+      "programs": [],
+      "website_url": "https://the-personal-gym.com/studio/hachioji/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Re: 八王子",
+      "areas": [
+        "八王子"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "ボディメイク専門",
+      "description": "",
+      "programs": [
+        "ボディメイク"
+      ],
+      "website_url": "https://rebcs.jp/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Apple GYM 八王子店",
+      "areas": [
+        "八王子"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 9900,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "月額9900円",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://applegym.jp/shop/hachioji/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "MARBELL GYM 八王子",
+      "areas": [
+        "八王子"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "完全個室制",
+      "description": "京王八王子駅徒歩1分",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://marbellgym.com",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BEYOND 自由が丘店",
+      "areas": [
+        "自由が丘"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": 0,
+      "price_enrollment": 0,
+      "trial_available": true,
+      "catchphrase": "大会入賞者中心",
+      "description": "広々とした空間",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://beyond-jiyugaoka.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Dr.トレーニング 自由が丘店",
+      "areas": [
+        "自由が丘"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医師推奨No.1",
+      "description": "医学的エビデンス",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://drtraining.jp/location/jiyugaoka/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ExerciseCoach 自由が丘店",
+      "areas": [
+        "自由が丘"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "AIマシン使用",
+      "description": "20分パーソナルトレーニング",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://exercisecoach.co.jp/store/jiyugaoka/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ASPI 自由が丘",
+      "areas": [
+        "自由が丘"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "国際認証資格保有",
+      "description": "科学的根拠",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://aspirest.com/access/tokyo/jiyugaoka/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ELEMENT 自由が丘店",
+      "areas": [
+        "自由が丘"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "通い放題",
+      "description": "ピラティス、セミパーソナル対応",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Apple GYM 二子玉川店",
+      "areas": [
+        "二子玉川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 9900,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "月額9900円",
+      "description": "広々とした更衣室",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://applegym.jp/shop/futakotamagawa/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "駅前筋肉留学GO 二子玉川店",
+      "areas": [
+        "二子玉川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 4000,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "40分4000円～",
+      "description": "ランク制",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://ekimaego.jp/store/futako/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BEYOND 二子玉川店",
+      "areas": [
+        "二子玉川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": 0,
+      "trial_available": true,
+      "catchphrase": "美しい体作り",
+      "description": "二子玉川駅より徒歩2分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://beyond-futakotamagawa.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ビューティーソウル プラチナム 二子玉川",
+      "areas": [
+        "二子玉川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "明るく開放的",
+      "description": "二子玉川駅から徒歩2分",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://pt.beautysoul-st.jp/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ELEMENT 二子玉川店",
+      "areas": [
+        "二子玉川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "通い放題",
+      "description": "科学的・医学的根拠",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://element-gym.com/element-top/all/futako-tamagawa/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "24/7Workout 三軒茶屋",
+      "areas": [
+        "三軒茶屋"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "3食食べるダイエット",
+      "description": "完全個室",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "UNDEUX SUPERBODY 三軒茶屋",
+      "areas": [
+        "三軒茶屋"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "女性専用",
+      "description": "美尻・脚痩せ重視",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "NEXUS 三軒茶屋",
+      "areas": [
+        "三軒茶屋"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 40000,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "都度払い可能",
+      "description": "月4回40,000円台～",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "YourFit 三軒茶屋",
+      "areas": [
+        "三軒茶屋"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "女性専用",
+      "description": "三軒茶屋駅から徒歩5分",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://your-fit.jp/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Dr.トレーニング 三軒茶屋店",
+      "areas": [
+        "三軒茶屋"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医学的根拠",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://drtraining.jp/location/sancha/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BEYOND 下北沢店",
+      "areas": [
+        "下北沢"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "大会入賞者中心",
+      "description": "下北沢駅から徒歩3分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://beyond-gym.com/gym/gym-shimokitazawa/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "かたぎり塾 下北沢店",
+      "areas": [
+        "下北沢"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 7425,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "理学療法士監修",
+      "description": "下北沢駅徒歩2分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://katagirijuku.jp/gyms/shimo_kitazawa",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "REAL WORKOUT 下北沢",
+      "areas": [
+        "下北沢"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 5500,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "チケット制",
+      "description": "完全個室",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://realworkout.jp/location/shimokitazawa/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Dr.トレーニング 下北沢店",
+      "areas": [
+        "下北沢"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医学的根拠",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://drtraining.jp/location/shimokita/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Apple GYM 下北沢店",
+      "areas": [
+        "下北沢"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 9900,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "海外式ボディメイク",
+      "description": "下北沢駅から徒歩1分",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ASPI 代官山",
+      "areas": [
+        "代官山"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "米国高難度資格保有",
+      "description": "医学的エビデンス",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://aspirest.com/43882/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Nexus 代官山",
+      "areas": [
+        "代官山"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "目的に合わせたトレーニング",
+      "description": "代官山駅から徒歩5分",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://gym-nexus.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Good Habit 代官山",
+      "areas": [
+        "代官山"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "広々とした完全個室",
+      "description": "代官山駅から徒歩3分",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://g-habit.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Vanish Personal Training 代官山",
+      "areas": [
+        "代官山"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "パーソナルトレーニング",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://vanishpt.studio.site/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "THE PERSONAL GYM 麻布十番店",
+      "areas": [
+        "麻布十番"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医師と理学療法士が監修",
+      "description": "初心者8割以上",
+      "programs": [],
+      "website_url": "https://the-personal-gym.com/studio/azabujuban/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BEYOND 麻布十番店",
+      "areas": [
+        "麻布十番"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "大会受賞トレーナー",
+      "description": "麻布十番駅より徒歩2分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://beyond-gym.com/gym/gym-azabu/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "CoCoDakara Body Design 麻布十番",
+      "areas": [
+        "麻布十番"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "ボディデザイン",
+      "description": "麻布十番駅から徒歩約4分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://bodydesign.cocodakara.net/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Personal Gym MediTRA 麻布十番",
+      "areas": [
+        "麻布十番"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "スポーツ医学ベース",
+      "description": "麻布十番駅から徒歩4分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://meditra.jp/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Y-4 GYM 麻布十番",
+      "areas": [
+        "麻布十番"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "駅前0分",
+      "description": "6:30～23:30営業",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://y4gym.jp/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "RESET 麻布十番",
+      "areas": [
+        "麻布十番"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 3900,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "超格安",
+      "description": "60分1セッション3,900円",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://reset-gym.com/azabujuban/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ジェクサー上野",
+      "areas": [
+        "上野"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "大型フィットネス",
+      "description": "上野駅構内、入谷改札からすぐ",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://www.jexer.jp/fitness/ueno/index.html",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BLEUM 吉祥寺",
+      "areas": [
+        "吉祥寺"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "体型維持サポート",
+      "description": "50分トレーニング",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "NICO 自由が丘",
+      "areas": [
+        "自由が丘"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "ピラティススタジオ",
+      "description": "女性向け",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://nico-sports.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "THE PERSON 二子玉川",
+      "areas": [
+        "二子玉川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "セミパーソナル",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://group-personal.the-person.com/lp/atriodue-next-futakotamagawa",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "DANJO 二子玉川",
+      "areas": [
+        "二子玉川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "パーソナルトレーニング",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://danjoseiichi.com/index.html",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "HABIT 恵比寿スタジオ",
+      "areas": [
+        "恵比寿",
+        "代官山"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "医師監修",
+      "description": "医学的根拠",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ExerciseCoach",
+      "areas": [
+        "池袋",
+        "自由が丘"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": 90200,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "AIマシン対応",
+      "description": "業界平均の約1/2",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://exercisecoach.co.jp/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "T-BALANCE 表参道",
+      "areas": [
+        "表参道"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "バランス重視",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "AFFEX 表参道",
+      "areas": [
+        "表参道"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "パーソナルトレーニング",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "COMME 表参道",
+      "areas": [
+        "表参道"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "パーソナルトレーニング",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "INTO9 表参道",
+      "areas": [
+        "表参道"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "パーソナルトレーニング",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Studio Maverico",
+      "areas": [
+        "目黒"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "駅チカ",
+      "description": "目黒駅から徒歩1分",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Apple GYM",
+      "areas": [
+        "新宿",
+        "池袋",
+        "恵比寿",
+        "秋葉原",
+        "北千住",
+        "錦糸町",
+        "中野",
+        "吉祥寺",
+        "二子玉川",
+        "八王子",
+        "下北沢"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": 9900,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "月額9900円",
+      "description": "業界最安値水準",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://applegym.jp/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "PEAK'S GYM",
+      "areas": [
+        "池袋",
+        "恵比寿"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "高品質トレーニング",
+      "description": "",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://peaksgym.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "HONEST",
+      "areas": [
+        "赤坂"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": 0,
+      "trial_available": true,
+      "catchphrase": "入会金なし",
+      "description": "回数券制",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://honest-gym.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BOOTY FITNESS",
+      "areas": [
+        "赤坂"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "美尻・美脚特化",
+      "description": "女性専用",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "FIGO",
+      "areas": [
+        "品川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "進化型パーソナルジム",
+      "description": "HIIT、ファンクショナル対応",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://figo-personal.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "NEXT GYM TOKYO",
+      "areas": [
+        "目黒"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "パーソナルトレーニング",
+      "description": "白金台対応",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://www.next-gym.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ゴーズジム",
+      "areas": [
+        "銀座",
+        "品川"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "DNA検査対応",
+      "description": "初心者～上級者対応",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://gos-gym.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "BODY DIRECTOR",
+      "areas": [
+        "表参道"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "完全個室",
+      "description": "ボディメイク",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://bodydirector.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "AGLAIA",
+      "areas": [
+        "表参道"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "美尻の聖地",
+      "description": "女性専用、2026年春拡大移転予定",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://aglaia-gym.com/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ACCEPT",
+      "areas": [
+        "銀座"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "リバウンドしない体作り",
+      "description": "銀座駅徒歩5分",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "https://www.accept-gym.jp/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "COMPASS",
+      "areas": [
+        "恵比寿"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "完全個室",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "ライムパーソナルジム",
+      "areas": [
+        "渋谷"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "ゆるダイエット",
+      "description": "自重トレーニング",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "PEACH",
+      "areas": [
+        "秋葉原"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "美尻・美脚特化",
+      "description": "女性専用",
+      "programs": [
+        "ダイエット",
+        "ボディメイク"
+      ],
+      "website_url": "",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": true,
+      "options_diet": true
+    },
+    {
+      "name": "YourFit",
+      "areas": [
+        "三軒茶屋"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "女性専用",
+      "description": "ストレッチ・姿勢改善",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://your-fit.jp/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "Vanish Personal Training",
+      "areas": [
+        "代官山"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "パーソナルトレーニング",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://vanishpt.studio.site/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    },
+    {
+      "name": "33GYM",
+      "areas": [
+        "麻布十番"
+      ],
+      "prefecture_slug": "tokyo",
+      "price_min": null,
+      "price_max": null,
+      "price_trial": null,
+      "price_enrollment": null,
+      "trial_available": true,
+      "catchphrase": "パーソナルジム",
+      "description": "",
+      "programs": [
+        "ダイエット"
+      ],
+      "website_url": "https://gym.veatm.com/azabu/",
+      "options_wear": true,
+      "options_shoes": true,
+      "options_protein": false,
+      "options_diet": true
+    }
+  ]
+}
