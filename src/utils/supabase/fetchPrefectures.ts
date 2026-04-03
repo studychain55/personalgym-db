@@ -1,5 +1,5 @@
 import supabase from "./index";
-import type { Prefecture, Region, PrefectureWithCount, RegionWithPrefectures } from "@/types";
+import type { Prefecture, Region, RegionWithPrefectures } from "@/types";
 
 export async function fetchPrefectures(): Promise<Prefecture[]> {
   const { data, error } = await supabase

@@ -62,6 +62,10 @@ export interface GymListItem {
   total_review_count: number;
   areas: string[] | null;
   programs: string[] | null;
+  options_wear: boolean;
+  options_shoes: boolean;
+  options_diet: boolean;
+  target_users: string[] | null;
   prefecture?: { id: number; title: string; slug: string };
   city?: { id: number; title: string; slug: string };
 }

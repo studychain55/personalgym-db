@@ -3,11 +3,13 @@ import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
 import { JsonLDListPage } from "@/components/UI/JsonLD";
 import GymCard from "@/features/gym/components/GymCard";
-import Breadcrumb from "@/components/UI/BreadCrumb";
+import InlineCTA from "@/components/cta/InlineCTA";
+import AnxietyRelief from "@/components/cta/AnxietyRelief";
 import { fetchGyms } from "@/utils/supabase/fetchGyms";
 import { fetchRegionsWithPrefectureCounts } from "@/utils/supabase/fetchPrefectures";
 import { setConditionalCacheHeaders } from "@/utils/cacheHeaders";
 import { siteName } from "@/utils/config";
+import { GYM_CONDITIONS } from "@/types/conditions";
 import type { GymListItem, RegionWithPrefectures } from "@/types";
 import NextLink from "next/link";
 
@@ -39,7 +41,7 @@ export default function Home({ featuredGyms, totalCount, regions }: HomeProps) {
     <Layout>
       <SEO
         title={`${siteName} - 日本最大級のパーソナルジム検索・比較サイト`}
-        description="全国のパーソナルジムを料金・口コミ・特徴で比較。あなたにぴったりのパーソナルジムが見つかる日本最大級の検索サイトです。"
+        description="全国のパーソナルジムを料金・口コミ・特徴で比較。あなたにぴったりのパーソナルジムが見つかる日本最大級の検索サイトです。無料カウンセリング予約も。"
         path="/"
       />
       <JsonLDListPage
@@ -58,20 +60,44 @@ export default function Home({ featuredGyms, totalCount, regions }: HomeProps) {
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <NextLink
               href="/all/"
               className="inline-block bg-[#FF6B35] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
             >
               ジム一覧を見る →
             </NextLink>
+            <a
+              href="#counseling"
+              className="inline-block border-2 border-[#FF6B35] text-[#FF6B35] font-bold px-8 py-3 rounded-lg hover:bg-[#FF6B35] hover:text-white transition-colors no-underline"
+            >
+              無料カウンセリング予約
+            </a>
           </div>
+        </div>
+      </section>
+
+      {/* 条件から探す */}
+      <section className="max-w-6xl mx-auto px-4 py-10">
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">条件からパーソナルジムを探す</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {GYM_CONDITIONS.map((cond) => (
+            <NextLink
+              key={cond.slug}
+              href={`/all/?condition=${cond.slug}`}
+              className="bg-white border border-gray-200 rounded-lg p-4 text-center hover:border-[#FF6B35] hover:shadow-md transition-all no-underline group"
+            >
+              <span className="text-sm font-medium text-gray-700 group-hover:text-[#FF6B35]">
+                {cond.label}
+              </span>
+            </NextLink>
+          ))}
         </div>
       </section>
 
       {/* Featured Gyms */}
       {featuredGyms.length > 0 && (
-        <section className="max-w-6xl mx-auto px-4 py-12">
+        <section className="max-w-6xl mx-auto px-4 py-10">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">おすすめパーソナルジム</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredGyms.map((gym) => (
@@ -91,8 +117,13 @@ export default function Home({ featuredGyms, totalCount, regions }: HomeProps) {
         </section>
       )}
 
+      {/* CTA */}
+      <div className="max-w-6xl mx-auto px-4">
+        <InlineCTA variant="secondary" />
+      </div>
+
       {/* Area Search */}
-      <section id="area" className="bg-gray-50 py-12">
+      <section id="area" className="bg-gray-50 py-12 mt-10">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">エリアからパーソナルジムを探す</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -105,7 +136,7 @@ export default function Home({ featuredGyms, totalCount, regions }: HomeProps) {
                   {region.prefectures.map((pref) => (
                     <NextLink
                       key={pref.id}
-                      href={`/p-${pref.slug}/`}
+                      href={`/gym/area/${pref.slug}/`}
                       className="text-sm text-gray-600 hover:text-[#FF6B35] no-underline transition-colors"
                     >
                       {pref.title}
@@ -121,8 +152,13 @@ export default function Home({ featuredGyms, totalCount, regions }: HomeProps) {
         </div>
       </section>
 
+      {/* 不安解消 */}
+      <div className="max-w-6xl mx-auto px-4 py-10">
+        <AnxietyRelief />
+      </div>
+
       {/* SEO Content */}
-      <section className="max-w-6xl mx-auto px-4 py-12">
+      <section className="max-w-6xl mx-auto px-4 py-10">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">パーソナルジムとは？</h2>
         <div className="prose prose-gray max-w-none text-gray-600">
           <p>
@@ -132,6 +168,10 @@ export default function Home({ featuredGyms, totalCount, regions }: HomeProps) {
           <p>
             {siteName}では、料金・口コミ・設備・プログラム内容など多角的な情報で全国のパーソナルジムを比較できます。
             体験トレーニングの有無や、ウェア・シューズの無料レンタル、プロテイン提供などの付帯サービスも詳しく掲載しています。
+          </p>
+          <p>
+            パーソナルジム選びに迷ったら、まずは無料カウンセリングを利用しましょう。
+            プロのカウンセラーがあなたの目標やライフスタイルに合った最適なジムをご提案します。
           </p>
         </div>
       </section>

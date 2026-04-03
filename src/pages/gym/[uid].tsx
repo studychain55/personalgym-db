@@ -2,11 +2,17 @@ import type { GetServerSideProps } from "next";
 import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
 import { JsonLDGymDetail } from "@/components/UI/JsonLD";
+import JsonLDFaq from "@/components/UI/JsonLDFaq";
+import JsonLDBreadcrumb from "@/components/UI/JsonLDBreadcrumb";
 import Breadcrumb from "@/components/UI/BreadCrumb";
+import InlineCTA from "@/components/cta/InlineCTA";
+import AnxietyRelief from "@/components/cta/AnxietyRelief";
+import GymCard from "@/features/gym/components/GymCard";
 import { fetchGymByUid, fetchGymReviews, fetchGymImages, fetchGymFaqs } from "@/utils/supabase/fetchGymDetail";
+import { fetchGyms } from "@/utils/supabase/fetchGyms";
 import { setVeryLongCacheHeaders } from "@/utils/cacheHeaders";
 import supabase from "@/utils/supabase/index";
-import type { GymLocation, GymReview, GymImage, GymFaq } from "@/types";
+import type { GymLocation, GymReview, GymImage, GymFaq, GymListItem } from "@/types";
 
 interface GymDetailProps {
   gym: GymLocation;
@@ -15,6 +21,7 @@ interface GymDetailProps {
   faqs: GymFaq[];
   prefectureName: string;
   prefectureSlug: string;
+  nearbyGyms: GymListItem[];
 }
 
 export const getServerSideProps: GetServerSideProps<GymDetailProps> = async ({ params, res }) => {
@@ -42,9 +49,19 @@ export const getServerSideProps: GetServerSideProps<GymDetailProps> = async ({ p
     }
   }
 
+  // 近隣ジム取得
+  let nearbyGyms: GymListItem[] = [];
+  if (gym.prefecture_id) {
+    const result = await fetchGyms({
+      prefectureId: gym.prefecture_id,
+      limit: 4,
+    });
+    nearbyGyms = result.gyms.filter((g) => g.uid !== gym.uid).slice(0, 3);
+  }
+
   setVeryLongCacheHeaders(res);
 
-  return { props: { gym, reviews, images, faqs, prefectureName, prefectureSlug } };
+  return { props: { gym, reviews, images, faqs, prefectureName, prefectureSlug, nearbyGyms } };
 };
 
 const formatPrice = (price: number | null, label: string) => {
@@ -57,10 +74,10 @@ const formatPrice = (price: number | null, label: string) => {
   );
 };
 
-export default function GymDetail({ gym, reviews, images, faqs, prefectureName, prefectureSlug }: GymDetailProps) {
+export default function GymDetail({ gym, reviews, images, faqs, prefectureName, prefectureSlug, nearbyGyms }: GymDetailProps) {
   const breadcrumbItems = [
     { label: "ジム一覧", href: "/all/" },
-    ...(prefectureName ? [{ label: prefectureName, href: `/p-${prefectureSlug}/` }] : []),
+    ...(prefectureName ? [{ label: prefectureName, href: `/gym/area/${prefectureSlug}/` }] : []),
     { label: gym.name },
   ];
 
@@ -73,6 +90,8 @@ export default function GymDetail({ gym, reviews, images, faqs, prefectureName, 
         ogImage={gym.image_url || undefined}
       />
       <JsonLDGymDetail gym={gym} />
+      <JsonLDFaq faqs={faqs} />
+      <JsonLDBreadcrumb items={breadcrumbItems} />
 
       <div className="max-w-4xl mx-auto px-4 py-6">
         <Breadcrumb items={breadcrumbItems} />
@@ -83,8 +102,11 @@ export default function GymDetail({ gym, reviews, images, faqs, prefectureName, 
             <p className="text-sm text-[#FF6B35] font-medium">{gym.catchphrase}</p>
           )}
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mt-1">{gym.name}</h1>
-          {gym.address && <p className="text-sm text-gray-500 mt-1">📍 {gym.address}</p>}
+          {gym.address && <p className="text-sm text-gray-500 mt-1">{gym.address}</p>}
         </div>
+
+        {/* CTA: ファーストビュー */}
+        <InlineCTA areaName={gym.name} className="mt-4" />
 
         {/* Images */}
         {(gym.image_url || images.length > 0) && (
@@ -143,6 +165,20 @@ export default function GymDetail({ gym, reviews, images, faqs, prefectureName, 
           )}
         </div>
 
+        {/* こんな方におすすめ */}
+        {gym.target_users && gym.target_users.length > 0 && (
+          <section className="mt-8 bg-orange-50 rounded-lg p-5">
+            <h2 className="text-lg font-bold text-gray-900 mb-3">こんな方におすすめ</h2>
+            <div className="flex flex-wrap gap-2">
+              {gym.target_users.map((user) => (
+                <span key={user} className="bg-white text-[#FF6B35] px-3 py-1.5 rounded-full text-sm font-medium border border-orange-200">
+                  {user}
+                </span>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Description */}
         {gym.description && (
           <section className="mt-8">
@@ -172,6 +208,15 @@ export default function GymDetail({ gym, reviews, images, faqs, prefectureName, 
                 )}
               </div>
             )}
+          </div>
+          {/* CTA after price section */}
+          <div className="mt-4 text-center">
+            <a
+              href="#counseling"
+              className="inline-block bg-[#FF6B35] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+            >
+              無料カウンセリングで料金を詳しく聞く
+            </a>
           </div>
         </section>
 
@@ -210,6 +255,9 @@ export default function GymDetail({ gym, reviews, images, faqs, prefectureName, 
             ))}
           </div>
         </section>
+
+        {/* CTA: 中盤 */}
+        <InlineCTA areaName={gym.name} variant="secondary" className="mt-8" />
 
         {/* Access */}
         <section className="mt-8">
@@ -323,6 +371,26 @@ export default function GymDetail({ gym, reviews, images, faqs, prefectureName, 
             </div>
           </section>
         )}
+
+        {/* 不安解消セクション */}
+        <AnxietyRelief className="mt-10" />
+
+        {/* 近隣のジム */}
+        {nearbyGyms.length > 0 && (
+          <section className="mt-10">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">
+              {prefectureName}の他のパーソナルジム
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {nearbyGyms.map((g) => (
+                <GymCard key={g.id} gym={g} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* CTA: 最下部 */}
+        <InlineCTA areaName={gym.name} className="mt-10" />
       </div>
     </Layout>
   );
