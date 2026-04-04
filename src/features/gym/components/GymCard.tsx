@@ -1,6 +1,7 @@
 import React from "react";
 import NextLink from "next/link";
 import type { GymListItem } from "@/types";
+import { getRecommendedTags } from "@/utils/gymPurpose";
 
 const formatPrice = (price: number | null) => {
   if (!price) return null;
@@ -15,6 +16,7 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
   const prefName = gym.prefecture?.title || "";
   const cityName = gym.city?.title || "";
   const area = [prefName, cityName].filter(Boolean).join(" ");
+  const recommendedTags = getRecommendedTags(gym, 3);
 
   return (
     <NextLink
@@ -38,9 +40,26 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
               </svg>
             </div>
           )}
-          {gym.trial_available && (
-            <span className="absolute top-2 left-2 bg-[#FF6B35] text-white text-xs font-bold px-2 py-1 rounded">
-              体験あり
+          <div className="absolute top-2 left-2 flex flex-wrap gap-1">
+            {gym.trial_available && (
+              <span className="bg-[#FF6B35] text-white text-xs font-bold px-2 py-1 rounded">
+                体験あり
+              </span>
+            )}
+            {gym.has_female_only && (
+              <span className="bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded">
+                女性専用
+              </span>
+            )}
+            {gym.has_money_back && (
+              <span className="bg-emerald-600 text-white text-xs font-bold px-2 py-1 rounded">
+                返金保証
+              </span>
+            )}
+          </div>
+          {gym.brand && (
+            <span className="absolute top-2 right-2 bg-black/60 text-white text-xs px-2 py-1 rounded">
+              {gym.brand.name}
             </span>
           )}
         </div>
@@ -51,9 +70,14 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
             {gym.name}
           </h3>
 
-          {area && (
-            <p className="text-xs text-gray-500 mt-1">{area}</p>
-          )}
+          <div className="mt-1 flex items-center gap-2 text-xs text-gray-500">
+            {area && <span>{area}</span>}
+            {gym.nearest_station && (
+              <span>
+                {gym.nearest_station}駅 徒歩{gym.walk_minutes ?? "?"}分
+              </span>
+            )}
+          </div>
 
           {gym.catchphrase && (
             <p className="text-sm text-gray-600 mt-2 line-clamp-2">
@@ -62,7 +86,7 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
           )}
 
           {/* Price */}
-          <div className="mt-3 flex items-center gap-3">
+          <div className="mt-3 flex items-center gap-3 flex-wrap">
             {(gym.price_min || gym.price_max) && (
               <div className="text-sm">
                 <span className="text-gray-500">月額</span>
@@ -72,9 +96,23 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
                 </span>
               </div>
             )}
+            {gym.price_per_session && (
+              <div className="text-xs text-gray-500">
+                1回あたり {formatPrice(gym.price_per_session)}
+              </div>
+            )}
+          </div>
+
+          {/* Badges */}
+          <div className="mt-2 flex flex-wrap gap-1">
             {gym.price_trial != null && gym.price_trial === 0 && (
               <span className="text-xs bg-green-50 text-green-700 font-medium px-2 py-0.5 rounded">
                 無料体験
+              </span>
+            )}
+            {gym.options_diet && (
+              <span className="text-xs bg-blue-50 text-blue-700 font-medium px-2 py-0.5 rounded">
+                食事指導あり
               </span>
             )}
           </div>
@@ -89,9 +127,9 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
           )}
 
           {/* Tags */}
-          {gym.programs && gym.programs.length > 0 && (
+          {recommendedTags.length > 0 && (
             <div className="mt-3 flex flex-wrap gap-1">
-              {gym.programs.slice(0, 3).map((tag) => (
+              {recommendedTags.map((tag) => (
                 <span
                   key={tag}
                   className="text-xs bg-orange-50 text-[#FF6B35] px-2 py-0.5 rounded-full"

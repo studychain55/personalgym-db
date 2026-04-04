@@ -3,16 +3,23 @@ import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
 import { JsonLDGymDetail } from "@/components/UI/JsonLD";
 import Breadcrumb from "@/components/UI/BreadCrumb";
-import { fetchGymByUid, fetchGymReviews, fetchGymImages, fetchGymFaqs } from "@/utils/supabase/fetchGymDetail";
+import {
+  fetchGymByUid, fetchGymReviews, fetchGymImages, fetchGymFaqs,
+  fetchGymPlans, fetchGymTrainers, fetchGymBeforeAfters, fetchGymCampaigns,
+} from "@/utils/supabase/fetchGymDetail";
 import { setVeryLongCacheHeaders } from "@/utils/cacheHeaders";
 import supabase from "@/utils/supabase/index";
-import type { GymLocation, GymReview, GymImage, GymFaq } from "@/types";
+import type { GymLocation, GymReview, GymImage, GymFaq, GymPlan, GymTrainer, GymBeforeAfter, GymCampaign } from "@/types";
 
 interface GymDetailProps {
   gym: GymLocation;
   reviews: GymReview[];
   images: GymImage[];
   faqs: GymFaq[];
+  plans: GymPlan[];
+  trainers: GymTrainer[];
+  beforeAfters: GymBeforeAfter[];
+  campaigns: GymCampaign[];
   prefectureName: string;
   prefectureSlug: string;
 }
@@ -22,10 +29,14 @@ export const getServerSideProps: GetServerSideProps<GymDetailProps> = async ({ p
   const gym = await fetchGymByUid(uid);
   if (!gym) return { notFound: true };
 
-  const [reviews, images, faqs] = await Promise.all([
+  const [reviews, images, faqs, plans, trainers, beforeAfters, campaigns] = await Promise.all([
     fetchGymReviews(gym.id),
     fetchGymImages(gym.id),
     fetchGymFaqs(gym.id),
+    fetchGymPlans(gym.id),
+    fetchGymTrainers(gym.id),
+    fetchGymBeforeAfters(gym.id),
+    fetchGymCampaigns(gym.id),
   ]);
 
   let prefectureName = "";
@@ -44,10 +55,10 @@ export const getServerSideProps: GetServerSideProps<GymDetailProps> = async ({ p
 
   setVeryLongCacheHeaders(res);
 
-  return { props: { gym, reviews, images, faqs, prefectureName, prefectureSlug } };
+  return { props: { gym, reviews, images, faqs, plans, trainers, beforeAfters, campaigns, prefectureName, prefectureSlug } };
 };
 
-const formatPrice = (price: number | null, label: string) => {
+const fmtPrice = (price: number | null, label: string) => {
   if (price == null) return null;
   return (
     <div className="flex justify-between py-2 border-b border-gray-100">
@@ -57,12 +68,18 @@ const formatPrice = (price: number | null, label: string) => {
   );
 };
 
-export default function GymDetail({ gym, reviews, images, faqs, prefectureName, prefectureSlug }: GymDetailProps) {
+export default function GymDetail({ gym, reviews, images, faqs, plans, trainers, beforeAfters, campaigns, prefectureName, prefectureSlug }: GymDetailProps) {
   const breadcrumbItems = [
     { label: "ジム一覧", href: "/all/" },
     ...(prefectureName ? [{ label: prefectureName, href: `/p-${prefectureSlug}/` }] : []),
     { label: gym.name },
   ];
+
+  const stationInfo = [
+    gym.nearest_station && `${gym.nearest_station}駅 徒歩${gym.walk_minutes ?? "?"}分`,
+    gym.nearest_station_2 && `${gym.nearest_station_2}駅 徒歩${gym.walk_minutes_2 ?? "?"}分`,
+    gym.nearest_station_3 && `${gym.nearest_station_3}駅 徒歩${gym.walk_minutes_3 ?? "?"}分`,
+  ].filter(Boolean);
 
   return (
     <Layout>
@@ -83,8 +100,41 @@ export default function GymDetail({ gym, reviews, images, faqs, prefectureName, 
             <p className="text-sm text-[#FF6B35] font-medium">{gym.catchphrase}</p>
           )}
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mt-1">{gym.name}</h1>
-          {gym.address && <p className="text-sm text-gray-500 mt-1">📍 {gym.address}</p>}
+          <div className="flex flex-wrap items-center gap-3 mt-2">
+            {gym.address && <span className="text-sm text-gray-500">📍 {gym.address}</span>}
+            {stationInfo.length > 0 && (
+              <span className="text-sm text-gray-500">🚃 {stationInfo.join(" / ")}</span>
+            )}
+          </div>
+          {/* Feature badges */}
+          <div className="flex flex-wrap gap-2 mt-3">
+            {gym.has_female_only && <span className="text-xs bg-pink-100 text-pink-700 font-bold px-3 py-1 rounded-full">女性専用</span>}
+            {gym.has_money_back && <span className="text-xs bg-emerald-100 text-emerald-700 font-bold px-3 py-1 rounded-full">返金保証あり</span>}
+            {gym.has_installment && <span className="text-xs bg-blue-100 text-blue-700 font-bold px-3 py-1 rounded-full">分割払いOK</span>}
+            {gym.has_child_friendly && <span className="text-xs bg-yellow-100 text-yellow-700 font-bold px-3 py-1 rounded-full">子連れOK</span>}
+            {gym.has_visiting_training && <span className="text-xs bg-purple-100 text-purple-700 font-bold px-3 py-1 rounded-full">出張対応</span>}
+          </div>
         </div>
+
+        {/* Campaigns */}
+        {campaigns.length > 0 && (
+          <div className="mt-6 bg-red-50 border border-red-200 rounded-lg p-4">
+            <h2 className="text-lg font-bold text-red-700 mb-2">キャンペーン実施中</h2>
+            {campaigns.map((c) => (
+              <div key={c.id} className="mb-2 last:mb-0">
+                <div className="font-bold text-red-800">{c.title}</div>
+                {c.original_price != null && c.campaign_price != null && (
+                  <div className="text-sm">
+                    <span className="line-through text-gray-400">¥{c.original_price.toLocaleString()}</span>
+                    <span className="ml-2 text-red-700 font-bold text-lg">→ ¥{c.campaign_price.toLocaleString()}</span>
+                  </div>
+                )}
+                {c.conditions && <p className="text-xs text-gray-500 mt-1">{c.conditions}</p>}
+                {c.end_date && <p className="text-xs text-red-600 mt-1">〜{c.end_date}まで</p>}
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Images */}
         {(gym.image_url || images.length > 0) && (
@@ -130,9 +180,10 @@ export default function GymDetail({ gym, reviews, images, faqs, prefectureName, 
               )}
             </div>
           )}
-          {gym.online_available && (
-            <div className="bg-blue-50 rounded-lg p-3 text-center">
-              <div className="text-sm font-bold text-blue-700">オンライン対応</div>
+          {gym.price_per_session && (
+            <div className="bg-orange-50 rounded-lg p-3 text-center">
+              <div className="text-sm font-bold text-[#FF6B35]">¥{gym.price_per_session.toLocaleString()}</div>
+              <div className="text-xs text-gray-500">1回あたり</div>
             </div>
           )}
           {gym.session_duration && (
@@ -151,29 +202,173 @@ export default function GymDetail({ gym, reviews, images, faqs, prefectureName, 
           </section>
         )}
 
-        {/* Price */}
-        <section className="mt-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-3">料金情報</h2>
-          <div className="bg-white border border-gray-200 rounded-lg p-5">
-            {formatPrice(gym.price_enrollment, "入会金")}
-            {formatPrice(gym.price_trial, "体験料金")}
-            {formatPrice(gym.price_min, "最低月額料金")}
-            {formatPrice(gym.price_max, "最高月額料金")}
-            {gym.price_plan_name && (
-              <div className="mt-3 pt-3 border-t border-gray-200">
-                <div className="font-bold text-gray-800">{gym.price_plan_name}</div>
-                {gym.price_plan_amount && (
-                  <div className="text-[#FF6B35] font-bold text-lg">
-                    ¥{gym.price_plan_amount.toLocaleString()}
+        {/* Atmosphere */}
+        {gym.atmosphere && (
+          <section className="mt-6">
+            <h3 className="text-lg font-bold text-gray-900 mb-2">雰囲気</h3>
+            <p className="text-gray-600">{gym.atmosphere}</p>
+          </section>
+        )}
+
+        {/* Video */}
+        {gym.video_url && (
+          <section className="mt-6">
+            <h3 className="text-lg font-bold text-gray-900 mb-2">紹介動画</h3>
+            <div className="aspect-video rounded-lg overflow-hidden">
+              <iframe
+                src={gym.video_url}
+                className="w-full h-full"
+                allowFullScreen
+                loading="lazy"
+                title={`${gym.name}の紹介動画`}
+              />
+            </div>
+          </section>
+        )}
+
+        {/* Plans Table */}
+        {plans.length > 0 && (
+          <section className="mt-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-3">料金プラン</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="bg-gray-50">
+                    <th className="text-left py-3 px-4 font-bold border-b">プラン名</th>
+                    <th className="text-right py-3 px-4 font-bold border-b">月額</th>
+                    <th className="text-right py-3 px-4 font-bold border-b">総額</th>
+                    <th className="text-center py-3 px-4 font-bold border-b">回数/月</th>
+                    <th className="text-center py-3 px-4 font-bold border-b">時間</th>
+                    <th className="text-center py-3 px-4 font-bold border-b">期間</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {plans.map((plan) => (
+                    <tr key={plan.id} className="border-b border-gray-100 hover:bg-gray-50">
+                      <td className="py-3 px-4">
+                        <div className="font-medium">{plan.name}</div>
+                        {plan.is_trial && <span className="text-xs text-green-600 font-bold">体験プラン</span>}
+                        {plan.target_audience && <div className="text-xs text-gray-400">{plan.target_audience}</div>}
+                      </td>
+                      <td className="py-3 px-4 text-right font-bold text-[#FF6B35]">
+                        {plan.price_monthly != null ? `¥${plan.price_monthly.toLocaleString()}` : "-"}
+                      </td>
+                      <td className="py-3 px-4 text-right">
+                        {plan.price_total != null ? `¥${plan.price_total.toLocaleString()}` : "-"}
+                      </td>
+                      <td className="py-3 px-4 text-center">{plan.sessions_per_month ?? "-"}</td>
+                      <td className="py-3 px-4 text-center">{plan.session_minutes ? `${plan.session_minutes}分` : "-"}</td>
+                      <td className="py-3 px-4 text-center">{plan.duration_months ? `${plan.duration_months}ヶ月` : "-"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
+
+        {/* Legacy Price (shown if no plans) */}
+        {plans.length === 0 && (
+          <section className="mt-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-3">料金情報</h2>
+            <div className="bg-white border border-gray-200 rounded-lg p-5">
+              {fmtPrice(gym.price_enrollment, "入会金")}
+              {fmtPrice(gym.price_trial, "体験料金")}
+              {fmtPrice(gym.price_counseling, "カウンセリング料金")}
+              {fmtPrice(gym.price_min, "最低月額料金")}
+              {fmtPrice(gym.price_max, "最高月額料金")}
+              {fmtPrice(gym.price_per_session, "1回あたり料金")}
+              {gym.price_plan_name && (
+                <div className="mt-3 pt-3 border-t border-gray-200">
+                  <div className="font-bold text-gray-800">{gym.price_plan_name}</div>
+                  {gym.price_plan_amount && (
+                    <div className="text-[#FF6B35] font-bold text-lg">
+                      ¥{gym.price_plan_amount.toLocaleString()}
+                    </div>
+                  )}
+                  {gym.price_plan_details && (
+                    <p className="text-sm text-gray-600 mt-1">{gym.price_plan_details}</p>
+                  )}
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* Trainers */}
+        {trainers.length > 0 && (
+          <section className="mt-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-3">トレーナー紹介</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {trainers.map((t) => (
+                <div key={t.id} className="bg-white border border-gray-200 rounded-lg p-4 flex gap-4">
+                  {t.image_url && (
+                    <img src={t.image_url} alt={t.name} className="w-20 h-20 rounded-full object-cover flex-shrink-0" loading="lazy" />
+                  )}
+                  <div>
+                    <div className="font-bold text-gray-900">{t.name}</div>
+                    {t.role && <div className="text-xs text-[#FF6B35] font-medium">{t.role}</div>}
+                    {t.bio && <p className="text-sm text-gray-600 mt-1 line-clamp-3">{t.bio}</p>}
+                    {t.certifications && t.certifications.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mt-2">
+                        {t.certifications.map((c) => (
+                          <span key={c} className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">{c}</span>
+                        ))}
+                      </div>
+                    )}
+                    {t.achievements && t.achievements.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mt-1">
+                        {t.achievements.map((a) => (
+                          <span key={a} className="text-xs bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded">{a}</span>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                )}
-                {gym.price_plan_details && (
-                  <p className="text-sm text-gray-600 mt-1">{gym.price_plan_details}</p>
-                )}
-              </div>
-            )}
-          </div>
-        </section>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Before/After */}
+        {beforeAfters.length > 0 && (
+          <section className="mt-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-3">ビフォーアフター</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {beforeAfters.map((ba) => (
+                <div key={ba.id} className="bg-white border border-gray-200 rounded-lg p-4">
+                  <div className="flex gap-2 mb-3">
+                    {ba.image_before && <img src={ba.image_before} alt="Before" className="w-1/2 rounded object-cover aspect-[3/4]" loading="lazy" />}
+                    {ba.image_after && <img src={ba.image_after} alt="After" className="w-1/2 rounded object-cover aspect-[3/4]" loading="lazy" />}
+                  </div>
+                  <div className="flex flex-wrap gap-3 text-sm">
+                    {ba.gender && <span>{ba.gender}</span>}
+                    {ba.age && <span>{ba.age}歳</span>}
+                    {ba.duration_months && <span>{ba.duration_months}ヶ月</span>}
+                  </div>
+                  <div className="mt-2 flex gap-4 text-sm">
+                    {ba.weight_before != null && ba.weight_after != null && (
+                      <div>
+                        <span className="text-gray-500">体重</span>{" "}
+                        <span className="font-bold">{ba.weight_before}kg → {ba.weight_after}kg</span>
+                        <span className="text-red-600 ml-1 font-bold">
+                          ({(ba.weight_after - ba.weight_before).toFixed(1)}kg)
+                        </span>
+                      </div>
+                    )}
+                    {ba.body_fat_before != null && ba.body_fat_after != null && (
+                      <div>
+                        <span className="text-gray-500">体脂肪率</span>{" "}
+                        <span className="font-bold">{ba.body_fat_before}% → {ba.body_fat_after}%</span>
+                      </div>
+                    )}
+                  </div>
+                  {ba.comment && <p className="text-sm text-gray-600 mt-2">{ba.comment}</p>}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Programs */}
         {gym.programs && gym.programs.length > 0 && (
@@ -189,7 +384,7 @@ export default function GymDetail({ gym, reviews, images, faqs, prefectureName, 
           </section>
         )}
 
-        {/* Options */}
+        {/* Options & Services */}
         <section className="mt-8">
           <h2 className="text-xl font-bold text-gray-900 mb-3">サービス・設備</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -198,6 +393,10 @@ export default function GymDetail({ gym, reviews, images, faqs, prefectureName, 
               { label: "シューズレンタル", active: gym.options_shoes },
               { label: "プロテイン提供", active: gym.options_protein },
               { label: "食事指導", active: gym.options_diet },
+              { label: "タオルレンタル", active: gym.has_towel_rental },
+              { label: "ウォーターサービス", active: gym.has_water_service },
+              { label: "アメニティ", active: gym.has_amenity },
+              { label: "子連れOK", active: gym.has_child_friendly },
             ].map((opt) => (
               <div
                 key={opt.label}
@@ -209,6 +408,12 @@ export default function GymDetail({ gym, reviews, images, faqs, prefectureName, 
               </div>
             ))}
           </div>
+          {gym.payment_methods && gym.payment_methods.length > 0 && (
+            <div className="mt-3">
+              <span className="text-sm text-gray-500">支払い方法: </span>
+              <span className="text-sm font-medium">{gym.payment_methods.join(" / ")}</span>
+            </div>
+          )}
         </section>
 
         {/* Access */}
@@ -221,6 +426,12 @@ export default function GymDetail({ gym, reviews, images, faqs, prefectureName, 
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 bg-gray-50 font-medium w-28">住所</td>
                     <td className="py-3 px-4">{gym.address}</td>
+                  </tr>
+                )}
+                {stationInfo.length > 0 && (
+                  <tr className="border-b border-gray-100">
+                    <td className="py-3 px-4 bg-gray-50 font-medium">最寄り駅</td>
+                    <td className="py-3 px-4">{stationInfo.join(" / ")}</td>
                   </tr>
                 )}
                 {gym.phone && (
@@ -253,6 +464,18 @@ export default function GymDetail({ gym, reviews, images, faqs, prefectureName, 
                     <td className="py-3 px-4">{gym.parking}</td>
                   </tr>
                 )}
+                {gym.booth_count && (
+                  <tr className="border-b border-gray-100">
+                    <td className="py-3 px-4 bg-gray-50 font-medium">ブース数</td>
+                    <td className="py-3 px-4">{gym.booth_count}室</td>
+                  </tr>
+                )}
+                {gym.total_area_sqm && (
+                  <tr className="border-b border-gray-100">
+                    <td className="py-3 px-4 bg-gray-50 font-medium">面積</td>
+                    <td className="py-3 px-4">{gym.total_area_sqm}㎡</td>
+                  </tr>
+                )}
                 {gym.website_url && (
                   <tr>
                     <td className="py-3 px-4 bg-gray-50 font-medium">公式サイト</td>
@@ -282,22 +505,34 @@ export default function GymDetail({ gym, reviews, images, faqs, prefectureName, 
                       </span>
                       <span className="text-sm text-gray-500">{review.rating}.0</span>
                     </div>
-                    {review.author_name && (
-                      <span className="text-sm text-gray-400">{review.author_name}</span>
-                    )}
+                    <div className="flex items-center gap-2 text-sm text-gray-400">
+                      {review.author_name && <span>{review.author_name}</span>}
+                      {review.author_gender && <span>{review.author_gender}</span>}
+                      {review.author_age_group && <span>{review.author_age_group}</span>}
+                    </div>
                   </div>
+                  {review.purpose && (
+                    <div className="mt-1 text-xs text-gray-500">目的: {review.purpose}</div>
+                  )}
                   {review.title && (
                     <h4 className="font-bold text-gray-800 mt-2">{review.title}</h4>
                   )}
                   <p className="text-gray-600 mt-2 text-sm whitespace-pre-line">{review.content}</p>
-                  {(review.rating_trainer || review.rating_facility || review.rating_price || review.rating_access) && (
-                    <div className="mt-3 flex flex-wrap gap-3 text-xs text-gray-500">
-                      {review.rating_trainer && <span>トレーナー: {review.rating_trainer}/5</span>}
-                      {review.rating_facility && <span>設備: {review.rating_facility}/5</span>}
-                      {review.rating_price && <span>価格: {review.rating_price}/5</span>}
-                      {review.rating_access && <span>アクセス: {review.rating_access}/5</span>}
+                  {review.weight_loss_kg != null && review.weight_loss_kg > 0 && (
+                    <div className="mt-2 text-sm text-red-600 font-bold">
+                      -{review.weight_loss_kg}kg達成
                     </div>
                   )}
+                  <div className="mt-3 flex flex-wrap gap-3 text-xs text-gray-500">
+                    {review.rating_trainer && <span>トレーナー: {review.rating_trainer}/5</span>}
+                    {review.rating_facility && <span>設備: {review.rating_facility}/5</span>}
+                    {review.rating_price && <span>価格: {review.rating_price}/5</span>}
+                    {review.rating_access && <span>アクセス: {review.rating_access}/5</span>}
+                    {review.rating_meal_guidance && <span>食事指導: {review.rating_meal_guidance}/5</span>}
+                    {review.rating_goal_achievement && <span>目標達成: {review.rating_goal_achievement}/5</span>}
+                    {review.rating_cleanliness && <span>清潔感: {review.rating_cleanliness}/5</span>}
+                    {review.rating_atmosphere && <span>雰囲気: {review.rating_atmosphere}/5</span>}
+                  </div>
                 </div>
               ))}
             </div>
