@@ -13,13 +13,21 @@ export interface GymLocation {
   phone: string | null;
   email: string | null;
   website_url: string | null;
+  // アクセス（競合全サイト共通）
+  nearest_station: string | null;
+  walk_minutes: number | null;
+  // 料金（競合比較軸）
   price_trial: number | null;
   price_enrollment: number | null;
   price_min: number | null;
   price_max: number | null;
+  price_2month_total: number | null;
+  price_per_session: number | null;
   price_plan_name: string | null;
   price_plan_amount: number | null;
   price_plan_details: string | null;
+  payment_type: string | null;
+  // 基本属性
   trial_available: boolean;
   online_available: boolean;
   opening_hours: string | null;
@@ -30,16 +38,35 @@ export interface GymLocation {
   trainer_count: number | null;
   programs: string[] | null;
   equipment_list: string[] | null;
+  // サービス・設備
   options_wear: boolean;
   options_shoes: boolean;
   options_protein: boolean;
   options_diet: boolean;
+  // 競合ギャップ項目
+  is_women_only: boolean;
+  is_private_room: boolean;
+  has_refund_guarantee: boolean;
+  has_pair_training: boolean;
+  has_rebound_support: boolean;
+  has_shower: boolean;
+  has_free_trial: boolean;
+  has_monitor_plan: boolean;
+  has_female_trainer: boolean;
+  is_early_morning: boolean;
+  is_late_night: boolean;
+  // ブランド
+  brand_id: number | null;
+  // ターゲット
   target_users: string[] | null;
   areas: string[] | null;
+  // メディア
   image_url: string | null;
   logo_url: string | null;
+  // 評価
   review_average_rating: number;
   total_review_count: number;
+  // 表示制御
   is_display: boolean;
   search_priority: number;
   created_at: string;
@@ -52,11 +79,17 @@ export interface GymListItem {
   name: string;
   catchphrase: string | null;
   address: string | null;
+  nearest_station: string | null;
+  walk_minutes: number | null;
   price_min: number | null;
   price_max: number | null;
   price_trial: number | null;
+  price_2month_total: number | null;
   trial_available: boolean;
   online_available: boolean;
+  is_women_only: boolean;
+  is_private_room: boolean;
+  has_refund_guarantee: boolean;
   image_url: string | null;
   review_average_rating: number;
   total_review_count: number;
@@ -70,6 +103,61 @@ export interface GymListItem {
   city?: { id: number; title: string; slug: string };
 }
 
+export interface GymPlan {
+  id: number;
+  gym_id: number;
+  name: string;
+  duration_months: number | null;
+  sessions: number | null;
+  session_duration_min: number | null;
+  price: number;
+  price_enrollment: number | null;
+  price_per_session: number | null;
+  has_meal_guidance: boolean;
+  description: string | null;
+  is_popular: boolean;
+  sort_order: number;
+}
+
+export interface GymTrainer {
+  id: number;
+  gym_id: number;
+  name: string;
+  photo_url: string | null;
+  bio: string | null;
+  qualifications: string[] | null;
+  specialties: string[] | null;
+  is_female: boolean;
+  sort_order: number;
+}
+
+export interface GymBeforeAfter {
+  id: number;
+  gym_id: number;
+  before_image_url: string | null;
+  after_image_url: string | null;
+  duration: string | null;
+  weight_before: number | null;
+  weight_after: number | null;
+  body_fat_before: number | null;
+  body_fat_after: number | null;
+  age: number | null;
+  gender: string | null;
+  comment: string | null;
+  sort_order: number;
+}
+
+export interface GymBrand {
+  id: number;
+  name: string;
+  slug: string;
+  description: string | null;
+  logo_url: string | null;
+  website_url: string | null;
+  founded_year: number | null;
+  total_stores: number | null;
+}
+
 export interface GymReview {
   id: number;
   gym_id: number;
@@ -81,6 +169,7 @@ export interface GymReview {
   rating_facility: number | null;
   rating_price: number | null;
   rating_access: number | null;
+  rating_booking: number | null;
   created_at: string;
 }
 

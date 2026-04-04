@@ -1,5 +1,5 @@
 import supabase from "./index";
-import type { GymLocation, GymReview, GymImage, GymFaq } from "@/types";
+import type { GymLocation, GymReview, GymImage, GymFaq, GymPlan, GymTrainer, GymBeforeAfter } from "@/types";
 
 export async function fetchGymByUid(uid: string): Promise<GymLocation | null> {
   const { data, error } = await supabase
@@ -56,4 +56,37 @@ export async function fetchGlobalFaqs(): Promise<GymFaq[]> {
 
   if (error) return [];
   return (data as GymFaq[]) || [];
+}
+
+export async function fetchGymPlans(gymId: number): Promise<GymPlan[]> {
+  const { data, error } = await supabase
+    .from("gym_plans")
+    .select("*")
+    .eq("gym_id", gymId)
+    .order("sort_order", { ascending: true });
+
+  if (error) return [];
+  return (data as GymPlan[]) || [];
+}
+
+export async function fetchGymTrainers(gymId: number): Promise<GymTrainer[]> {
+  const { data, error } = await supabase
+    .from("gym_trainers")
+    .select("*")
+    .eq("gym_id", gymId)
+    .order("sort_order", { ascending: true });
+
+  if (error) return [];
+  return (data as GymTrainer[]) || [];
+}
+
+export async function fetchGymBeforeAfter(gymId: number): Promise<GymBeforeAfter[]> {
+  const { data, error } = await supabase
+    .from("gym_before_after")
+    .select("*")
+    .eq("gym_id", gymId)
+    .order("sort_order", { ascending: true });
+
+  if (error) return [];
+  return (data as GymBeforeAfter[]) || [];
 }

@@ -4,8 +4,10 @@ import type { ConditionFilter } from "@/types/conditions";
 
 const LIST_COLUMNS = `
   id, uid, name, catchphrase, address,
-  price_min, price_max, price_trial,
+  nearest_station, walk_minutes,
+  price_min, price_max, price_trial, price_2month_total,
   trial_available, online_available,
+  is_women_only, is_private_room, has_refund_guarantee,
   image_url, review_average_rating, total_review_count,
   areas, programs, options_wear, options_shoes, options_diet,
   target_users,

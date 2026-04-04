@@ -38,11 +38,24 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
               </svg>
             </div>
           )}
-          {gym.trial_available && (
-            <span className="absolute top-2 left-2 bg-[#FF6B35] text-white text-xs font-bold px-2 py-1 rounded">
-              体験あり
-            </span>
-          )}
+          {/* Badges */}
+          <div className="absolute top-2 left-2 flex flex-wrap gap-1">
+            {gym.trial_available && (
+              <span className="bg-[#FF6B35] text-white text-xs font-bold px-2 py-1 rounded">
+                体験あり
+              </span>
+            )}
+            {gym.is_women_only && (
+              <span className="bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded">
+                女性専用
+              </span>
+            )}
+            {gym.has_refund_guarantee && (
+              <span className="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">
+                返金保証
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Content */}
@@ -51,9 +64,18 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
             {gym.name}
           </h3>
 
-          {area && (
-            <p className="text-xs text-gray-500 mt-1">{area}</p>
-          )}
+          {/* Location: area + station */}
+          <div className="mt-1">
+            {area && (
+              <p className="text-xs text-gray-500">{area}</p>
+            )}
+            {gym.nearest_station && (
+              <p className="text-xs text-gray-500">
+                {gym.nearest_station}
+                {gym.walk_minutes != null && ` 徒歩${gym.walk_minutes}分`}
+              </p>
+            )}
+          </div>
 
           {gym.catchphrase && (
             <p className="text-sm text-gray-600 mt-2 line-clamp-2">
@@ -62,8 +84,16 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
           )}
 
           {/* Price */}
-          <div className="mt-3 flex items-center gap-3">
-            {(gym.price_min || gym.price_max) && (
+          <div className="mt-3">
+            {/* 2ヶ月総額（競合標準の比較軸） */}
+            {gym.price_2month_total ? (
+              <div className="text-sm">
+                <span className="text-gray-500">2ヶ月</span>
+                <span className="ml-1 font-bold text-[#FF6B35] text-lg">
+                  {formatPrice(gym.price_2month_total)}
+                </span>
+              </div>
+            ) : (gym.price_min || gym.price_max) ? (
               <div className="text-sm">
                 <span className="text-gray-500">月額</span>
                 <span className="ml-1 font-bold text-[#FF6B35]">
@@ -71,9 +101,9 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
                   {gym.price_max && gym.price_min !== gym.price_max && `〜${formatPrice(gym.price_max)}`}
                 </span>
               </div>
-            )}
+            ) : null}
             {gym.price_trial != null && gym.price_trial === 0 && (
-              <span className="text-xs bg-green-50 text-green-700 font-medium px-2 py-0.5 rounded">
+              <span className="inline-block mt-1 text-xs bg-green-50 text-green-700 font-medium px-2 py-0.5 rounded">
                 無料体験
               </span>
             )}
@@ -88,19 +118,26 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
             </div>
           )}
 
-          {/* Tags */}
-          {gym.programs && gym.programs.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-1">
-              {gym.programs.slice(0, 3).map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs bg-orange-50 text-[#FF6B35] px-2 py-0.5 rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+          {/* Feature tags */}
+          <div className="mt-3 flex flex-wrap gap-1">
+            {gym.is_private_room && (
+              <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">個室</span>
+            )}
+            {gym.options_diet && (
+              <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">食事指導</span>
+            )}
+            {(gym.options_wear && gym.options_shoes) && (
+              <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">手ぶらOK</span>
+            )}
+            {gym.programs && gym.programs.slice(0, 2).map((tag) => (
+              <span
+                key={tag}
+                className="text-xs bg-orange-50 text-[#FF6B35] px-2 py-0.5 rounded-full"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </NextLink>
