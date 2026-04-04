@@ -13,9 +13,13 @@ export interface GymLocation {
   phone: string | null;
   email: string | null;
   website_url: string | null;
-  // アクセス（競合全サイト共通）
+  // アクセス（競合全サイト共通 + ダイコン複数駅対応）
   nearest_station: string | null;
   walk_minutes: number | null;
+  nearest_station_2: string | null;
+  walk_minutes_2: number | null;
+  nearest_station_3: string | null;
+  walk_minutes_3: number | null;
   // 料金（競合比較軸）
   price_trial: number | null;
   price_enrollment: number | null;
@@ -23,10 +27,13 @@ export interface GymLocation {
   price_max: number | null;
   price_2month_total: number | null;
   price_per_session: number | null;
+  price_counseling: number | null;
+  counseling_duration_min: number | null;
   price_plan_name: string | null;
   price_plan_amount: number | null;
   price_plan_details: string | null;
   payment_type: string | null;
+  payment_methods: string[] | null;
   // 基本属性
   trial_available: boolean;
   online_available: boolean;
@@ -38,7 +45,7 @@ export interface GymLocation {
   trainer_count: number | null;
   programs: string[] | null;
   equipment_list: string[] | null;
-  // サービス・設備
+  // サービス・設備（全競合統合）
   options_wear: boolean;
   options_shoes: boolean;
   options_protein: boolean;
@@ -55,6 +62,21 @@ export interface GymLocation {
   has_female_trainer: boolean;
   is_early_morning: boolean;
   is_late_night: boolean;
+  // Phase3追加: 競合完全パリティ
+  has_towel_rental: boolean;
+  has_water_service: boolean;
+  has_amenity: boolean;
+  has_child_friendly: boolean;
+  has_installment: boolean;
+  has_visiting_training: boolean;
+  // 施設情報（HPB）
+  booth_count: number | null;
+  total_area_sqm: number | null;
+  // 目的タグ（ダイコン/pas0na: 目的別検索）
+  purposes: string[] | null;
+  // 雰囲気・動画（FitMap）
+  atmosphere: string | null;
+  video_url: string | null;
   // ブランド
   brand_id: number | null;
   // ターゲット
