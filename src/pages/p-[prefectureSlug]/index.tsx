@@ -1,10 +1,12 @@
 import type { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
+import NextLink from "next/link";
 import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
-import { JsonLDListPage } from "@/components/UI/JsonLD";
+import { JsonLDBreadcrumbs, JsonLDListPage } from "@/components/UI/JsonLD";
 import GymCard from "@/features/gym/components/GymCard";
 import Breadcrumb from "@/components/UI/BreadCrumb";
+import { PURPOSE_DEFINITIONS } from "@/constants/purposes";
 import Pagination from "@mui/material/Pagination";
 import { fetchGyms } from "@/utils/supabase/fetchGyms";
 import { fetchPrefectureBySlug } from "@/utils/supabase/fetchPrefectures";
@@ -48,6 +50,10 @@ export default function PrefecturePage({ prefecture, gyms, totalCount, page }: P
   const router = useRouter();
   const totalPages = Math.ceil(totalCount / PER_PAGE);
   const basePath = `/p-${prefecture.slug}/`;
+  const breadcrumbItems = [
+    { label: "ジム一覧", href: "/all/" },
+    { label: `${prefecture.title}` },
+  ];
 
   const handlePageChange = (_: unknown, value: number) => {
     router.push({ pathname: basePath, query: value > 1 ? { page: value } : {} });
@@ -67,14 +73,10 @@ export default function PrefecturePage({ prefecture, gyms, totalCount, page }: P
         path={basePath}
         items={gyms}
       />
+      <JsonLDBreadcrumbs items={breadcrumbItems} />
 
       <div className="max-w-6xl mx-auto px-4 py-6">
-        <Breadcrumb
-          items={[
-            { label: "ジム一覧", href: "/all/" },
-            { label: `${prefecture.title}` },
-          ]}
-        />
+        <Breadcrumb items={breadcrumbItems} />
 
         <h1 className="text-2xl font-bold text-gray-900 mt-4">
           {prefecture.title}のパーソナルジム
@@ -82,6 +84,27 @@ export default function PrefecturePage({ prefecture, gyms, totalCount, page }: P
             ({totalCount.toLocaleString()}件)
           </span>
         </h1>
+        <p className="text-sm md:text-base text-gray-600 mt-3">
+          {prefecture.title}で料金・体験・食事指導・目的別の違いを比較しやすいように、主要情報が分かるジムを一覧化しています。
+        </p>
+
+        <section className="mt-6 rounded-xl border border-orange-100 bg-orange-50/70 p-5">
+          <h2 className="text-lg font-bold text-gray-900">目的から探す</h2>
+          <p className="text-sm text-gray-600 mt-2">
+            「ダイエット」「女性向け」「初心者向け」など、検討目的に近い一覧へすぐ移動できます。
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {PURPOSE_DEFINITIONS.map((purpose) => (
+              <NextLink
+                key={purpose.slug}
+                href={`${basePath}${purpose.slug}/`}
+                className="inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-medium text-[#FF6B35] no-underline hover:bg-orange-100 transition-colors"
+              >
+                {purpose.shortLabel}
+              </NextLink>
+            ))}
+          </div>
+        </section>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
           {gyms.map((gym) => (

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { baseSiteUrl, siteName } from "@/utils/config";
-import type { GymLocation } from "@/types";
+import type { GymFaq, GymLocation } from "@/types";
 
 interface JsonLDListPageProps {
   title: string;
@@ -74,6 +74,68 @@ export const JsonLDGymDetail: React.FC<JsonLDGymDetailProps> = ({ gym }) => {
         ? `¥${gym.price_min.toLocaleString()}〜¥${gym.price_max.toLocaleString()}`
         : `¥${gym.price_min.toLocaleString()}〜`,
     }),
+  };
+
+  return (
+    <Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonld) }}
+      />
+    </Head>
+  );
+};
+
+interface JsonLDBreadcrumbsProps {
+  items: { label: string; href?: string }[];
+}
+
+export const JsonLDBreadcrumbs: React.FC<JsonLDBreadcrumbsProps> = ({ items }) => {
+  const breadcrumbItems = [
+    { label: "ホーム", href: "/" },
+    ...items.filter((item) => item.href),
+    ...items.filter((item) => !item.href).slice(-1),
+  ];
+
+  const jsonld = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbItems.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.label,
+      item: item.href ? `${baseSiteUrl}${item.href}` : undefined,
+    })),
+  };
+
+  return (
+    <Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonld) }}
+      />
+    </Head>
+  );
+};
+
+interface JsonLDFaqProps {
+  faqs: GymFaq[];
+}
+
+export const JsonLDFaq: React.FC<JsonLDFaqProps> = ({ faqs }) => {
+  if (faqs.length === 0) return null;
+
+  const jsonld = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
   };
 
   return (
