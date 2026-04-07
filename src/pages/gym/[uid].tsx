@@ -692,6 +692,16 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
               <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">ダイエットにパーソナルジムをおすすめする理由</h3>
               <p className="text-xs text-gray-600 line-clamp-2">ダイエット成功率が高いパーソナルジムの秘訣を解説します。</p>
             </a>
+            <a href="/column/women-gym/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#FF6B35] hover:shadow-md transition">
+              <div className="text-xs font-semibold text-blue-700 bg-blue-50 px-2 py-1 rounded-full inline-block mb-2">女性向け</div>
+              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">女性専用パーソナルジムの選び方</h3>
+              <p className="text-xs text-gray-600 line-clamp-2">女性が安心して通えるジムの選び方を解説します。</p>
+            </a>
+            <a href="/column/gym-trial/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#FF6B35] hover:shadow-md transition">
+              <div className="text-xs font-semibold text-blue-700 bg-blue-50 px-2 py-1 rounded-full inline-block mb-2">体験入会</div>
+              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">パーソナルジムの体験入会を活用しよう</h3>
+              <p className="text-xs text-gray-600 line-clamp-2">無料体験でジムの雰囲気を確認する方法を解説します。</p>
+            </a>
           </div>
           <div className="text-center mt-5">
             <a href="/column/" className="text-blue-700 font-semibold text-sm hover:underline">

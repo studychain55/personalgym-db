@@ -350,6 +350,28 @@ export default function CityPage({
                 栄養指導と食事改善で結果を出すためのポイント。
               </p>
             </NextLink>
+            <NextLink
+              href="/column/women-gym/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                女性専用パーソナルジムの選び方
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                女性が安心して通えるパーソナルジムの選び方を解説。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/gym-trial/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                体験入会でジムを賢く選ぼう
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                パーソナルジムの無料体験・体験入会を最大限活用する方法。
+              </p>
+            </NextLink>
           </div>
         </section>
 
