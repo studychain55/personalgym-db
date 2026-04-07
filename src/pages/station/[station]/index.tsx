@@ -243,6 +243,29 @@ export default function StationPage({
             </div>
           </section>
         )}
+
+        {/* 関連コラム */}
+        <section className="mt-10 mb-4">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">パーソナルジムに関するコラム記事</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {[
+              { href: "/column/gym-trial/", title: "パーソナルジムの体験入会を活用しよう" },
+              { href: "/column/women-gym/", title: "女性専用パーソナルジムの選び方" },
+              { href: "/column/gym-cost/", title: "パーソナルジムの費用相場と節約術" },
+              { href: "/column/gym-diet/", title: "パーソナルジムで叶えるダイエット成功法" },
+              { href: "/column/gym-frequency/", title: "週何回通う？最適なジム頻度ガイド" },
+              { href: "/column/gym-choice/", title: "失敗しないパーソナルジムの選び方" },
+            ].map((col) => (
+              <a
+                key={col.href}
+                href={col.href}
+                className="bg-white rounded-lg p-4 border border-gray-200 hover:border-orange-400 hover:shadow-md transition-all"
+              >
+                <h3 className="font-bold text-sm text-gray-800 hover:text-orange-500">{col.title}</h3>
+              </a>
+            ))}
+          </div>
+        </section>
       </div>
     </Layout>
   );
