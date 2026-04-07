@@ -412,6 +412,20 @@ export default function ColumnIndexPage() {
       date: "2026-04-07",
       category: "メンタルヘルス",
     },
+    {
+      title: "パーソナルジムでのケガ予防｜フォーム指導とウォームアップの重要性",
+      description: "パーソナルジムでのケガ予防を完全解説。正確なフォーム指導、効果的なウォームアップ、初心者が避けるべき7つの行動、セッション中の違和感への対応、段階的な負荷増加のコツを紹介。",
+      path: "/column/gym-injury-prevention/",
+      date: "2026-04-07",
+      category: "安全なトレーニング",
+    },
+    {
+      title: "トレーニングの食事タイミング｜プロテイン・炭水化物の摂り方",
+      description: "トレーニング前後の食事タイミングを完全解説。ゴールデンタイムの効果、トレーニング前の最適な食事、プロテイン摂取のベストタイミング、炭水水化物・タンパク質の役割を詳しく紹介。",
+      path: "/column/gym-nutrition-timing/",
+      date: "2026-04-07",
+      category: "栄養管理",
+    },
   ];
 
   return (
