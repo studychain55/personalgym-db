@@ -819,6 +819,16 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
               <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">オンラインパーソナルジムのメリット・デメリット</h3>
               <p className="text-xs text-gray-600 line-clamp-2">通いとの違いを徹底比較し、自分に合ったジムを選びましょう。</p>
             </a>
+            <a href="/column/gym-stretch/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#FF6B35] hover:shadow-md transition">
+              <div className="text-xs font-semibold text-blue-700 bg-blue-50 px-2 py-1 rounded-full inline-block mb-2">トレーニング方法</div>
+              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">パーソナルジムでのストレッチ・柔軟性向上</h3>
+              <p className="text-xs text-gray-600 line-clamp-2">硬い体をほぐすトレーニングの効果と方法を解説。</p>
+            </a>
+            <a href="/column/gym-back/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#FF6B35] hover:shadow-md transition">
+              <div className="text-xs font-semibold text-blue-700 bg-blue-50 px-2 py-1 rounded-full inline-block mb-2">健康・症状改善</div>
+              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">腰痛・肩こり改善のためのパーソナルジム活用</h3>
+              <p className="text-xs text-gray-600 line-clamp-2">姿勢矯正プログラムで根本から改善する方法。</p>
+            </a>
           </div>
           <div className="text-center mt-5">
             <a href="/column/" className="text-blue-700 font-semibold text-sm hover:underline">

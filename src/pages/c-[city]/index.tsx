@@ -526,6 +526,28 @@ export default function CityPage({
                 メリット・デメリットと選び方を徹底比較。
               </p>
             </NextLink>
+            <NextLink
+              href="/column/gym-stretch/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                ストレッチと柔軟性向上
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                硬い体をほぐすパーソナルジムでの効果的な方法。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/gym-back/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                腰痛・肩こり改善
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                姿勢矯正プログラムで根本から改善する方法。
+              </p>
+            </NextLink>
           </div>
         </section>
 

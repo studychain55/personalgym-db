@@ -267,6 +267,8 @@ export default function RegionPage({
               { href: "/column/gym-age/", title: "40代・50代からのパーソナルジム｜年齢別の効果と注意点" },
               { href: "/column/gym-shokuji/", title: "パーソナルジムの食事指導とは｜食事管理で結果を最大化する方法" },
               { href: "/column/gym-online/", title: "オンラインパーソナルジムのメリット・デメリット｜通いとの違いを比較" },
+              { href: "/column/gym-stretch/", title: "パーソナルジムでのストレッチ・柔軟性向上｜硬い体をほぐすトレーニングの効果" },
+              { href: "/column/gym-back/", title: "腰痛・肩こり改善のためのパーソナルジム活用｜姿勢矯正プログラムとは" },
             ].map((article) => (
               <NextLink
                 key={article.href}

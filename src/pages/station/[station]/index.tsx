@@ -267,6 +267,8 @@ export default function StationPage({
               { href: "/column/gym-age/", title: "40代・50代からのパーソナルジム" },
               { href: "/column/gym-shokuji/", title: "パーソナルジムの食事指導とは" },
               { href: "/column/gym-online/", title: "オンラインパーソナルジムのメリット・デメリット" },
+              { href: "/column/gym-stretch/", title: "パーソナルジムでのストレッチ・柔軟性向上" },
+              { href: "/column/gym-back/", title: "腰痛・肩こり改善のためのパーソナルジム活用" },
             ].map((col) => (
               <a
                 key={col.href}
