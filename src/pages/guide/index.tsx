@@ -386,6 +386,122 @@ export default function GuidePage({
           </section>
         )}
 
+        {/* Related Articles Section */}
+        <section className="mt-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">関連コラム記事</h2>
+          <p className="text-gray-700 mb-4">
+            パーソナルジム選びに役立つコラム記事をご紹介します。
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <NextLink
+              href="/column/gym-beginner/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              初心者向けガイド
+            </NextLink>
+            <NextLink
+              href="/column/gym-choosing/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              ジム選びのポイント
+            </NextLink>
+            <NextLink
+              href="/column/gym-cost/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              費用相場と選び方
+            </NextLink>
+            <NextLink
+              href="/column/gym-nutrition/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              栄養と食事指導
+            </NextLink>
+            <NextLink
+              href="/column/training-frequency/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              トレーニング頻度
+            </NextLink>
+            <NextLink
+              href="/column/diet-gym/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              ダイエット効果
+            </NextLink>
+          </div>
+        </section>
+
+        {/* Popular Prefectures Section */}
+        <section className="mt-12">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">人気の都道府県から探す</h2>
+          <p className="text-gray-700 mb-4">
+            全国の人気エリアからパーソナルジムを探す。
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+            <NextLink
+              href="/prefecture/tokyo/"
+              className="block p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 font-medium no-underline hover:bg-gray-100 transition-colors text-center"
+            >
+              東京
+            </NextLink>
+            <NextLink
+              href="/prefecture/kanagawa/"
+              className="block p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 font-medium no-underline hover:bg-gray-100 transition-colors text-center"
+            >
+              神奈川
+            </NextLink>
+            <NextLink
+              href="/prefecture/osaka/"
+              className="block p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 font-medium no-underline hover:bg-gray-100 transition-colors text-center"
+            >
+              大阪
+            </NextLink>
+            <NextLink
+              href="/prefecture/aichi/"
+              className="block p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 font-medium no-underline hover:bg-gray-100 transition-colors text-center"
+            >
+              愛知
+            </NextLink>
+            <NextLink
+              href="/prefecture/saitama/"
+              className="block p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 font-medium no-underline hover:bg-gray-100 transition-colors text-center"
+            >
+              埼玉
+            </NextLink>
+            <NextLink
+              href="/prefecture/chiba/"
+              className="block p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 font-medium no-underline hover:bg-gray-100 transition-colors text-center"
+            >
+              千葉
+            </NextLink>
+            <NextLink
+              href="/prefecture/hyogo/"
+              className="block p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 font-medium no-underline hover:bg-gray-100 transition-colors text-center"
+            >
+              兵庫
+            </NextLink>
+            <NextLink
+              href="/prefecture/fukuoka/"
+              className="block p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 font-medium no-underline hover:bg-gray-100 transition-colors text-center"
+            >
+              福岡
+            </NextLink>
+            <NextLink
+              href="/prefecture/hokkaido/"
+              className="block p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 font-medium no-underline hover:bg-gray-100 transition-colors text-center"
+            >
+              北海道
+            </NextLink>
+            <NextLink
+              href="/prefecture/kyoto/"
+              className="block p-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 font-medium no-underline hover:bg-gray-100 transition-colors text-center"
+            >
+              京都
+            </NextLink>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="mt-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg p-8 text-white">
           <h2 className="text-2xl font-bold mb-2">パーソナルジムを探してみましょう</h2>
