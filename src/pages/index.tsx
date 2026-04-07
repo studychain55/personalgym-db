@@ -48,6 +48,22 @@ export default function Home({ featuredGyms, totalCount, regions }: HomeProps) {
         path="/"
         items={featuredGyms}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {"@type": "Question", "name": "パーソナルジムに通う費用はどのくらいですか？", "acceptedAnswer": {"@type": "Answer", "text": "パーソナルジムの費用はコースにより異なりますが、1～3ヶ月のダイエットコースで15万～60万円、都度払い（1回）で8,000～15,000円が一般的な相場です。無料体験レッスンを活用して自分に合ったジムを選びましょう。"}},
+              {"@type": "Question", "name": "パーソナルジムはどのくらいの期間通えば効果が出ますか？", "acceptedAnswer": {"@type": "Answer", "text": "個人差はありますが、週2回以上のトレーニングで2～3ヶ月が一つの目安です。食事管理も合わせて行うことで効果が出やすくなります。多くのパーソナルジムでは2～3ヶ月の短期集中コースを提供しています。"}},
+              {"@type": "Question", "name": "パーソナルジムと普通のジムの違いは何ですか？", "acceptedAnswer": {"@type": "Answer", "text": "パーソナルジムは専属トレーナーが個人の目標・体型・体力に合わせてプログラムを設計し、マンツーマンで指導します。普通のジムに比べて費用は高めですが、効率的に目標達成できます。食事管理・栄養指導が含まれるコースも多いです。"}},
+              {"@type": "Question", "name": "初心者でもパーソナルジムに通えますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい、パーソナルジムは運動未経験・初心者の方こそ活用いただける施設です。トレーナーが基礎から丁寧に指導するため、正しいフォームを身につけながら安全にトレーニングを始められます。"}},
+              {"@type": "Question", "name": "パーソナルジムの選び方のポイントは？", "acceptedAnswer": {"@type": "Answer", "text": "①目的（ダイエット・筋力アップなど）に合ったコースがあるか、②トレーナーの資格・実績、③立地・通いやすさ、④費用と契約条件の透明性、⑤無料体験の有無を確認しましょう。複数のジムを体験してから選ぶことをおすすめします。"}},
+            ]
+          }),
+        }}
+      />
 
       {/* Hero */}
       <section className="bg-gradient-to-br from-[#FFF3ED] to-white py-12 md:py-20">
@@ -90,6 +106,85 @@ export default function Home({ featuredGyms, totalCount, regions }: HomeProps) {
           )}
         </section>
       )}
+
+      {/* Stats Section */}
+      <section className="bg-gradient-to-r from-orange-100 to-red-50 py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
+            数字で見るパーソナルジム
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
+              <div className="text-4xl font-bold text-gray-700 mb-2">{totalCount.toLocaleString()}件</div>
+              <p className="text-gray-600">掲載パーソナルジム数</p>
+            </div>
+            <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
+              <div className="text-4xl font-bold text-gray-700 mb-2">2～3ヶ月</div>
+              <p className="text-gray-600">効果が出始める目安期間</p>
+            </div>
+            <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
+              <div className="text-4xl font-bold text-gray-700 mb-2">15万～60万円</div>
+              <p className="text-gray-600">短期集中コースの費用相場</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Accordion Section */}
+      <section className="bg-white py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+            よくある質問
+          </h2>
+          <div className="max-w-4xl mx-auto space-y-4">
+            <details className="border border-gray-200 rounded-lg p-4 cursor-pointer group">
+              <summary className="font-bold text-gray-900 hover:text-gray-600 transition-colors flex justify-between items-center">
+                <span>パーソナルジムに通う費用はどのくらいですか？</span>
+                <span className="text-lg group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p className="text-gray-700 mt-3 ml-4">
+                パーソナルジムの費用はコースにより異なりますが、1～3ヶ月のダイエットコースで15万～60万円、都度払い（1回）で8,000～15,000円が一般的な相場です。無料体験レッスンを活用して自分に合ったジムを選びましょう。
+              </p>
+            </details>
+            <details className="border border-gray-200 rounded-lg p-4 cursor-pointer group">
+              <summary className="font-bold text-gray-900 hover:text-gray-600 transition-colors flex justify-between items-center">
+                <span>パーソナルジムはどのくらいの期間通えば効果が出ますか？</span>
+                <span className="text-lg group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p className="text-gray-700 mt-3 ml-4">
+                個人差はありますが、週2回以上のトレーニングで2～3ヶ月が一つの目安です。食事管理も合わせて行うことで効果が出やすくなります。多くのパーソナルジムでは2～3ヶ月の短期集中コースを提供しています。
+              </p>
+            </details>
+            <details className="border border-gray-200 rounded-lg p-4 cursor-pointer group">
+              <summary className="font-bold text-gray-900 hover:text-gray-600 transition-colors flex justify-between items-center">
+                <span>パーソナルジムと普通のジムの違いは何ですか？</span>
+                <span className="text-lg group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p className="text-gray-700 mt-3 ml-4">
+                パーソナルジムは専属トレーナーが個人の目標・体型・体力に合わせてプログラムを設計し、マンツーマンで指導します。普通のジムに比べて費用は高めですが、効率的に目標達成できます。食事管理・栄養指導が含まれるコースも多いです。
+              </p>
+            </details>
+            <details className="border border-gray-200 rounded-lg p-4 cursor-pointer group">
+              <summary className="font-bold text-gray-900 hover:text-gray-600 transition-colors flex justify-between items-center">
+                <span>初心者でもパーソナルジムに通えますか？</span>
+                <span className="text-lg group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p className="text-gray-700 mt-3 ml-4">
+                はい、パーソナルジムは運動未経験・初心者の方こそ活用いただける施設です。トレーナーが基礎から丁寧に指導するため、正しいフォームを身につけながら安全にトレーニングを始められます。
+              </p>
+            </details>
+            <details className="border border-gray-200 rounded-lg p-4 cursor-pointer group">
+              <summary className="font-bold text-gray-900 hover:text-gray-600 transition-colors flex justify-between items-center">
+                <span>パーソナルジムの選び方のポイントは？</span>
+                <span className="text-lg group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p className="text-gray-700 mt-3 ml-4">
+                ①目的（ダイエット・筋力アップなど）に合ったコースがあるか、②トレーナーの資格・実績、③立地・通いやすさ、④費用と契約条件の透明性、⑤無料体験の有無を確認しましょう。複数のジムを体験してから選ぶことをおすすめします。
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
 
       {/* Area Search */}
       <section id="area" className="bg-gray-50 py-12">
