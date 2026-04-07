@@ -251,6 +251,13 @@ export default function ColumnIndexPage() {
       date: "2026-04-07",
       category: "ダイエット成功事例",
     },
+    {
+      title: "パーソナルジムでの怪我予防とアフターケア｜安全にトレーニングを続けるコツ",
+      description: "パーソナルジムでの怪我予防とアフターケアを完全解説。多い怪我の種類、ウォームアップ・クールダウンの方法、痛みがある時の判断基準、回復プロセス、優秀なトレーナーの対応を紹介。",
+      path: "/column/gym-injury/",
+      date: "2026-04-07",
+      category: "安全なトレーニング",
+    },
   ];
 
   return (
