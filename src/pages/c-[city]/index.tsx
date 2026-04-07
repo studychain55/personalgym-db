@@ -192,6 +192,48 @@ export default function CityPage({
           </p>
         </section>
 
+        {/* Top 3 Recommended Gyms */}
+        {gyms.length > 0 && (
+          <section className="mt-8">
+            <h2 className="text-lg font-bold text-gray-900 mb-4">
+              {city.title}{prefectureStr}のおすすめジム TOP3
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {gyms.slice(0, 3).map((gym, idx) => (
+                <NextLink
+                  key={gym.id}
+                  href={`/gym/${gym.uid}/`}
+                  className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:border-[#FF6B35] hover:shadow-lg transition"
+                >
+                  <div className="relative">
+                    {gym.image_url && (
+                      <img src={gym.image_url} alt={gym.name} className="w-full h-40 object-cover" loading="lazy" />
+                    )}
+                    <div className="absolute top-2 left-2 bg-[#FF6B35] text-white font-bold text-sm rounded-full w-8 h-8 flex items-center justify-center">
+                      {idx + 1}
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold text-gray-900 mb-1 line-clamp-2">{gym.name}</h3>
+                    <div className="text-sm text-gray-600 mb-3">
+                      {gym.address && <p className="line-clamp-1 text-xs">📍 {gym.address}</p>}
+                      {gym.nearest_station && <p className="line-clamp-1 text-xs">🚃 {gym.nearest_station}駅 徒歩{gym.walk_minutes}分</p>}
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      {gym.review_average_rating > 0 && (
+                        <span className="text-yellow-600 font-bold">★ {gym.review_average_rating.toFixed(1)}</span>
+                      )}
+                      {gym.price_min && (
+                        <span className="text-[#FF6B35] font-bold">¥{gym.price_min.toLocaleString()}〜</span>
+                      )}
+                    </div>
+                  </div>
+                </NextLink>
+              ))}
+            </div>
+          </section>
+        )}
+
         <section className="mt-8 rounded-xl border border-orange-100 bg-orange-50/70 p-5">
           <h2 className="text-lg font-bold text-gray-900">目的から探す</h2>
           <p className="text-sm text-gray-600 mt-2">

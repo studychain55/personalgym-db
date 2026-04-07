@@ -121,6 +121,62 @@ export default function Home({ featuredGyms, totalCount, regions }: HomeProps) {
         </div>
       </section>
 
+      {/* Latest Articles */}
+      <section className="bg-blue-50 py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">最新コラム</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <NextLink
+              href="/column/gym-beginner/"
+              className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200 border border-gray-200 h-full flex flex-col no-underline"
+            >
+              <div className="p-6 flex flex-col h-full">
+                <div className="text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full inline-block mb-3 w-fit">初心者向け</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow line-clamp-2 hover:text-blue-700 transition-colors">
+                  パーソナルジム初心者ガイド｜始め方・準備すること
+                </h3>
+                <p className="text-sm text-gray-600 line-clamp-2 mb-4">パーソナルジムが初めての方へ。始める前に必要な準備をまとめました。</p>
+                <div className="text-blue-700 font-semibold text-sm">記事を読む →</div>
+              </div>
+            </NextLink>
+            <NextLink
+              href="/column/gym-cost/"
+              className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200 border border-gray-200 h-full flex flex-col no-underline"
+            >
+              <div className="p-6 flex flex-col h-full">
+                <div className="text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full inline-block mb-3 w-fit">費用</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow line-clamp-2 hover:text-blue-700 transition-colors">
+                  パーソナルジムの料金相場を解説
+                </h3>
+                <p className="text-sm text-gray-600 line-clamp-2 mb-4">パーソナルジムの料金体系を徹底解説。相場費用をまとめた比較表。</p>
+                <div className="text-blue-700 font-semibold text-sm">記事を読む →</div>
+              </div>
+            </NextLink>
+            <NextLink
+              href="/column/diet-gym/"
+              className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200 border border-gray-200 h-full flex flex-col no-underline"
+            >
+              <div className="p-6 flex flex-col h-full">
+                <div className="text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full inline-block mb-3 w-fit">ダイエット</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow line-clamp-2 hover:text-blue-700 transition-colors">
+                  ダイエットにパーソナルジムをおすすめする理由
+                </h3>
+                <p className="text-sm text-gray-600 line-clamp-2 mb-4">ダイエット成功率が高いパーソナルジムの秘訣を解説します。</p>
+                <div className="text-blue-700 font-semibold text-sm">記事を読む →</div>
+              </div>
+            </NextLink>
+          </div>
+          <div className="text-center mt-8">
+            <NextLink
+              href="/column/"
+              className="inline-block border-2 border-blue-700 text-blue-700 font-bold px-8 py-3 rounded-lg hover:bg-blue-700 hover:text-white transition-colors no-underline"
+            >
+              すべてのコラムを見る
+            </NextLink>
+          </div>
+        </div>
+      </section>
+
       {/* SEO Content */}
       <section className="max-w-6xl mx-auto px-4 py-12">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">パーソナルジムとは？</h2>
