@@ -308,6 +308,39 @@ export default function FeaturePage({
                 栄養指導と食事改善で結果を出すためのポイント。
               </p>
             </NextLink>
+            <NextLink
+              href="/column/gym-muscle/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                筋トレ効果を高めるパーソナルジム活用法
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                有酸素運動との組み合わせと筋肥大のコツ。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/gym-senior/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                シニア・50代からのパーソナルジム
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                安全な始め方と健康寿命延伸の効果。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/gym-student/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                学生・20代向けパーソナルジムの選び方
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                費用を抑えるコツと効率的な投資方法。
+              </p>
+            </NextLink>
           </div>
         </section>
 

@@ -283,6 +283,9 @@ export default function PrefecturePage({
               { href: "/column/women-gym/", title: "女性専用パーソナルジムの選び方" },
               { href: "/column/gym-trainer/", title: "パーソナルトレーナーの選び方と資格の見方" },
               { href: "/column/gym-diet/", title: "パーソナルジムでダイエットを成功させる方法" },
+              { href: "/column/gym-muscle/", title: "筋トレ効果を高めるパーソナルジム活用法｜有酸素運動との組み合わせ" },
+              { href: "/column/gym-senior/", title: "シニア・50代からのパーソナルジム｜安全な始め方と効果" },
+              { href: "/column/gym-student/", title: "学生・20代向けパーソナルジムの選び方｜費用を抑えるコツ" },
             ].map((article) => (
               <NextLink
                 key={article.href}
