@@ -441,6 +441,18 @@ export default function GuidePage({
             >
               無料体験の活用法
             </NextLink>
+            <NextLink
+              href="/column/gym-trainer/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              パーソナルトレーナーの選び方
+            </NextLink>
+            <NextLink
+              href="/column/gym-bodymake/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              体が変わるまでの期間と目安
+            </NextLink>
           </div>
         </section>
 
