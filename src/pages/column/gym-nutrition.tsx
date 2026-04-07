@@ -359,10 +359,10 @@ export default function GymNutritionPage({ faqs }: PageProps) {
                 className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow p-4 border border-gray-200"
               >
                 <h3 className="font-bold text-gray-900 hover:text-blue-700 transition-colors mb-2">
-                  パーソナルトレーニングの通う頻度・回数の目安
+                  パーソナルジムの最適な通う頻度とは
                 </h3>
                 <p className="text-sm text-gray-600">
-                  目標別の最適な通所頻度をわかりやすく解説します
+                  効果的な通頻度と継続のコツを解説します
                 </p>
               </Link>
               <Link
@@ -374,6 +374,17 @@ export default function GymNutritionPage({ faqs }: PageProps) {
                 </h3>
                 <p className="text-sm text-gray-600">
                   ダイエット成功率が高い理由を詳しく解説します
+                </p>
+              </Link>
+              <Link
+                href="/column/gym-cost/"
+                className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow p-4 border border-gray-200"
+              >
+                <h3 className="font-bold text-gray-900 hover:text-blue-700 transition-colors mb-2">
+                  パーソナルジムの料金相場を解説｜月額・都度払いの違い
+                </h3>
+                <p className="text-sm text-gray-600">
+                  パーソナルジムの料金体系を徹底解説します
                 </p>
               </Link>
             </div>

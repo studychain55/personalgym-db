@@ -401,6 +401,17 @@ export default function GymCostPage({ faqs }: PageProps) {
                   ダイエット成功率が高い理由を解説します
                 </p>
               </Link>
+              <Link
+                href="/column/gym-nutrition/"
+                className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow p-4 border border-gray-200"
+              >
+                <h3 className="font-bold text-gray-900 hover:text-blue-700 transition-colors mb-2">
+                  パーソナルジムで効果を高める食事管理
+                </h3>
+                <p className="text-sm text-gray-600">
+                  トレーニングと食事の関係性を詳しく解説
+                </p>
+              </Link>
             </div>
           </div>
         </article>

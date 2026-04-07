@@ -375,6 +375,17 @@ export default function GymBeginnerPage({ faqs }: PageProps) {
                   ダイエット成功率が高い理由を解説します
                 </p>
               </Link>
+              <Link
+                href="/column/training-frequency/"
+                className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow p-4 border border-gray-200"
+              >
+                <h3 className="font-bold text-gray-900 hover:text-blue-700 transition-colors mb-2">
+                  パーソナルジムの最適な通う頻度とは
+                </h3>
+                <p className="text-sm text-gray-600">
+                  効果的な通頻度と継続のコツを解説します
+                </p>
+              </Link>
             </div>
           </div>
         </article>
