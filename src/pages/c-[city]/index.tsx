@@ -421,10 +421,21 @@ export default function CityPage({
               className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
-                筋トレ効果を高めるパーソナルジム活用法
+                筋肉をつけるためのパーソナルジム活用法
               </h3>
               <p className="text-xs text-gray-600 line-clamp-2">
-                有酸素運動との組み合わせと筋肥大のコツ。
+                バルクアップと増量期のコツ、プロテイン活用法。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/gym-women-50/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                50代女性のパーソナルジム
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                更年期・骨密度・姿勢改善に効果的なトレーニング。
               </p>
             </NextLink>
             <NextLink
