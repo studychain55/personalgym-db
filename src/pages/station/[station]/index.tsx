@@ -260,6 +260,8 @@ export default function StationPage({
               { href: "/column/gym-muscle/", title: "筋トレ効果を高めるパーソナルジム活用法" },
               { href: "/column/gym-senior/", title: "シニア・50代からのパーソナルジム" },
               { href: "/column/gym-student/", title: "学生・20代向けパーソナルジムの選び方" },
+              { href: "/column/gym-continuing/", title: "パーソナルジムを続けるコツ｜モチベーション維持" },
+              { href: "/column/gym-compare/", title: "パーソナルジムを複数比較する方法" },
             ].map((col) => (
               <a
                 key={col.href}

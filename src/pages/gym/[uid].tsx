@@ -789,6 +789,16 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
               <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">パーソナルジムでダイエットを成功させる方法</h3>
               <p className="text-xs text-gray-600 line-clamp-2">ダイエット成功のための実践的な方法と継続のコツ。</p>
             </a>
+            <a href="/column/gym-continuing/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#FF6B35] hover:shadow-md transition">
+              <div className="text-xs font-semibold text-blue-700 bg-blue-50 px-2 py-1 rounded-full inline-block mb-2">継続のコツ</div>
+              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">パーソナルジムを続けるコツ</h3>
+              <p className="text-xs text-gray-600 line-clamp-2">モチベーション維持と挫折防止の実践的方法。</p>
+            </a>
+            <a href="/column/gym-compare/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#FF6B35] hover:shadow-md transition">
+              <div className="text-xs font-semibold text-blue-700 bg-blue-50 px-2 py-1 rounded-full inline-block mb-2">ジム選び</div>
+              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">パーソナルジムを複数比較する方法</h3>
+              <p className="text-xs text-gray-600 line-clamp-2">体験レッスン活用と最適なジム選びの方法。</p>
+            </a>
           </div>
           <div className="text-center mt-5">
             <a href="/column/" className="text-blue-700 font-semibold text-sm hover:underline">

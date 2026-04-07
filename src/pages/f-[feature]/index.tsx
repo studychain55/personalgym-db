@@ -341,6 +341,28 @@ export default function FeaturePage({
                 費用を抑えるコツと効率的な投資方法。
               </p>
             </NextLink>
+            <NextLink
+              href="/column/gym-continuing/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                パーソナルジムを続けるコツ
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                モチベーション維持と挫折防止の実践的方法。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/gym-compare/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                パーソナルジムを複数比較する方法
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                体験レッスン活用と最適なジム選びの方法。
+              </p>
+            </NextLink>
           </div>
         </section>
 

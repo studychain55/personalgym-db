@@ -465,6 +465,18 @@ export default function GuidePage({
             >
               体が変わるまでの期間と目安
             </NextLink>
+            <NextLink
+              href="/column/gym-continuing/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              パーソナルジムを続けるコツ
+            </NextLink>
+            <NextLink
+              href="/column/gym-compare/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              複数ジム比較の方法
+            </NextLink>
           </div>
         </section>
 

@@ -260,6 +260,8 @@ export default function RegionPage({
               { href: "/column/gym-muscle/", title: "筋トレ効果を高めるパーソナルジム活用法｜有酸素運動との組み合わせ" },
               { href: "/column/gym-senior/", title: "シニア・50代からのパーソナルジム｜安全な始め方と効果" },
               { href: "/column/gym-student/", title: "学生・20代向けパーソナルジムの選び方｜費用を抑えるコツ" },
+              { href: "/column/gym-continuing/", title: "パーソナルジムを続けるコツ｜モチベーション維持と挫折防止" },
+              { href: "/column/gym-compare/", title: "パーソナルジムを複数比較する方法｜体験レッスンの活用術" },
             ].map((article) => (
               <NextLink
                 key={article.href}
