@@ -179,3 +179,55 @@ export const JsonLDBreadcrumbList: React.FC<JsonLDBreadcrumbListProps> = ({ item
     </Head>
   );
 };
+
+interface JsonLDDynamicFaqProps {
+  gym: GymLocation;
+}
+
+export const JsonLDDynamicFaq: React.FC<JsonLDDynamicFaqProps> = ({ gym }) => {
+  // Dynamic FAQs based on gym data
+  const dynamicFaqs = [
+    {
+      question: `${gym.name}の料金体系について教えてください`,
+      answer: gym.price_min || gym.price_max
+        ? `${gym.name}の料金は、月額${gym.price_min ? `¥${gym.price_min.toLocaleString()}` : ""}${gym.price_max ? `～¥${gym.price_max.toLocaleString()}` : ""}です。${gym.trial_available && gym.price_trial !== null ? `体験レッスンは${gym.price_trial === 0 ? "無料" : `¥${gym.price_trial.toLocaleString()}`}です。` : ""}詳細は料金プランセクションをご参照ください。`
+        : `${gym.name}の料金については、詳細な料金プランセクションをご参照いただくか、お問い合わせください。`,
+    },
+    {
+      question: `${gym.name}では体験レッスンを受けることができますか？`,
+      answer: gym.trial_available
+        ? `はい、${gym.name}では体験レッスンをご用意しています。${gym.price_trial !== null ? `体験料金は${gym.price_trial === 0 ? "無料" : `¥${gym.price_trial.toLocaleString()}`}です。` : ""}お気軽にお問い合わせください。`
+        : `${gym.name}の体験レッスンの詳細については、公式サイトをご確認いただくか、お問い合わせください。`,
+    },
+    {
+      question: `${gym.name}へのアクセス方法を教えてください`,
+      answer: gym.nearest_station
+        ? `${gym.name}は${gym.nearest_station}駅から徒歩${gym.walk_minutes ?? ""}分の好立地にあります。${gym.address ? `住所は${gym.address}です。` : ""}${gym.access_info ? `詳細なアクセス情報：${gym.access_info}` : ""}`
+        : gym.address
+        ? `${gym.name}は${gym.address}に位置しています。詳細なアクセス情報については、公式サイトをご確認ください。`
+        : `${gym.name}へのアクセス方法については、公式サイトをご確認ください。`,
+    },
+  ];
+
+  const jsonld = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: dynamicFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
+  return (
+    <Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonld) }}
+      />
+    </Head>
+  );
+};

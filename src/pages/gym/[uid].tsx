@@ -1,7 +1,7 @@
 import type { GetServerSideProps } from "next";
 import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
-import { JsonLDGymDetail, JsonLDFaq, JsonLDBreadcrumbList } from "@/components/UI/JsonLD";
+import { JsonLDGymDetail, JsonLDFaq, JsonLDBreadcrumbList, JsonLDDynamicFaq } from "@/components/UI/JsonLD";
 import Breadcrumb from "@/components/UI/BreadCrumb";
 import {
   fetchGymByUid, fetchGymReviews, fetchGymImages, fetchGymFaqs,
@@ -94,6 +94,7 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
       />
       <JsonLDGymDetail gym={gym} />
       <JsonLDFaq faqs={faqs} />
+      <JsonLDDynamicFaq gym={gym} />
       <JsonLDBreadcrumbList items={breadcrumbItems} />
 
       {/* Sticky CTA Bar */}
@@ -671,6 +672,77 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
             </div>
           </section>
         )}
+
+        {/* Dynamic FAQ Section */}
+        <section className="mt-8">
+          <h2 className="text-xl font-bold text-gray-900 mb-3">よくある質問（利用前のご不安をお答えします）</h2>
+          <div className="space-y-3">
+            {/* 料金について */}
+            {(gym.price_min || gym.price_max) && (
+              <details className="bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200 rounded-lg overflow-hidden group">
+                <summary className="px-5 py-4 cursor-pointer font-medium text-gray-800 hover:bg-orange-100 list-none flex justify-between items-center">
+                  <span className="flex items-center gap-2">
+                    <span className="text-[#FF6B35] font-bold">💰</span>
+                    <span>Q. 料金について</span>
+                  </span>
+                  <span className="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <div className="px-5 pb-4 text-sm text-gray-700 bg-white bg-opacity-50">
+                  A. {gym.name}の料金は、月額{gym.price_min ? `¥${gym.price_min.toLocaleString()}` : ""}
+                  {gym.price_max ? `～¥${gym.price_max.toLocaleString()}` : ""}です。
+                  {gym.trial_available && gym.price_trial !== null ? ` 体験レッスンは${gym.price_trial === 0 ? "無料" : `¥${gym.price_trial.toLocaleString()}`}で受けられます。` : ""}
+                  詳細な料金プランについては、上記の料金プランセクションをご参照ください。
+                </div>
+              </details>
+            )}
+
+            {/* 体験レッスンについて */}
+            {gym.trial_available && (
+              <details className="bg-gradient-to-r from-green-50 to-green-100 border border-green-200 rounded-lg overflow-hidden group">
+                <summary className="px-5 py-4 cursor-pointer font-medium text-gray-800 hover:bg-green-100 list-none flex justify-between items-center">
+                  <span className="flex items-center gap-2">
+                    <span className="text-green-600 font-bold">🎯</span>
+                    <span>Q. 体験レッスンについて</span>
+                  </span>
+                  <span className="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <div className="px-5 pb-4 text-sm text-gray-700 bg-white bg-opacity-50">
+                  A. はい、{gym.name}では体験レッスンをご用意しています。
+                  {gym.price_trial !== null ? ` 体験料金は${gym.price_trial === 0 ? "無料" : `¥${gym.price_trial.toLocaleString()}`}です。` : ""}
+                  お気軽にお問い合わせいただくか、公式サイトからご予約ください。
+                </div>
+              </details>
+            )}
+
+            {/* アクセスについて */}
+            {(gym.nearest_station || gym.address) && (
+              <details className="bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-lg overflow-hidden group">
+                <summary className="px-5 py-4 cursor-pointer font-medium text-gray-800 hover:bg-blue-100 list-none flex justify-between items-center">
+                  <span className="flex items-center gap-2">
+                    <span className="text-blue-600 font-bold">📍</span>
+                    <span>Q. アクセスについて</span>
+                  </span>
+                  <span className="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <div className="px-5 pb-4 text-sm text-gray-700 bg-white bg-opacity-50">
+                  A. {gym.nearest_station ? (
+                    <>
+                      {gym.name}は{gym.nearest_station}駅から徒歩{gym.walk_minutes ?? ""}分の好立地にあります。
+                      {gym.address ? ` 住所は${gym.address}です。` : ""}
+                      {gym.access_info ? ` 詳細：${gym.access_info}` : ""}
+                    </>
+                  ) : gym.address ? (
+                    <>
+                      {gym.name}は{gym.address}に位置しています。詳細なアクセス方法については、公式サイトをご確認ください。
+                    </>
+                  ) : (
+                    "アクセス方法について詳しくは、公式サイトをご確認ください。"
+                  )}
+                </div>
+              </details>
+            )}
+          </div>
+        </section>
 
         {/* Related Articles */}
         <section className="mt-10 bg-blue-50 rounded-xl border border-blue-200 p-6 md:p-8">
