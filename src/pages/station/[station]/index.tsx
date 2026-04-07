@@ -264,6 +264,8 @@ export default function StationPage({
               { href: "/column/gym-compare/", title: "パーソナルジムを複数比較する方法" },
               { href: "/column/gym-rebound/", title: "パーソナルジム卒業後のリバウンド防止" },
               { href: "/column/gym-age/", title: "40代・50代からのパーソナルジム" },
+              { href: "/column/gym-shokuji/", title: "パーソナルジムの食事指導とは" },
+              { href: "/column/gym-online/", title: "オンラインパーソナルジムのメリット・デメリット" },
             ].map((col) => (
               <a
                 key={col.href}

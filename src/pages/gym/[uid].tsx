@@ -809,6 +809,16 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
               <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">40代・50代からのパーソナルジム</h3>
               <p className="text-xs text-gray-600 line-clamp-2">年齢別の効果と安全な始め方を完全解説。</p>
             </a>
+            <a href="/column/gym-shokuji/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#FF6B35] hover:shadow-md transition">
+              <div className="text-xs font-semibold text-blue-700 bg-blue-50 px-2 py-1 rounded-full inline-block mb-2">食事管理</div>
+              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">パーソナルジムの食事指導とは</h3>
+              <p className="text-xs text-gray-600 line-clamp-2">食事管理で筋トレ効果を最大化する方法を紹介。</p>
+            </a>
+            <a href="/column/gym-online/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#FF6B35] hover:shadow-md transition">
+              <div className="text-xs font-semibold text-blue-700 bg-blue-50 px-2 py-1 rounded-full inline-block mb-2">ジム選び</div>
+              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">オンラインパーソナルジムのメリット・デメリット</h3>
+              <p className="text-xs text-gray-600 line-clamp-2">通いとの違いを徹底比較し、自分に合ったジムを選びましょう。</p>
+            </a>
           </div>
           <div className="text-center mt-5">
             <a href="/column/" className="text-blue-700 font-semibold text-sm hover:underline">

@@ -493,6 +493,28 @@ export default function CityPage({
                 年齢別の効果と安全な始め方を完全解説。
               </p>
             </NextLink>
+            <NextLink
+              href="/column/gym-shokuji/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                パーソナルジムの食事指導とは
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                食事管理で筋トレ効果を最大化する方法。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/gym-online/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                オンラインと通いの比較
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                メリット・デメリットと選び方を徹底比較。
+              </p>
+            </NextLink>
           </div>
         </section>
 

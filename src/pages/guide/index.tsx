@@ -489,6 +489,18 @@ export default function GuidePage({
             >
               40代・50代からのジム
             </NextLink>
+            <NextLink
+              href="/column/gym-shokuji/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              食事指導で結果を最大化
+            </NextLink>
+            <NextLink
+              href="/column/gym-online/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              オンラインと通いの比較
+            </NextLink>
           </div>
         </section>
 

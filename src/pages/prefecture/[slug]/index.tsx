@@ -290,6 +290,8 @@ export default function PrefecturePage({
               { href: "/column/gym-compare/", title: "パーソナルジムを複数比較する方法｜体験レッスンの活用術" },
               { href: "/column/gym-rebound/", title: "パーソナルジム卒業後のリバウンドを防ぐ方法｜食事管理と継続トレーニング" },
               { href: "/column/gym-age/", title: "40代・50代からのパーソナルジム｜年齢別の効果と注意点" },
+              { href: "/column/gym-shokuji/", title: "パーソナルジムの食事指導とは｜食事管理で結果を最大化する方法" },
+              { href: "/column/gym-online/", title: "オンラインパーソナルジムのメリット・デメリット｜通いとの違いを比較" },
             ].map((article) => (
               <NextLink
                 key={article.href}
