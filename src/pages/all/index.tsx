@@ -1,6 +1,7 @@
 import type { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import NextLink from "next/link";
 import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
 import { JsonLDListPage, JsonLDFaq } from "@/components/UI/JsonLD";
@@ -431,6 +432,79 @@ export default function AllGyms({
             />
           </div>
         )}
+
+        {/* 関連コラム */}
+        <section className="mt-12">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">関連コラム</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <NextLink
+              href="/column/gym-beginner/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                パーソナルジム初心者ガイド
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                初心者がパーソナルジムを選ぶときのポイントと注意点を解説。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/gym-choosing/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                パーソナルジムの選び方
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                あなたに合ったジムを見つけるための選定基準と比較ポイント。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/gym-cost/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                パーソナルジムの費用相場
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                料金相場と費用内訳、安く通うコツについて説明。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/diet-gym/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                ダイエット目的のパーソナルジム活用法
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                ダイエット成功のための効果的なトレーニング方法。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/training-frequency/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                パーソナルトレーニングの頻度
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                目的別のトレーニング頻度と通う期間の目安。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/gym-nutrition/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                パーソナルジムでの食事管理
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                栄養指導と食事改善で結果を出すためのポイント。
+              </p>
+            </NextLink>
+          </div>
+        </section>
 
         {/* FAQ Section */}
         {faqs.length > 0 && (
