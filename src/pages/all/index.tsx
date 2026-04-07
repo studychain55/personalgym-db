@@ -503,6 +503,28 @@ export default function AllGyms({
                 栄養指導と食事改善で結果を出すためのポイント。
               </p>
             </NextLink>
+            <NextLink
+              href="/column/women-gym/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                女性向けパーソナルジムの選び方
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                女性専用・混合の違いと安心して通うためのポイント。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/gym-trial/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                無料体験・体験入会の活用ガイド
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                体験レッスンを最大限に活かす方法と注意点。
+              </p>
+            </NextLink>
           </div>
         </section>
 
