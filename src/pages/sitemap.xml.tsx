@@ -2,15 +2,18 @@ import type { GetServerSideProps } from "next";
 import { baseSiteUrl } from "@/utils/config";
 import { fetchAllGymUids } from "@/utils/supabase/fetchGyms";
 import { fetchPrefectures } from "@/utils/supabase/fetchPrefectures";
+import { fetchAllFeatures, fetchAllCitiesWithCount } from "@/utils/supabase/fetchFeatures";
 
 function SitemapXml() {
   return null;
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const [gyms, prefectures] = await Promise.all([
+  const [gyms, prefectures, features, cities] = await Promise.all([
     fetchAllGymUids(),
     fetchPrefectures(),
+    fetchAllFeatures(),
+    fetchAllCitiesWithCount(),
   ]);
 
   const today = new Date().toISOString().split("T")[0];
@@ -18,10 +21,22 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const urls = [
     { loc: "/", changefreq: "daily", priority: "1.0" },
     { loc: "/all/", changefreq: "daily", priority: "0.8" },
+    { loc: "/area/", changefreq: "weekly", priority: "0.75" },
+    { loc: "/brand/", changefreq: "weekly", priority: "0.75" },
     ...prefectures.map((p) => ({
       loc: `/p-${p.slug}/`,
       changefreq: "weekly" as const,
       priority: "0.75",
+    })),
+    ...features.map((f) => ({
+      loc: `/f-${f.slug}/`,
+      changefreq: "weekly" as const,
+      priority: "0.70",
+    })),
+    ...cities.map((c) => ({
+      loc: `/c-${c.slug}/`,
+      changefreq: "weekly" as const,
+      priority: "0.70",
     })),
     ...gyms.map((g) => ({
       loc: `/gym/${g.uid}/`,
