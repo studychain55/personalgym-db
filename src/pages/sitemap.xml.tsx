@@ -21,7 +21,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     ...prefectures.map((p) => ({
       loc: `/p-${p.slug}/`,
       changefreq: "weekly" as const,
-      priority: "0.7",
+      priority: "0.75",
     })),
     ...gyms.map((g) => ({
       loc: `/gym/${g.uid}/`,
