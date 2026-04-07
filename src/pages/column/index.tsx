@@ -41,6 +41,20 @@ export default function ColumnIndexPage() {
       date: "2026-04-07",
       category: "ダイエット",
     },
+    {
+      title: "パーソナルトレーニングの通う頻度・回数の目安",
+      description: "パーソナルトレーニングの最適な通所頻度を目標別に解説。ダイエット・筋力アップ・スポーツパフォーマンス向上など、目的別の通所回数の目安をまとめました。",
+      path: "/column/training-frequency/",
+      date: "2026-04-07",
+      category: "トレーニング方法",
+    },
+    {
+      title: "パーソナルジムの食事管理｜トレーニングと食事の組み合わせ",
+      description: "パーソナルジムでの効果を最大化する食事管理方法を解説。タンパク質摂取量、トレーニング後の栄養補給、ダイエット・筋力アップ別の食事戦略をまとめました。",
+      path: "/column/gym-nutrition/",
+      date: "2026-04-07",
+      category: "栄養管理",
+    },
   ];
 
   return (
