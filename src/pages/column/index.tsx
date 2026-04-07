@@ -440,6 +440,13 @@ export default function ColumnIndexPage() {
       date: "2026-04-07",
       category: "女性向け",
     },
+    {
+      title: "糖尿病・メタボ改善のパーソナルトレーニング活用法｜血糖値低下・インスリン感受性向上の実践ガイド",
+      description: "糖尿病やメタボリックシンドロームの改善にパーソナルトレーニングがいかに効果的かを解説。血糖値低下、インスリン感受性向上、体脂肪削減、医師との連携方法、安全なトレーニング方法をまとめました。",
+      path: "/column/gym-diabetes/",
+      date: "2026-04-07",
+      category: "健康・症状改善",
+    },
   ];
 
   return (
