@@ -266,6 +266,33 @@ export default function PrefecturePage({
           </div>
         )}
 
+        {/* Column Articles Section */}
+        <section className="mt-12">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">
+            パーソナルジムのお役立ちコラム
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { href: "/column/gym-beginner/", title: "パーソナルジム初心者ガイド｜始め方と選び方" },
+              { href: "/column/gym-cost/", title: "パーソナルジムの料金相場｜費用を抑える方法" },
+              { href: "/column/gym-choosing/", title: "パーソナルジムの選び方｜失敗しない7つのポイント" },
+              { href: "/column/diet-gym/", title: "ダイエット目的のジム選び｜効果的な活用法" },
+              { href: "/column/gym-nutrition/", title: "ジムと食事管理｜トレーナーに聞いた栄養ガイド" },
+              { href: "/column/training-frequency/", title: "通う頻度の目安｜週何回が最適か" },
+            ].map((article) => (
+              <NextLink
+                key={article.href}
+                href={article.href}
+                className="block p-4 border border-gray-300 rounded-lg hover:border-orange-300 hover:bg-orange-50 transition-colors no-underline"
+              >
+                <span className="text-sm font-medium text-orange-600 hover:text-orange-700">
+                  {article.title}
+                </span>
+              </NextLink>
+            ))}
+          </div>
+        </section>
+
         {/* FAQ Section */}
         {faqs.length > 0 && (
           <section className="mt-12">
