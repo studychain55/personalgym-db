@@ -76,6 +76,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     { loc: "/column/gym-sport/", changefreq: "monthly", priority: "0.7" },
     { loc: "/column/gym-trial/", changefreq: "monthly", priority: "0.7" },
     { loc: "/column/gym-protein/", changefreq: "monthly", priority: "0.7" },
+    { loc: "/column/gym-supplement/", changefreq: "monthly", priority: "0.7" },
     { loc: "/column/gym-fascia/", changefreq: "monthly", priority: "0.7" },
     { loc: "/column/gym-facility/", changefreq: "monthly", priority: "0.7" },
     { loc: "/column/gym-diet-success/", changefreq: "monthly", priority: "0.7" },
