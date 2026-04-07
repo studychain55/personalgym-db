@@ -102,3 +102,35 @@ export async function fetchGymCampaigns(gymId: number): Promise<GymCampaign[]> {
   if (error) return [];
   return (data as GymCampaign[]) || [];
 }
+
+export async function fetchRelatedGyms(
+  gymId: number,
+  prefectureId: number | null,
+  priceMin: number | null,
+  priceMax: number | null,
+  limit: number = 4
+): Promise<GymLocation[]> {
+  if (!prefectureId) return [];
+
+  // 同じ都道府県で、同じ価格帯のジムを検索
+  let query = supabase
+    .from("gym_locations")
+    .select("*")
+    .eq("prefecture_id", prefectureId)
+    .eq("is_display", true)
+    .neq("id", gymId)
+    .order("review_average_rating", { ascending: false })
+    .limit(limit);
+
+  // 価格帯でフィルタ（price_min がほぼ同じ範囲）
+  if (priceMin !== null) {
+    const minThreshold = Math.floor(priceMin * 0.7); // ±30%の幅
+    const maxThreshold = Math.ceil(priceMin * 1.3);
+    query = query.gte("price_min", minThreshold).lte("price_min", maxThreshold);
+  }
+
+  const { data, error } = await query;
+
+  if (error) return [];
+  return (data as GymLocation[]) || [];
+}

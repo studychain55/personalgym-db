@@ -1,11 +1,12 @@
 import type { GetServerSideProps } from "next";
 import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
-import { JsonLDGymDetail } from "@/components/UI/JsonLD";
+import { JsonLDGymDetail, JsonLDFaq, JsonLDBreadcrumbList } from "@/components/UI/JsonLD";
 import Breadcrumb from "@/components/UI/BreadCrumb";
 import {
   fetchGymByUid, fetchGymReviews, fetchGymImages, fetchGymFaqs,
   fetchGymPlans, fetchGymTrainers, fetchGymBeforeAfters, fetchGymCampaigns,
+  fetchRelatedGyms,
 } from "@/utils/supabase/fetchGymDetail";
 import { setVeryLongCacheHeaders } from "@/utils/cacheHeaders";
 import supabase from "@/utils/supabase/index";
@@ -20,6 +21,7 @@ interface GymDetailProps {
   trainers: GymTrainer[];
   beforeAfters: GymBeforeAfter[];
   campaigns: GymCampaign[];
+  relatedGyms: GymLocation[];
   prefectureName: string;
   prefectureSlug: string;
 }
@@ -29,7 +31,7 @@ export const getServerSideProps: GetServerSideProps<GymDetailProps> = async ({ p
   const gym = await fetchGymByUid(uid);
   if (!gym) return { notFound: true };
 
-  const [reviews, images, faqs, plans, trainers, beforeAfters, campaigns] = await Promise.all([
+  const [reviews, images, faqs, plans, trainers, beforeAfters, campaigns, relatedGyms] = await Promise.all([
     fetchGymReviews(gym.id),
     fetchGymImages(gym.id),
     fetchGymFaqs(gym.id),
@@ -37,6 +39,7 @@ export const getServerSideProps: GetServerSideProps<GymDetailProps> = async ({ p
     fetchGymTrainers(gym.id),
     fetchGymBeforeAfters(gym.id),
     fetchGymCampaigns(gym.id),
+    fetchRelatedGyms(gym.id, gym.prefecture_id, gym.price_min, gym.price_max, 4),
   ]);
 
   let prefectureName = "";
@@ -55,7 +58,7 @@ export const getServerSideProps: GetServerSideProps<GymDetailProps> = async ({ p
 
   setVeryLongCacheHeaders(res);
 
-  return { props: { gym, reviews, images, faqs, plans, trainers, beforeAfters, campaigns, prefectureName, prefectureSlug } };
+  return { props: { gym, reviews, images, faqs, plans, trainers, beforeAfters, campaigns, relatedGyms, prefectureName, prefectureSlug } };
 };
 
 const fmtPrice = (price: number | null, label: string) => {
@@ -68,7 +71,7 @@ const fmtPrice = (price: number | null, label: string) => {
   );
 };
 
-export default function GymDetail({ gym, reviews, images, faqs, plans, trainers, beforeAfters, campaigns, prefectureName, prefectureSlug }: GymDetailProps) {
+export default function GymDetail({ gym, reviews, images, faqs, plans, trainers, beforeAfters, campaigns, relatedGyms, prefectureName, prefectureSlug }: GymDetailProps) {
   const breadcrumbItems = [
     { label: "ジム一覧", href: "/all/" },
     ...(prefectureName ? [{ label: prefectureName, href: `/p-${prefectureSlug}/` }] : []),
@@ -90,8 +93,26 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
         ogImage={gym.image_url || undefined}
       />
       <JsonLDGymDetail gym={gym} />
+      <JsonLDFaq faqs={faqs} />
+      <JsonLDBreadcrumbList items={breadcrumbItems} />
 
-      <div className="max-w-4xl mx-auto px-4 py-6">
+      {/* Sticky CTA Bar */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 shadow-lg z-40 md:hidden">
+        <div className="flex gap-2">
+          {gym.trial_available && (
+            <a href={gym.website_url || "#"} className="flex-1 bg-[#FF6B35] text-white py-2.5 rounded-lg font-bold text-center text-sm hover:bg-orange-600 transition">
+              無料体験を予約
+            </a>
+          )}
+          {gym.website_url && (
+            <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-2.5 rounded-lg font-bold text-center text-sm hover:bg-gray-200 transition">
+              公式サイト
+            </a>
+          )}
+        </div>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-4 py-6 pb-24 md:pb-6">
         <Breadcrumb items={breadcrumbItems} />
 
         {/* Header */}
@@ -226,6 +247,22 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
           </section>
         )}
 
+        {/* CTA Section (Desktop) */}
+        {(gym.trial_available || gym.website_url) && (
+          <div className="hidden md:flex gap-3 mt-6">
+            {gym.trial_available && (
+              <a href={gym.website_url || "#"} className="flex-1 bg-[#FF6B35] text-white py-3 rounded-lg font-bold text-center hover:bg-orange-600 transition">
+                無料体験を予約する
+              </a>
+            )}
+            {gym.website_url && (
+              <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-3 rounded-lg font-bold text-center hover:bg-gray-200 transition">
+                公式サイトを見る
+              </a>
+            )}
+          </div>
+        )}
+
         {/* Plans Table */}
         {plans.length > 0 && (
           <section className="mt-8">
@@ -333,39 +370,64 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
         {/* Before/After */}
         {beforeAfters.length > 0 && (
           <section className="mt-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-3">ビフォーアフター</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {beforeAfters.map((ba) => (
-                <div key={ba.id} className="bg-white border border-gray-200 rounded-lg p-4">
-                  <div className="flex gap-2 mb-3">
-                    {ba.image_before && <img src={ba.image_before} alt="Before" className="w-1/2 rounded object-cover aspect-[3/4]" loading="lazy" />}
-                    {ba.image_after && <img src={ba.image_after} alt="After" className="w-1/2 rounded object-cover aspect-[3/4]" loading="lazy" />}
-                  </div>
-                  <div className="flex flex-wrap gap-3 text-sm">
-                    {ba.gender && <span>{ba.gender}</span>}
-                    {ba.age && <span>{ba.age}歳</span>}
-                    {ba.duration_months && <span>{ba.duration_months}ヶ月</span>}
-                  </div>
-                  <div className="mt-2 flex gap-4 text-sm">
-                    {ba.weight_before != null && ba.weight_after != null && (
-                      <div>
-                        <span className="text-gray-500">体重</span>{" "}
-                        <span className="font-bold">{ba.weight_before}kg → {ba.weight_after}kg</span>
-                        <span className="text-red-600 ml-1 font-bold">
-                          ({(ba.weight_after - ba.weight_before).toFixed(1)}kg)
-                        </span>
+            <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-xl border-2 border-orange-200 p-6 md:p-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">トレーニング実績ギャラリー</h2>
+              <p className="text-gray-600 mb-6">実際のお客様の変化を見てみてください</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {beforeAfters.map((ba) => (
+                  <div key={ba.id} className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition">
+                    {/* Images */}
+                    <div className="flex gap-2 mb-4">
+                      <div className="w-1/2">
+                        {ba.image_before ? (
+                          <img src={ba.image_before} alt="Before" className="w-full rounded-lg object-cover aspect-[3/4]" loading="lazy" />
+                        ) : (
+                          <div className="w-full rounded-lg bg-gray-100 aspect-[3/4] flex items-center justify-center text-gray-400 text-sm">Before</div>
+                        )}
+                        <p className="text-xs text-gray-500 text-center mt-1 font-bold">Before</p>
                       </div>
-                    )}
-                    {ba.body_fat_before != null && ba.body_fat_after != null && (
-                      <div>
-                        <span className="text-gray-500">体脂肪率</span>{" "}
-                        <span className="font-bold">{ba.body_fat_before}% → {ba.body_fat_after}%</span>
+                      <div className="w-1/2">
+                        {ba.image_after ? (
+                          <img src={ba.image_after} alt="After" className="w-full rounded-lg object-cover aspect-[3/4]" loading="lazy" />
+                        ) : (
+                          <div className="w-full rounded-lg bg-gray-100 aspect-[3/4] flex items-center justify-center text-gray-400 text-sm">After</div>
+                        )}
+                        <p className="text-xs text-gray-500 text-center mt-1 font-bold">After</p>
                       </div>
-                    )}
+                    </div>
+
+                    {/* Profile */}
+                    <div className="flex flex-wrap gap-2 mb-3 text-xs text-gray-600">
+                      {ba.gender && <span className="bg-gray-100 px-2.5 py-1 rounded-full">{ba.gender}</span>}
+                      {ba.age && <span className="bg-gray-100 px-2.5 py-1 rounded-full">{ba.age}歳</span>}
+                      {ba.duration_months && <span className="bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full font-bold">{ba.duration_months}ヶ月</span>}
+                    </div>
+
+                    {/* Results */}
+                    <div className="space-y-2 py-3 border-t border-gray-100">
+                      {ba.weight_before != null && ba.weight_after != null && (
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-600 text-sm">体重</span>
+                          <span className="font-bold">
+                            {ba.weight_before}kg → <span className="text-red-600">{ba.weight_after}kg</span>
+                          </span>
+                        </div>
+                      )}
+                      {ba.body_fat_before != null && ba.body_fat_after != null && (
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-600 text-sm">体脂肪率</span>
+                          <span className="font-bold">
+                            {ba.body_fat_before}% → <span className="text-red-600">{ba.body_fat_after}%</span>
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Comment */}
+                    {ba.comment && <p className="text-xs text-gray-600 italic">{ba.comment}</p>}
                   </div>
-                  {ba.comment && <p className="text-sm text-gray-600 mt-2">{ba.comment}</p>}
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </section>
         )}
@@ -557,6 +619,58 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
               ))}
             </div>
           </section>
+        )}
+
+        {/* Related Gyms */}
+        {relatedGyms.length > 0 && (
+          <section className="mt-10">
+            <div className="bg-gray-50 rounded-xl p-6 md:p-8">
+              <h2 className="text-xl font-bold text-gray-900 mb-1">近くのパーソナルジム</h2>
+              <p className="text-sm text-gray-600 mb-5">{prefectureName}のその他のおすすめジム</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {relatedGyms.map((relatedGym) => (
+                  <a key={relatedGym.id} href={`/gym/${relatedGym.uid}/`} className="bg-white border border-gray-200 rounded-lg p-4 hover:border-[#FF6B35] hover:shadow-lg transition">
+                    {relatedGym.image_url && (
+                      <img src={relatedGym.image_url} alt={relatedGym.name} className="w-full h-32 object-cover rounded-lg mb-3" loading="lazy" />
+                    )}
+                    <h3 className="font-bold text-gray-900 mb-1 line-clamp-2">{relatedGym.name}</h3>
+                    <div className="text-sm text-gray-600 mb-2">
+                      {relatedGym.address && <p className="line-clamp-1">📍 {relatedGym.address}</p>}
+                      {relatedGym.nearest_station && <p className="line-clamp-1">🚃 {relatedGym.nearest_station}駅 徒歩{relatedGym.walk_minutes ?? "?"}分</p>}
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      {relatedGym.review_average_rating > 0 && (
+                        <span className="text-yellow-600 font-bold">★ {relatedGym.review_average_rating.toFixed(1)}</span>
+                      )}
+                      {relatedGym.price_min && (
+                        <span className="text-[#FF6B35] font-bold">¥{relatedGym.price_min.toLocaleString()}〜</span>
+                      )}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Final CTA */}
+        {(gym.trial_available || gym.website_url) && (
+          <div className="mt-10 bg-gradient-to-r from-[#FF6B35] to-orange-600 rounded-xl p-6 text-center text-white">
+            <h3 className="text-lg font-bold mb-2">今すぐお問い合わせ</h3>
+            <p className="text-sm mb-4 opacity-95">無料カウンセリング・体験トレーニングを受けてみませんか？</p>
+            <div className="flex gap-3 flex-col md:flex-row">
+              {gym.trial_available && (
+                <a href={gym.website_url || "#"} className="flex-1 bg-white text-[#FF6B35] py-3 rounded-lg font-bold text-center hover:bg-gray-100 transition">
+                  無料体験を予約
+                </a>
+              )}
+              {gym.website_url && (
+                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-white bg-opacity-20 text-white py-3 rounded-lg font-bold text-center hover:bg-opacity-30 transition border border-white border-opacity-30">
+                  公式サイトへ
+                </a>
+              )}
+            </div>
+          </div>
         )}
       </div>
     </Layout>

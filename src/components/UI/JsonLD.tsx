@@ -147,3 +147,35 @@ export const JsonLDFaq: React.FC<JsonLDFaqProps> = ({ faqs }) => {
     </Head>
   );
 };
+
+interface JsonLDBreadcrumbListProps {
+  items: { label: string; href?: string }[];
+}
+
+export const JsonLDBreadcrumbList: React.FC<JsonLDBreadcrumbListProps> = ({ items }) => {
+  const breadcrumbItems = [
+    { label: "ホーム", href: "/" },
+    ...items.filter((item) => item.href),
+    ...items.filter((item) => !item.href).slice(-1),
+  ];
+
+  const jsonld = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbItems.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.label,
+      ...(item.href && { item: `${baseSiteUrl}${item.href}` }),
+    })),
+  };
+
+  return (
+    <Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonld) }}
+      />
+    </Head>
+  );
+};
