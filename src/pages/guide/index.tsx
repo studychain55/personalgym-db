@@ -412,6 +412,12 @@ export default function GuidePage({
               費用相場と選び方
             </NextLink>
             <NextLink
+              href="/column/gym-price/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              料金相場と費用を抑えるコツ
+            </NextLink>
+            <NextLink
               href="/column/gym-nutrition/"
               className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
             >
@@ -422,6 +428,12 @@ export default function GuidePage({
               className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
             >
               トレーニング頻度
+            </NextLink>
+            <NextLink
+              href="/column/gym-diet/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              ダイエット成功方法
             </NextLink>
             <NextLink
               href="/column/diet-gym/"

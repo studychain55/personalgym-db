@@ -63,6 +63,13 @@ export default function ColumnIndexPage() {
       category: "ダイエット",
     },
     {
+      title: "パーソナルジムでダイエットを成功させる方法",
+      description: "パーソナルジムでダイエットを成功させるための完全ガイド。食事指導の方法、トレーニング頻度の目安、現実的なタイムライン、リバウンド防止のコツなど、確実に目標達成するための方法。",
+      path: "/column/gym-diet/",
+      date: "2026-04-07",
+      category: "ダイエット",
+    },
+    {
       title: "パーソナルトレーニングの通う頻度・回数の目安",
       description: "パーソナルトレーニングの最適な通所頻度を目標別に解説。ダイエット・筋力アップ・スポーツパフォーマンス向上など、目的別の通所回数の目安をまとめました。",
       path: "/column/training-frequency/",
@@ -89,6 +96,13 @@ export default function ColumnIndexPage() {
       path: "/column/gym-trial/",
       date: "2026-04-07",
       category: "体験・申込",
+    },
+    {
+      title: "パーソナルジムの料金相場｜費用を抑えるコツ",
+      description: "パーソナルジムの料金相場を徹底解説。全国平均相場、入会金、月額制・回数制の比較、費用を抑えるコツ、体験レッスン、契約時の注意点など、賢く選ぶためのガイド。",
+      path: "/column/gym-price/",
+      date: "2026-04-07",
+      category: "費用",
     },
   ];
 
