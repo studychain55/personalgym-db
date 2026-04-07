@@ -279,6 +279,10 @@ export default function PrefecturePage({
               { href: "/column/diet-gym/", title: "ダイエット目的のジム選び｜効果的な活用法" },
               { href: "/column/gym-nutrition/", title: "ジムと食事管理｜トレーナーに聞いた栄養ガイド" },
               { href: "/column/training-frequency/", title: "通う頻度の目安｜週何回が最適か" },
+              { href: "/column/gym-trial/", title: "パーソナルジムの体験入会を活用しよう" },
+              { href: "/column/women-gym/", title: "女性専用パーソナルジムの選び方" },
+              { href: "/column/gym-trainer/", title: "パーソナルトレーナーの選び方と資格の見方" },
+              { href: "/column/gym-diet/", title: "パーソナルジムでダイエットを成功させる方法" },
             ].map((article) => (
               <NextLink
                 key={article.href}

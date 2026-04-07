@@ -372,6 +372,50 @@ export default function CityPage({
                 パーソナルジムの無料体験・体験入会を最大限活用する方法。
               </p>
             </NextLink>
+            <NextLink
+              href="/column/gym-trainer/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                パーソナルトレーナーの選び方と資格の見方
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                優秀なトレーナーを見極めるポイントと資格の重要性を解説。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/gym-bodymake/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                パーソナルジムで体が変わるまでの期間と目安
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                効果が出るまでの期間と実感できるタイミングを解説します。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/gym-diet/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                パーソナルジムでダイエットを成功させる方法
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                ダイエット成功のための実践的な方法と継続のコツ。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/gym-price/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                パーソナルジムの価格・料金ガイド
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                料金体系の詳細や費用相場を徹底解説しています。
+              </p>
+            </NextLink>
           </div>
         </section>
 

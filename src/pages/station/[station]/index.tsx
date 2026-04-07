@@ -251,10 +251,12 @@ export default function StationPage({
             {[
               { href: "/column/gym-trial/", title: "パーソナルジムの体験入会を活用しよう" },
               { href: "/column/women-gym/", title: "女性専用パーソナルジムの選び方" },
-              { href: "/column/gym-cost/", title: "パーソナルジムの費用相場と節約術" },
-              { href: "/column/gym-diet/", title: "パーソナルジムで叶えるダイエット成功法" },
-              { href: "/column/gym-frequency/", title: "週何回通う？最適なジム頻度ガイド" },
-              { href: "/column/gym-choice/", title: "失敗しないパーソナルジムの選び方" },
+              { href: "/column/gym-cost/", title: "パーソナルジムの料金相場｜費用を抑える方法" },
+              { href: "/column/gym-diet/", title: "パーソナルジムでダイエットを成功させる方法" },
+              { href: "/column/gym-trainer/", title: "パーソナルトレーナーの選び方と資格の見方" },
+              { href: "/column/gym-bodymake/", title: "パーソナルジムで体が変わるまでの期間と目安" },
+              { href: "/column/gym-price/", title: "パーソナルジムの料金相場｜費用を抑えるコツ" },
+              { href: "/column/gym-choosing/", title: "パーソナルジムの選び方｜失敗しない7つのポイント" },
             ].map((col) => (
               <a
                 key={col.href}

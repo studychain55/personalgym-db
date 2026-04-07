@@ -7,7 +7,7 @@ import Breadcrumb from "@/components/UI/BreadCrumb";
 import { fetchGyms } from "@/utils/supabase/fetchGyms";
 import { fetchRegionsWithPrefectureCounts } from "@/utils/supabase/fetchPrefectures";
 import { setConditionalCacheHeaders } from "@/utils/cacheHeaders";
-import { siteName } from "@/utils/config";
+import { siteName, baseSiteUrl } from "@/utils/config";
 import type { GymListItem, RegionWithPrefectures } from "@/types";
 import NextLink from "next/link";
 
@@ -47,6 +47,18 @@ export default function Home({ featuredGyms, totalCount, regions }: HomeProps) {
         description="全国のパーソナルジム検索・比較"
         path="/"
         items={featuredGyms}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": siteName,
+            "url": baseSiteUrl,
+            "description": `全国のパーソナルジムを料金・口コミ・特徴で比較できる「${siteName}」。あなたにぴったりのパーソナルジムが見つかります。`,
+          }),
+        }}
       />
       <script
         type="application/ld+json"

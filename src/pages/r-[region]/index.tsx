@@ -253,6 +253,10 @@ export default function RegionPage({
               { href: "/column/training-frequency/", title: "通う頻度の目安｜週何回が最適か" },
               { href: "/column/women-gym/", title: "女性専用パーソナルジムの選び方" },
               { href: "/column/gym-trial/", title: "パーソナルジムの体験入会を活用しよう" },
+              { href: "/column/gym-trainer/", title: "パーソナルトレーナーの選び方と資格の見方" },
+              { href: "/column/gym-bodymake/", title: "パーソナルジムで体が変わるまでの期間と目安" },
+              { href: "/column/gym-diet/", title: "パーソナルジムでダイエットを成功させる方法" },
+              { href: "/column/gym-price/", title: "パーソナルジムの料金相場｜費用を抑えるコツ" },
             ].map((article) => (
               <NextLink
                 key={article.href}
