@@ -94,6 +94,8 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     { loc: "/column/gym-recovery/", changefreq: "monthly", priority: "0.7" },
     { loc: "/column/gym-motivation/", changefreq: "monthly", priority: "0.7" },
     { loc: "/column/gym-form-check/", changefreq: "monthly", priority: "0.7" },
+    { loc: "/column/gym-flexibility/", changefreq: "monthly", priority: "0.7" },
+    { loc: "/column/gym-body-composition/", changefreq: "monthly", priority: "0.7" },
     ...regionUrls,
     ...prefectures.map((p) => ({
       loc: `/p-${p.slug}/`,
