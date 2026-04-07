@@ -61,3 +61,44 @@ export async function fetchRegionsWithPrefectureCounts(): Promise<RegionWithPref
       .map((p) => ({ ...p, gym_count: countMap[p.id] || 0 })),
   }));
 }
+
+export async function fetchRegionByName(regionName: string): Promise<Region | null> {
+  const { data, error } = await supabase
+    .from("Region")
+    .select("id, name, sort_order")
+    .eq("name", regionName)
+    .single();
+
+  if (error || !data) return null;
+  return data as Region;
+}
+
+export async function fetchPrefecturesByRegionId(regionId: number): Promise<PrefectureWithCount[]> {
+  const { data: prefectures, error: prefErr } = await supabase
+    .from("Prefecture")
+    .select("id, title, slug, region_id")
+    .eq("region_id", regionId)
+    .order("id", { ascending: true });
+
+  if (prefErr || !prefectures) return [];
+
+  // Fetch gym counts per prefecture
+  const { data: gymCounts, error: countErr } = await supabase
+    .from("gym_locations")
+    .select("prefecture_id")
+    .eq("is_display", true);
+
+  const countMap: Record<number, number> = {};
+  if (!countErr && gymCounts) {
+    for (const g of gymCounts) {
+      if (g.prefecture_id) {
+        countMap[g.prefecture_id] = (countMap[g.prefecture_id] || 0) + 1;
+      }
+    }
+  }
+
+  return (prefectures as Prefecture[]).map((p) => ({
+    ...p,
+    gym_count: countMap[p.id] || 0,
+  }));
+}

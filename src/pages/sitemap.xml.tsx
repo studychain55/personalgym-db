@@ -1,28 +1,45 @@
 import type { GetServerSideProps } from "next";
 import { baseSiteUrl } from "@/utils/config";
 import { fetchAllGymUids } from "@/utils/supabase/fetchGyms";
-import { fetchPrefectures } from "@/utils/supabase/fetchPrefectures";
+import { fetchPrefectures, fetchRegionsWithPrefectureCounts } from "@/utils/supabase/fetchPrefectures";
 import { fetchAllFeatures, fetchAllCitiesWithCount } from "@/utils/supabase/fetchFeatures";
+import { getRegionSlug } from "@/utils/regionMapping";
 
 function SitemapXml() {
   return null;
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const [gyms, prefectures, features, cities] = await Promise.all([
+  const [gyms, prefectures, regions, features, cities] = await Promise.all([
     fetchAllGymUids(),
     fetchPrefectures(),
+    fetchRegionsWithPrefectureCounts(),
     fetchAllFeatures(),
     fetchAllCitiesWithCount(),
   ]);
 
   const today = new Date().toISOString().split("T")[0];
 
+  const regionUrls = regions
+    .map((region) => {
+      const slug = getRegionSlug(region.name);
+      return slug
+        ? {
+            loc: `/r-${slug}/`,
+            changefreq: "weekly" as const,
+            priority: "0.75",
+          }
+        : null;
+    })
+    .filter((url) => url !== null);
+
   const urls = [
     { loc: "/", changefreq: "daily", priority: "1.0" },
     { loc: "/all/", changefreq: "daily", priority: "0.8" },
     { loc: "/area/", changefreq: "weekly", priority: "0.75" },
     { loc: "/brand/", changefreq: "weekly", priority: "0.75" },
+    { loc: "/guide/", changefreq: "monthly", priority: "0.8" },
+    ...regionUrls,
     ...prefectures.map((p) => ({
       loc: `/p-${p.slug}/`,
       changefreq: "weekly" as const,

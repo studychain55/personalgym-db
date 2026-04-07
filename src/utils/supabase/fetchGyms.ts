@@ -103,3 +103,46 @@ export async function fetchAllGymUids(): Promise<{ uid: string }[]> {
   }
   return data || [];
 }
+
+export async function fetchGymsByRegion(
+  regionId: number,
+  page: number = 1,
+  limit: number = 20
+): Promise<FetchGymsResult> {
+  const from = (page - 1) * limit;
+  const to = from + limit - 1;
+
+  // First get prefecture IDs for this region
+  const { data: prefectures, error: prefErr } = await supabase
+    .from("Prefecture")
+    .select("id")
+    .eq("region_id", regionId);
+
+  if (prefErr || !prefectures || prefectures.length === 0) {
+    return { gyms: [], totalCount: 0 };
+  }
+
+  const prefectureIds = prefectures.map((p: any) => p.id);
+
+  // Then fetch gyms for these prefectures
+  let query = supabase
+    .from("gym_locations")
+    .select(LIST_COLUMNS, { count: "exact" })
+    .eq("is_display", true)
+    .in("prefecture_id", prefectureIds)
+    .range(from, to)
+    .order("search_priority", { ascending: false })
+    .order("review_average_rating", { ascending: false });
+
+  const { data, count, error } = await query;
+
+  if (error) {
+    console.error("fetchGymsByRegion error:", error);
+    return { gyms: [], totalCount: 0 };
+  }
+
+  return {
+    gyms: (data as unknown as GymListItem[]) || [],
+    totalCount: count || 0,
+  };
+}
