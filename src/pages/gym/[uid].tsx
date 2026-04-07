@@ -641,7 +641,12 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
 
             {reviews.length > 5 && (
               <div className="mt-4 text-center">
-                <p className="text-sm text-gray-500">さらに{reviews.length - 5}件の口コミがあります</p>
+                <a
+                  href={`/gym/${gym.uid}/reviews/`}
+                  className="inline-block bg-[#FF6B35] text-white px-6 py-2 rounded-lg font-bold hover:bg-orange-600 transition"
+                >
+                  全{gym.total_review_count}件の口コミを見る →
+                </a>
               </div>
             )}
           </section>

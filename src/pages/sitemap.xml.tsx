@@ -38,11 +38,18 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       changefreq: "weekly" as const,
       priority: "0.70",
     })),
-    ...gyms.map((g) => ({
-      loc: `/gym/${g.uid}/`,
-      changefreq: "monthly" as const,
-      priority: "0.6",
-    })),
+    ...gyms.flatMap((g) => [
+      {
+        loc: `/gym/${g.uid}/`,
+        changefreq: "monthly" as const,
+        priority: "0.6",
+      },
+      {
+        loc: `/gym/${g.uid}/reviews/`,
+        changefreq: "weekly" as const,
+        priority: "0.5",
+      },
+    ]),
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

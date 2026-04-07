@@ -25,6 +25,37 @@ export async function fetchGymReviews(gymId: number): Promise<GymReview[]> {
   return (data as GymReview[]) || [];
 }
 
+export async function fetchGymReviewsPaginated(
+  gymId: number,
+  page: number = 1,
+  perPage: number = 20,
+  sortBy: "newest" | "rating-high" | "rating-low" = "newest"
+): Promise<{ reviews: GymReview[]; totalCount: number }> {
+  let query = supabase
+    .from("gym_reviews")
+    .select("*", { count: "exact" })
+    .eq("gym_id", gymId)
+    .eq("is_display", true);
+
+  // Sort
+  if (sortBy === "rating-high") {
+    query = query.order("rating", { ascending: false }).order("created_at", { ascending: false });
+  } else if (sortBy === "rating-low") {
+    query = query.order("rating", { ascending: true }).order("created_at", { ascending: false });
+  } else {
+    query = query.order("created_at", { ascending: false });
+  }
+
+  // Pagination
+  const start = (page - 1) * perPage;
+  query = query.range(start, start + perPage - 1);
+
+  const { data, error, count } = await query;
+
+  if (error) return { reviews: [], totalCount: 0 };
+  return { reviews: (data as GymReview[]) || [], totalCount: count || 0 };
+}
+
 export async function fetchGymImages(gymId: number): Promise<GymImage[]> {
   const { data, error } = await supabase
     .from("gym_images")
