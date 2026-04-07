@@ -50,7 +50,14 @@ export const JsonLDGymDetail: React.FC<JsonLDGymDetailProps> = ({ gym }) => {
     name: gym.name,
     description: gym.description || gym.catchphrase || `${gym.name}の詳細情報`,
     url: `${baseSiteUrl}/gym/${gym.uid}/`,
-    ...(gym.address && { address: { "@type": "PostalAddress", streetAddress: gym.address } }),
+    ...(gym.address && {
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: gym.address,
+        ...(gym.postal_code && { postalCode: gym.postal_code }),
+        addressCountry: "JP",
+      },
+    }),
     ...(gym.phone && { telephone: gym.phone }),
     ...(gym.website_url && { sameAs: gym.website_url }),
     ...(gym.image_url && { image: gym.image_url }),

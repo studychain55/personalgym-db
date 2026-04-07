@@ -262,6 +262,8 @@ export default function StationPage({
               { href: "/column/gym-student/", title: "学生・20代向けパーソナルジムの選び方" },
               { href: "/column/gym-continuing/", title: "パーソナルジムを続けるコツ｜モチベーション維持" },
               { href: "/column/gym-compare/", title: "パーソナルジムを複数比較する方法" },
+              { href: "/column/gym-rebound/", title: "パーソナルジム卒業後のリバウンド防止" },
+              { href: "/column/gym-age/", title: "40代・50代からのパーソナルジム" },
             ].map((col) => (
               <a
                 key={col.href}

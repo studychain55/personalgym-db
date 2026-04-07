@@ -262,6 +262,8 @@ export default function RegionPage({
               { href: "/column/gym-student/", title: "学生・20代向けパーソナルジムの選び方｜費用を抑えるコツ" },
               { href: "/column/gym-continuing/", title: "パーソナルジムを続けるコツ｜モチベーション維持と挫折防止" },
               { href: "/column/gym-compare/", title: "パーソナルジムを複数比較する方法｜体験レッスンの活用術" },
+              { href: "/column/gym-rebound/", title: "パーソナルジム卒業後のリバウンドを防ぐ方法｜食事管理と継続トレーニング" },
+              { href: "/column/gym-age/", title: "40代・50代からのパーソナルジム｜年齢別の効果と注意点" },
             ].map((article) => (
               <NextLink
                 key={article.href}

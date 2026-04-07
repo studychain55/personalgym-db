@@ -477,6 +477,18 @@ export default function GuidePage({
             >
               複数ジム比較の方法
             </NextLink>
+            <NextLink
+              href="/column/gym-rebound/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              卒業後のリバウンド防止
+            </NextLink>
+            <NextLink
+              href="/column/gym-age/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              40代・50代からのジム
+            </NextLink>
           </div>
         </section>
 

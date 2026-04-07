@@ -471,6 +471,28 @@ export default function CityPage({
                 体験レッスン活用と最適なジム選びの方法。
               </p>
             </NextLink>
+            <NextLink
+              href="/column/gym-rebound/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                パーソナルジム卒業後のリバウンド防止
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                食事管理と継続トレーニングでリバウンド防止。
+              </p>
+            </NextLink>
+            <NextLink
+              href="/column/gym-age/"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+            >
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
+                40代・50代からのパーソナルジム
+              </h3>
+              <p className="text-xs text-gray-600 line-clamp-2">
+                年齢別の効果と安全な始め方を完全解説。
+              </p>
+            </NextLink>
           </div>
         </section>
 
