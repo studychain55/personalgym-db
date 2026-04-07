@@ -3,13 +3,13 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
-import { JsonLDListPage } from "@/components/UI/JsonLD";
+import { JsonLDListPage, JsonLDFaq } from "@/components/UI/JsonLD";
 import GymCard from "@/features/gym/components/GymCard";
 import Breadcrumb from "@/components/UI/BreadCrumb";
 import Pagination from "@mui/material/Pagination";
 import { fetchGyms } from "@/utils/supabase/fetchGyms";
 import { setConditionalCacheHeaders } from "@/utils/cacheHeaders";
-import type { GymListItem } from "@/types";
+import type { GymListItem, GymFaq } from "@/types";
 
 const PER_PAGE = 20;
 
@@ -28,6 +28,63 @@ interface AllGymsProps {
     hasDiet: boolean;
     hasTrialAvailable: boolean;
   };
+  faqs: GymFaq[];
+}
+
+/**
+ * Generate FAQs for all gyms page
+ */
+function generateAllGymsPageFaqs(totalCount: number): GymFaq[] {
+  return [
+    {
+      id: 1,
+      gym_id: null,
+      question: "全国のパーソナルジムの料金相場は？",
+      answer: "全国のパーソナルジムの料金は、1回あたり5,000円～15,000円が相場です。都心部は比較的高めで、地方は手頃な価格となっていることが多いです。入会金は0円～50,000円程度。体験レッスンは1,000円～5,000円で受けられるジムが大多数です。",
+      sort_order: 1,
+      is_global: false,
+    },
+    {
+      id: 2,
+      gym_id: null,
+      question: "パーソナルジムの選び方は？",
+      answer: "パーソナルジムを選ぶ際は、①料金・立地、②トレーナーの経験・実績、③食事指導の有無、④返金保証があるか、を確認しましょう。当サイトでは料金・評価・口コミを一覧で比較できるため、複数のジムを検討した上で体験レッスンを受けることをおすすめします。",
+      sort_order: 2,
+      is_global: false,
+    },
+    {
+      id: 3,
+      gym_id: null,
+      question: "パーソナルジムで本当に痩せられますか？",
+      answer: "正しいトレーニングと栄養指導を組み合わせることで、多くの人が目標の体重に到達しています。特に「食事指導」が付いているパーソナルジムを選ぶことが重要です。3ヶ月～6ヶ月の継続で、目に見える変化を感じられる人が多いです。",
+      sort_order: 3,
+      is_global: false,
+    },
+    {
+      id: 4,
+      gym_id: null,
+      question: "女性向けのパーソナルジムはありますか？",
+      answer: "はい、多くのパーソナルジムで女性向けプランを提供しています。女性専用施設や女性トレーナーの指導を受けたい場合は、当サイトで「女性向け」タグで検索すると簡単に見つかります。女性ならではのボディメイク目標を達成できるジムが多くあります。",
+      sort_order: 4,
+      is_global: false,
+    },
+    {
+      id: 5,
+      gym_id: null,
+      question: "初心者でもパーソナルジムに通えますか？",
+      answer: "もちろんです。むしろ初心者こそパーソナルトレーニングがおすすめです。専門的なトレーナーが正しいフォームを指導してくれるので、怪我のリスクが低く、効果的に身体を変えることができます。当サイトで「初心者向け」タグで検索すると、初心者プログラムが充実しているジムが見つかります。",
+      sort_order: 5,
+      is_global: false,
+    },
+    {
+      id: 6,
+      gym_id: null,
+      question: "返金保証があるパーソナルジムを選ぶメリットは？",
+      answer: "返金保証があるジムは、ジム側が結果に自信を持っていることを示しています。万が一、トレーニング効果や満足度が期待値以下の場合、返金してもらえるため安心です。当サイトで「返金保証」タグで絞り込むと、返金保証対応のジムが簡単に見つかります。",
+      sort_order: 6,
+      is_global: false,
+    },
+  ];
 }
 
 export const getServerSideProps: GetServerSideProps<AllGymsProps> = async ({ query, res }) => {
@@ -49,6 +106,8 @@ export const getServerSideProps: GetServerSideProps<AllGymsProps> = async ({ que
     hasTrialAvailable,
   });
 
+  const faqs: GymFaq[] = generateAllGymsPageFaqs(result.totalCount);
+
   setConditionalCacheHeaders(res, result.totalCount);
 
   return {
@@ -64,6 +123,7 @@ export const getServerSideProps: GetServerSideProps<AllGymsProps> = async ({ que
         hasDiet,
         hasTrialAvailable,
       },
+      faqs,
     },
   };
 };
@@ -75,6 +135,7 @@ export default function AllGyms({
   sortBy,
   priceBand,
   features,
+  faqs,
 }: AllGymsProps) {
   const router = useRouter();
   const totalPages = Math.ceil(totalCount / PER_PAGE);
@@ -175,6 +236,7 @@ export default function AllGyms({
         path="/all/"
         items={gyms}
       />
+      <JsonLDFaq faqs={faqs} />
 
       <div className="max-w-6xl mx-auto px-4 py-6">
         <Breadcrumb
@@ -187,6 +249,23 @@ export default function AllGyms({
             ({totalCount.toLocaleString()}件)
           </span>
         </h1>
+
+        {/* SEO Description Section */}
+        <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
+          <h2 className="text-xl font-bold text-gray-900 mb-3">
+            全国のパーソナルジムについて
+          </h2>
+          <p className="text-gray-700 mb-2">
+            全国には{totalCount}
+            件以上のパーソナルジムが存在します。ダイエット・ボディメイク・健康増進など、様々な目的に対応したジムが揃っています。プロのトレーナーによるマンツーマン指導で、効率的に目標を達成することができます。
+          </p>
+          <p className="text-gray-700 mb-2">
+            都心部から地方まで、異なる料金体系・設備・サービスを提供するジムが多くあります。体験レッスンを利用して、複数のジムを比較し、自分に合ったジムを見つけることをおすすめします。
+          </p>
+          <p className="text-gray-700">
+            当サイトでは、全国の主要パーソナルジムを掲載しており、料金・口コミ・評価・特徴を一覧で比較できます。フィルタ機能を使って、女性向け・初心者向け・返金保証ありなど、自分の条件に合ったジムを素早く見つけられます。
+          </p>
+        </section>
 
         {/* ソート・フィルタバー */}
         <div className="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-4">
@@ -351,6 +430,31 @@ export default function AllGyms({
               size="large"
             />
           </div>
+        )}
+
+        {/* FAQ Section */}
+        {faqs.length > 0 && (
+          <section className="mt-12">
+            <h2 className="text-xl font-bold text-gray-900 mb-6">
+              パーソナルジムについてよくある質問
+            </h2>
+            <div className="space-y-4">
+              {faqs.map((faq) => (
+                <details
+                  key={faq.id}
+                  className="group border border-gray-300 rounded-lg p-4 hover:border-orange-300 transition-colors"
+                >
+                  <summary className="cursor-pointer font-semibold text-gray-900 flex items-center justify-between">
+                    {faq.question}
+                    <span className="ml-2 text-lg group-open:rotate-180 transition-transform">
+                      ▼
+                    </span>
+                  </summary>
+                  <p className="mt-3 text-gray-700 text-sm leading-relaxed">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
         )}
       </div>
     </Layout>
