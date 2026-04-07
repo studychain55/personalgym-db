@@ -3,6 +3,7 @@ import { baseSiteUrl } from "@/utils/config";
 import { fetchAllGymUids } from "@/utils/supabase/fetchGyms";
 import { fetchPrefectures, fetchRegionsWithPrefectureCounts } from "@/utils/supabase/fetchPrefectures";
 import { fetchAllFeatures, fetchAllCitiesWithCount } from "@/utils/supabase/fetchFeatures";
+import { fetchAllStationsWithCount } from "@/utils/supabase/fetchStations";
 import { getRegionSlug } from "@/utils/regionMapping";
 
 function SitemapXml() {
@@ -10,12 +11,13 @@ function SitemapXml() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const [gyms, prefectures, regions, features, cities] = await Promise.all([
+  const [gyms, prefectures, regions, features, cities, stations] = await Promise.all([
     fetchAllGymUids(),
     fetchPrefectures(),
     fetchRegionsWithPrefectureCounts(),
     fetchAllFeatures(),
     fetchAllCitiesWithCount(),
+    fetchAllStationsWithCount(),
   ]);
 
   const today = new Date().toISOString().split("T")[0];
@@ -38,6 +40,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     { loc: "/all/", changefreq: "daily", priority: "0.8" },
     { loc: "/area/", changefreq: "weekly", priority: "0.75" },
     { loc: "/brand/", changefreq: "weekly", priority: "0.75" },
+    { loc: "/station/", changefreq: "weekly", priority: "0.75" },
     { loc: "/guide/", changefreq: "monthly", priority: "0.8" },
     ...regionUrls,
     ...prefectures.map((p) => ({
@@ -52,6 +55,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     })),
     ...cities.map((c) => ({
       loc: `/c-${c.slug}/`,
+      changefreq: "weekly" as const,
+      priority: "0.70",
+    })),
+    ...stations.map((s) => ({
+      loc: `/station/${encodeURIComponent(s.station)}/`,
       changefreq: "weekly" as const,
       priority: "0.70",
     })),
