@@ -487,7 +487,19 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
                 {gym.address && (
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 bg-gray-50 font-medium w-28">住所</td>
-                    <td className="py-3 px-4">{gym.address}</td>
+                    <td className="py-3 px-4">
+                      <div className="flex items-center justify-between">
+                        <span>{gym.address}</span>
+                        <a
+                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(gym.address)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#FF6B35] hover:underline text-xs font-bold ml-2 whitespace-nowrap"
+                        >
+                          地図で見る →
+                        </a>
+                      </div>
+                    </td>
                   </tr>
                 )}
                 {stationInfo.length > 0 && (
@@ -557,8 +569,36 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
         {reviews.length > 0 && (
           <section className="mt-8">
             <h2 className="text-xl font-bold text-gray-900 mb-3">口コミ・評判</h2>
+
+            {/* Rating Distribution Bar */}
+            {gym.review_average_rating > 0 && (
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-5 mb-6">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-yellow-600">★ {gym.review_average_rating.toFixed(1)}</div>
+                    <div className="text-sm text-gray-600">{gym.total_review_count}件の評価</div>
+                  </div>
+                  <div className="flex-1 space-y-2">
+                    {[5, 4, 3, 2, 1].map((rating) => {
+                      const count = reviews.filter((r) => r.rating === rating).length;
+                      const percentage = gym.total_review_count > 0 ? (count / gym.total_review_count) * 100 : 0;
+                      return (
+                        <div key={rating} className="flex items-center gap-2">
+                          <span className="text-xs text-gray-600 w-10">{rating}つ星</span>
+                          <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div className="h-full bg-yellow-400" style={{ width: `${percentage}%` }} />
+                          </div>
+                          <span className="text-xs text-gray-600 w-8 text-right">{count}件</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="space-y-4">
-              {reviews.map((review) => (
+              {reviews.slice(0, 5).map((review) => (
                 <div key={review.id} className="bg-white border border-gray-200 rounded-lg p-5">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
@@ -598,6 +638,12 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
                 </div>
               ))}
             </div>
+
+            {reviews.length > 5 && (
+              <div className="mt-4 text-center">
+                <p className="text-sm text-gray-500">さらに{reviews.length - 5}件の口コミがあります</p>
+              </div>
+            )}
           </section>
         )}
 
