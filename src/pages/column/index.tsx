@@ -244,6 +244,13 @@ export default function ColumnIndexPage() {
       date: "2026-04-07",
       category: "ジム選びのコツ",
     },
+    {
+      title: "パーソナルジムでのダイエット成功事例｜3ヶ月で-10kg達成した人の共通点",
+      description: "パーソナルジムダイエット成功者の共通点を徹底解析。3ヶ月で-10kg達成した人が実践する食事管理、トレーニング頻度、目標設定、リバウンド防止法を詳しく紹介。失敗パターンと対策も掲載。",
+      path: "/column/gym-diet-success/",
+      date: "2026-04-07",
+      category: "ダイエット成功事例",
+    },
   ];
 
   return (
