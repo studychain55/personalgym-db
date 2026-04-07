@@ -429,6 +429,18 @@ export default function GuidePage({
             >
               ダイエット効果
             </NextLink>
+            <NextLink
+              href="/column/women-gym/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              女性向けジム
+            </NextLink>
+            <NextLink
+              href="/column/gym-trial/"
+              className="block p-4 border border-orange-200 rounded-lg bg-orange-50 text-orange-700 font-medium no-underline hover:bg-orange-100 transition-colors"
+            >
+              無料体験の活用法
+            </NextLink>
           </div>
         </section>
 
