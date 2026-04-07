@@ -242,3 +242,15 @@ export interface PrefectureWithCount extends Prefecture {
 export interface RegionWithPrefectures extends Region {
   prefectures: PrefectureWithCount[];
 }
+
+export interface CityWithCount extends City {
+  gym_count: number;
+}
+
+export interface PrefectureWithCities extends PrefectureWithCount {
+  cities: CityWithCount[];
+}
+
+export interface RegionWithPrefecturesAndCities extends Region {
+  prefectures: PrefectureWithCities[];
+}

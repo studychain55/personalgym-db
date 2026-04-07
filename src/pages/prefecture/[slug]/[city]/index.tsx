@@ -10,49 +10,72 @@ import { PURPOSE_DEFINITIONS } from "@/constants/purposes";
 import Pagination from "@mui/material/Pagination";
 import { fetchGyms } from "@/utils/supabase/fetchGyms";
 import { fetchPrefectureBySlug } from "@/utils/supabase/fetchPrefectures";
+import { fetchCityBySlug, fetchCitiesWithCountByPrefecture } from "@/utils/supabase/fetchCities";
 import { setConditionalCacheHeaders } from "@/utils/cacheHeaders";
-import type { GymListItem, Prefecture } from "@/types";
+import type { GymListItem, Prefecture, City, CityWithCount } from "@/types";
 
 const PER_PAGE = 20;
 
-interface PrefecturePageProps {
+interface CityPageProps {
   prefecture: Prefecture;
+  city: City;
   gyms: GymListItem[];
   totalCount: number;
   page: number;
+  otherCities: CityWithCount[];
 }
 
-export const getServerSideProps: GetServerSideProps<PrefecturePageProps> = async ({
+export const getServerSideProps: GetServerSideProps<CityPageProps> = async ({
   params,
   query,
   res,
 }) => {
-  const slug = String(params?.prefectureSlug || "").replace(/^p-/, "");
-  const prefecture = await fetchPrefectureBySlug(slug);
+  const prefSlug = String(params?.slug || "");
+  const citySlug = String(params?.city || "");
+
+  const prefecture = await fetchPrefectureBySlug(prefSlug);
   if (!prefecture) return { notFound: true };
 
+  const city = await fetchCityBySlug(citySlug, prefecture.id);
+  if (!city) return { notFound: true };
+
   const page = Math.max(1, parseInt(String(query.page || "1"), 10) || 1);
-  const result = await fetchGyms({ prefectureId: prefecture.id, page, limit: PER_PAGE });
+
+  const [result, otherCities] = await Promise.all([
+    fetchGyms({ prefectureId: prefecture.id, cityId: city.id, page, limit: PER_PAGE }),
+    fetchCitiesWithCountByPrefecture(prefecture.id),
+  ]);
 
   setConditionalCacheHeaders(res, result.totalCount);
 
   return {
     props: {
       prefecture,
+      city,
       gyms: result.gyms,
       totalCount: result.totalCount,
       page,
+      otherCities: otherCities.filter((c) => c.id !== city.id).slice(0, 12),
     },
   };
 };
 
-export default function PrefecturePage({ prefecture, gyms, totalCount, page }: PrefecturePageProps) {
+export default function CityPage({
+  prefecture,
+  city,
+  gyms,
+  totalCount,
+  page,
+  otherCities,
+}: CityPageProps) {
   const router = useRouter();
   const totalPages = Math.ceil(totalCount / PER_PAGE);
-  const basePath = `/p-${prefecture.slug}/`;
+  const basePath = `/p-${prefecture.slug}/c-${city.slug}/`;
+
   const breadcrumbItems = [
-    { label: "ジム一覧", href: "/all/" },
-    { label: `${prefecture.title}` },
+    { label: "エリアから探す", href: "/area/" },
+    { label: prefecture.title, href: `/p-${prefecture.slug}/` },
+    { label: city.title },
   ];
 
   const handlePageChange = (_: unknown, value: number) => {
@@ -62,14 +85,14 @@ export default function PrefecturePage({ prefecture, gyms, totalCount, page }: P
   return (
     <Layout>
       <SEO
-        title={`${prefecture.title}のパーソナルジム${page > 1 ? `（${page}ページ目）` : ""}`}
-        description={`${prefecture.title}のパーソナルジム${totalCount}件を比較。料金・口コミ・特徴で${prefecture.title}のあなたにぴったりのジムが見つかる。`}
+        title={`${city.title}（${prefecture.title}）のパーソナルジム${page > 1 ? `（${page}ページ目）` : ""}`}
+        description={`${city.title}（${prefecture.title}）のパーソナルジム${totalCount}件を比較。料金・口コミ・特徴で${city.title}のあなたにぴったりのジムが見つかる。`}
         path={`${basePath}${page > 1 ? `?page=${page}` : ""}`}
         noindex={page > 1}
       />
       <JsonLDListPage
-        title={`${prefecture.title}のパーソナルジム`}
-        description={`${prefecture.title}のパーソナルジム一覧`}
+        title={`${city.title}（${prefecture.title}）のパーソナルジム`}
+        description={`${city.title}のパーソナルジム一覧`}
         path={basePath}
         items={gyms}
       />
@@ -79,13 +102,13 @@ export default function PrefecturePage({ prefecture, gyms, totalCount, page }: P
         <Breadcrumb items={breadcrumbItems} />
 
         <h1 className="text-2xl font-bold text-gray-900 mt-4">
-          {prefecture.title}のパーソナルジム
+          {city.title}（{prefecture.title}）のパーソナルジム
           <span className="text-base font-normal text-gray-500 ml-2">
             ({totalCount.toLocaleString()}件)
           </span>
         </h1>
         <p className="text-sm md:text-base text-gray-600 mt-3">
-          {prefecture.title}で料金・体験・食事指導・目的別の違いを比較しやすいように、主要情報が分かるジムを一覧化しています。
+          {city.title}で料金・体験・食事指導・目的別の違いを比較しやすいように、主要情報が分かるジムを一覧化しています。
         </p>
 
         <section className="mt-6 rounded-xl border border-orange-100 bg-orange-50/70 p-5">
@@ -97,7 +120,7 @@ export default function PrefecturePage({ prefecture, gyms, totalCount, page }: P
             {PURPOSE_DEFINITIONS.map((purpose) => (
               <NextLink
                 key={purpose.slug}
-                href={`${basePath}${purpose.slug}/`}
+                href={`/p-${prefecture.slug}/${purpose.slug}/`}
                 className="inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-medium text-[#FF6B35] no-underline hover:bg-orange-100 transition-colors"
               >
                 {purpose.shortLabel}
@@ -114,7 +137,7 @@ export default function PrefecturePage({ prefecture, gyms, totalCount, page }: P
 
         {gyms.length === 0 && (
           <div className="text-center py-20 text-gray-500">
-            {prefecture.title}にはまだパーソナルジムが登録されていません。
+            {city.title}にはまだパーソナルジムが登録されていません。
           </div>
         )}
 
@@ -128,6 +151,27 @@ export default function PrefecturePage({ prefecture, gyms, totalCount, page }: P
               size="large"
             />
           </div>
+        )}
+
+        {/* Other cities in the same prefecture */}
+        {otherCities.length > 0 && (
+          <section className="mt-12 pt-8 border-t border-gray-200">
+            <h2 className="text-lg font-bold text-gray-900 mb-4">
+              {prefecture.title}の他のエリア
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {otherCities.map((c) => (
+                <NextLink
+                  key={c.id}
+                  href={`/p-${prefecture.slug}/c-${c.slug}/`}
+                  className="inline-flex items-center rounded-full border border-gray-200 bg-white px-4 py-2 text-sm text-gray-700 no-underline hover:border-[#FF6B35] hover:text-[#FF6B35] transition-colors"
+                >
+                  {c.title}
+                  <span className="text-xs text-gray-400 ml-1">({c.gym_count})</span>
+                </NextLink>
+              ))}
+            </div>
+          </section>
         )}
       </div>
     </Layout>

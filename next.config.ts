@@ -8,6 +8,26 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRidHdlZ3NpdXBpc2tldmhnZmpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU0NTc1NDksImV4cCI6MjA1MTAzMzU0OX0.AxWApWvVcdeuTwdpM_TwQs7OTPabmWntpb_LdFAKyoY",
     NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || "https://personalgym-db.pages.dev",
   },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: "/p-:slug/c-:city",
+          destination: "/prefecture/:slug/:city",
+        },
+        {
+          source: "/p-:slug/:purpose",
+          destination: "/prefecture/:slug/:purpose",
+        },
+        {
+          source: "/p-:slug",
+          destination: "/prefecture/:slug",
+        },
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
+  },
 };
 
 export default nextConfig;

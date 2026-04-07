@@ -105,7 +105,7 @@ export default function Home({ featuredGyms, totalCount, regions }: HomeProps) {
                   {region.prefectures.map((pref) => (
                     <NextLink
                       key={pref.id}
-                      href={`/p-${pref.slug}/`}
+                      href={`/prefecture/${pref.slug}/`}
                       className="text-sm text-gray-600 hover:text-[#FF6B35] no-underline transition-colors"
                     >
                       {pref.title}

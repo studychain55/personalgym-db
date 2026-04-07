@@ -17,7 +17,7 @@ const Header: React.FC = () => {
             ジム一覧
           </NextLink>
           <NextLink
-            href="/#area"
+            href="/area/"
             className="text-sm font-medium text-gray-600 hover:text-[#FF6B35] no-underline transition-colors"
           >
             エリアから探す
