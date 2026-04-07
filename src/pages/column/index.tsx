@@ -272,6 +272,20 @@ export default function ColumnIndexPage() {
       date: "2026-04-07",
       category: "栄養管理",
     },
+    {
+      title: "パーソナルジム初心者ガイド｜初回体験から契約まで知っておくべきこと",
+      description: "パーソナルジム初心者向けガイド。初回体験の流れ、カウンセリング、初回確認事項10選、勧誘トラブル対策、契約前の重要事項、3ヶ月の変化を詳しく解説します。",
+      path: "/column/gym-beginner/",
+      date: "2026-04-07",
+      category: "初心者向け",
+    },
+    {
+      title: "パーソナルジムの比較方法｜大手チェーンと個人スタジオの違いと選び方",
+      description: "パーソナルジム比較ガイド。大手チェーン（RIZAP等）と個人経営の違い、フランチャイズ型と直営型、オンラインとの比較、自分に合うジムの選び方3つの基準を詳しく解説。",
+      path: "/column/gym-comparison/",
+      date: "2026-04-07",
+      category: "ジム選びの比較術",
+    },
   ];
 
   return (
