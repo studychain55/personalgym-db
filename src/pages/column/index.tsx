@@ -35,6 +35,13 @@ export default function ColumnIndexPage() {
       category: "費用",
     },
     {
+      title: "パーソナルジムの選び方完全ガイド｜後悔しないための7つのチェックポイント",
+      description: "パーソナルジム選びで失敗しないための7つのチェックポイント。目的別の選び方、トレーナーの質を見極める方法、立地・通いやすさ、体験レッスンの活用法をまとめました。",
+      path: "/column/gym-choosing/",
+      date: "2026-04-07",
+      category: "ジム選びのコツ",
+    },
+    {
       title: "ダイエットにパーソナルジムをおすすめする理由",
       description: "ダイエット成功率が高いパーソナルジム。成功の秘訣、フィットネスジムとの違い、効果的なトレーニング方法を解説します。",
       path: "/column/diet-gym/",
