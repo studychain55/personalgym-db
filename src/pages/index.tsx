@@ -1,4 +1,5 @@
 import type { GetServerSideProps } from "next";
+import supabase from "@/utils/supabase";
 import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
 import { JsonLDListPage } from "@/components/UI/JsonLD";
@@ -11,10 +12,17 @@ import { siteName, baseSiteUrl } from "@/utils/config";
 import type { GymListItem, RegionWithPrefectures } from "@/types";
 import NextLink from "next/link";
 
+interface CityItem {
+  title: string;
+  slug: string;
+  entity_count: number;
+}
+
 interface HomeProps {
   featuredGyms: GymListItem[];
   totalCount: number;
   regions: RegionWithPrefectures[];
+  topCities: CityItem[];
 }
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async ({ res }) => {
@@ -24,17 +32,50 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async ({ res })
   ]);
 
   setConditionalCacheHeaders(res, gymsResult.totalCount);
+  const entityCitiesRes = await supabase
+    .from("gym_locations")
+    .select("city_id")
+    .eq("is_display", true)
+    .not("city_id", "is", null);
+
+  const cityCounts: Record<number, number> = {};
+  for (const s of entityCitiesRes.data ?? []) {
+    if (s.city_id) cityCounts[s.city_id] = (cityCounts[s.city_id] || 0) + 1;
+  }
+
+  const topCityIds = Object.entries(cityCounts)
+    .filter(([, count]) => count >= 3)
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, 24)
+    .map(([id]) => parseInt(id));
+
+  let topCities: CityItem[] = [];
+  if (topCityIds.length > 0) {
+    const citiesRes = await supabase
+      .from("City")
+      .select("id, title, slug")
+      .in("id", topCityIds);
+    topCities = (citiesRes.data ?? []).map((c: any) => ({
+      title: c.title,
+      slug: c.slug,
+      entity_count: cityCounts[c.id] || 0,
+    }));
+    topCities.sort((a, b) => b.entity_count - a.entity_count);
+  }
+
+
 
   return {
     props: {
       featuredGyms: gymsResult.gyms,
       totalCount: gymsResult.totalCount,
       regions,
+      topCities,
     },
   };
 };
 
-export default function Home({ featuredGyms, totalCount, regions }: HomeProps) {
+export default function Home({ featuredGyms, totalCount, regions, topCities }: HomeProps) {
   return (
     <Layout>
       <SEO
@@ -227,6 +268,27 @@ export default function Home({ featuredGyms, totalCount, regions }: HomeProps) {
           </div>
         </div>
       </section>
+
+      {/* 市区町村から探す */}
+      {topCities.length > 0 && (
+        <section className="py-12">
+          <div className="max-w-6xl mx-auto px-4">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">市区町村からパーソナルジムを探す</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+              {topCities.map((city) => (
+                <NextLink
+                  key={city.slug}
+                  href={`/c-${city.slug}/`}
+                  className="text-center py-2 px-3 bg-white border border-gray-200 rounded-lg text-xs hover:border-orange-400 hover:text-orange-700 transition-colors"
+                >
+                  <span className="block font-medium">{city.title}</span>
+                  <span className="text-gray-400 text-[10px]">{city.entity_count}件</span>
+                </NextLink>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Latest Articles */}
       <section className="bg-blue-50 py-12">
