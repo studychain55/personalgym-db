@@ -12,11 +12,11 @@ export default function Custom404() {
         noindex
       />
       <div className="max-w-4xl mx-auto px-4 py-20 text-center">
-        <h1 className="text-6xl font-bold text-[#FF6B35]">404</h1>
+        <h1 className="text-6xl font-bold text-[#1e782d]">404</h1>
         <p className="text-xl text-gray-600 mt-4">お探しのページは見つかりませんでした</p>
         <NextLink
           href="/"
-          className="inline-block mt-8 bg-[#FF6B35] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+          className="inline-block mt-8 bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
         >
           トップページに戻る
         </NextLink>

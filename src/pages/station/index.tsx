@@ -22,7 +22,7 @@ export const getStaticProps: GetStaticProps<StationListPageProps> = async () => 
     props: {
       stations: stations.slice(0, 100), // Limit to top 100 stations
     },
-    revalidate: 86400,
+    revalidate: 3600,
   };
 };
 

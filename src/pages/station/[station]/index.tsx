@@ -174,7 +174,7 @@ export default function StationPage({
           </p>
         </section>
 
-        <section className="mt-8 rounded-xl border border-orange-100 bg-orange-50/70 p-5">
+        <section className="mt-8 rounded-xl border border-[#bcd7c0] bg-[#f0f6f0] p-5">
           <h2 className="text-lg font-bold text-gray-900">目的から探す</h2>
           <p className="text-sm text-gray-600 mt-2">
             「ダイエット」「女性向け」「初心者向け」など、検討目的に近い一覧へすぐ移動できます。
@@ -184,7 +184,7 @@ export default function StationPage({
               <NextLink
                 key={purpose.slug}
                 href={`/${purpose.slug}/`}
-                className="inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-medium text-[#FF6B35] no-underline hover:bg-orange-100 transition-colors"
+                className="inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-medium text-[#1e782d] no-underline hover:bg-orange-100 transition-colors"
               >
                 {purpose.shortLabel}
               </NextLink>

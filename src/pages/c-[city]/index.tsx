@@ -203,13 +203,13 @@ export default function CityPage({
                 <NextLink
                   key={gym.id}
                   href={`/gym/${gym.uid}/`}
-                  className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:border-[#FF6B35] hover:shadow-lg transition"
+                  className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:border-[#1e782d] hover:shadow-lg transition"
                 >
                   <div className="relative">
                     {gym.image_url && (
                       <img src={gym.image_url} alt={gym.name} className="w-full h-40 object-cover" loading="lazy" />
                     )}
-                    <div className="absolute top-2 left-2 bg-[#FF6B35] text-white font-bold text-sm rounded-full w-8 h-8 flex items-center justify-center">
+                    <div className="absolute top-2 left-2 bg-[#1e782d] text-white font-bold text-sm rounded-full w-8 h-8 flex items-center justify-center">
                       {idx + 1}
                     </div>
                   </div>
@@ -224,7 +224,7 @@ export default function CityPage({
                         <span className="text-yellow-600 font-bold">★ {gym.review_average_rating.toFixed(1)}</span>
                       )}
                       {gym.price_min && (
-                        <span className="text-[#FF6B35] font-bold">¥{gym.price_min.toLocaleString()}〜</span>
+                        <span className="text-[#1e782d] font-bold">¥{gym.price_min.toLocaleString()}〜</span>
                       )}
                     </div>
                   </div>
@@ -234,7 +234,7 @@ export default function CityPage({
           </section>
         )}
 
-        <section className="mt-8 rounded-xl border border-orange-100 bg-orange-50/70 p-5">
+        <section className="mt-8 rounded-xl border border-[#bcd7c0] bg-[#f0f6f0] p-5">
           <h2 className="text-lg font-bold text-gray-900">目的から探す</h2>
           <p className="text-sm text-gray-600 mt-2">
             「ダイエット」「女性向け」「初心者向け」など、検討目的に近い一覧へすぐ移動できます。
@@ -244,7 +244,7 @@ export default function CityPage({
               <NextLink
                 key={purpose.slug}
                 href={`/${purpose.slug}/`}
-                className="inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-medium text-[#FF6B35] no-underline hover:bg-orange-100 transition-colors"
+                className="inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-medium text-[#1e782d] no-underline hover:bg-orange-100 transition-colors"
               >
                 {purpose.shortLabel}
               </NextLink>
@@ -286,7 +286,7 @@ export default function CityPage({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <NextLink
               href="/column/gym-beginner/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジム初心者ガイド
@@ -297,7 +297,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-choosing/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジムの選び方
@@ -308,7 +308,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-cost/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジムの費用相場
@@ -319,7 +319,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/diet-gym/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 ダイエット目的のパーソナルジム活用法
@@ -330,7 +330,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/training-frequency/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルトレーニングの頻度
@@ -341,7 +341,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-nutrition/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジムでの食事管理
@@ -352,7 +352,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/women-gym/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 女性専用パーソナルジムの選び方
@@ -363,7 +363,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-trial/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 体験入会でジムを賢く選ぼう
@@ -374,7 +374,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-trainer/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルトレーナーの選び方と資格の見方
@@ -385,7 +385,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-bodymake/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジムで体が変わるまでの期間と目安
@@ -396,7 +396,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-diet/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジムでダイエットを成功させる方法
@@ -407,7 +407,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-price/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジムの価格・料金ガイド
@@ -418,7 +418,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-muscle/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 筋肉をつけるためのパーソナルジム活用法
@@ -429,7 +429,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-women-50/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 50代女性のパーソナルジム
@@ -440,7 +440,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-senior/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 シニア・50代からのパーソナルジム
@@ -451,7 +451,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-student/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 学生・20代向けパーソナルジムの選び方
@@ -462,7 +462,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-continuing/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジムを続けるコツ
@@ -473,7 +473,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-compare/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジムを複数比較する方法
@@ -484,7 +484,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-rebound/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジム卒業後のリバウンド防止
@@ -495,7 +495,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-age/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 40代・50代からのパーソナルジム
@@ -506,7 +506,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-shokuji/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジムの食事指導とは
@@ -517,7 +517,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-online/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 オンラインと通いの比較
@@ -528,7 +528,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-stretch/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 ストレッチと柔軟性向上
@@ -539,7 +539,7 @@ export default function CityPage({
             </NextLink>
             <NextLink
               href="/column/gym-back/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 腰痛・肩こり改善

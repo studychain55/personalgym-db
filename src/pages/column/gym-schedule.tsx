@@ -341,7 +341,7 @@ export default function GymSchedulePage({ faqs }: PageProps) {
                   <p className="text-sm text-gray-600">推奨：毎回のセッション直後に記録</p>
                 </div>
 
-                <div className="bg-orange-50 rounded-lg p-4">
+                <div className="bg-[#f0f6f0] rounded-lg p-4">
                   <h3 className="font-bold text-gray-900 mb-2">LINE・メール通知</h3>
                   <p className="text-gray-700 mb-2">
                     多くのジムは LINE や メール で予約確認・リマインダーを送信します。スマートフォンにプッシュ通知を設定すると、予約忘れを防ぐことができます。

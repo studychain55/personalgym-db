@@ -183,19 +183,19 @@ export default function GymDietPage({ faqs }: PageProps) {
                 パーソナルジムでのダイエット効果は、継続期間によって大きく変わります。現実的な目標設定が重要です：
               </p>
               <div className="space-y-4">
-                <div className="border border-orange-200 bg-orange-50 rounded-lg p-4">
+                <div className="border border-orange-200 bg-[#f0f6f0] rounded-lg p-4">
                   <h3 className="font-bold text-gray-900 mb-2">1～2週間</h3>
                   <p className="text-gray-700 text-sm mb-2">体重の変化よりも、身体の変化（引き締まった感覚、むくみの改善）が先に感じられます。食事管理により便秘が改善され、2～3kg の減少が見られることもあります。</p>
                 </div>
-                <div className="border border-orange-200 bg-orange-50 rounded-lg p-4">
+                <div className="border border-orange-200 bg-[#f0f6f0] rounded-lg p-4">
                   <h3 className="font-bold text-gray-900 mb-2">4～8週間（1～2ヶ月）</h3>
                   <p className="text-gray-700 text-sm mb-2">周囲が「痩せたね」と気づき始める段階です。3～5kg 程度の体重減が期待できます。体脂肪率も低下し、見た目の変化が明らかになります。</p>
                 </div>
-                <div className="border border-orange-200 bg-orange-50 rounded-lg p-4">
+                <div className="border border-orange-200 bg-[#f0f6f0] rounded-lg p-4">
                   <h3 className="font-bold text-gray-900 mb-2">3～4ヶ月</h3>
                   <p className="text-gray-700 text-sm mb-2">目標体重に近づく時期です。5～10kg 以上の減量が実現している人が多いです。体力も向上し、日常生活が快適になることを実感できます。</p>
                 </div>
-                <div className="border border-orange-200 bg-orange-50 rounded-lg p-4">
+                <div className="border border-orange-200 bg-[#f0f6f0] rounded-lg p-4">
                   <h3 className="font-bold text-gray-900 mb-2">6ヶ月～1年</h3>
                   <p className="text-gray-700 text-sm mb-2">理想の体を手に入れ、その後の維持に入る段階です。筋肉がついているため、食事管理を継続すれば、リバウンドが少なくなります。</p>
                 </div>

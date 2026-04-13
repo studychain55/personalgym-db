@@ -18,11 +18,17 @@ interface CityItem {
   entity_count: number;
 }
 
+interface StationItem {
+  station: string;
+  count: number;
+}
+
 interface HomeProps {
   featuredGyms: GymListItem[];
   totalCount: number;
   regions: RegionWithPrefectures[];
   topCities: CityItem[];
+  topStations: StationItem[];
 }
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async ({ res }) => {
@@ -63,7 +69,20 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async ({ res })
     topCities.sort((a, b) => b.entity_count - a.entity_count);
   }
 
-
+  const stationRes = await supabase
+    .from("gym_locations")
+    .select("nearest_station")
+    .eq("is_display", true)
+    .not("nearest_station", "is", null);
+  const stationCounts: Record<string, number> = {};
+  for (const s of stationRes.data ?? []) {
+    if (s.nearest_station) stationCounts[s.nearest_station] = (stationCounts[s.nearest_station] || 0) + 1;
+  }
+  const topStations = Object.entries(stationCounts)
+    .filter(([, count]) => count >= 2)
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, 24)
+    .map(([station, count]) => ({ station, count }));
 
   return {
     props: {
@@ -71,11 +90,12 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async ({ res })
       totalCount: gymsResult.totalCount,
       regions,
       topCities,
+      topStations,
     },
   };
 };
 
-export default function Home({ featuredGyms, totalCount, regions, topCities }: HomeProps) {
+export default function Home({ featuredGyms, totalCount, regions, topCities, topStations }: HomeProps) {
   return (
     <Layout>
       <SEO
@@ -122,7 +142,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities }: H
       <section className="bg-gradient-to-br from-[#FFF3ED] to-white py-12 md:py-20">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900">
-            あなたに最適な<span className="text-[#FF6B35]">パーソナルジム</span>が見つかる
+            あなたに最適な<span className="text-[#1e782d]">パーソナルジム</span>が見つかる
           </h1>
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
@@ -130,7 +150,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities }: H
           <div className="mt-8">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#FF6B35] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
             >
               ジム一覧を見る →
             </NextLink>
@@ -151,7 +171,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities }: H
             <div className="text-center mt-8">
               <NextLink
                 href="/all/"
-                className="inline-block border-2 border-[#FF6B35] text-[#FF6B35] font-bold px-8 py-3 rounded-lg hover:bg-[#FF6B35] hover:text-white transition-colors no-underline"
+                className="inline-block border-2 border-[#1e782d] text-[#1e782d] font-bold px-8 py-3 rounded-lg hover:bg-[#1e782d] hover:text-white transition-colors no-underline"
               >
                 すべてのジムを見る（{totalCount.toLocaleString()}件）
               </NextLink>
@@ -254,7 +274,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities }: H
                     <NextLink
                       key={pref.id}
                       href={`/prefecture/${pref.slug}/`}
-                      className="text-sm text-gray-600 hover:text-[#FF6B35] no-underline transition-colors"
+                      className="text-sm text-gray-600 hover:text-[#1e782d] no-underline transition-colors"
                     >
                       {pref.title}
                       {pref.gym_count > 0 && (
@@ -290,8 +310,29 @@ export default function Home({ featuredGyms, totalCount, regions, topCities }: H
         </section>
       )}
 
+      {/* 駅から探す */}
+      {topStations.length > 0 && (
+        <section className="py-12">
+          <div className="max-w-6xl mx-auto px-4">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">駅からパーソナルジムを探す</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+              {topStations.map((s) => (
+                <NextLink key={s.station} href={`/station/${encodeURIComponent(s.station)}/`}
+                  className="text-center py-2 px-3 bg-white border border-gray-200 rounded-lg text-xs hover:border-orange-400 hover:text-orange-700 transition-colors">
+                  <span className="block font-medium">{s.station}</span>
+                  <span className="text-gray-400 text-[10px]">{s.count}件</span>
+                </NextLink>
+              ))}
+            </div>
+            <div className="mt-3 text-right">
+              <NextLink href="/station/" className="text-sm text-orange-700 hover:underline">すべての駅を見る →</NextLink>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Latest Articles */}
-      <section className="bg-blue-50 py-12">
+      <section className="bg-[#f0f6f0] py-12">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">最新コラム</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -300,12 +341,12 @@ export default function Home({ featuredGyms, totalCount, regions, topCities }: H
               className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200 border border-gray-200 h-full flex flex-col no-underline"
             >
               <div className="p-6 flex flex-col h-full">
-                <div className="text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full inline-block mb-3 w-fit">初心者向け</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow line-clamp-2 hover:text-blue-700 transition-colors">
+                <div className="text-xs font-semibold text-[#1e782d] bg-[#e9f2ea] px-3 py-1 rounded-full inline-block mb-3 w-fit">初心者向け</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow line-clamp-2 hover:text-[#1e782d] transition-colors">
                   パーソナルジム初心者ガイド｜始め方・準備すること
                 </h3>
                 <p className="text-sm text-gray-600 line-clamp-2 mb-4">パーソナルジムが初めての方へ。始める前に必要な準備をまとめました。</p>
-                <div className="text-blue-700 font-semibold text-sm">記事を読む →</div>
+                <div className="text-[#1e782d] font-semibold text-sm">記事を読む →</div>
               </div>
             </NextLink>
             <NextLink
@@ -313,12 +354,12 @@ export default function Home({ featuredGyms, totalCount, regions, topCities }: H
               className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200 border border-gray-200 h-full flex flex-col no-underline"
             >
               <div className="p-6 flex flex-col h-full">
-                <div className="text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full inline-block mb-3 w-fit">費用</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow line-clamp-2 hover:text-blue-700 transition-colors">
+                <div className="text-xs font-semibold text-[#1e782d] bg-[#e9f2ea] px-3 py-1 rounded-full inline-block mb-3 w-fit">費用</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow line-clamp-2 hover:text-[#1e782d] transition-colors">
                   パーソナルジムの料金相場を解説
                 </h3>
                 <p className="text-sm text-gray-600 line-clamp-2 mb-4">パーソナルジムの料金体系を徹底解説。相場費用をまとめた比較表。</p>
-                <div className="text-blue-700 font-semibold text-sm">記事を読む →</div>
+                <div className="text-[#1e782d] font-semibold text-sm">記事を読む →</div>
               </div>
             </NextLink>
             <NextLink
@@ -326,19 +367,19 @@ export default function Home({ featuredGyms, totalCount, regions, topCities }: H
               className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200 border border-gray-200 h-full flex flex-col no-underline"
             >
               <div className="p-6 flex flex-col h-full">
-                <div className="text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-full inline-block mb-3 w-fit">ダイエット</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow line-clamp-2 hover:text-blue-700 transition-colors">
+                <div className="text-xs font-semibold text-[#1e782d] bg-[#e9f2ea] px-3 py-1 rounded-full inline-block mb-3 w-fit">ダイエット</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow line-clamp-2 hover:text-[#1e782d] transition-colors">
                   ダイエットにパーソナルジムをおすすめする理由
                 </h3>
                 <p className="text-sm text-gray-600 line-clamp-2 mb-4">ダイエット成功率が高いパーソナルジムの秘訣を解説します。</p>
-                <div className="text-blue-700 font-semibold text-sm">記事を読む →</div>
+                <div className="text-[#1e782d] font-semibold text-sm">記事を読む →</div>
               </div>
             </NextLink>
           </div>
           <div className="text-center mt-8">
             <NextLink
               href="/column/"
-              className="inline-block border-2 border-blue-700 text-blue-700 font-bold px-8 py-3 rounded-lg hover:bg-blue-700 hover:text-white transition-colors no-underline"
+              className="inline-block border-2 border-blue-700 text-[#1e782d] font-bold px-8 py-3 rounded-lg hover:bg-[#1e782d] hover:text-white transition-colors no-underline"
             >
               すべてのコラムを見る
             </NextLink>

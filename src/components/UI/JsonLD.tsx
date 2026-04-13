@@ -41,9 +41,15 @@ export const JsonLDListPage: React.FC<JsonLDListPageProps> = ({
 
 interface JsonLDGymDetailProps {
   gym: GymLocation;
+  images?: Array<{ image_url: string }>;
 }
 
-export const JsonLDGymDetail: React.FC<JsonLDGymDetailProps> = ({ gym }) => {
+export const JsonLDGymDetail: React.FC<JsonLDGymDetailProps> = ({ gym, images }) => {
+  const allImages = [
+    ...(gym.image_url ? [gym.image_url] : []),
+    ...(images?.map(img => img.image_url) ?? []),
+  ].filter(Boolean);
+
   const jsonld: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": ["ExerciseGym", "LocalBusiness"],
@@ -60,7 +66,7 @@ export const JsonLDGymDetail: React.FC<JsonLDGymDetailProps> = ({ gym }) => {
     }),
     ...(gym.phone && { telephone: gym.phone }),
     ...(gym.website_url && { sameAs: gym.website_url }),
-    ...(gym.image_url && { image: gym.image_url }),
+    image: allImages.length > 0 ? (allImages.length === 1 ? allImages[0] : allImages) : undefined,
     ...(gym.latitude &&
       gym.longitude && {
         geo: {

@@ -93,7 +93,7 @@ const PREFECTURE_REGIONS = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 mt-auto">
+    <footer className="bg-gray-900 text-gray-300 mt-auto border-t border-[#1e782d]">
       <div className="max-w-6xl mx-auto px-4 py-10">
         {/* Prefecture Links */}
         <div className="mb-8">

@@ -53,18 +53,18 @@ export default function AreaPage({ regions, totalGymCount }: AreaPageProps) {
         <div className="mt-8 space-y-10">
           {regions.map((region) => (
             <section key={region.id}>
-              <h2 className="text-xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-[#FF6B35]">
+              <h2 className="text-xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-[#1e782d]">
                 {region.name}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {region.prefectures.map((pref) => (
                   <div
                     key={pref.id}
-                    className="bg-white rounded-lg border border-gray-200 p-4 hover:border-[#FF6B35] transition-colors"
+                    className="bg-white rounded-lg border border-gray-200 p-4 hover:border-[#1e782d] transition-colors"
                   >
                     <NextLink
                       href={`/p-${pref.slug}/`}
-                      className="text-lg font-bold text-gray-900 hover:text-[#FF6B35] no-underline transition-colors"
+                      className="text-lg font-bold text-gray-900 hover:text-[#1e782d] no-underline transition-colors"
                     >
                       {pref.title}
                       {pref.gym_count > 0 && (
@@ -79,7 +79,7 @@ export default function AreaPage({ regions, totalGymCount }: AreaPageProps) {
                           <NextLink
                             key={city.id}
                             href={`/p-${pref.slug}/c-${city.slug}/`}
-                            className="text-sm text-gray-600 hover:text-[#FF6B35] no-underline transition-colors"
+                            className="text-sm text-gray-600 hover:text-[#1e782d] no-underline transition-colors"
                           >
                             {city.title}
                             <span className="text-xs text-gray-400 ml-0.5">
@@ -90,7 +90,7 @@ export default function AreaPage({ regions, totalGymCount }: AreaPageProps) {
                         {pref.cities.length > 10 && (
                           <NextLink
                             href={`/p-${pref.slug}/`}
-                            className="text-sm text-[#FF6B35] hover:underline no-underline"
+                            className="text-sm text-[#1e782d] hover:underline no-underline"
                           >
                             他{pref.cities.length - 10}エリア →
                           </NextLink>

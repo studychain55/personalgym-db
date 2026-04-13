@@ -35,12 +35,12 @@ const GymCompareTable: React.FC<GymCompareTableProps> = ({ gyms, title }) => {
             {gyms.map((gym) => (
               <tr key={gym.id} className="border-b border-gray-100 hover:bg-orange-50/30">
                 <td className="py-3 px-3 sticky left-0 bg-white z-10">
-                  <NextLink href={`/gym/${gym.uid}/`} className="text-[#FF6B35] font-medium hover:underline no-underline">
+                  <NextLink href={`/gym/${gym.uid}/`} className="text-[#1e782d] font-medium hover:underline no-underline">
                     {gym.name}
                   </NextLink>
                   {gym.brand && <div className="text-xs text-gray-400">{gym.brand.name}</div>}
                 </td>
-                <td className="py-3 px-3 text-right font-bold text-[#FF6B35]">
+                <td className="py-3 px-3 text-right font-bold text-[#1e782d]">
                   {gym.price_min ? fmt(gym.price_min) : "-"}
                   {gym.price_max && gym.price_min !== gym.price_max && <span className="text-xs text-gray-400">〜{fmt(gym.price_max)}</span>}
                 </td>

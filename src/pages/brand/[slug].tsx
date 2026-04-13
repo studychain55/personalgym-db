@@ -148,7 +148,7 @@ export default function BrandPage({ brand, gyms, totalCount, page, prefectures }
                 <a
                   key={pref.slug}
                   href={`/p-${pref.slug}/?brand=${brand.slug}`}
-                  className="bg-white border border-gray-200 rounded-lg p-3 text-center hover:border-[#FF6B35] hover:shadow-md transition"
+                  className="bg-white border border-gray-200 rounded-lg p-3 text-center hover:border-[#1e782d] hover:shadow-md transition"
                 >
                   <span className="font-medium text-gray-800">{pref.title}の{brand.name}</span>
                 </a>

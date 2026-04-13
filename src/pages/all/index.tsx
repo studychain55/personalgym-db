@@ -277,7 +277,7 @@ export default function AllGyms({
               <select
                 value={sortBy}
                 onChange={(e) => handleSortChange(e.target.value as SortOption)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#FF6B35]"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#1e782d]"
               >
                 <option value="priority">おすすめ順</option>
                 <option value="rating">評価の高い順</option>
@@ -295,7 +295,7 @@ export default function AllGyms({
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
               </svg>
-              フィルタ {activeFilterCount > 0 && <span className="text-[#FF6B35] font-bold">({activeFilterCount})</span>}
+              フィルタ {activeFilterCount > 0 && <span className="text-[#1e782d] font-bold">({activeFilterCount})</span>}
             </button>
           </div>
 
@@ -313,7 +313,7 @@ export default function AllGyms({
                       value={band}
                       checked={priceBand === band}
                       onChange={() => handlePriceBandChange(band)}
-                      className="w-4 h-4 text-[#FF6B35] rounded focus:ring-[#FF6B35]"
+                      className="w-4 h-4 text-[#1e782d] rounded focus:ring-[#1e782d]"
                     />
                     <span className="text-sm text-gray-700">{getPriceBandLabel(band)}</span>
                   </label>
@@ -330,7 +330,7 @@ export default function AllGyms({
                     type="checkbox"
                     checked={features.hasFemaleOnly}
                     onChange={() => handleFeatureToggle("hasFemaleOnly")}
-                    className="w-4 h-4 text-[#FF6B35] rounded focus:ring-[#FF6B35]"
+                    className="w-4 h-4 text-[#1e782d] rounded focus:ring-[#1e782d]"
                   />
                   <span className="text-sm text-gray-700">女性専用</span>
                 </label>
@@ -339,7 +339,7 @@ export default function AllGyms({
                     type="checkbox"
                     checked={features.hasTrialAvailable}
                     onChange={() => handleFeatureToggle("hasTrialAvailable")}
-                    className="w-4 h-4 text-[#FF6B35] rounded focus:ring-[#FF6B35]"
+                    className="w-4 h-4 text-[#1e782d] rounded focus:ring-[#1e782d]"
                   />
                   <span className="text-sm text-gray-700">体験あり</span>
                 </label>
@@ -355,7 +355,7 @@ export default function AllGyms({
                     type="checkbox"
                     checked={features.hasMoneyBack}
                     onChange={() => handleFeatureToggle("hasMoneyBack")}
-                    className="w-4 h-4 text-[#FF6B35] rounded focus:ring-[#FF6B35]"
+                    className="w-4 h-4 text-[#1e782d] rounded focus:ring-[#1e782d]"
                   />
                   <span className="text-sm text-gray-700">返金保証</span>
                 </label>
@@ -364,7 +364,7 @@ export default function AllGyms({
                     type="checkbox"
                     checked={features.hasDiet}
                     onChange={() => handleFeatureToggle("hasDiet")}
-                    className="w-4 h-4 text-[#FF6B35] rounded focus:ring-[#FF6B35]"
+                    className="w-4 h-4 text-[#1e782d] rounded focus:ring-[#1e782d]"
                   />
                   <span className="text-sm text-gray-700">食事指導あり</span>
                 </label>
@@ -400,7 +400,7 @@ export default function AllGyms({
         </div>
 
         {/* ジム一覧 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
           {gyms.map((gym) => (
             <GymCard key={gym.id} gym={gym} />
           ))}
@@ -414,7 +414,7 @@ export default function AllGyms({
             <p className="text-gray-500">条件に合うパーソナルジムが見つかりませんでした。</p>
             <button
               onClick={handleResetFilters}
-              className="mt-4 px-4 py-2 bg-[#FF6B35] text-white rounded-lg text-sm font-medium hover:bg-[#e55a25] transition-colors"
+              className="mt-4 px-4 py-2 bg-[#1e782d] text-white rounded-lg text-sm font-medium hover:bg-[#e55a25] transition-colors"
             >
               フィルタをリセット
             </button>
@@ -439,7 +439,7 @@ export default function AllGyms({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <NextLink
               href="/column/gym-beginner/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジム初心者ガイド
@@ -450,7 +450,7 @@ export default function AllGyms({
             </NextLink>
             <NextLink
               href="/column/gym-choosing/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジムの選び方
@@ -461,7 +461,7 @@ export default function AllGyms({
             </NextLink>
             <NextLink
               href="/column/gym-cost/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジムの費用相場
@@ -472,7 +472,7 @@ export default function AllGyms({
             </NextLink>
             <NextLink
               href="/column/diet-gym/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 ダイエット目的のパーソナルジム活用法
@@ -483,7 +483,7 @@ export default function AllGyms({
             </NextLink>
             <NextLink
               href="/column/training-frequency/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルトレーニングの頻度
@@ -494,7 +494,7 @@ export default function AllGyms({
             </NextLink>
             <NextLink
               href="/column/gym-nutrition/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジムでの食事管理
@@ -505,7 +505,7 @@ export default function AllGyms({
             </NextLink>
             <NextLink
               href="/column/women-gym/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 女性向けパーソナルジムの選び方
@@ -516,7 +516,7 @@ export default function AllGyms({
             </NextLink>
             <NextLink
               href="/column/gym-trial/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 無料体験・体験入会の活用ガイド
@@ -527,7 +527,7 @@ export default function AllGyms({
             </NextLink>
             <NextLink
               href="/column/gym-trainer/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルトレーナーの選び方と資格の見方
@@ -538,7 +538,7 @@ export default function AllGyms({
             </NextLink>
             <NextLink
               href="/column/gym-bodymake/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#FF6B35] transition-all"
+              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
             >
               <h3 className="font-semibold text-gray-900 mb-2 text-sm">
                 パーソナルジムで体が変わるまでの期間と目安

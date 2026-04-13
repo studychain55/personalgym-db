@@ -131,7 +131,7 @@ export default function GymReviewsPage({
             {gym.name}の口コミ一覧
           </h1>
           <p className="text-gray-600 mb-1">全{totalCount}件の口コミ</p>
-          <NextLink href={`/gym/${gym.uid}/`} className="text-[#FF6B35] hover:underline text-sm font-medium">
+          <NextLink href={`/gym/${gym.uid}/`} className="text-[#1e782d] hover:underline text-sm font-medium">
             ← ジム詳細ページへ戻る
           </NextLink>
         </div>
@@ -178,7 +178,7 @@ export default function GymReviewsPage({
               onClick={() => handleSortChange("newest")}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
                 sortBy === "newest"
-                  ? "bg-[#FF6B35] text-white"
+                  ? "bg-[#1e782d] text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
@@ -188,7 +188,7 @@ export default function GymReviewsPage({
               onClick={() => handleSortChange("rating-high")}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
                 sortBy === "rating-high"
-                  ? "bg-[#FF6B35] text-white"
+                  ? "bg-[#1e782d] text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
@@ -198,7 +198,7 @@ export default function GymReviewsPage({
               onClick={() => handleSortChange("rating-low")}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
                 sortBy === "rating-low"
-                  ? "bg-[#FF6B35] text-white"
+                  ? "bg-[#1e782d] text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
@@ -318,7 +318,7 @@ export default function GymReviewsPage({
                 "& .MuiPaginationItem-root": {
                   color: "#666",
                   "&.Mui-selected": {
-                    backgroundColor: "#FF6B35",
+                    backgroundColor: "#1e782d",
                     color: "white",
                   },
                 },
@@ -329,14 +329,14 @@ export default function GymReviewsPage({
 
         {/* CTA */}
         {(gym.trial_available || gym.website_url) && (
-          <div className="mt-10 bg-gradient-to-r from-[#FF6B35] to-orange-600 rounded-xl p-6 text-center text-white">
+          <div className="mt-10 bg-gradient-to-r from-[#1e782d] to-orange-600 rounded-xl p-6 text-center text-white">
             <h3 className="text-lg font-bold mb-2">気になったら無料体験へ</h3>
             <p className="text-sm mb-4 opacity-95">まずは実際のジムを体験してみましょう</p>
             <div className="flex gap-3 flex-col md:flex-row">
               {gym.trial_available && (
                 <a
                   href={gym.website_url || "#"}
-                  className="flex-1 bg-white text-[#FF6B35] py-3 rounded-lg font-bold text-center hover:bg-gray-100 transition"
+                  className="flex-1 bg-white text-[#1e782d] py-3 rounded-lg font-bold text-center hover:bg-gray-100 transition"
                 >
                   無料体験を予約
                 </a>
