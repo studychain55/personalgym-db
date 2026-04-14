@@ -519,7 +519,9 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
                 {gym.phone && (
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 bg-gray-50 font-medium">電話番号</td>
-                    <td className="py-3 px-4">{gym.phone}</td>
+                    <td className="py-3 px-4">
+                      <a href={`tel:${gym.phone}`} className="text-[#1e782d] hover:underline font-medium">{gym.phone}</a>
+                    </td>
                   </tr>
                 )}
                 {gym.opening_hours && (

@@ -263,8 +263,9 @@ export default function CityPage({
         </div>
 
         {gyms.length === 0 && (
-          <div className="text-center py-20 text-gray-500">
-            {city.title}にはまだパーソナルジムが登録されていません。
+          <div className="text-center py-16 bg-white rounded-lg px-4">
+            <p className="text-lg font-bold text-gray-800 mb-2">この条件に合う施設は見つかりませんでした</p>
+            <p className="text-gray-500 mb-6 text-sm">条件を変えて検索してみてください。</p>
           </div>
         )}
 

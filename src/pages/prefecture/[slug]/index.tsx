@@ -24,6 +24,7 @@ interface PrefecturePageProps {
   topRatedGyms: GymListItem[];
   cities: CityWithCount[];
   faqs: GymFaq[];
+  currentSort: string;
 }
 
 export const getServerSideProps: GetServerSideProps<PrefecturePageProps> = async ({
@@ -36,7 +37,10 @@ export const getServerSideProps: GetServerSideProps<PrefecturePageProps> = async
   if (!prefecture) return { notFound: true };
 
   const page = Math.max(1, parseInt(String(query.page || "1"), 10) || 1);
-  const result = await fetchGyms({ prefectureId: prefecture.id, page, limit: PER_PAGE });
+  const sort = (query.sort as string) || "";
+  const validSorts = ["priority", "price_asc", "price_desc", "rating", "review_count"];
+  const sortBy = validSorts.includes(sort) ? (sort as "priority" | "price_asc" | "price_desc" | "rating" | "review_count") : "priority";
+  const result = await fetchGyms({ prefectureId: prefecture.id, page, limit: PER_PAGE, sortBy });
   const topRatedResult = await fetchGyms({
     prefectureId: prefecture.id,
     sortBy: "rating",
@@ -58,6 +62,7 @@ export const getServerSideProps: GetServerSideProps<PrefecturePageProps> = async
       topRatedGyms: topRatedResult.gyms,
       cities,
       faqs,
+      currentSort: sort,
     },
   };
 };
@@ -110,6 +115,14 @@ function generatePrefectureFaqs(prefectureName: string, totalCount: number): Gym
   ];
 }
 
+const SORT_OPTIONS = [
+  { value: "", label: "おすすめ順" },
+  { value: "rating", label: "評価が高い順" },
+  { value: "price_asc", label: "料金が安い順" },
+  { value: "price_desc", label: "料金が高い順" },
+  { value: "review_count", label: "口コミが多い順" },
+];
+
 export default function PrefecturePage({
   prefecture,
   gyms,
@@ -118,6 +131,7 @@ export default function PrefecturePage({
   topRatedGyms,
   cities,
   faqs,
+  currentSort,
 }: PrefecturePageProps) {
   const router = useRouter();
   const totalPages = Math.ceil(totalCount / PER_PAGE);
@@ -128,7 +142,14 @@ export default function PrefecturePage({
   ];
 
   const handlePageChange = (_: unknown, value: number) => {
-    router.push({ pathname: basePath, query: value > 1 ? { page: value } : {} });
+    const query: Record<string, string> = {};
+    if (value > 1) query.page = String(value);
+    if (currentSort) query.sort = currentSort;
+    router.push({ pathname: basePath, query });
+  };
+
+  const handleSortChange = (sort: string) => {
+    router.push({ pathname: basePath, query: sort ? { sort } : {} });
   };
 
   return (
@@ -241,7 +262,20 @@ export default function PrefecturePage({
           </section>
         )}
 
-        <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">{prefecture.title}全体のジム一覧</h2>
+        <div className="mt-8 flex items-center justify-between gap-3 mb-4">
+          <h2 className="text-xl font-bold text-gray-900">{prefecture.title}全体のジム一覧
+            <span className="text-sm font-normal text-gray-500 ml-2">({totalCount.toLocaleString()}件)</span>
+          </h2>
+          <select
+            value={currentSort}
+            onChange={(e) => handleSortChange(e.target.value)}
+            className="px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#1e782d]"
+          >
+            {SORT_OPTIONS.map((opt) => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {gyms.map((gym) => (
             <GymCard key={gym.id} gym={gym} />
@@ -249,8 +283,14 @@ export default function PrefecturePage({
         </div>
 
         {gyms.length === 0 && (
-          <div className="text-center py-20 text-gray-500">
-            {prefecture.title}にはまだパーソナルジムが登録されていません。
+          <div className="text-center py-16 bg-gray-50 rounded-xl border border-gray-200">
+            <p className="text-gray-500 text-lg mb-3">{prefecture.title}のパーソナルジムはまだ登録されていません</p>
+            <NextLink
+              href="/all/"
+              className="inline-block bg-[#1e782d] text-white px-6 py-2.5 rounded-lg font-bold hover:bg-[#155420] transition no-underline text-sm"
+            >
+              全国のジムを探す
+            </NextLink>
           </div>
         )}
 
