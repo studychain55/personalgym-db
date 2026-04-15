@@ -385,8 +385,25 @@ export default function AllGyms({
           </div>
         </div>
 
+        {/* 件数表示 */}
+        <div className="flex items-center justify-between mb-4 mt-4">
+          {totalCount > 0 ? (
+            <p className="text-sm text-gray-600">
+              <span className="font-bold text-[#1e782d]">{totalCount.toLocaleString()}件</span>
+              {" "}中 {(page - 1) * PER_PAGE + 1}〜{Math.min(page * PER_PAGE, totalCount)}件を表示
+            </p>
+          ) : (
+            <p className="text-sm text-gray-500">0件</p>
+          )}
+          {activeFilterCount > 0 && (
+            <NextLink href="/all/" className="text-xs text-[#E53935] border border-[#E53935] rounded-full px-3 py-1 hover:bg-red-50 transition-colors">
+              絞り込みをリセット
+            </NextLink>
+          )}
+        </div>
+
         {/* 検索結果表示 */}
-        <div className="mt-4 text-sm text-gray-600">
+        <div className="text-sm text-gray-600">
           {activeFilterCount > 0 && (
             <p>
               フィルタ適用中: <span className="font-medium text-gray-900">{getSortLabel(sortBy)}</span>
