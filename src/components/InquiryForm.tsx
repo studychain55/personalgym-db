@@ -39,6 +39,11 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
   );
 
   return (
+    <>
+      <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4 text-sm text-green-800">
+        <p className="font-medium">✓ 無料でご相談いただけます</p>
+        <p className="text-xs mt-1 text-green-700">入力3分・しつこい営業なし・いつでもキャンセル可</p>
+      </div>
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label className="block text-sm font-bold text-gray-700 mb-1">お名前 <span className="text-red-500">*</span></label>
@@ -66,5 +71,6 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
         {status==='loading'?'送信中...':'お問い合わせを送信する'}
       </button>
     </form>
+    </>
   );
 }

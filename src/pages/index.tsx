@@ -155,6 +155,12 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
               ジム一覧を見る →
             </NextLink>
           </div>
+          {/* 信頼バッジ */}
+          <div className="flex flex-wrap justify-center gap-4 mt-4 text-xs text-gray-500">
+            <span className="flex items-center gap-1"><span className="text-green-600 font-bold">✓</span>無料で検索・比較</span>
+            <span className="flex items-center gap-1"><span className="text-green-600 font-bold">✓</span>全国対応</span>
+            <span className="flex items-center gap-1"><span className="text-green-600 font-bold">✓</span>しつこい営業なし</span>
+          </div>
         </div>
       </section>
 
