@@ -147,13 +147,29 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
-            <NextLink
-              href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
-            >
-              ジム一覧を見る →
-            </NextLink>
+          <div className="mt-8 max-w-xl mx-auto">
+            <div className="flex gap-2 bg-white rounded-xl p-2 shadow-sm border border-gray-200">
+              <input
+                type="text"
+                placeholder="エリア・ジム名・駅名で検索"
+                className="flex-1 px-4 py-2.5 text-sm text-gray-800 bg-transparent focus:outline-none rounded-lg"
+                onKeyDown={(e) => { if (e.key === 'Enter') { const q = (e.target as HTMLInputElement).value.trim(); window.location.href = `/all/${q ? `?kw=${encodeURIComponent(q)}` : ''}`; } }}
+              />
+              <button
+                type="button"
+                onClick={(e) => { const inp = (e.currentTarget.previousElementSibling as HTMLInputElement); const q = inp?.value?.trim(); window.location.href = `/all/${q ? `?kw=${encodeURIComponent(q)}` : ''}`; }}
+                className="bg-[#1e782d] text-white font-bold px-6 py-2.5 rounded-lg text-sm hover:bg-[#155420] transition-colors flex-shrink-0"
+              >
+                検索
+              </button>
+            </div>
+            <div className="flex flex-wrap justify-center gap-2 mt-3">
+              {["無料体験あり", "女性専用", "ダイエット", "駅近"].map((tag) => (
+                <a key={tag} href={`/all/?kw=${encodeURIComponent(tag)}`} className="text-xs px-3 py-1 bg-white/80 rounded-full hover:bg-white transition-colors text-gray-700 border border-gray-200">
+                  {tag}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
