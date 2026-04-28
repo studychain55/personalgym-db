@@ -251,22 +251,18 @@ export default function AllGyms({
           </span>
         </h1>
 
-        {/* SEO Description Section */}
-        <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
-          <h2 className="text-xl font-bold text-gray-900 mb-3">
-            全国のパーソナルジムについて
-          </h2>
-          <p className="text-gray-700 mb-2">
-            全国には{totalCount}
-            件以上のパーソナルジムが存在します。ダイエット・ボディメイク・健康増進など、様々な目的に対応したジムが揃っています。プロのトレーナーによるマンツーマン指導で、効率的に目標を達成することができます。
-          </p>
-          <p className="text-gray-700 mb-2">
-            都心部から地方まで、異なる料金体系・設備・サービスを提供するジムが多くあります。体験レッスンを利用して、複数のジムを比較し、自分に合ったジムを見つけることをおすすめします。
-          </p>
-          <p className="text-gray-700">
-            当サイトでは、全国の主要パーソナルジムを掲載しており、料金・口コミ・評価・特徴を一覧で比較できます。フィルタ機能を使って、女性向け・初心者向け・返金保証ありなど、自分の条件に合ったジムを素早く見つけられます。
-          </p>
-        </section>
+        {/* SEO Description Section - collapsed on mobile for faster content access */}
+        <details className="mt-6 bg-gray-50 rounded-lg border border-gray-200 group">
+          <summary className="px-5 py-3 cursor-pointer font-medium text-gray-700 hover:text-gray-900 transition-colors flex justify-between items-center text-sm">
+            <span>全国のパーソナルジムについて</span>
+            <span className="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <div className="px-5 pb-4 text-sm text-gray-600 space-y-2">
+            <p>全国には{totalCount}件以上のパーソナルジムが存在します。ダイエット・ボディメイク・健康増進など、様々な目的に対応したジムが揃っています。プロのトレーナーによるマンツーマン指導で、効率的に目標を達成することができます。</p>
+            <p>都心部から地方まで、異なる料金体系・設備・サービスを提供するジムが多くあります。体験レッスンを利用して、複数のジムを比較し、自分に合ったジムを見つけることをおすすめします。</p>
+            <p>当サイトでは、全国の主要パーソナルジムを掲載しており、料金・口コミ・評価・特徴を一覧で比較できます。フィルタ機能を使って、女性向け・初心者向け・返金保証ありなど、自分の条件に合ったジムを素早く見つけられます。</p>
+          </div>
+        </details>
 
         {/* ソート・フィルタバー */}
         <div className="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-4">

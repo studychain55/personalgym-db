@@ -147,13 +147,36 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
-            <NextLink
-              href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+          <form
+            className="mt-8 max-w-xl mx-auto flex gap-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const kw = (e.currentTarget.querySelector('input') as HTMLInputElement)?.value.trim();
+              window.location.href = `/all/${kw ? `?kw=${encodeURIComponent(kw)}` : ""}`;
+            }}
+          >
+            <input
+              type="text"
+              placeholder="エリア・ジム名・目的で検索（例：渋谷、ダイエット）"
+              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#1e782d] shadow-sm"
+            />
+            <button
+              type="submit"
+              className="bg-[#1e782d] text-white font-bold px-6 py-3 rounded-lg hover:bg-[#155420] transition-colors shadow-sm flex-shrink-0"
             >
-              ジム一覧を見る →
-            </NextLink>
+              検索
+            </button>
+          </form>
+          <div className="mt-3 flex flex-wrap justify-center gap-2">
+            {["ダイエット", "女性専用", "無料体験あり", "駅近"].map((tag) => (
+              <NextLink
+                key={tag}
+                href={`/all/?kw=${encodeURIComponent(tag)}`}
+                className="text-xs px-3 py-1 bg-white border border-gray-200 rounded-full text-gray-600 hover:border-[#1e782d] hover:text-[#1e782d] transition-colors no-underline"
+              >
+                {tag}
+              </NextLink>
+            ))}
           </div>
         </div>
       </section>
