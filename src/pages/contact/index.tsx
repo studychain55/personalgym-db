@@ -14,6 +14,13 @@ export default function Contact() {
         <Breadcrumb items={[{ label: "お問い合わせ" }]} />
         <h1 className="text-2xl font-bold text-gray-900 mt-4">お問い合わせ</h1>
         <div className="mt-6 bg-white border border-gray-200 rounded-lg p-6">
+          <div className="flex flex-wrap gap-3 mb-5">
+            {['入力3分で完了', '返信は24時間以内', '無料で相談できます'].map((text) => (
+              <span key={text} className="flex items-center gap-1 text-xs text-green-700 font-medium">
+                <span>✓</span> {text}
+              </span>
+            ))}
+          </div>
           <p className="text-gray-600 mb-6">
             パーソナルジムDBに関するお問い合わせは、以下のメールアドレスまでご連絡ください。
           </p>

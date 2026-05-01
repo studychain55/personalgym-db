@@ -144,7 +144,12 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900">
             あなたに最適な<span className="text-[#1e782d]">パーソナルジム</span>が見つかる
           </h1>
-          <p className="mt-4 text-lg text-gray-600">
+          <div className="flex flex-wrap justify-center gap-2 mb-3 mt-4">
+            {["ダイエット", "筋トレ", "ボディメイク"].map((b) => (
+              <span key={b} className="text-xs bg-white/20 backdrop-blur-sm px-3 py-0.5 rounded-full border border-white/30">{b}</span>
+            ))}
+          </div>
+          <p className="mt-2 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
           <div className="mt-8">
