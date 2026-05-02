@@ -23,6 +23,7 @@ interface AllGymsProps {
   page: number;
   sortBy: SortOption;
   priceBand: PriceBand;
+  kw: string;
   features: {
     hasFemaleOnly: boolean;
     hasMoneyBack: boolean;
@@ -96,6 +97,7 @@ export const getServerSideProps: GetServerSideProps<AllGymsProps> = async ({ que
   const hasMoneyBack = query.moneyback === "1";
   const hasDiet = query.diet === "1";
   const hasTrialAvailable = query.trial === "1";
+  const kw = String(query.kw || "").trim();
 
   const result = await fetchGyms({
     page,
@@ -105,6 +107,7 @@ export const getServerSideProps: GetServerSideProps<AllGymsProps> = async ({ que
     hasMoneyBack,
     hasDiet,
     hasTrialAvailable,
+    kw: kw || undefined,
   });
 
   const faqs: GymFaq[] = generateAllGymsPageFaqs(result.totalCount);
@@ -118,6 +121,7 @@ export const getServerSideProps: GetServerSideProps<AllGymsProps> = async ({ que
       page,
       sortBy,
       priceBand,
+      kw,
       features: {
         hasFemaleOnly,
         hasMoneyBack,
@@ -135,6 +139,7 @@ export default function AllGyms({
   page,
   sortBy,
   priceBand,
+  kw,
   features,
   faqs,
 }: AllGymsProps) {
@@ -245,11 +250,17 @@ export default function AllGyms({
         />
 
         <h1 className="text-2xl font-bold text-gray-900 mt-4">
-          全国のパーソナルジム一覧
-          <span className="text-base font-normal text-gray-500 ml-2">
-            ({totalCount.toLocaleString()}件)
+          {kw ? `「${kw}」のパーソナルジム` : "全国のパーソナルジム一覧"}
+          <span className="text-base font-normal text-[#1e782d] ml-2 bg-[#f0f6f0] px-2 py-0.5 rounded-full">
+            {totalCount.toLocaleString()}件
           </span>
         </h1>
+        {kw && (
+          <p className="text-sm text-gray-500 mt-1">
+            「{kw}」の検索結果
+            <NextLink href="/all/" className="text-[#1e782d] underline text-xs">条件をクリア</NextLink>
+          </p>
+        )}
 
         {/* SEO Description Section */}
         <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">

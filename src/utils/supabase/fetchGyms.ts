@@ -27,6 +27,7 @@ interface FetchGymsOptions {
   hasDiet?: boolean;
   hasTrialAvailable?: boolean;
   sortBy?: "priority" | "price_asc" | "price_desc" | "rating" | "review_count";
+  kw?: string;
 }
 
 interface FetchGymsResult {
@@ -39,7 +40,7 @@ export async function fetchGyms(options: FetchGymsOptions = {}): Promise<FetchGy
     prefectureId, cityId, brandId,
     page = 1, limit = 20,
     purposeSlug, hasFemaleOnly, hasMoneyBack, hasDiet, hasTrialAvailable,
-    sortBy = "priority",
+    sortBy = "priority", kw,
   } = options;
   const from = (page - 1) * limit;
   const to = from + limit - 1;
@@ -53,6 +54,7 @@ export async function fetchGyms(options: FetchGymsOptions = {}): Promise<FetchGy
   if (prefectureId) query = query.eq("prefecture_id", prefectureId);
   if (cityId) query = query.eq("city_id", cityId);
   if (brandId) query = query.eq("brand_id", brandId);
+  if (kw) query = query.ilike("name", `%${kw}%`);
   if (hasFemaleOnly) query = query.eq("has_female_only", true);
   if (hasMoneyBack) query = query.eq("has_money_back", true);
   if (hasDiet) query = query.eq("options_diet", true);
