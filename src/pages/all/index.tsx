@@ -246,27 +246,13 @@ export default function AllGyms({
 
         <h1 className="text-2xl font-bold text-gray-900 mt-4">
           全国のパーソナルジム一覧
-          <span className="text-base font-normal text-gray-500 ml-2">
-            ({totalCount.toLocaleString()}件)
-          </span>
         </h1>
-
-        {/* SEO Description Section */}
-        <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
-          <h2 className="text-xl font-bold text-gray-900 mb-3">
-            全国のパーソナルジムについて
-          </h2>
-          <p className="text-gray-700 mb-2">
-            全国には{totalCount}
-            件以上のパーソナルジムが存在します。ダイエット・ボディメイク・健康増進など、様々な目的に対応したジムが揃っています。プロのトレーナーによるマンツーマン指導で、効率的に目標を達成することができます。
-          </p>
-          <p className="text-gray-700 mb-2">
-            都心部から地方まで、異なる料金体系・設備・サービスを提供するジムが多くあります。体験レッスンを利用して、複数のジムを比較し、自分に合ったジムを見つけることをおすすめします。
-          </p>
-          <p className="text-gray-700">
-            当サイトでは、全国の主要パーソナルジムを掲載しており、料金・口コミ・評価・特徴を一覧で比較できます。フィルタ機能を使って、女性向け・初心者向け・返金保証ありなど、自分の条件に合ったジムを素早く見つけられます。
-          </p>
-        </section>
+        <p className="mt-1 text-sm text-gray-500">
+          <span className="font-bold text-[#1e782d] text-base">{totalCount.toLocaleString()}</span> 件掲載中 — 料金・口コミ・特徴で比較
+          {activeFilterCount > 0 && (
+            <span className="ml-2 bg-[#e9f2ea] text-[#1e782d] text-xs px-2 py-0.5 rounded-full font-medium">絞り込み中 {activeFilterCount}件</span>
+          )}
+        </p>
 
         {/* ソート・フィルタバー */}
         <div className="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-4">
