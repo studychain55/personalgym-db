@@ -244,15 +244,31 @@ export default function AllGyms({
           items={[{ label: "ジム一覧" }]}
         />
 
-        <h1 className="text-2xl font-bold text-gray-900 mt-4">
-          全国のパーソナルジム一覧
-          <span className="text-base font-normal text-gray-500 ml-2">
-            ({totalCount.toLocaleString()}件)
-          </span>
-        </h1>
+        <div className="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <h1 className="text-2xl font-bold text-gray-900">
+            全国のパーソナルジム一覧
+            <span className="text-base font-normal text-gray-500 ml-2">
+              ({totalCount.toLocaleString()}件)
+            </span>
+          </h1>
+          <div className="flex gap-2 flex-shrink-0">
+            <a
+              href="/area/"
+              className="text-xs font-bold px-4 py-2 rounded-lg border-2 border-[#1e782d] text-[#1e782d] hover:bg-[#f0f6f0] transition-colors no-underline whitespace-nowrap"
+            >
+              エリアから探す
+            </a>
+            <a
+              href="/station/"
+              className="text-xs font-bold px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors no-underline whitespace-nowrap"
+            >
+              駅から探す
+            </a>
+          </div>
+        </div>
 
         {/* SEO Description Section */}
-        <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
+        <section className="mt-6 p-5 bg-gray-50 rounded-lg border border-gray-200">
           <h2 className="text-xl font-bold text-gray-900 mb-3">
             全国のパーソナルジムについて
           </h2>

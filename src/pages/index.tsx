@@ -141,20 +141,30 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
       {/* Hero */}
       <section className="bg-gradient-to-br from-[#FFF3ED] to-white py-12 md:py-20">
         <div className="max-w-6xl mx-auto px-4 text-center">
+          <p className="inline-block text-xs font-bold bg-[#1e782d] text-white px-3 py-1 rounded-full mb-4 tracking-wide">
+            日本最大級のパーソナルジム検索サイト
+          </p>
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900">
             あなたに最適な<span className="text-[#1e782d]">パーソナルジム</span>が見つかる
           </h1>
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#155420] transition-colors no-underline shadow-md"
             >
-              ジム一覧を見る →
+              ジム一覧をすべて見る（{totalCount > 0 ? `${totalCount.toLocaleString()}件` : ""}） →
+            </NextLink>
+            <NextLink
+              href="#area"
+              className="inline-block border-2 border-[#1e782d] text-[#1e782d] font-bold px-8 py-3 rounded-lg hover:bg-[#f0f6f0] transition-colors no-underline"
+            >
+              エリアから探す
             </NextLink>
           </div>
+          <p className="mt-4 text-xs text-gray-400">無料・登録不要 | 料金・口コミ・特徴を一覧比較</p>
         </div>
       </section>
 
@@ -187,17 +197,17 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
             数字で見るパーソナルジム
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
-              <div className="text-4xl font-bold text-gray-700 mb-2">{totalCount.toLocaleString()}件</div>
-              <p className="text-gray-600">掲載パーソナルジム数</p>
+            <div className="bg-white rounded-lg p-6 text-center border border-gray-200 shadow-sm">
+              <div className="text-4xl font-bold text-[#1e782d] mb-2">{totalCount.toLocaleString()}<span className="text-2xl">件</span></div>
+              <p className="text-gray-600 text-sm">掲載パーソナルジム数</p>
             </div>
-            <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
-              <div className="text-4xl font-bold text-gray-700 mb-2">2～3ヶ月</div>
-              <p className="text-gray-600">効果が出始める目安期間</p>
+            <div className="bg-white rounded-lg p-6 text-center border border-gray-200 shadow-sm">
+              <div className="text-4xl font-bold text-[#1e782d] mb-2">2<span className="text-2xl">～</span>3<span className="text-2xl">ヶ月</span></div>
+              <p className="text-gray-600 text-sm">効果が出始める目安期間</p>
             </div>
-            <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
-              <div className="text-4xl font-bold text-gray-700 mb-2">15万～60万円</div>
-              <p className="text-gray-600">短期集中コースの費用相場</p>
+            <div className="bg-white rounded-lg p-6 text-center border border-gray-200 shadow-sm">
+              <div className="text-4xl font-bold text-[#1e782d] mb-2">15<span className="text-2xl">万～</span>60<span className="text-2xl">万円</span></div>
+              <p className="text-gray-600 text-sm">短期集中コースの費用相場</p>
             </div>
           </div>
         </div>
@@ -379,7 +389,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <div className="text-center mt-8">
             <NextLink
               href="/column/"
-              className="inline-block border-2 border-blue-700 text-[#1e782d] font-bold px-8 py-3 rounded-lg hover:bg-[#1e782d] hover:text-white transition-colors no-underline"
+              className="inline-block border-2 border-[#1e782d] text-[#1e782d] font-bold px-8 py-3 rounded-lg hover:bg-[#1e782d] hover:text-white transition-colors no-underline"
             >
               すべてのコラムを見る
             </NextLink>

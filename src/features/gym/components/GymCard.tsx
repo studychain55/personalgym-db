@@ -124,26 +124,30 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
           )}
 
           {/* 月額料金ブロック */}
-          {(gym.price_min || gym.price_max) && (
-            <div className="p-2 bg-[#f0f6f0] rounded-lg border border-[#bcd7c0]">
-              <div className="text-[10px] text-[#828282] mb-0.5">月額料金</div>
-              <div className="flex items-baseline gap-1">
-                <span className="text-base font-bold text-[#1e782d]">
-                  {formatPrice(gym.price_min)}
-                </span>
-                {gym.price_max && gym.price_min !== gym.price_max && (
-                  <span className="text-xs text-[#595959]">
-                    〜{formatPrice(gym.price_max)}
+          <div className="p-2 bg-[#f0f6f0] rounded-lg border border-[#bcd7c0]">
+            <div className="text-[10px] text-[#828282] mb-0.5">月額料金</div>
+            {(gym.price_min || gym.price_max) ? (
+              <>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-base font-bold text-[#1e782d]">
+                    {formatPrice(gym.price_min)}
                   </span>
-                )}
-              </div>
-              {gym.price_per_session && (
-                <div className="text-[10px] text-[#828282] mt-0.5">
-                  1回あたり {formatPrice(gym.price_per_session)}
+                  {gym.price_max && gym.price_min !== gym.price_max && (
+                    <span className="text-xs text-[#595959]">
+                      〜{formatPrice(gym.price_max)}
+                    </span>
+                  )}
                 </div>
-              )}
-            </div>
-          )}
+                {gym.price_per_session && (
+                  <div className="text-[10px] text-[#828282] mt-0.5">
+                    1回あたり {formatPrice(gym.price_per_session)}
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="text-sm font-bold text-[#828282]">詳細はジムにお問い合わせ</div>
+            )}
+          </div>
 
           {/* 評価 */}
           {gym.review_average_rating > 0 && (
@@ -180,8 +184,11 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
 
           {/* CTAボタン */}
           <div className="mt-auto pt-2">
-            <div className="w-full text-center text-xs font-bold py-2 px-3 rounded-lg bg-[#1e782d] text-white group-hover:bg-[#155420] transition-colors">
-              詳細を見る →
+            <div className="w-full text-center text-sm font-bold py-2.5 px-3 rounded-lg bg-[#1e782d] text-white group-hover:bg-[#155420] transition-colors flex items-center justify-center gap-1">
+              詳細・料金を見る
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              </svg>
             </div>
           </div>
         </div>
