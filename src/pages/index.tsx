@@ -155,6 +155,26 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
               ジム一覧を見る →
             </NextLink>
           </div>
+          {/* 目的別クイックリンク */}
+          <div className="mt-6">
+            <p className="text-sm text-gray-500 mb-3">目的から探す</p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {[
+                { label: "🆓 無料体験あり", href: "/all/?trial=1" },
+                { label: "👩 女性専用", href: "/all/?female=1" },
+                { label: "💰 返金保証あり", href: "/all/?moneyback=1" },
+                { label: "🥗 ダイエット特化", href: "/all/?diet=1" },
+              ].map(({ label, href }) => (
+                <NextLink
+                  key={label}
+                  href={href}
+                  className="text-sm px-4 py-2 bg-white border border-[#1e782d]/40 text-[#1e782d] rounded-full hover:bg-[#f0f6f0] hover:border-[#1e782d] transition-colors font-medium no-underline shadow-sm"
+                >
+                  {label}
+                </NextLink>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
