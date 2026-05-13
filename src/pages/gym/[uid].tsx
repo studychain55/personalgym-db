@@ -223,38 +223,6 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
           )}
         </div>
 
-        {/* Description */}
-        {gym.description && (
-          <section className="mt-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-3">ジムについて</h2>
-            <p className="text-gray-600 whitespace-pre-line">{gym.description}</p>
-          </section>
-        )}
-
-        {/* Atmosphere */}
-        {gym.atmosphere && (
-          <section className="mt-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-2">雰囲気</h3>
-            <p className="text-gray-600">{gym.atmosphere}</p>
-          </section>
-        )}
-
-        {/* Video */}
-        {gym.video_url && (
-          <section className="mt-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-2">紹介動画</h3>
-            <div className="aspect-video rounded-lg overflow-hidden">
-              <iframe
-                src={gym.video_url}
-                className="w-full h-full"
-                allowFullScreen
-                loading="lazy"
-                title={`${gym.name}の紹介動画`}
-              />
-            </div>
-          </section>
-        )}
-
         {/* CTA Section (Desktop) */}
         {(gym.trial_available || gym.website_url) && (
           <div className="mt-6 rounded-xl border-2 border-[#1e782d] bg-[#f0f6f0] p-5">
