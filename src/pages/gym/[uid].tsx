@@ -880,18 +880,21 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
 
         {/* Final CTA */}
         {(gym.trial_available || gym.website_url) && (
-          <div className="mt-10 bg-gradient-to-r from-[#1e782d] to-orange-600 rounded-xl p-6 text-center text-white">
-            <h3 className="text-lg font-bold mb-2">今すぐお問い合わせ</h3>
-            <p className="text-sm mb-4 opacity-95">無料カウンセリング・体験トレーニングを受けてみませんか？</p>
-            <div className="flex gap-3 flex-col md:flex-row">
+          <div className="mt-10 bg-[#1e782d] rounded-xl p-6 md:p-8 text-center text-white shadow-lg">
+            <div className="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
+              {gym.trial_available ? "無料体験受付中" : "公式サイトで詳細確認"}
+            </div>
+            <h3 className="text-xl md:text-2xl font-bold mb-2">{gym.name}で理想の体を手に入れよう</h3>
+            <p className="text-sm mb-6 opacity-90">まずは無料カウンセリング・体験トレーニングからお気軽にどうぞ</p>
+            <div className="flex gap-3 flex-col sm:flex-row justify-center">
               {gym.trial_available && (
-                <a href={gym.website_url || "#"} className="flex-1 bg-white text-[#1e782d] py-3 rounded-lg font-bold text-center hover:bg-gray-100 transition">
-                  無料体験を予約
+                <a href={gym.website_url || "#"} className="flex-1 max-w-xs mx-auto sm:mx-0 bg-white text-[#1e782d] py-3.5 rounded-xl font-bold text-center hover:bg-gray-50 transition shadow-md text-base">
+                  無料体験を予約する →
                 </a>
               )}
               {gym.website_url && (
-                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-white bg-opacity-20 text-white py-3 rounded-lg font-bold text-center hover:bg-opacity-30 transition border border-white border-opacity-30">
-                  公式サイトへ
+                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 max-w-xs mx-auto sm:mx-0 bg-white/15 text-white py-3.5 rounded-xl font-bold text-center hover:bg-white/25 transition border border-white/40 text-base">
+                  公式サイトを見る
                 </a>
               )}
             </div>
