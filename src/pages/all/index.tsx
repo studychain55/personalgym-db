@@ -251,6 +251,48 @@ export default function AllGyms({
           </span>
         </h1>
 
+        {/* クイックフィルターチップ（常時表示） */}
+        <div className="mt-4 flex flex-wrap gap-2">
+          <span className="text-xs text-gray-400 self-center">絞り込み:</span>
+          {[
+            { label: "無料体験あり", param: "trial", value: "1", active: features.hasTrialAvailable },
+            { label: "女性専用", param: "female", value: "1", active: features.hasFemaleOnly },
+            { label: "返金保証", param: "moneyback", value: "1", active: features.hasMoneyBack },
+            { label: "食事指導あり", param: "diet", value: "1", active: features.hasDiet },
+          ].map(({ label, param, value, active }) => {
+            const newParams = new URLSearchParams();
+            if (sortBy !== "priority") newParams.set("sort", sortBy);
+            if (priceBand !== "all") newParams.set("price", priceBand);
+            if (features.hasFemaleOnly && param !== "female") newParams.set("female", "1");
+            if (features.hasMoneyBack && param !== "moneyback") newParams.set("moneyback", "1");
+            if (features.hasDiet && param !== "diet") newParams.set("diet", "1");
+            if (features.hasTrialAvailable && param !== "trial") newParams.set("trial", "1");
+            if (!active) newParams.set(param, value);
+            const href = `/all/${newParams.toString() ? `?${newParams.toString()}` : ""}`;
+            return (
+              <NextLink
+                key={label}
+                href={href}
+                className={`text-xs px-3 py-1.5 rounded-full border font-medium transition-colors ${
+                  active
+                    ? "bg-[#1e782d] text-white border-[#1e782d]"
+                    : "bg-white text-gray-600 border-gray-300 hover:border-[#1e782d] hover:text-[#1e782d]"
+                }`}
+              >
+                {label}
+              </NextLink>
+            );
+          })}
+          {activeFilterCount > 0 && (
+            <NextLink
+              href="/all/"
+              className="text-xs px-3 py-1.5 rounded-full border border-red-200 text-red-500 bg-white hover:bg-red-50 font-medium transition-colors"
+            >
+              クリア ×
+            </NextLink>
+          )}
+        </div>
+
         {/* SEO Description Section */}
         <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
           <h2 className="text-xl font-bold text-gray-900 mb-3">
