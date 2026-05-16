@@ -1,4 +1,5 @@
 import type { GetServerSideProps } from "next";
+import { useState, useEffect } from "react";
 import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
 import { JsonLDGymDetail, JsonLDFaq, JsonLDBreadcrumbList, JsonLDDynamicFaq } from "@/components/UI/JsonLD";
@@ -72,6 +73,16 @@ const fmtPrice = (price: number | null, label: string) => {
 };
 
 export default function GymDetail({ gym, reviews, images, faqs, plans, trainers, beforeAfters, campaigns, relatedGyms, prefectureName, prefectureSlug }: GymDetailProps) {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setShowScrollTop(window.scrollY > 600);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
   const breadcrumbItems = [
     { label: "ジム一覧", href: "/all/" },
     ...(prefectureName ? [{ label: prefectureName, href: `/p-${prefectureSlug}/` }] : []),
@@ -96,6 +107,19 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
       <JsonLDFaq faqs={faqs} />
       <JsonLDDynamicFaq gym={gym} />
       <JsonLDBreadcrumbList items={breadcrumbItems} />
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-20 right-4 md:bottom-8 md:right-8 bg-[#1e782d] text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center z-50 hover:bg-[#155420] transition-colors"
+          aria-label="ページのトップへ戻る"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 15l7-7 7 7" />
+          </svg>
+        </button>
+      )}
 
       {/* Sticky CTA Bar */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 shadow-lg z-40 md:hidden">

@@ -158,6 +158,30 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
         </div>
       </section>
 
+      {/* How to Use - 3 Steps */}
+      <section className="bg-white py-10 border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">3ステップで簡単に使える</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+            <div className="text-center px-4">
+              <div className="w-14 h-14 rounded-full bg-[#1e782d] text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4">1</div>
+              <h3 className="font-bold text-gray-900 mb-2">条件を選ぶ</h3>
+              <p className="text-sm text-gray-600">エリア・料金・特徴などを絞り込んで、希望に合うジムを検索</p>
+            </div>
+            <div className="text-center px-4">
+              <div className="w-14 h-14 rounded-full bg-[#1e782d] text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4">2</div>
+              <h3 className="font-bold text-gray-900 mb-2">ジムを比較する</h3>
+              <p className="text-sm text-gray-600">料金・口コミ・設備を一覧で比較。気になるジムの詳細をチェック</p>
+            </div>
+            <div className="text-center px-4">
+              <div className="w-14 h-14 rounded-full bg-[#1e782d] text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4">3</div>
+              <h3 className="font-bold text-gray-900 mb-2">無料体験を予約</h3>
+              <p className="text-sm text-gray-600">公式サイトから無料体験・カウンセリングを申し込んで実際に確かめよう</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Gyms */}
       {featuredGyms.length > 0 && (
         <section className="max-w-6xl mx-auto px-4 py-12">

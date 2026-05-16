@@ -273,7 +273,7 @@ export default function AllGyms({
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             {/* ソートセレクト */}
             <div className="flex items-center gap-2">
-              <label className="text-sm font-medium text-gray-700 whitespace-nowrap">並び順:</label>
+              <label className="text-sm font-bold text-[#1e782d] whitespace-nowrap bg-[#e9f2ea] px-2 py-1 rounded">並び替え：</label>
               <select
                 value={sortBy}
                 onChange={(e) => handleSortChange(e.target.value as SortOption)}
@@ -387,15 +387,20 @@ export default function AllGyms({
 
         {/* 検索結果表示 */}
         <div className="mt-4 text-sm text-gray-600">
-          {activeFilterCount > 0 && (
-            <p>
-              フィルタ適用中: <span className="font-medium text-gray-900">{getSortLabel(sortBy)}</span>
-              {priceBand !== "all" && ` / ${getPriceBandLabel(priceBand)}`}
-              {features.hasFemaleOnly && " / 女性専用"}
-              {features.hasTrialAvailable && " / 体験あり"}
-              {features.hasMoneyBack && " / 返金保証"}
-              {features.hasDiet && " / 食事指導あり"}
+          {activeFilterCount > 0 ? (
+            <p className="flex items-center gap-2 flex-wrap">
+              <span className="inline-flex items-center gap-1 bg-[#1e782d] text-white font-bold px-3 py-1 rounded-full text-xs">
+                絞り込み中 {activeFilterCount}件
+              </span>
+              <span className="font-medium text-gray-900">{getSortLabel(sortBy)}</span>
+              {priceBand !== "all" && <span className="bg-gray-100 px-2 py-0.5 rounded">{getPriceBandLabel(priceBand)}</span>}
+              {features.hasFemaleOnly && <span className="bg-pink-100 text-pink-700 px-2 py-0.5 rounded">女性専用</span>}
+              {features.hasTrialAvailable && <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded">体験あり</span>}
+              {features.hasMoneyBack && <span className="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded">返金保証</span>}
+              {features.hasDiet && <span className="bg-orange-100 text-orange-700 px-2 py-0.5 rounded">食事指導あり</span>}
             </p>
+          ) : (
+            <p className="text-gray-500">全{totalCount.toLocaleString()}件を表示中 | 並び順: <span className="font-medium text-gray-700">{getSortLabel(sortBy)}</span></p>
           )}
         </div>
 
