@@ -270,6 +270,23 @@ export default function AllGyms({
 
         {/* ソート・フィルタバー */}
         <div className="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-4">
+          {/* ソートピルボタン */}
+          <div className="flex flex-wrap gap-2 mb-3">
+            {(["priority", "rating", "review_count", "price_asc", "price_desc"] as SortOption[]).map((opt) => (
+              <button
+                key={opt}
+                onClick={() => handleSortChange(opt)}
+                className={`flex-shrink-0 px-3 py-1.5 text-xs rounded-full border font-medium transition-colors ${
+                  sortBy === opt
+                    ? "bg-[#1e782d] text-white border-transparent"
+                    : "bg-white text-gray-600 border-gray-300 hover:border-[#1e782d] hover:text-[#1e782d]"
+                }`}
+              >
+                {getSortLabel(opt)}
+              </button>
+            ))}
+          </div>
+
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             {/* ソートセレクト */}
             <div className="flex items-center gap-2">
