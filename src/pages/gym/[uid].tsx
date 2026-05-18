@@ -98,15 +98,18 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
       <JsonLDBreadcrumbList items={breadcrumbItems} />
 
       {/* Sticky CTA Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 shadow-lg z-40 md:hidden">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 shadow-[0_-4px_12px_rgba(0,0,0,0.12)] z-40 md:hidden">
+        <p className="text-[10px] text-center text-gray-500 mb-1.5">
+          {gym.has_money_back ? "返金保証あり・" : ""}{gym.trial_available ? "初回無料体験受付中" : "お気軽にお問い合わせください"}
+        </p>
         <div className="flex gap-2">
           {gym.trial_available && (
-            <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-2.5 rounded-lg font-bold text-center text-sm hover:bg-[#155420] transition">
-              無料体験を予約
+            <a href={gym.website_url || "#"} className="flex-1 bg-[#E55E2F] text-white py-3.5 rounded-lg font-bold text-center text-sm hover:bg-[#c94e25] transition shadow-sm">
+              無料体験レッスンを予約する
             </a>
           )}
           {gym.website_url && (
-            <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-2.5 rounded-lg font-bold text-center text-sm hover:bg-gray-200 transition">
+            <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 bg-white border-2 border-[#1e782d] text-[#1e782d] py-3 px-3 rounded-lg font-bold text-center text-xs hover:bg-[#f0f6f0] transition">
               公式サイト
             </a>
           )}
@@ -257,17 +260,22 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
 
         {/* CTA Section (Desktop) */}
         {(gym.trial_available || gym.website_url) && (
-          <div className="hidden md:flex gap-3 mt-6">
-            {gym.trial_available && (
-              <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-3 rounded-lg font-bold text-center hover:bg-[#155420] transition">
-                無料体験を予約する
-              </a>
-            )}
-            {gym.website_url && (
-              <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-3 rounded-lg font-bold text-center hover:bg-gray-200 transition">
-                公式サイトを見る
-              </a>
-            )}
+          <div className="hidden md:block mt-6 border-2 border-[#E55E2F] rounded-xl p-5 bg-orange-50">
+            <p className="text-sm font-bold text-center text-gray-700 mb-3">
+              {gym.trial_available ? "まずは無料体験で確かめてみましょう" : "詳しくはジムの公式サイトをご覧ください"}
+            </p>
+            <div className="flex gap-3">
+              {gym.trial_available && (
+                <a href={gym.website_url || "#"} className="flex-1 bg-[#E55E2F] text-white py-3.5 rounded-lg font-bold text-center hover:bg-[#c94e25] transition text-base shadow-sm">
+                  無料体験レッスンを予約する →
+                </a>
+              )}
+              {gym.website_url && (
+                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-white border-2 border-[#1e782d] text-[#1e782d] py-3 rounded-lg font-bold text-center hover:bg-[#f0f6f0] transition">
+                  公式サイトを見る
+                </a>
+              )}
+            </div>
           </div>
         )}
 
