@@ -885,13 +885,13 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
             <p className="text-sm mb-4 opacity-95">無料カウンセリング・体験トレーニングを受けてみませんか？</p>
             <div className="flex gap-3 flex-col md:flex-row">
               {gym.trial_available && (
-                <a href={gym.website_url || "#"} className="flex-1 bg-white text-[#1e782d] py-3 rounded-lg font-bold text-center hover:bg-gray-100 transition">
+                <a href={gym.website_url || "#"} className="flex-1 w-full bg-white text-[#1e782d] py-3 rounded-lg font-bold text-center hover:bg-gray-100 transition">
                   無料体験を予約
                 </a>
               )}
               {gym.website_url && (
-                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-white bg-opacity-20 text-white py-3 rounded-lg font-bold text-center hover:bg-opacity-30 transition border border-white border-opacity-30">
-                  公式サイトへ
+                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 w-full bg-white bg-opacity-20 text-white py-3 rounded-lg font-bold text-center hover:bg-opacity-30 transition border border-white border-opacity-30">
+                  無料でお問い合わせ
                 </a>
               )}
             </div>
