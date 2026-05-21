@@ -105,6 +105,11 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
               無料体験を予約
             </a>
           )}
+          {!gym.trial_available && gym.website_url && (
+            <a href={`#inquiry`} className="flex-1 bg-[#1e782d] text-white py-2.5 rounded-lg font-bold text-center text-sm hover:bg-[#155420] transition">
+              このジムに問い合わせる
+            </a>
+          )}
           {gym.website_url && (
             <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-2.5 rounded-lg font-bold text-center text-sm hover:bg-gray-200 transition">
               公式サイト
