@@ -399,6 +399,14 @@ export default function AllGyms({
           )}
         </div>
 
+        {/* 件数表示 */}
+        <div className="mt-4 py-3 px-4 bg-[#f0f6f0] border border-[#c3e0c8] rounded-lg">
+          <p className="text-gray-800 font-medium text-sm">
+            <span className="text-[#1e782d] font-bold text-base">{totalCount.toLocaleString()}件</span>のジムが見つかりました
+            {page > 1 && <span className="text-gray-500 ml-2">（{page}ページ目）</span>}
+          </p>
+        </div>
+
         {/* ジム一覧 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
           {gyms.map((gym) => (

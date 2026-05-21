@@ -152,8 +152,11 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
               href="/all/"
               className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
             >
-              ジム一覧を見る →
+              無料でジムを探す →
             </NextLink>
+            {totalCount > 0 && (
+              <p className="mt-3 text-sm text-gray-500">全国{totalCount.toLocaleString()}件以上のパーソナルジムを掲載中</p>
+            )}
           </div>
         </div>
       </section>
