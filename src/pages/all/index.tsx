@@ -386,7 +386,21 @@ export default function AllGyms({
         </div>
 
         {/* 検索結果表示 */}
-        <div className="mt-4 text-sm text-gray-600">
+        <div className="mt-4 flex items-center justify-between gap-2">
+          <p className="text-base font-bold text-gray-800">
+            <span className="text-[#1e782d]">{totalCount.toLocaleString()}件</span>
+            <span className="text-sm font-normal text-gray-500 ml-1">のパーソナルジムが見つかりました</span>
+          </p>
+          {activeFilterCount > 0 && (
+            <button
+              onClick={handleResetFilters}
+              className="text-xs text-white bg-gray-500 hover:bg-gray-600 px-3 py-1.5 rounded-lg transition-colors flex-shrink-0"
+            >
+              フィルターをリセット
+            </button>
+          )}
+        </div>
+        <div className="mt-1 text-sm text-gray-600">
           {activeFilterCount > 0 && (
             <p>
               フィルタ適用中: <span className="font-medium text-gray-900">{getSortLabel(sortBy)}</span>
