@@ -39,6 +39,12 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
   );
 
   return (
+    <div>
+      {/* フォームヘッダー */}
+      <div className="mb-4 pb-3 border-b border-gray-100">
+        <p className="font-bold text-gray-800">📋 無料でお問い合わせ・体験予約</p>
+        <p className="text-xs text-gray-500 mt-0.5">入力内容を確認後、担当者よりご連絡いたします</p>
+      </div>
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label className="block text-sm font-bold text-gray-700 mb-1">お名前 <span className="text-red-500">*</span></label>
@@ -66,5 +72,6 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
         {status==='loading'?'送信中...':'お問い合わせを送信する'}
       </button>
     </form>
+    </div>
   );
 }

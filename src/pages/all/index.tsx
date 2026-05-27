@@ -250,6 +250,13 @@ export default function AllGyms({
             ({totalCount.toLocaleString()}件)
           </span>
         </h1>
+        {/* 検索結果サマリー */}
+        <div className="flex items-center justify-between mb-2 text-sm mt-2">
+          <span className="text-gray-600"><strong className="text-gray-900">{totalCount.toLocaleString()}</strong> 件</span>
+          {(features.hasFemaleOnly || features.hasMoneyBack || features.hasDiet || features.hasTrialAvailable || priceBand !== "all") && (
+            <a href="/all/" className="text-xs text-blue-600 hover:underline">絞り込みを解除 ×</a>
+          )}
+        </div>
 
         {/* SEO Description Section */}
         <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
