@@ -259,8 +259,8 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
         {(gym.trial_available || gym.website_url) && (
           <div className="hidden md:flex gap-3 mt-6">
             {gym.trial_available && (
-              <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-3 rounded-lg font-bold text-center hover:bg-[#155420] transition">
-                無料体験を予約する
+              <a href={gym.website_url || "#"} className="flex-1 bg-gradient-to-r from-[#1e782d] to-[#2a9e3d] text-white py-3 rounded-lg font-bold text-center shadow-lg hover:scale-105 transition-transform">
+                無料で問い合わせる
               </a>
             )}
             {gym.website_url && (

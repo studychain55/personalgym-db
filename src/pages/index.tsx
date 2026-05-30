@@ -150,9 +150,9 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <div className="mt-8">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#1e782d] text-white font-bold shadow-lg hover:scale-105 transition-transform px-8 py-3 rounded-lg hover:bg-[#E55E2F] no-underline"
             >
-              ジム一覧を見る →
+              今すぐ無料で探す →
             </NextLink>
           </div>
         </div>
