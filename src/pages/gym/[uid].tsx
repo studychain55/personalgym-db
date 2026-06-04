@@ -98,16 +98,17 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
       <JsonLDBreadcrumbList items={breadcrumbItems} />
 
       {/* Sticky CTA Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 shadow-lg z-40 md:hidden">
-        <div className="flex gap-2">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 shadow-lg z-40">
+        <div className="max-w-4xl mx-auto flex gap-2 items-center">
+          <span className="hidden sm:block text-sm font-medium text-gray-700 whitespace-nowrap mr-2">{gym.name}</span>
           {gym.trial_available && (
             <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-2.5 rounded-lg font-bold text-center text-sm hover:bg-[#155420] transition">
-              無料体験を予約
+              無料体験を予約する
             </a>
           )}
           {gym.website_url && (
-            <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-2.5 rounded-lg font-bold text-center text-sm hover:bg-gray-200 transition">
-              公式サイト
+            <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-2.5 rounded-lg font-bold text-center text-sm hover:bg-gray-200 transition border border-gray-300">
+              公式サイトを見る
             </a>
           )}
         </div>
@@ -880,9 +881,9 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
 
         {/* Final CTA */}
         {(gym.trial_available || gym.website_url) && (
-          <div className="mt-10 bg-gradient-to-r from-[#1e782d] to-orange-600 rounded-xl p-6 text-center text-white">
-            <h3 className="text-lg font-bold mb-2">今すぐお問い合わせ</h3>
-            <p className="text-sm mb-4 opacity-95">無料カウンセリング・体験トレーニングを受けてみませんか？</p>
+          <div className="mt-10 bg-[#1e782d] rounded-xl p-6 text-center text-white">
+            <h3 className="text-lg font-bold mb-2">{gym.name}の無料体験を試してみませんか？</h3>
+            <p className="text-sm mb-4 opacity-90">無料カウンセリング・体験トレーニングで相性を確認してから入会できます。</p>
             <div className="flex gap-3 flex-col md:flex-row">
               {gym.trial_available && (
                 <a href={gym.website_url || "#"} className="flex-1 bg-white text-[#1e782d] py-3 rounded-lg font-bold text-center hover:bg-gray-100 transition">
