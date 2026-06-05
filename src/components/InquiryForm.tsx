@@ -16,7 +16,7 @@ interface Props {
 }
 
 export default function InquiryForm({ siteId, facilityTable, facilityId, facilityUid, facilityName }: Props) {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '', inquiry_type: 'general' });
   const [status, setStatus] = useState<'idle'|'loading'|'success'|'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -26,7 +26,7 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
       site_id: siteId, facility_table: facilityTable, facility_id: facilityId,
       facility_uid: facilityUid, name: form.name, email: form.email,
       phone: form.phone || null, subject: `${facilityName}へのお問い合わせ`,
-      message: form.message, inquiry_type: 'general',
+      message: form.message, inquiry_type: form.inquiry_type,
     });
     setStatus(error ? 'error' : 'success');
   };
@@ -56,6 +56,14 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
           className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="090-1234-5678"/>
       </div>
       <div>
+        <label className="block text-sm font-bold text-gray-700 mb-1">お問い合わせ種別</label>
+        <select value={form.inquiry_type} onChange={e=>setForm(f=>({...f,inquiry_type:e.target.value}))}
+          className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]">
+          <option value="general">一般的なお問い合わせ</option>
+          <option value="trial">無料体験の申し込み</option>
+        </select>
+      </div>
+      <div>
         <label className="block text-sm font-bold text-gray-700 mb-1">お問い合わせ内容 <span className="text-red-500">*</span></label>
         <textarea required value={form.message} onChange={e=>setForm(f=>({...f,message:e.target.value}))}
           rows={5} className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="ご質問・ご要望をご記入ください"/>
@@ -63,7 +71,7 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
       {status==='error' && <p className="text-red-500 text-sm">送信に失敗しました。もう一度お試しください。</p>}
       <button type="submit" disabled={status==='loading'}
         className="w-full bg-[#1e782d] text-white font-bold py-4 rounded-lg disabled:opacity-50">
-        {status==='loading'?'送信中...':'お問い合わせを送信する'}
+        {status==='loading' ? '送信中...' : form.inquiry_type === 'trial' ? '無料体験を申し込む →' : '無料で問い合わせる →'}
       </button>
     </form>
   );
