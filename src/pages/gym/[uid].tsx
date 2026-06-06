@@ -878,6 +878,17 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
           </section>
         )}
 
+        {/* お問い合わせパネル */}
+        <div className="mt-8 bg-gray-50 border border-gray-200 rounded-xl p-6">
+          <h3 className="text-base font-bold text-gray-800 mb-2">このジムについて気になることがあれば</h3>
+          <p className="text-sm text-gray-600 mb-3">料金・体験・スケジュールなど、ご不明な点はお気軽にお問い合わせください。</p>
+          <div className="flex flex-wrap gap-2 text-xs text-green-700">
+            <span className="bg-green-50 px-2 py-1 rounded-full">✓ 無料相談OK</span>
+            <span className="bg-green-50 px-2 py-1 rounded-full">✓ 24時間以内返答</span>
+            <span className="bg-green-50 px-2 py-1 rounded-full">✓ しつこい勧誘なし</span>
+          </div>
+        </div>
+
         {/* Final CTA */}
         {(gym.trial_available || gym.website_url) && (
           <div className="mt-10 bg-gradient-to-r from-[#1e782d] to-orange-600 rounded-xl p-6 text-center text-white">

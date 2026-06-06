@@ -155,6 +155,9 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
               ジム一覧を見る →
             </NextLink>
           </div>
+          <div className="mt-4 text-center">
+            <NextLink href="/all/" className="inline-block bg-white text-blue-700 font-bold px-6 py-3 rounded-full shadow hover:shadow-md transition-all text-sm border border-blue-200">全ジムを無料で比較する →</NextLink>
+          </div>
         </div>
       </section>
 
