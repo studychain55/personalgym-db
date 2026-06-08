@@ -98,20 +98,33 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
       <JsonLDBreadcrumbList items={breadcrumbItems} />
 
       {/* Sticky CTA Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 shadow-lg z-40 md:hidden">
-        <div className="flex gap-2">
-          {gym.trial_available && (
-            <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-2.5 rounded-lg font-bold text-center text-sm hover:bg-[#155420] transition">
-              無料体験を予約
-            </a>
-          )}
-          {gym.website_url && (
-            <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-2.5 rounded-lg font-bold text-center text-sm hover:bg-gray-200 transition">
-              公式サイト
+      {(gym.trial_available || gym.website_url) && (
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 shadow-lg z-40 md:hidden">
+          <div className="flex gap-2">
+            {gym.trial_available && (
+              <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-2.5 rounded-lg font-bold text-center text-sm hover:bg-[#155420] transition">
+                無料体験を予約
+              </a>
+            )}
+            {gym.website_url && (
+              <a
+                href={gym.website_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`font-bold text-center text-sm rounded-lg py-2.5 transition ${gym.trial_available ? "flex-1 bg-gray-100 text-gray-800 hover:bg-gray-200" : "flex-1 bg-[#1e782d] text-white hover:bg-[#155420]"}`}
+              >
+                公式サイトを見る
+              </a>
+            )}
+          </div>
+          {gym.phone && (
+            <a href={`tel:${gym.phone}`} className="mt-2 flex items-center justify-center gap-2 text-sm text-[#1e782d] font-medium">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+              {gym.phone}（電話で問い合わせる）
             </a>
           )}
         </div>
-      </div>
+      )}
 
       <div className="max-w-4xl mx-auto px-4 py-6 pb-24 md:pb-6">
         <Breadcrumb items={breadcrumbItems} />
