@@ -880,21 +880,40 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
 
         {/* Final CTA */}
         {(gym.trial_available || gym.website_url) && (
-          <div className="mt-10 bg-gradient-to-r from-[#1e782d] to-orange-600 rounded-xl p-6 text-center text-white">
-            <h3 className="text-lg font-bold mb-2">今すぐお問い合わせ</h3>
-            <p className="text-sm mb-4 opacity-95">無料カウンセリング・体験トレーニングを受けてみませんか？</p>
-            <div className="flex gap-3 flex-col md:flex-row">
+          <div className="mt-10 bg-gradient-to-br from-[#1e782d] to-[#155420] rounded-xl p-6 md:p-8 text-center text-white shadow-lg">
+            <div className="inline-block bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
+              まずは気軽にご相談ください
+            </div>
+            <h3 className="text-xl md:text-2xl font-bold mb-2">{gym.name}に無料体験・お問い合わせ</h3>
+            <p className="text-sm mb-6 opacity-90">プロのトレーナーが目標達成をしっかりサポートします。まずは無料カウンセリング・体験トレーニングをお試しください。</p>
+            <div className="flex gap-3 flex-col sm:flex-row max-w-md mx-auto">
               {gym.trial_available && (
-                <a href={gym.website_url || "#"} className="flex-1 bg-white text-[#1e782d] py-3 rounded-lg font-bold text-center hover:bg-gray-100 transition">
-                  無料体験を予約
+                <a
+                  href={gym.website_url || "#"}
+                  className="flex-1 bg-white text-[#1e782d] py-3.5 rounded-lg font-bold text-center hover:bg-gray-50 transition text-base shadow-md"
+                >
+                  無料体験・お問い合わせ
                 </a>
               )}
               {gym.website_url && (
-                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-white bg-opacity-20 text-white py-3 rounded-lg font-bold text-center hover:bg-opacity-30 transition border border-white border-opacity-30">
-                  公式サイトへ
+                <a
+                  href={gym.website_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 bg-transparent text-white py-3.5 rounded-lg font-bold text-center hover:bg-white/10 transition border-2 border-white/60 text-base"
+                >
+                  公式サイトへ →
                 </a>
               )}
             </div>
+            {!gym.trial_available && gym.website_url && (
+              <a
+                href={gym.website_url}
+                className="inline-block mt-3 bg-white text-[#1e782d] py-3.5 px-8 rounded-lg font-bold text-center hover:bg-gray-50 transition text-base shadow-md"
+              >
+                無料体験・お問い合わせ
+              </a>
+            )}
           </div>
         )}
       </div>
