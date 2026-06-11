@@ -97,7 +97,7 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
       <JsonLDDynamicFaq gym={gym} />
       <JsonLDBreadcrumbList items={breadcrumbItems} />
 
-      {/* Sticky CTA Bar */}
+      {/* Sticky CTA Bar — mobile bottom */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 shadow-lg z-40 md:hidden">
         <div className="flex gap-2">
           {gym.trial_available && (
@@ -112,6 +112,27 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
           )}
         </div>
       </div>
+
+      {/* Sticky CTA Bar — desktop top */}
+      {(gym.trial_available || gym.website_url) && (
+        <div className="hidden md:block sticky top-0 bg-white border-b border-gray-200 shadow-sm z-30">
+          <div className="max-w-4xl mx-auto px-4 py-2 flex items-center justify-between gap-4">
+            <p className="text-sm font-bold text-gray-800 truncate">{gym.name}</p>
+            <div className="flex gap-2 flex-shrink-0">
+              {gym.trial_available && (
+                <a href={gym.website_url || "#"} className="bg-[#1e782d] text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-[#155420] transition whitespace-nowrap">
+                  無料体験を予約
+                </a>
+              )}
+              {gym.website_url && (
+                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="bg-gray-100 text-gray-800 px-5 py-2 rounded-lg font-bold text-sm hover:bg-gray-200 transition whitespace-nowrap">
+                  公式サイト
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="max-w-4xl mx-auto px-4 py-6 pb-24 md:pb-6">
         <Breadcrumb items={breadcrumbItems} />
