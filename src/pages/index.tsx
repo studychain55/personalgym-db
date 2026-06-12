@@ -139,20 +139,42 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#FFF3ED] to-white py-12 md:py-20">
+      <section className="bg-gradient-to-br from-[#e9f2ea] to-white py-12 md:py-20">
         <div className="max-w-6xl mx-auto px-4 text-center">
+          <p className="text-sm font-semibold text-[#1e782d] uppercase tracking-wide mb-2">日本最大級のパーソナルジム検索サイト</p>
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900">
             あなたに最適な<span className="text-[#1e782d]">パーソナルジム</span>が見つかる
           </h1>
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
+          {/* 価値訴求ポイント */}
+          <div className="mt-6 flex flex-wrap justify-center gap-3 text-sm">
+            <span className="inline-flex items-center gap-1.5 bg-white border border-[#bcd7c0] text-gray-700 px-4 py-1.5 rounded-full shadow-sm">
+              <svg className="w-4 h-4 text-[#1e782d]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>
+              無料で比較できる
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-[#bcd7c0] text-gray-700 px-4 py-1.5 rounded-full shadow-sm">
+              <svg className="w-4 h-4 text-[#1e782d]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>
+              口コミ・料金を一覧表示
+            </span>
+            <span className="inline-flex items-center gap-1.5 bg-white border border-[#bcd7c0] text-gray-700 px-4 py-1.5 rounded-full shadow-sm">
+              <svg className="w-4 h-4 text-[#1e782d]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>
+              エリア・駅から検索
+            </span>
+          </div>
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3.5 rounded-lg hover:bg-[#155420] transition-colors no-underline text-base shadow-md"
             >
-              ジム一覧を見る →
+              全国のジムを探す →
+            </NextLink>
+            <NextLink
+              href="#area"
+              className="inline-block bg-white border-2 border-[#1e782d] text-[#1e782d] font-bold px-8 py-3.5 rounded-lg hover:bg-[#e9f2ea] transition-colors no-underline text-base"
+            >
+              エリアから探す
             </NextLink>
           </div>
         </div>
@@ -379,7 +401,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <div className="text-center mt-8">
             <NextLink
               href="/column/"
-              className="inline-block border-2 border-blue-700 text-[#1e782d] font-bold px-8 py-3 rounded-lg hover:bg-[#1e782d] hover:text-white transition-colors no-underline"
+              className="inline-block border-2 border-[#1e782d] text-[#1e782d] font-bold px-8 py-3 rounded-lg hover:bg-[#1e782d] hover:text-white transition-colors no-underline"
             >
               すべてのコラムを見る
             </NextLink>
