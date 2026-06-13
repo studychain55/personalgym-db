@@ -147,12 +147,30 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
+          {/* 特徴ポイント */}
+          <ul className="mt-6 inline-flex flex-col sm:flex-row flex-wrap justify-center gap-3 text-sm text-gray-700 list-none p-0">
+            <li className="flex items-center gap-1.5">
+              <span className="text-[#1e782d] font-bold">✓</span>無料体験があるジムを簡単検索
+            </li>
+            <li className="flex items-center gap-1.5">
+              <span className="text-[#1e782d] font-bold">✓</span>料金・口コミを一括比較
+            </li>
+            <li className="flex items-center gap-1.5">
+              <span className="text-[#1e782d] font-bold">✓</span>女性専用・返金保証でフィルター
+            </li>
+          </ul>
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <NextLink
+              href="/all/?trial=1"
+              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3.5 rounded-lg hover:bg-[#155420] transition-colors no-underline text-base"
+            >
+              無料体験できるジムを探す →
+            </NextLink>
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block border-2 border-[#1e782d] text-[#1e782d] font-bold px-8 py-3.5 rounded-lg hover:bg-[#f0f6f0] transition-colors no-underline text-base"
             >
-              ジム一覧を見る →
+              全ジムを見る
             </NextLink>
           </div>
         </div>
