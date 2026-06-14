@@ -144,7 +144,10 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900">
             あなたに最適な<span className="text-[#1e782d]">パーソナルジム</span>が見つかる
           </h1>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-lg text-gray-600 font-medium opacity-90">
+            無料で比較 · 最短1分で検索 · 体験予約OK
+          </p>
+          <p className="mt-2 text-base text-gray-500">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
           <div className="mt-8">
