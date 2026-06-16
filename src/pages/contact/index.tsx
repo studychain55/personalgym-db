@@ -20,6 +20,11 @@ export default function Contact() {
           <p className="text-gray-800 font-medium">
             メール: info@personalgym-db.jp
           </p>
+          <div className="mt-6 pt-4 border-t border-gray-100">
+            <p className="text-sm text-gray-500">
+              ※個人情報は適切に管理します。お問い合わせ後、担当者よりご連絡いたします。
+            </p>
+          </div>
         </div>
       </div>
     </Layout>

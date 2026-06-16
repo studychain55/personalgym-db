@@ -150,10 +150,11 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <div className="mt-8">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline text-lg shadow-md"
             >
-              ジム一覧を見る →
+              今すぐ無料で探す
             </NextLink>
+            <p className="mt-3 text-sm text-gray-500">無料・会員登録不要で全国のジムを比較できます</p>
           </div>
         </div>
       </section>
