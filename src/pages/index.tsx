@@ -128,7 +128,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
             "@context": "https://schema.org",
             "@type": "FAQPage",
             "mainEntity": [
-              {"@type": "Question", "name": "パーソナルジムに通う費用はどのくらいですか？", "acceptedAnswer": {"@type": "Answer", "text": "パーソナルジムの費用はコースにより異なりますが、1～3ヶ月のダイエットコースで15万～60万円、都度払い（1回）で8,000～15,000円が一般的な相場です。無料体験レッスンを活用して自分に合ったジムを選びましょう。"}},
+              {"@type": "Question", "name": "パーソナルジムに通う費用はどのくらいですか？", "acceptedAnswer": {"@type": "Answer", "text": "パーソナルジムの費用はコースにより異なりますが、1～3ヶ月のダイエットコースで15万～60万円、都次払い（1回）で8,000～15,000円が一般的な相場です。無料体験レッスンを活用して自分に合ったジムを選びましょう。"}},
               {"@type": "Question", "name": "パーソナルジムはどのくらいの期間通えば効果が出ますか？", "acceptedAnswer": {"@type": "Answer", "text": "個人差はありますが、週2回以上のトレーニングで2～3ヶ月が一つの目安です。食事管理も合わせて行うことで効果が出やすくなります。多くのパーソナルジムでは2～3ヶ月の短期集中コースを提供しています。"}},
               {"@type": "Question", "name": "パーソナルジムと普通のジムの違いは何ですか？", "acceptedAnswer": {"@type": "Answer", "text": "パーソナルジムは専属トレーナーが個人の目標・体型・体力に合わせてプログラムを設計し、マンツーマンで指導します。普通のジムに比べて費用は高めですが、効率的に目標達成できます。食事管理・栄養指導が含まれるコースも多いです。"}},
               {"@type": "Question", "name": "初心者でもパーソナルジムに通えますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい、パーソナルジムは運動未経験・初心者の方こそ活用いただける施設です。トレーナーが基礎から丁寧に指導するため、正しいフォームを身につけながら安全にトレーニングを始められます。"}},
@@ -147,13 +147,19 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-4 rounded-lg hover:bg-[#155420] transition-colors no-underline text-lg shadow-md"
             >
-              ジム一覧を見る →
+              今すぐジムを探す →
             </NextLink>
+            <a
+              href="#area"
+              className="inline-block bg-white border-2 border-[#1e782d] text-[#1e782d] font-bold px-8 py-4 rounded-lg hover:bg-[#f0f6f0] transition-colors no-underline text-lg"
+            >
+              エリアから探す
+            </a>
           </div>
         </div>
       </section>
@@ -216,7 +222,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
                 <span className="text-lg group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="text-gray-700 mt-3 ml-4">
-                パーソナルジムの費用はコースにより異なりますが、1～3ヶ月のダイエットコースで15万～60万円、都度払い（1回）で8,000～15,000円が一般的な相場です。無料体験レッスンを活用して自分に合ったジムを選びましょう。
+                パーソナルジムの費用はコースにより異なりますが、1～3ヶ月のダイエットコースで15万～60万円、都次払い（1回）で8,000～15,000円が一般的な相場です。無料体験レッスンを活用して自分に合ったジムを選びましょう。
               </p>
             </details>
             <details className="border border-gray-200 rounded-lg p-4 cursor-pointer group">
