@@ -32,9 +32,6 @@ interface AllGymsProps {
   faqs: GymFaq[];
 }
 
-/**
- * Generate FAQs for all gyms page
- */
 function generateAllGymsPageFaqs(totalCount: number): GymFaq[] {
   return [
     {
@@ -57,7 +54,7 @@ function generateAllGymsPageFaqs(totalCount: number): GymFaq[] {
       id: 3,
       gym_id: null,
       question: "パーソナルジムで本当に痩せられますか？",
-      answer: "正しいトレーニングと栄養指導を組み合わせることで、多くの人が目標の体重に到達しています。特に「食事指導」が付いているパーソナルジムを選ぶことが重要です。3ヶ月～6ヶ月の継続で、目に見える変化を感じられる人が多いです。",
+      answer: "正しいトレーニングと栄養指導を組み合わせることで、多くの人が目標の体重に到達しています。特に「食事指導」が付いているパーソナルジムを選ぶことが重要です。",
       sort_order: 3,
       is_global: false,
     },
@@ -65,7 +62,7 @@ function generateAllGymsPageFaqs(totalCount: number): GymFaq[] {
       id: 4,
       gym_id: null,
       question: "女性向けのパーソナルジムはありますか？",
-      answer: "はい、多くのパーソナルジムで女性向けプランを提供しています。女性専用施設や女性トレーナーの指導を受けたい場合は、当サイトで「女性向け」タグで検索すると簡単に見つかります。女性ならではのボディメイク目標を達成できるジムが多くあります。",
+      answer: "はい、多くのパーソナルジムで女性向けプランを提供しています。女性専用施設や女性トレーナーの指導を受けたい場合は、当サイトで「女性向け」タグで検索すると簡単に見つかります。",
       sort_order: 4,
       is_global: false,
     },
@@ -73,7 +70,7 @@ function generateAllGymsPageFaqs(totalCount: number): GymFaq[] {
       id: 5,
       gym_id: null,
       question: "初心者でもパーソナルジムに通えますか？",
-      answer: "もちろんです。むしろ初心者こそパーソナルトレーニングがおすすめです。専門的なトレーナーが正しいフォームを指導してくれるので、怪我のリスクが低く、効果的に身体を変えることができます。当サイトで「初心者向け」タグで検索すると、初心者プログラムが充実しているジムが見つかります。",
+      answer: "もちろんです。むしろ初心者こそパーソナルトレーニングがおすすめです。専門的なトレーナーが正しいフォームを指導してくれるので、怒けのリスクが低く、効果的に身体を変えることができます。",
       sort_order: 5,
       is_global: false,
     },
@@ -81,7 +78,7 @@ function generateAllGymsPageFaqs(totalCount: number): GymFaq[] {
       id: 6,
       gym_id: null,
       question: "返金保証があるパーソナルジムを選ぶメリットは？",
-      answer: "返金保証があるジムは、ジム側が結果に自信を持っていることを示しています。万が一、トレーニング効果や満足度が期待値以下の場合、返金してもらえるため安心です。当サイトで「返金保証」タグで絞り込むと、返金保証対応のジムが簡単に見つかります。",
+      answer: "返金保証があるジムは、ジム側が結果に自信を持っていることを示しています。万が一、トレーニング効果や満足度が期待値以下の場合、返金してもらえるため安心です。",
       sort_order: 6,
       is_global: false,
     },
@@ -216,9 +213,9 @@ export default function AllGyms({
   const getPriceBandLabel = (band: PriceBand) => {
     const labels: Record<PriceBand, string> = {
       all: "全て",
-      budget: "〜5万円",
-      mid: "5〜10万円",
-      premium: "10万円〜",
+      budget: "～5万円",
+      mid: "5～10万円",
+      premium: "10万円～",
     };
     return labels[band];
   };
@@ -258,13 +255,10 @@ export default function AllGyms({
           </h2>
           <p className="text-gray-700 mb-2">
             全国には{totalCount}
-            件以上のパーソナルジムが存在します。ダイエット・ボディメイク・健康増進など、様々な目的に対応したジムが揃っています。プロのトレーナーによるマンツーマン指導で、効率的に目標を達成することができます。
-          </p>
-          <p className="text-gray-700 mb-2">
-            都心部から地方まで、異なる料金体系・設備・サービスを提供するジムが多くあります。体験レッスンを利用して、複数のジムを比較し、自分に合ったジムを見つけることをおすすめします。
+            件以上のパーソナルジムが存在します。ダイエット・ボディメイク・健康増進など、様々な目的に対応したジムが揃っています。
           </p>
           <p className="text-gray-700">
-            当サイトでは、全国の主要パーソナルジムを掲載しており、料金・口コミ・評価・特徴を一覧で比較できます。フィルタ機能を使って、女性向け・初心者向け・返金保証ありなど、自分の条件に合ったジムを素早く見つけられます。
+            当サイトでは、全国の主要パーソナルジムを掲載しており、料金・口コミ・評価・特徴を一覧で比較できます。下のフィルタ機能で、女性向け・初心者向け・返金保証ありなど、自分の条件に合ったジムを素早く見つけられます。
           </p>
         </section>
 
@@ -287,15 +281,24 @@ export default function AllGyms({
               </select>
             </div>
 
-            {/* フィルタトグルボタン */}
+            {/* フィルタトグルボタン - 常にバッジ表示 */}
             <button
               onClick={() => setIsFilterExpanded(!isFilterExpanded)}
-              className="lg:hidden px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2"
+              className={`lg:hidden px-4 py-2 border rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
+                activeFilterCount > 0
+                  ? "bg-[#1e782d] border-[#1e782d] text-white"
+                  : "bg-white border-gray-300 text-gray-700 hover:bg-gray-50"
+              }`}
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
               </svg>
-              フィルタ {activeFilterCount > 0 && <span className="text-[#1e782d] font-bold">({activeFilterCount})</span>}
+              絞り込み・フィルタ
+              {activeFilterCount > 0 ? (
+                <span className="bg-white text-[#1e782d] text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">{activeFilterCount}</span>
+              ) : (
+                <span className="text-gray-400 text-xs">設定する</span>
+              )}
             </button>
           </div>
 
@@ -414,7 +417,7 @@ export default function AllGyms({
             <p className="text-gray-500">条件に合うパーソナルジムが見つかりませんでした。</p>
             <button
               onClick={handleResetFilters}
-              className="mt-4 px-4 py-2 bg-[#1e782d] text-white rounded-lg text-sm font-medium hover:bg-[#e55a25] transition-colors"
+              className="mt-4 px-4 py-2 bg-[#1e782d] text-white rounded-lg text-sm font-medium hover:bg-[#155420] transition-colors"
             >
               フィルタをリセット
             </button>
@@ -437,115 +440,29 @@ export default function AllGyms({
         <section className="mt-12">
           <h2 className="text-xl font-bold text-gray-900 mb-4">関連コラム</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <NextLink
-              href="/column/gym-beginner/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
-            >
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
-                パーソナルジム初心者ガイド
-              </h3>
-              <p className="text-xs text-gray-600 line-clamp-2">
-                初心者がパーソナルジムを選ぶときのポイントと注意点を解説。
-              </p>
+            <NextLink href="/column/gym-beginner/" className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all">
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">パーソナルジム初心者ガイド</h3>
+              <p className="text-xs text-gray-600 line-clamp-2">初心者がパーソナルジムを選ぶときのポイントと注意点を解説。</p>
             </NextLink>
-            <NextLink
-              href="/column/gym-choosing/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
-            >
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
-                パーソナルジムの選び方
-              </h3>
-              <p className="text-xs text-gray-600 line-clamp-2">
-                あなたに合ったジムを見つけるための選定基準と比較ポイント。
-              </p>
+            <NextLink href="/column/gym-choosing/" className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all">
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">パーソナルジムの選び方</h3>
+              <p className="text-xs text-gray-600 line-clamp-2">あなたに合ったジムを見つけるための選定基準と比較ポイント。</p>
             </NextLink>
-            <NextLink
-              href="/column/gym-cost/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
-            >
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
-                パーソナルジムの費用相場
-              </h3>
-              <p className="text-xs text-gray-600 line-clamp-2">
-                料金相場と費用内訳、安く通うコツについて説明。
-              </p>
+            <NextLink href="/column/gym-cost/" className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all">
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">パーソナルジムの費用相場</h3>
+              <p className="text-xs text-gray-600 line-clamp-2">料金相場と費用内訳、安く通うコツについて説明。</p>
             </NextLink>
-            <NextLink
-              href="/column/diet-gym/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
-            >
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
-                ダイエット目的のパーソナルジム活用法
-              </h3>
-              <p className="text-xs text-gray-600 line-clamp-2">
-                ダイエット成功のための効果的なトレーニング方法。
-              </p>
+            <NextLink href="/column/diet-gym/" className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all">
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">ダイエット目的のパーソナルジム活用法</h3>
+              <p className="text-xs text-gray-600 line-clamp-2">ダイエット成功のための効果的なトレーニング方法。</p>
             </NextLink>
-            <NextLink
-              href="/column/training-frequency/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
-            >
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
-                パーソナルトレーニングの頻度
-              </h3>
-              <p className="text-xs text-gray-600 line-clamp-2">
-                目的別のトレーニング頻度と通う期間の目安。
-              </p>
+            <NextLink href="/column/women-gym/" className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all">
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">女性向けパーソナルジムの選び方</h3>
+              <p className="text-xs text-gray-600 line-clamp-2">女性専用・混合の違いと安心して通うためのポイント。</p>
             </NextLink>
-            <NextLink
-              href="/column/gym-nutrition/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
-            >
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
-                パーソナルジムでの食事管理
-              </h3>
-              <p className="text-xs text-gray-600 line-clamp-2">
-                栄養指導と食事改善で結果を出すためのポイント。
-              </p>
-            </NextLink>
-            <NextLink
-              href="/column/women-gym/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
-            >
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
-                女性向けパーソナルジムの選び方
-              </h3>
-              <p className="text-xs text-gray-600 line-clamp-2">
-                女性専用・混合の違いと安心して通うためのポイント。
-              </p>
-            </NextLink>
-            <NextLink
-              href="/column/gym-trial/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
-            >
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
-                無料体験・体験入会の活用ガイド
-              </h3>
-              <p className="text-xs text-gray-600 line-clamp-2">
-                体験レッスンを最大限に活かす方法と注意点。
-              </p>
-            </NextLink>
-            <NextLink
-              href="/column/gym-trainer/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
-            >
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
-                パーソナルトレーナーの選び方と資格の見方
-              </h3>
-              <p className="text-xs text-gray-600 line-clamp-2">
-                優秀なトレーナーを見分けるポイントと資格について。
-              </p>
-            </NextLink>
-            <NextLink
-              href="/column/gym-bodymake/"
-              className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all"
-            >
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm">
-                パーソナルジムで体が変わるまでの期間と目安
-              </h3>
-              <p className="text-xs text-gray-600 line-clamp-2">
-                ボディメイク成功の期間目安と効果的な進め方。
-              </p>
+            <NextLink href="/column/gym-trial/" className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-[#1e782d] transition-all">
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm">無料体験・体験入会の活用ガイド</h3>
+              <p className="text-xs text-gray-600 line-clamp-2">体験レッスンを最大限に活かす方法と注意点。</p>
             </NextLink>
           </div>
         </section>
