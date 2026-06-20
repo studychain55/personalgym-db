@@ -257,17 +257,22 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
 
         {/* CTA Section (Desktop) */}
         {(gym.trial_available || gym.website_url) && (
-          <div className="hidden md:flex gap-3 mt-6">
-            {gym.trial_available && (
-              <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-3 rounded-lg font-bold text-center hover:bg-[#155420] transition">
-                無料体験を予約する
-              </a>
-            )}
-            {gym.website_url && (
-              <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-3 rounded-lg font-bold text-center hover:bg-gray-200 transition">
-                公式サイトを見る
-              </a>
-            )}
+          <div className="hidden md:block mt-6 bg-[#f0f6f0] border border-[#1e782d] rounded-xl p-5">
+            <p className="text-sm text-gray-600 mb-3 text-center font-medium">
+              まずは無料カウンセリング・体験トレーニングから始めましょう
+            </p>
+            <div className="flex gap-3">
+              {gym.trial_available && (
+                <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-3.5 rounded-lg font-bold text-center hover:bg-[#155420] transition text-base shadow-sm">
+                  無料体験を予約する →
+                </a>
+              )}
+              {gym.website_url && (
+                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-white text-gray-800 py-3.5 rounded-lg font-bold text-center hover:bg-gray-50 transition border border-gray-300">
+                  公式サイトを見る
+                </a>
+              )}
+            </div>
           </div>
         )}
 
