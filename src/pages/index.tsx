@@ -155,6 +155,27 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
               ジム一覧を見る →
             </NextLink>
           </div>
+          <form
+            onSubmit={(e) => { e.preventDefault(); const kw = (e.currentTarget.querySelector('input') as HTMLInputElement).value.trim(); window.location.href = kw ? `/all/?kw=${encodeURIComponent(kw)}` : '/all/'; }}
+            className="mt-6 max-w-xl mx-auto flex gap-2"
+          >
+            <input
+              type="text"
+              placeholder="エリア・目的・ジム名で検索"
+              className="flex-1 border border-gray-300 rounded-lg px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#1e782d] shadow-sm"
+            />
+            <button
+              type="submit"
+              className="bg-[#1e782d] text-white font-bold px-6 py-3 rounded-lg hover:bg-[#155420] transition-colors text-sm shadow-sm flex-shrink-0"
+            >
+              検索する
+            </button>
+          </form>
+          <div className="flex flex-wrap justify-center gap-4 mt-4 text-xs text-gray-500">
+            {["掲載・利用無料", "全国対応", "無料体験あり", "口コミ比較OK"].map(text => (
+              <span key={text} className="flex items-center gap-1"><span className="text-[#1e782d] font-bold">✓</span>{text}</span>
+            ))}
+          </div>
         </div>
       </section>
 
