@@ -8,6 +8,7 @@ import {
   fetchGymPlans, fetchGymTrainers, fetchGymBeforeAfters, fetchGymCampaigns,
   fetchRelatedGyms,
 } from "@/utils/supabase/fetchGymDetail";
+import InquiryForm from "@/components/InquiryForm";
 import { setVeryLongCacheHeaders } from "@/utils/cacheHeaders";
 import supabase from "@/utils/supabase/index";
 import type { GymLocation, GymReview, GymImage, GymFaq, GymPlan, GymTrainer, GymBeforeAfter, GymCampaign } from "@/types";
@@ -877,6 +878,43 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
             </div>
           </section>
         )}
+
+        {/* Inquiry Section with Sticky Sidebar */}
+        <section className="mt-10" id="contact">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">無料でお問い合わせ</h2>
+          <div className="lg:flex lg:gap-6">
+            <div className="lg:flex-1">
+              <InquiryForm
+                siteId="personalgym-db"
+                facilityTable="Gym"
+                facilityId={gym.id}
+                facilityUid={gym.uid}
+                facilityName={gym.name}
+              />
+            </div>
+            <aside className="hidden lg:block lg:w-72 flex-shrink-0">
+              <div className="sticky top-4 bg-white rounded-xl border border-gray-200 shadow-md p-5 space-y-3">
+                <p className="text-sm font-bold text-center">{gym.name}</p>
+                {gym.phone && (
+                  <a href={`tel:${gym.phone.replace(/-/g, "")}`}
+                     className="flex items-center justify-center gap-2 w-full border-2 border-[#1e782d] text-[#1e782d] font-bold py-2.5 rounded-lg text-sm hover:opacity-80">
+                    📞 電話で問い合わせ
+                  </a>
+                )}
+                <button
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="w-full bg-red-600 text-white font-bold py-3 rounded-lg text-sm hover:bg-red-700 transition-colors">
+                  無料で問い合わせ
+                </button>
+                <ul className="text-[10px] text-gray-500 space-y-1">
+                  <li>✓ 24時間受付</li>
+                  <li>✓ 返信保証あり</li>
+                  <li>✓ 完全無料</li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </section>
 
         {/* Final CTA */}
         {(gym.trial_available || gym.website_url) && (
