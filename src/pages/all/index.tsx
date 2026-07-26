@@ -407,17 +407,13 @@ export default function AllGyms({
         </div>
 
         {gyms.length === 0 && (
-          <div className="text-center py-20">
-            <svg className="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <p className="text-gray-500">条件に合うパーソナルジムが見つかりませんでした。</p>
-            <button
-              onClick={handleResetFilters}
-              className="mt-4 px-4 py-2 bg-[#1e782d] text-white rounded-lg text-sm font-medium hover:bg-[#e55a25] transition-colors"
-            >
-              フィルタをリセット
-            </button>
+          <div className="bg-white rounded-lg p-8 text-center mb-6 border border-gray-100">
+            <div className="text-4xl mb-3">🔍</div>
+            <p className="text-base font-bold text-gray-700 mb-1">条件に合うパーソナルジムが見つかりませんでした</p>
+            <p className="text-sm text-gray-500 mb-4">検索条件を変えるか、フィルタをリセットしてお試しください</p>
+            <div className="flex flex-wrap justify-center gap-2">
+              <button onClick={handleResetFilters} className="text-sm px-5 py-2 bg-[#1e782d] text-white rounded-lg hover:bg-[#185e24] transition-colors font-bold">すべてのジムを見る</button>
+            </div>
           </div>
         )}
 
