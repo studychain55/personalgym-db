@@ -11,6 +11,7 @@ import {
 import { setVeryLongCacheHeaders } from "@/utils/cacheHeaders";
 import supabase from "@/utils/supabase/index";
 import type { GymLocation, GymReview, GymImage, GymFaq, GymPlan, GymTrainer, GymBeforeAfter, GymCampaign } from "@/types";
+import InquiryForm from "@/components/InquiryForm";
 
 interface GymDetailProps {
   gym: GymLocation;
@@ -897,6 +898,13 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
             </div>
           </div>
         )}
+        {/* 問い合わせフォーム */}
+        <section id="inquiry" className="py-8 px-4">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">無料カウンセリング・お問い合わせ</h2>
+            <InquiryForm siteId="personalgym-db" facilityTable="Gym" facilityId={gym.id} facilityUid={gym.uid} facilityName={gym.name} />
+          </div>
+        </section>
       </div>
     </Layout>
   );
