@@ -246,7 +246,7 @@ export default function AllGyms({
 
         <h1 className="text-2xl font-bold text-gray-900 mt-4">
           全国のパーソナルジム一覧
-          <span className="text-base font-normal text-gray-500 ml-2">
+          <span className="text-base font-bold text-gray-500 ml-2">
             ({totalCount.toLocaleString()}件)
           </span>
         </h1>
