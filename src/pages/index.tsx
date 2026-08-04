@@ -1,4 +1,6 @@
 import type { GetServerSideProps } from "next";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import supabase from "@/utils/supabase";
 import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
@@ -96,6 +98,15 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async ({ res })
 };
 
 export default function Home({ featuredGyms, totalCount, regions, topCities, topStations }: HomeProps) {
+  const router = useRouter();
+  const [searchKw, setSearchKw] = useState('');
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = searchKw.trim();
+    router.push(q ? '/all/?kw=' + encodeURIComponent(q) : '/all/');
+  };
+
   return (
     <Layout>
       <SEO
@@ -155,6 +166,24 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
               ジム一覧を見る →
             </NextLink>
           </div>
+        </div>
+      </section>
+
+      {/* Search Bar */}
+      <section className="bg-white py-6 border-b border-gray-100">
+        <div className="max-w-2xl mx-auto px-4">
+          <form onSubmit={handleSearch} className="flex gap-2">
+            <input
+              type="text"
+              value={searchKw}
+              onChange={(e) => setSearchKw(e.target.value)}
+              placeholder="エリア・ジム名・駅名で検索"
+              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-[#1e782d]"
+            />
+            <button type="submit" className="bg-[#1e782d] text-white font-bold px-6 py-3 rounded-lg text-sm hover:opacity-90 transition">
+              検索
+            </button>
+          </form>
         </div>
       </section>
 
