@@ -158,6 +158,15 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
         </div>
       </section>
 
+      {/* 安心ポイント */}
+      <div className="bg-white border-b border-gray-100 py-3">
+        <div className="max-w-5xl mx-auto px-4 flex flex-wrap justify-center gap-x-6 gap-y-1">
+          <span className="text-xs text-gray-600 flex items-center gap-1"><span className="text-green-500 font-bold">✓</span>無料で比較できる</span>
+          <span className="text-xs text-gray-600 flex items-center gap-1"><span className="text-green-500 font-bold">✓</span>会員登録不要</span>
+          <span className="text-xs text-gray-600 flex items-center gap-1"><span className="text-green-500 font-bold">✓</span>全国のスポットを掲載</span>
+        </div>
+      </div>
+
       {/* Featured Gyms */}
       {featuredGyms.length > 0 && (
         <section className="max-w-6xl mx-auto px-4 py-12">
