@@ -246,10 +246,11 @@ export default function AllGyms({
 
         <h1 className="text-2xl font-bold text-gray-900 mt-4">
           全国のパーソナルジム一覧
-          <span className="text-base font-normal text-gray-500 ml-2">
-            ({totalCount.toLocaleString()}件)
-          </span>
         </h1>
+        <p className="mt-1 text-sm text-gray-700">
+          <span className="font-bold text-[#1e782d] text-base">{totalCount.toLocaleString()}件</span>
+          <span className="text-gray-500 ml-1">のジムが見つかりました</span>
+        </p>
 
         {/* SEO Description Section */}
         <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
