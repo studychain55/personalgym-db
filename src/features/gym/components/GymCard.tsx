@@ -180,6 +180,9 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
 
           {/* CTAボタン */}
           <div className="mt-auto pt-2">
+            {gym.trial_available && (
+              <p className="text-[10px] text-center text-[#1e782d] font-bold mb-1">✨ 無料体験レッスン受付中</p>
+            )}
             <div className="w-full text-center text-xs font-bold py-2 px-3 rounded-lg bg-[#1e782d] text-white group-hover:bg-[#155420] transition-colors">
               詳細を見る →
             </div>
