@@ -147,12 +147,18 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#E55E2F] text-white font-bold px-10 py-4 rounded-full text-lg hover:bg-[#C94B20] transition-colors no-underline shadow-lg"
             >
-              ジム一覧を見る →
+              無料で今すぐジムを比較する →
+            </NextLink>
+            <NextLink
+              href="/all/?trial=1"
+              className="inline-block bg-white border-2 border-[#1e782d] text-[#1e782d] font-bold px-8 py-3.5 rounded-full text-base hover:bg-[#f0f6f0] transition-colors no-underline"
+            >
+              体験レッスンを探す
             </NextLink>
           </div>
         </div>
