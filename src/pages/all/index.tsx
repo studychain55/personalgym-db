@@ -244,12 +244,31 @@ export default function AllGyms({
           items={[{ label: "ジム一覧" }]}
         />
 
-        <h1 className="text-2xl font-bold text-gray-900 mt-4">
-          全国のパーソナルジム一覧
-          <span className="text-base font-normal text-gray-500 ml-2">
-            ({totalCount.toLocaleString()}件)
+        <div className="flex items-center gap-3 mt-4 mb-2">
+          <h1 className="text-2xl font-bold text-gray-900">全国のパーソナルジム一覧</h1>
+          <span className="inline-flex items-center bg-[#1e782d] text-white text-sm font-bold px-3 py-1 rounded-full">
+            {totalCount.toLocaleString()}件
           </span>
-        </h1>
+        </div>
+        {/* キーワード検索 */}
+        <form
+          className="mt-3 flex gap-2"
+          onSubmit={(e) => {
+            e.preventDefault();
+            const kw = (e.currentTarget.elements.namedItem("kw") as HTMLInputElement).value.trim();
+            router.push({ pathname: "/all/", query: kw ? { kw } : {} });
+          }}
+        >
+          <input
+            type="text"
+            name="kw"
+            placeholder="エリア・ジム名・駅名で絞り込み"
+            className="flex-1 px-4 py-2.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1e782d]"
+          />
+          <button type="submit" className="px-5 py-2.5 bg-[#1e782d] text-white text-sm font-bold rounded-lg hover:bg-[#155420] transition-colors flex-shrink-0">
+            検索
+          </button>
+        </form>
 
         {/* SEO Description Section */}
         <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
