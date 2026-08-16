@@ -147,13 +147,24 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#E55E2F] text-white font-bold px-8 py-3 rounded-full hover:bg-[#c94e26] transition-colors no-underline shadow-md"
             >
-              ジム一覧を見る →
+              無料で一括資料請求 →
             </NextLink>
+            <NextLink
+              href="/all/"
+              className="inline-block bg-white border-2 border-[#1e782d] text-[#1e782d] font-bold px-6 py-3 rounded-full hover:bg-[#f0f9f1] transition-colors no-underline"
+            >
+              ジム一覧を見る
+            </NextLink>
+          </div>
+          <div className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-1">
+            {['✓ 完全無料で利用', '✓ 47都道府県対応', '✓ しつこい営業なし'].map(t => (
+              <span key={t} className="text-sm text-gray-600">{t}</span>
+            ))}
           </div>
         </div>
       </section>
