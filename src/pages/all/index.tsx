@@ -399,8 +399,16 @@ export default function AllGyms({
           )}
         </div>
 
+        {/* 件数表示 */}
+        <div className="mt-4 py-3 px-4 bg-[#f0f6f0] rounded-lg border border-[#bcd7c0]">
+          <p className="text-sm font-medium text-[#1e782d]">
+            <span className="text-base font-bold">{totalCount.toLocaleString()}件</span>のジムが見つかりました
+            {page > 1 && <span className="text-gray-500 font-normal ml-2">（{page}ページ目 / 全{Math.ceil(totalCount / PER_PAGE)}ページ）</span>}
+          </p>
+        </div>
+
         {/* ジム一覧 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
           {gyms.map((gym) => (
             <GymCard key={gym.id} gym={gym} />
           ))}
