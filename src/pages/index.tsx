@@ -155,6 +155,10 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
               ジム一覧を見る →
             </NextLink>
           </div>
+          {/* 安心ポイント */}
+          <p className="text-xs text-gray-400 text-center mt-2">
+            ✓ 完全無料&nbsp;&nbsp;✓ 会員登録不要&nbsp;&nbsp;✓ 全国対応
+          </p>
         </div>
       </section>
 

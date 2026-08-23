@@ -878,6 +878,13 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
           </section>
         )}
 
+        {/* 信頼バッジ */}
+        <div className="flex flex-wrap gap-3 mb-4 p-3 bg-gray-50 rounded-lg">
+          <span className="flex items-center gap-1 text-xs text-green-700 font-medium"><span>✓</span> 完全無料</span>
+          <span className="flex items-center gap-1 text-xs text-green-700 font-medium"><span>✓</span> 24時間以内に返信</span>
+          <span className="flex items-center gap-1 text-xs text-green-700 font-medium"><span>✓</span> 個人情報保護に準拠</span>
+        </div>
+
         {/* Final CTA */}
         {(gym.trial_available || gym.website_url) && (
           <div className="mt-10 bg-gradient-to-r from-[#1e782d] to-orange-600 rounded-xl p-6 text-center text-white">
