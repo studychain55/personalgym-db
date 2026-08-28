@@ -39,32 +39,35 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
   );
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label className="block text-sm font-bold text-gray-700 mb-1">お名前 <span className="text-red-500">*</span></label>
-        <input required value={form.name} onChange={e=>setForm(f=>({...f,name:e.target.value}))}
-          className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="山田 太郎"/>
-      </div>
-      <div>
-        <label className="block text-sm font-bold text-gray-700 mb-1">メールアドレス <span className="text-red-500">*</span></label>
-        <input required type="email" value={form.email} onChange={e=>setForm(f=>({...f,email:e.target.value}))}
-          className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="example@email.com"/>
-      </div>
-      <div>
-        <label className="block text-sm font-bold text-gray-700 mb-1">電話番号</label>
-        <input type="tel" value={form.phone} onChange={e=>setForm(f=>({...f,phone:e.target.value}))}
-          className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="090-1234-5678"/>
-      </div>
-      <div>
-        <label className="block text-sm font-bold text-gray-700 mb-1">お問い合わせ内容 <span className="text-red-500">*</span></label>
-        <textarea required value={form.message} onChange={e=>setForm(f=>({...f,message:e.target.value}))}
-          rows={5} className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="ご質問・ご要望をご記入ください"/>
-      </div>
-      {status==='error' && <p className="text-red-500 text-sm">送信に失敗しました。もう一度お試しください。</p>}
-      <button type="submit" disabled={status==='loading'}
-        className="w-full bg-[#1e782d] text-white font-bold py-4 rounded-lg disabled:opacity-50">
-        {status==='loading'?'送信中...':'お問い合わせを送信する'}
-      </button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label className="block text-sm font-bold text-gray-700 mb-1">お名前 <span className="text-red-500">*</span></label>
+          <input required value={form.name} onChange={e=>setForm(f=>({...f,name:e.target.value}))}
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="山田 太郎"/>
+        </div>
+        <div>
+          <label className="block text-sm font-bold text-gray-700 mb-1">メールアドレス <span className="text-red-500">*</span></label>
+          <input required type="email" value={form.email} onChange={e=>setForm(f=>({...f,email:e.target.value}))}
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="example@email.com"/>
+        </div>
+        <div>
+          <label className="block text-sm font-bold text-gray-700 mb-1">電話番号</label>
+          <input type="tel" value={form.phone} onChange={e=>setForm(f=>({...f,phone:e.target.value}))}
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="090-1234-5678"/>
+        </div>
+        <div>
+          <label className="block text-sm font-bold text-gray-700 mb-1">お問い合わせ内容 <span className="text-red-500">*</span></label>
+          <textarea required value={form.message} onChange={e=>setForm(f=>({...f,message:e.target.value}))}
+            rows={5} className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="ご質問・ご要望をご記入ください"/>
+        </div>
+        {status==='error' && <p className="text-red-500 text-sm">送信に失敗しました。もう一度お試しください。</p>}
+        <button type="submit" disabled={status==='loading'}
+          className="w-full bg-[#1e782d] text-white font-bold py-4 rounded-lg disabled:opacity-50 text-lg hover:bg-[#185e24] transition-colors">
+          {status==='loading'?'送信中...':'お問い合わせを送信する'}
+        </button>
+      </form>
+      <p className="text-xs text-gray-400 mt-4 text-center">送信された個人情報は、お問い合わせへの回答のみに使用します。詳しくは<a href="/privacy-policy/" className="underline hover:text-gray-600">プライバシーポリシー</a>をご覧ください。</p>
+    </>
   );
 }

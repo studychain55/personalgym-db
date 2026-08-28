@@ -42,7 +42,6 @@ export const getServerSideProps: GetServerSideProps<RegionPageProps> = async ({
   const result = await fetchGymsByRegion(region.id, page, PER_PAGE);
   const prefectures = await fetchPrefecturesByRegionId(region.id);
 
-  // Generate FAQs dynamically
   const faqs: GymFaq[] = generateRegionFaqs(regionName, result.totalCount);
 
   setConditionalCacheHeaders(res, result.totalCount);
@@ -59,62 +58,17 @@ export const getServerSideProps: GetServerSideProps<RegionPageProps> = async ({
   };
 };
 
-/**
- * Generate dynamic FAQs for region page
- */
 function generateRegionFaqs(regionName: string, totalCount: number): GymFaq[] {
   return [
-    {
-      id: 1,
-      gym_id: null,
-      question: `${regionName}のパーソナルジムの料金相場は？`,
-      answer: `${regionName}のパーソナルジムの料金は、1回あたり5,000円～15,000円が相場です。入会金は0円～50,000円程度となっています。体験レッスンは1,000円～5,000円で受けられるジムが多いため、まずは体験から始めることをおすすめします。`,
-      sort_order: 1,
-      is_global: false,
-    },
-    {
-      id: 2,
-      gym_id: null,
-      question: `${regionName}でおすすめのパーソナルジムは？`,
-      answer: `${regionName}には${totalCount}件のパーソナルジムが登録されています。評価が高いジムを当ページで表示しているので、そちらをご参照ください。また、目的別（ダイエット・女性向けなど）で探すことで、あなたにぴったりのジムが見つかりやすくなります。`,
-      sort_order: 2,
-      is_global: false,
-    },
-    {
-      id: 3,
-      gym_id: null,
-      question: `${regionName}のパーソナルジムで女性向けプランはありますか？`,
-      answer: `${regionName}の多くのパーソナルジムで女性向けプランや女性専用レッスンを提供しています。当サイトで「女性向け」のタグが付いているジムを検索することで、女性向けプランがあるジムが簡単に見つかります。`,
-      sort_order: 3,
-      is_global: false,
-    },
-    {
-      id: 4,
-      gym_id: null,
-      question: `初心者でもパーソナルジムに通えますか？`,
-      answer: `もちろんです。むしろ初心者こそパーソナルトレーニングがおすすめです。専門的なトレーナーが正しいフォームを指導してくれるので、怪我のリスクが低く、効果的に身体を変えることができます。当サイトで「初心者向け」タグが付いているジムから選ぶと、初心者向けのプログラムが充実しているジムが見つかります。`,
-      sort_order: 4,
-      is_global: false,
-    },
-    {
-      id: 5,
-      gym_id: null,
-      question: `パーソナルジムで本当に痩せられますか？`,
-      answer: `正しいトレーニングと栄養指導を組み合わせることで、多くの人が目標の体重に到達しています。特に「食事指導」が付いているパーソナルジムを選ぶことが重要です。実績が気になる場合は、ジムの詳細ページでビフォーアフターや口コミを確認してください。`,
-      sort_order: 5,
-      is_global: false,
-    },
+    { id: 1, gym_id: null, question: `${regionName}のパーソナルジムの料金相場は？`, answer: `${regionName}のパーソナルジムの料金は、1回あたり5,000円～15,000円が相場です。入会金は0円～50,000円程度となっています。体験レッスンは1,000円～5,000円で受けられるジムが多いため、まずは体験から始めることをおすすめします。`, sort_order: 1, is_global: false },
+    { id: 2, gym_id: null, question: `${regionName}でおすすめのパーソナルジムは？`, answer: `${regionName}には${totalCount}件のパーソナルジムが登録されています。評価が高いジムを当ページで表示しているので、そちらをご参照ください。また、目的別（ダイエット・女性向けなど）で探すことで、あなたにぴったりのジムが見つかりやすくなります。`, sort_order: 2, is_global: false },
+    { id: 3, gym_id: null, question: `${regionName}のパーソナルジムで女性向けプランはありますか？`, answer: `${regionName}の多くのパーソナルジムで女性向けプランや女性専用レッスンを提供しています。当サイトで「女性向け」のタグが付いているジムを検索することで、女性向けプランがあるジムが簡単に見つかります。`, sort_order: 3, is_global: false },
+    { id: 4, gym_id: null, question: `初心者でもパーソナルジムに通えますか？`, answer: `もちろんです。むしろ初心者こそパーソナルトレーニングがおすすめです。専門的なトレーナーが正しいフォームを指導してくれるので、怪我のリスクが低く、効果的に身体を変えることができます。当サイトで「初心者向け」タグが付いているジムから選ぶと、初心者向けのプログラムが充実しているジムが見つかります。`, sort_order: 4, is_global: false },
+    { id: 5, gym_id: null, question: `パーソナルジムで本当に痩せられますか？`, answer: `正しいトレーニングと栄養指導を組み合わせることで、多くの人が目標の体重に到達しています。特に「食事指導」が付いているパーソナルジムを選ぶことが重要です。実績が気になる場合は、ジムの詳細ページでビフォーアフターや口コミを確認してください。`, sort_order: 5, is_global: false },
   ];
 }
 
-export default function RegionPage({
-  region,
-  gyms,
-  totalCount,
-  page,
-  prefectures,
-  faqs,
-}: RegionPageProps) {
+export default function RegionPage({ region, gyms, totalCount, page, prefectures, faqs }: RegionPageProps) {
   const router = useRouter();
   const totalPages = Math.ceil(totalCount / PER_PAGE);
   const basePath = `/r-${region.slug}/`;
@@ -135,12 +89,7 @@ export default function RegionPage({
         path={`${basePath}${page > 1 ? `?page=${page}` : ""}`}
         noindex={page > 1}
       />
-      <JsonLDListPage
-        title={`${region.name}のパーソナルジム`}
-        description={`${region.name}のパーソナルジム一覧`}
-        path={basePath}
-        items={gyms}
-      />
+      <JsonLDListPage title={`${region.name}のパーソナルジム`} description={`${region.name}のパーソナルジム一覧`} path={basePath} items={gyms} />
       <JsonLDBreadcrumbs items={breadcrumbItems} />
       <JsonLDFaq faqs={faqs} />
 
@@ -150,21 +99,17 @@ export default function RegionPage({
         <h1 className="text-2xl font-bold text-gray-900 mt-4">
           {region.name}のパーソナルジム
           <span className="text-base font-normal text-gray-500 ml-2">
-            ({totalCount.toLocaleString()}件)
+            (<span className="font-bold text-gray-900">{totalCount.toLocaleString()}</span>件)
           </span>
         </h1>
         <p className="text-sm md:text-base text-gray-600 mt-3">
           {region.name}で料金・体験・食事指導・目的別の違いを比較しやすいように、主要情報が分かるジムを一覧化しています。
         </p>
 
-        {/* SEO Description Section */}
         <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
-          <h2 className="text-xl font-bold text-gray-900 mb-3">
-            {region.name}のパーソナルジムについて
-          </h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-3">{region.name}のパーソナルジムについて</h2>
           <p className="text-gray-700 mb-2">
-            {region.name}には、ダイエット・ボディメイク・健康増進など、様々な目的に対応したパーソナルジムが{totalCount}
-            件あります。プロのトレーナーによるマンツーマン指導で、効率的に目標を達成することができます。
+            {region.name}には、ダイエット・ボディメイク・健康増進など、様々な目的に対応したパーソナルジムが{totalCount}件あります。プロのトレーナーによるマンツーマン指導で、効率的に目標を達成することができます。
           </p>
           <p className="text-gray-700 mb-2">
             料金・入会金・食事指導の有無など、ジムごとに特徴が異なります。体験レッスンを受けて、自分に合ったジムを見つけることをおすすめします。
@@ -174,19 +119,13 @@ export default function RegionPage({
           </p>
         </section>
 
-        {/* Prefectures Links Section */}
         {prefectures.length > 0 && (
           <section className="mt-8">
-            <h2 className="text-lg font-bold text-gray-900 mb-3">
-              {region.name}の都道府県から探す
-            </h2>
+            <h2 className="text-lg font-bold text-gray-900 mb-3">{region.name}の都道府県から探す</h2>
             <div className="flex flex-wrap gap-2">
               {prefectures.map((pref) => (
-                <NextLink
-                  key={pref.id}
-                  href={`/p-${pref.slug}/`}
-                  className="inline-flex items-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 no-underline hover:bg-gray-100 transition-colors"
-                >
+                <NextLink key={pref.id} href={`/p-${pref.slug}/`}
+                  className="inline-flex items-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 no-underline hover:bg-gray-100 transition-colors">
                   {pref.title}
                   <span className="ml-1 text-xs text-gray-500">({pref.gym_count})</span>
                 </NextLink>
@@ -197,16 +136,11 @@ export default function RegionPage({
 
         <section className="mt-8 rounded-xl border border-[#bcd7c0] bg-[#f0f6f0] p-5">
           <h2 className="text-lg font-bold text-gray-900">目的から探す</h2>
-          <p className="text-sm text-gray-600 mt-2">
-            「ダイエット」「女性向け」「初心者向け」など、検討目的に近い一覧へすぐ移動できます。
-          </p>
+          <p className="text-sm text-gray-600 mt-2">「ダイエット」「女性向け」「初心者向け」など、検討目的に近い一覧へすぐ移動できます。</p>
           <div className="mt-4 flex flex-wrap gap-2">
             {PURPOSE_DEFINITIONS.map((purpose) => (
-              <NextLink
-                key={purpose.slug}
-                href={`${basePath}${purpose.slug}/`}
-                className="inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-medium text-[#1e782d] no-underline hover:bg-orange-100 transition-colors"
-              >
+              <NextLink key={purpose.slug} href={`${basePath}${purpose.slug}/`}
+                className="inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-medium text-[#1e782d] no-underline hover:bg-orange-100 transition-colors">
                 {purpose.shortLabel}
               </NextLink>
             ))}
@@ -215,34 +149,24 @@ export default function RegionPage({
 
         <h2 className="text-xl font-bold text-gray-900 mt-8 mb-4">{region.name}全体のジム一覧</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {gyms.map((gym) => (
-            <GymCard key={gym.id} gym={gym} />
-          ))}
+          {gyms.map((gym) => (<GymCard key={gym.id} gym={gym} />))}
         </div>
 
         {gyms.length === 0 && (
           <div className="text-center py-20 text-gray-500">
             {region.name}にはまだパーソナルジムが登録されていません。
+            <p className="text-sm mt-2">条件を変えてお試しください。</p>
           </div>
         )}
 
         {totalPages > 1 && (
           <div className="flex justify-center mt-10">
-            <Pagination
-              count={totalPages}
-              page={page}
-              onChange={handlePageChange}
-              shape="rounded"
-              size="large"
-            />
+            <Pagination count={totalPages} page={page} onChange={handlePageChange} shape="rounded" size="large" />
           </div>
         )}
 
-        {/* Column Articles Section */}
         <section className="mt-12">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">
-            パーソナルジムのお役立ちコラム
-          </h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-4">パーソナルジムのお役立ちコラム</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
               { href: "/column/gym-beginner/", title: "パーソナルジム初心者ガイド｜始め方と選び方" },
@@ -253,53 +177,24 @@ export default function RegionPage({
               { href: "/column/training-frequency/", title: "通う頻度の目安｜週何回が最適か" },
               { href: "/column/women-gym/", title: "女性専用パーソナルジムの選び方" },
               { href: "/column/gym-trial/", title: "パーソナルジムの体験入会を活用しよう" },
-              { href: "/column/gym-trainer/", title: "パーソナルトレーナーの選び方と資格の見方" },
-              { href: "/column/gym-bodymake/", title: "パーソナルジムで体が変わるまでの期間と目安" },
-              { href: "/column/gym-diet/", title: "パーソナルジムでダイエットを成功させる方法" },
-              { href: "/column/gym-price/", title: "パーソナルジムの料金相場｜費用を抑えるコツ" },
-              { href: "/column/gym-muscle/", title: "筋肉をつけるためのパーソナルジム活用法｜バルクアップと増量期のコツ" },
-              { href: "/column/gym-women-50/", title: "50代女性のパーソナルジム｜更年期・骨密度・姿勢改善に効果的なトレーニング" },
-              { href: "/column/gym-senior/", title: "シニア・50代からのパーソナルジム｜安全な始め方と効果" },
-              { href: "/column/gym-student/", title: "学生・20代向けパーソナルジムの選び方｜費用を抑えるコツ" },
-              { href: "/column/gym-continuing/", title: "パーソナルジムを続けるコツ｜モチベーション維持と挫折防止" },
-              { href: "/column/gym-compare/", title: "パーソナルジムを複数比較する方法｜体験レッスンの活用術" },
-              { href: "/column/gym-rebound/", title: "パーソナルジム卒業後のリバウンドを防ぐ方法｜食事管理と継続トレーニング" },
-              { href: "/column/gym-age/", title: "40代・50代からのパーソナルジム｜年齢別の効果と注意点" },
-              { href: "/column/gym-shokuji/", title: "パーソナルジムの食事指導とは｜食事管理で結果を最大化する方法" },
-              { href: "/column/gym-online/", title: "オンラインパーソナルジムのメリット・デメリット｜通いとの違いを比較" },
-              { href: "/column/gym-stretch/", title: "パーソナルジムでのストレッチ・柔軟性向上｜硬い体をほぐすトレーニングの効果" },
-              { href: "/column/gym-back/", title: "腰痛・肩こり改善のためのパーソナルジム活用｜姿勢矯正プログラムとは" },
             ].map((article) => (
-              <NextLink
-                key={article.href}
-                href={article.href}
-                className="block p-4 border border-gray-300 rounded-lg hover:border-orange-300 hover:bg-orange-50 transition-colors no-underline"
-              >
-                <span className="text-sm font-medium text-orange-600 hover:text-orange-700">
-                  {article.title}
-                </span>
+              <NextLink key={article.href} href={article.href}
+                className="block p-4 border border-gray-300 rounded-lg hover:border-orange-300 hover:bg-orange-50 transition-colors no-underline">
+                <span className="text-sm font-medium text-orange-600 hover:text-orange-700">{article.title}</span>
               </NextLink>
             ))}
           </div>
         </section>
 
-        {/* FAQ Section */}
         {faqs.length > 0 && (
           <section className="mt-12">
-            <h2 className="text-xl font-bold text-gray-900 mb-6">
-              {region.name}のパーソナルジムについてよくある質問
-            </h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-6">{region.name}のパーソナルジムについてよくある質問</h2>
             <div className="space-y-4">
               {faqs.map((faq) => (
-                <details
-                  key={faq.id}
-                  className="group border border-gray-300 rounded-lg p-4 hover:border-orange-300 transition-colors"
-                >
+                <details key={faq.id} className="group border border-gray-300 rounded-lg p-4 hover:border-orange-300 transition-colors">
                   <summary className="cursor-pointer font-semibold text-gray-900 flex items-center justify-between">
                     {faq.question}
-                    <span className="ml-2 text-lg group-open:rotate-180 transition-transform">
-                      ▼
-                    </span>
+                    <span className="ml-2 text-lg group-open:rotate-180 transition-transform">▼</span>
                   </summary>
                   <p className="mt-3 text-gray-700 text-sm leading-relaxed">{faq.answer}</p>
                 </details>
