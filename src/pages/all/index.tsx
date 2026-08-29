@@ -251,6 +251,13 @@ export default function AllGyms({
           </span>
         </h1>
 
+        <div className="flex items-center justify-between mt-2 mb-3">
+          <p className="text-sm text-gray-600 font-medium">{totalCount.toLocaleString()}件見つかりました</p>
+          {activeFilterCount > 0 && (
+            <NextLink href="/all/" className="text-xs text-[#1e782d] hover:underline font-medium">条件をリセット</NextLink>
+          )}
+        </div>
+
         {/* SEO Description Section */}
         <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
           <h2 className="text-xl font-bold text-gray-900 mb-3">

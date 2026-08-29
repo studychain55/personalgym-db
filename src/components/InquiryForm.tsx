@@ -39,7 +39,21 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
   );
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <div>
+      <div className="bg-[#f0f9f0] border border-[#1e782d]/20 rounded-xl p-4 mb-4">
+        <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex items-center gap-1 text-sm text-[#1e782d] font-medium">
+            <span>✓</span><span>入力3分で完了</span>
+          </div>
+          <div className="flex items-center gap-1 text-sm text-[#1e782d] font-medium">
+            <span>✓</span><span>返信は24時間以内</span>
+          </div>
+          <div className="flex items-center gap-1 text-sm text-[#1e782d] font-medium">
+            <span>✓</span><span>無料で相談できます</span>
+          </div>
+        </div>
+      </div>
+      <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label className="block text-sm font-bold text-gray-700 mb-1">お名前 <span className="text-red-500">*</span></label>
         <input required value={form.name} onChange={e=>setForm(f=>({...f,name:e.target.value}))}
@@ -65,6 +79,10 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
         className="w-full bg-[#1e782d] text-white font-bold py-4 rounded-lg disabled:opacity-50">
         {status==='loading'?'送信中...':'お問い合わせを送信する'}
       </button>
-    </form>
+        <p className="text-[10px] text-gray-400 text-center mt-2">
+          🔒 SSL暗号化通信で安全に送信されます
+        </p>
+      </form>
+    </div>
   );
 }
