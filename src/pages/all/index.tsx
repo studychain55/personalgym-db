@@ -251,6 +251,17 @@ export default function AllGyms({
           </span>
         </h1>
 
+        {/* 信頼シグナルバナー（フィルターなし・1ページ目のみ） */}
+        {page === 1 && !features.hasFemaleOnly && !features.hasMoneyBack && !features.hasDiet && !features.hasTrialAvailable && priceBand === "all" && (
+          <div className="flex flex-wrap items-center justify-center gap-3 bg-[#f0fdf4] border border-[#bbf7d0] rounded-lg px-4 py-2.5 mt-3 text-xs text-[#166534]">
+            <span className="font-bold">✅ 全国{totalCount.toLocaleString()}件掲載中</span>
+            <span className="hidden sm:inline text-gray-300">|</span>
+            <span>🆓 完全無料・会員登録不要</span>
+            <span className="hidden sm:inline text-gray-300">|</span>
+            <span>🏋️ 無料体験レッスンで比較OK</span>
+          </div>
+        )}
+
         {/* SEO Description Section */}
         <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
           <h2 className="text-xl font-bold text-gray-900 mb-3">
