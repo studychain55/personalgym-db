@@ -99,6 +99,7 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
 
       {/* Sticky CTA Bar */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 shadow-lg z-40 md:hidden">
+        <p className="text-[10px] text-center text-gray-500 mb-1.5">✨ 無料体験受付中・カウンセリングも無料</p>
         <div className="flex gap-2">
           {gym.trial_available && (
             <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-2.5 rounded-lg font-bold text-center text-sm hover:bg-[#155420] transition">
@@ -257,17 +258,23 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
 
         {/* CTA Section (Desktop) */}
         {(gym.trial_available || gym.website_url) && (
-          <div className="hidden md:flex gap-3 mt-6">
-            {gym.trial_available && (
-              <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-3 rounded-lg font-bold text-center hover:bg-[#155420] transition">
-                無料体験を予約する
-              </a>
-            )}
-            {gym.website_url && (
-              <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-3 rounded-lg font-bold text-center hover:bg-gray-200 transition">
-                公式サイトを見る
-              </a>
-            )}
+          <div className="hidden md:block mt-6 bg-gray-50 border border-gray-200 rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">無料体験受付中</span>
+              <span className="text-xs text-gray-500">24時間受付・返信は通常1営業日以内</span>
+            </div>
+            <div className="flex gap-3">
+              {gym.trial_available && (
+                <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-3 rounded-lg font-bold text-center hover:bg-[#155420] transition">
+                  無料体験を予約する
+                </a>
+              )}
+              {gym.website_url && (
+                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-3 rounded-lg font-bold text-center hover:bg-gray-200 transition">
+                  公式サイトを見る
+                </a>
+              )}
+            </div>
           </div>
         )}
 
