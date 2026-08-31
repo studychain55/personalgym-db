@@ -116,6 +116,17 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
       <div className="max-w-4xl mx-auto px-4 py-6 pb-24 md:pb-6">
         <Breadcrumb items={breadcrumbItems} />
 
+        {/* クイックアクションバー */}
+        <div className="flex items-center justify-end gap-2 mb-3">
+          <button
+            onClick={() => { if (navigator.share) { navigator.share({ title: document.title, url: window.location.href }); } else { navigator.clipboard.writeText(window.location.href); } }}
+            className="flex items-center gap-1 px-3 py-1.5 text-xs bg-white border border-gray-200 rounded-full hover:border-gray-400 transition-colors text-gray-600"
+          >
+            <span>🔗</span>
+            <span>共有</span>
+          </button>
+        </div>
+
         {/* Header */}
         <div className="mt-4">
           {gym.catchphrase && (
