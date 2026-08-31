@@ -386,16 +386,28 @@ export default function AllGyms({
         </div>
 
         {/* 検索結果表示 */}
-        <div className="mt-4 text-sm text-gray-600">
+        <div className="mt-4 flex flex-wrap items-center gap-2 text-sm">
+          <span className="text-gray-700 font-medium">{totalCount.toLocaleString()}件</span>
           {activeFilterCount > 0 && (
-            <p>
-              フィルタ適用中: <span className="font-medium text-gray-900">{getSortLabel(sortBy)}</span>
-              {priceBand !== "all" && ` / ${getPriceBandLabel(priceBand)}`}
-              {features.hasFemaleOnly && " / 女性専用"}
-              {features.hasTrialAvailable && " / 体験あり"}
-              {features.hasMoneyBack && " / 返金保証"}
-              {features.hasDiet && " / 食事指導あり"}
-            </p>
+            <>
+              <span className="text-gray-400">|</span>
+              <span className="text-gray-500">フィルタ適用中:</span>
+              {priceBand !== "all" && (
+                <span className="bg-[#e9f2ea] text-[#1e782d] font-medium px-2 py-0.5 rounded-full text-xs">{getPriceBandLabel(priceBand)}</span>
+              )}
+              {features.hasFemaleOnly && (
+                <span className="bg-pink-100 text-pink-700 font-medium px-2 py-0.5 rounded-full text-xs">女性専用</span>
+              )}
+              {features.hasTrialAvailable && (
+                <span className="bg-[#e9f2ea] text-[#1e782d] font-medium px-2 py-0.5 rounded-full text-xs">体験あり</span>
+              )}
+              {features.hasMoneyBack && (
+                <span className="bg-orange-100 text-orange-700 font-medium px-2 py-0.5 rounded-full text-xs">返金保証</span>
+              )}
+              {features.hasDiet && (
+                <span className="bg-blue-100 text-blue-700 font-medium px-2 py-0.5 rounded-full text-xs">食事指導あり</span>
+              )}
+            </>
           )}
         </div>
 
