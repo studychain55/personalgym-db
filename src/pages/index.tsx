@@ -145,7 +145,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
             あなたに最適な<span className="text-[#1e782d]">パーソナルジム</span>が見つかる
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
+            完全無料・全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
           <div className="mt-8">
             <NextLink
