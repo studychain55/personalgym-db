@@ -251,6 +251,34 @@ export default function AllGyms({
           </span>
         </h1>
 
+        {/* クイックフィルタ */}
+        <div className="mt-4 flex flex-wrap gap-2">
+          <button
+            onClick={() => handleFeatureToggle("hasTrialAvailable")}
+            className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${features.hasTrialAvailable ? "bg-[#1e782d] text-white border-[#1e782d]" : "bg-white text-gray-700 border-gray-300 hover:border-[#1e782d] hover:text-[#1e782d]"}`}
+          >
+            無料体験あり
+          </button>
+          <button
+            onClick={() => handleFeatureToggle("hasFemaleOnly")}
+            className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${features.hasFemaleOnly ? "bg-pink-500 text-white border-pink-500" : "bg-white text-gray-700 border-gray-300 hover:border-pink-400 hover:text-pink-600"}`}
+          >
+            女性専用
+          </button>
+          <button
+            onClick={() => handleFeatureToggle("hasMoneyBack")}
+            className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${features.hasMoneyBack ? "bg-orange-500 text-white border-orange-500" : "bg-white text-gray-700 border-gray-300 hover:border-orange-400 hover:text-orange-600"}`}
+          >
+            返金保証あり
+          </button>
+          <button
+            onClick={() => handleFeatureToggle("hasDiet")}
+            className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${features.hasDiet ? "bg-blue-500 text-white border-blue-500" : "bg-white text-gray-700 border-gray-300 hover:border-blue-400 hover:text-blue-600"}`}
+          >
+            食事指導あり
+          </button>
+        </div>
+
         {/* SEO Description Section */}
         <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
           <h2 className="text-xl font-bold text-gray-900 mb-3">
