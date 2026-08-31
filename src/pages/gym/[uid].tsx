@@ -116,6 +116,28 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
       <div className="max-w-4xl mx-auto px-4 py-6 pb-24 md:pb-6">
         <Breadcrumb items={breadcrumbItems} />
 
+        {/* 上部CTA（デスクトップ向け早期表示） */}
+        {(gym.trial_available || gym.website_url) && (
+          <div className="hidden md:flex gap-3 mt-4 p-4 bg-[#f0f6f0] rounded-lg border border-[#1e782d]/30">
+            <div className="flex-1">
+              <p className="text-sm text-gray-700 font-medium mb-1">
+                {gym.trial_available ? "無料体験レッスン受付中" : "公式サイトで詳細を確認"}
+              </p>
+              <p className="text-xs text-gray-500">まずは気軽にお問い合わせください</p>
+            </div>
+            {gym.trial_available && (
+              <a href={gym.website_url || "#"} className="flex-shrink-0 bg-[#E53935] text-white py-2.5 px-6 rounded-lg font-bold text-sm hover:bg-[#C62828] transition">
+                無料体験を予約する
+              </a>
+            )}
+            {gym.website_url && !gym.trial_available && (
+              <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 bg-[#1e782d] text-white py-2.5 px-6 rounded-lg font-bold text-sm hover:bg-[#155420] transition">
+                公式サイトを見る
+              </a>
+            )}
+          </div>
+        )}
+
         {/* Header */}
         <div className="mt-4">
           {gym.catchphrase && (
