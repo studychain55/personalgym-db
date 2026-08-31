@@ -399,6 +399,59 @@ export default function AllGyms({
           )}
         </div>
 
+        {/* アクティブフィルター表示 */}
+        {activeFilterCount > 0 && (
+          <div className="flex flex-wrap items-center gap-2 mb-3 px-3 py-2 bg-green-50 rounded-lg border border-green-100">
+            <span className="text-xs text-gray-500 font-medium mr-1">絞り込み中:</span>
+            {priceBand !== "all" && (
+              <button
+                onClick={() => handlePriceBandChange("all")}
+                className="flex items-center gap-1 text-xs bg-white border border-green-200 text-green-700 px-2 py-0.5 rounded-full hover:bg-green-50 transition-colors"
+              >
+                💰 {getPriceBandLabel(priceBand)} <span>×</span>
+              </button>
+            )}
+            {features.hasFemaleOnly && (
+              <button
+                onClick={() => handleFeatureToggle("hasFemaleOnly")}
+                className="flex items-center gap-1 text-xs bg-white border border-green-200 text-green-700 px-2 py-0.5 rounded-full hover:bg-green-50 transition-colors"
+              >
+                ✓ 女性専用 <span>×</span>
+              </button>
+            )}
+            {features.hasTrialAvailable && (
+              <button
+                onClick={() => handleFeatureToggle("hasTrialAvailable")}
+                className="flex items-center gap-1 text-xs bg-white border border-green-200 text-green-700 px-2 py-0.5 rounded-full hover:bg-green-50 transition-colors"
+              >
+                ✓ 体験あり <span>×</span>
+              </button>
+            )}
+            {features.hasMoneyBack && (
+              <button
+                onClick={() => handleFeatureToggle("hasMoneyBack")}
+                className="flex items-center gap-1 text-xs bg-white border border-green-200 text-green-700 px-2 py-0.5 rounded-full hover:bg-green-50 transition-colors"
+              >
+                ✓ 返金保証 <span>×</span>
+              </button>
+            )}
+            {features.hasDiet && (
+              <button
+                onClick={() => handleFeatureToggle("hasDiet")}
+                className="flex items-center gap-1 text-xs bg-white border border-green-200 text-green-700 px-2 py-0.5 rounded-full hover:bg-green-50 transition-colors"
+              >
+                ✓ 食事指導あり <span>×</span>
+              </button>
+            )}
+            <button
+              onClick={handleResetFilters}
+              className="ml-auto text-xs text-gray-400 hover:text-green-600 underline"
+            >
+              リセット
+            </button>
+          </div>
+        )}
+
         {/* ジム一覧 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
           {gyms.map((gym) => (
@@ -407,16 +460,15 @@ export default function AllGyms({
         </div>
 
         {gyms.length === 0 && (
-          <div className="text-center py-20">
-            <svg className="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <p className="text-gray-500">条件に合うパーソナルジムが見つかりませんでした。</p>
+          <div className="text-center py-16 bg-white rounded-xl">
+            <div className="text-4xl mb-4">🔍</div>
+            <h3 className="text-lg font-bold text-gray-700 mb-2">条件に一致する施設が見つかりませんでした</h3>
+            <p className="text-sm text-gray-500 mb-6">条件を変えて再度お試しください</p>
             <button
               onClick={handleResetFilters}
-              className="mt-4 px-4 py-2 bg-[#1e782d] text-white rounded-lg text-sm font-medium hover:bg-[#e55a25] transition-colors"
+              className="inline-block px-6 py-3 bg-[#1e782d] text-white font-bold rounded-lg hover:opacity-90 transition-opacity text-sm"
             >
-              フィルタをリセット
+              条件をリセットして全件表示
             </button>
           </div>
         )}
