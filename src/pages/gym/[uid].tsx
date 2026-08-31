@@ -138,6 +138,27 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
           </div>
         </div>
 
+        {/* Early CTA (Desktop) */}
+        {(gym.trial_available || gym.website_url) && (
+          <div className="hidden md:flex gap-3 mt-5 p-4 bg-[#f0f6f0] border border-[#c3e0c7] rounded-lg items-center">
+            <p className="text-sm text-gray-700 flex-1">
+              {gym.trial_available ? "無料体験トレーニング実施中" : "公式サイトで詳細を確認"}できます。まずはお気軽にどうぞ。
+            </p>
+            <div className="flex gap-2 flex-shrink-0">
+              {gym.trial_available && (
+                <a href={gym.website_url || "#"} className="bg-[#1e782d] text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-[#155420] transition whitespace-nowrap">
+                  無料体験を予約する
+                </a>
+              )}
+              {gym.website_url && (
+                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="bg-white border border-gray-300 text-gray-700 px-5 py-2 rounded-lg font-bold text-sm hover:bg-gray-50 transition whitespace-nowrap">
+                  公式サイト
+                </a>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* Campaigns */}
         {campaigns.length > 0 && (
           <div className="mt-6 bg-red-50 border border-red-200 rounded-lg p-4">
