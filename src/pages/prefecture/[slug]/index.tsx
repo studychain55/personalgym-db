@@ -262,19 +262,42 @@ export default function PrefecturePage({
           </section>
         )}
 
-        <div className="mt-8 flex items-center justify-between gap-3 mb-4">
-          <h2 className="text-xl font-bold text-gray-900">{prefecture.title}全体のジム一覧
-            <span className="text-sm font-normal text-gray-500 ml-2">({totalCount.toLocaleString()}件)</span>
-          </h2>
-          <select
-            value={currentSort}
-            onChange={(e) => handleSortChange(e.target.value)}
-            className="px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#1e782d]"
-          >
-            {SORT_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.value}>{opt.label}</option>
+        <div className="mt-8 mb-4">
+          <div className="flex items-center justify-between gap-3 mb-3">
+            <h2 className="text-xl font-bold text-gray-900">{prefecture.title}全体のジム一覧
+              <span className="text-sm font-normal text-gray-500 ml-2">
+                (<span className="text-[#1e782d] font-bold">{totalCount.toLocaleString()}</span>件)
+              </span>
+            </h2>
+            <select
+              value={currentSort}
+              onChange={(e) => handleSortChange(e.target.value)}
+              className="px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#1e782d]"
+            >
+              {SORT_OPTIONS.map((opt) => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
+            </select>
+          </div>
+          {/* クイックフィルター */}
+          <div className="flex flex-wrap gap-2">
+            <span className="text-xs text-gray-400 self-center">絞り込み:</span>
+            {[
+              { label: "無料体験あり", kw: "無料体験" },
+              { label: "女性専用", kw: "女性専用" },
+              { label: "ダイエット", kw: "ダイエット" },
+              { label: "食事指導あり", kw: "食事指導" },
+              { label: "初心者向け", kw: "初心者" },
+            ].map(({ label, kw }) => (
+              <NextLink
+                key={kw}
+                href={`${basePath}?kw=${encodeURIComponent(kw)}${currentSort ? `&sort=${currentSort}` : ""}`}
+                className="text-xs px-3 py-1 rounded-full border border-gray-300 bg-white text-gray-600 hover:border-[#1e782d] hover:text-[#1e782d] transition-colors no-underline"
+              >
+                {label}
+              </NextLink>
             ))}
-          </select>
+          </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {gyms.map((gym) => (

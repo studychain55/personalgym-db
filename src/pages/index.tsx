@@ -147,13 +147,43 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
-            <NextLink
-              href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+          {/* 検索フォーム */}
+          <div className="mt-8 max-w-2xl mx-auto">
+            <form
+              action="/all/"
+              method="get"
+              className="flex gap-2 bg-white rounded-xl p-2 shadow-md border border-gray-200"
             >
-              ジム一覧を見る →
-            </NextLink>
+              <input
+                type="text"
+                name="kw"
+                placeholder="エリア・ジム名・目的（ダイエット・筋トレ）で検索"
+                className="flex-1 px-4 py-2.5 text-sm text-gray-800 bg-transparent focus:outline-none rounded-lg"
+              />
+              <button
+                type="submit"
+                className="bg-[#1e782d] text-white font-bold px-6 py-2.5 rounded-lg text-sm hover:bg-[#155420] transition-colors flex-shrink-0"
+              >
+                検索
+              </button>
+            </form>
+            <div className="flex flex-wrap justify-center gap-2 mt-3">
+              {["ダイエット", "女性専用", "無料体験あり", "渋谷", "新宿"].map((kw) => (
+                <NextLink
+                  key={kw}
+                  href={`/all/?kw=${encodeURIComponent(kw)}`}
+                  className="text-xs px-3 py-1 bg-white border border-gray-200 rounded-full hover:border-[#1e782d] hover:text-[#1e782d] transition-colors no-underline text-gray-600"
+                >
+                  {kw}
+                </NextLink>
+              ))}
+            </div>
+          </div>
+          {/* 信頼シグナル */}
+          <div className="flex flex-wrap justify-center gap-4 mt-6">
+            <span className="text-sm text-gray-500 flex items-center gap-1"><span className="text-green-500">✓</span>無料で使えます</span>
+            <span className="text-sm text-gray-500 flex items-center gap-1"><span className="text-green-500">✓</span>全国47都道府県対応</span>
+            <span className="text-sm text-gray-500 flex items-center gap-1"><span className="text-green-500">✓</span>無料体験レッスン検索可</span>
           </div>
         </div>
       </section>
