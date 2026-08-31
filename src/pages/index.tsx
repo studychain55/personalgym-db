@@ -138,6 +138,27 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
         }}
       />
 
+      {/* ===== 安心ポイント ===== */}
+      <div className="bg-white border-b border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 py-5 grid grid-cols-3 gap-2 text-center">
+          <div className="flex flex-col items-center gap-1.5">
+            <span className="text-xl">🔍</span>
+            <p className="text-xs font-bold text-gray-800">豊富な掲載数</p>
+            <p className="text-[10px] text-gray-500">全国のジムを網羅</p>
+          </div>
+          <div className="flex flex-col items-center gap-1.5">
+            <span className="text-xl">💰</span>
+            <p className="text-xs font-bold text-gray-800">料金を透明比較</p>
+            <p className="text-[10px] text-gray-500">相場がひと目でわかる</p>
+          </div>
+          <div className="flex flex-col items-center gap-1.5">
+            <span className="text-xl">✅</span>
+            <p className="text-xs font-bold text-gray-800">無料で問い合わせ</p>
+            <p className="text-[10px] text-gray-500">まとめて比較・相談</p>
+          </div>
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="bg-gradient-to-br from-[#FFF3ED] to-white py-12 md:py-20">
         <div className="max-w-6xl mx-auto px-4 text-center">
