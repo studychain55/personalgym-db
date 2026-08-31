@@ -150,13 +150,19 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <div className="mt-8">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline min-h-[48px]"
             >
               ジム一覧を見る →
             </NextLink>
           </div>
         </div>
       </section>
+      {/* 全件表示リンク */}
+      <div className="mt-3 text-center">
+        <NextLink href="/all/" className="text-sm font-semibold text-[#1e782d] hover:underline">
+          全{totalCount.toLocaleString()}件を見る →
+        </NextLink>
+      </div>
 
       {/* Featured Gyms */}
       {featuredGyms.length > 0 && (

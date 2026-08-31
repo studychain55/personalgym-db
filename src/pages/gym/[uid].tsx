@@ -897,6 +897,13 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
             </div>
           </div>
         )}
+
+        {/* 一覧に戻るリンク */}
+        <div className="max-w-5xl mx-auto px-4 py-6 text-center">
+          <a href="/all/" className="text-sm text-gray-500 hover:text-gray-700 hover:underline">
+            ← 一覧に戻る
+          </a>
+        </div>
       </div>
     </Layout>
   );
