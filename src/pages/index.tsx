@@ -145,14 +145,14 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
             あなたに最適な<span className="text-[#1e782d]">パーソナルジム</span>が見つかる
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
+            全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを<span className="font-bold text-[#1e782d]">料金・口コミ・特徴</span>で徹底比較
           </p>
           <div className="mt-8">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#1e782d] text-white text-lg font-bold px-8 py-4 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline shadow-md"
             >
-              ジム一覧を見る →
+              パーソナルジムを探す →
             </NextLink>
           </div>
         </div>

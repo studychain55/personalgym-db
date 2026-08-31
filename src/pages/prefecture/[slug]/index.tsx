@@ -262,9 +262,9 @@ export default function PrefecturePage({
           </section>
         )}
 
-        <div className="mt-8 flex items-center justify-between gap-3 mb-4">
+        <div className="mt-8 flex items-center justify-between gap-3 mb-4 sticky top-0 z-10 bg-white shadow-sm py-3 px-2 -mx-2 rounded-lg">
           <h2 className="text-xl font-bold text-gray-900">{prefecture.title}全体のジム一覧
-            <span className="text-sm font-normal text-gray-500 ml-2">({totalCount.toLocaleString()}件)</span>
+            <span className="text-sm font-bold text-gray-700 ml-2">({totalCount.toLocaleString()}件)</span>
           </h2>
           <select
             value={currentSort}

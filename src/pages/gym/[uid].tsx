@@ -259,12 +259,12 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
         {(gym.trial_available || gym.website_url) && (
           <div className="hidden md:flex gap-3 mt-6">
             {gym.trial_available && (
-              <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-3 rounded-lg font-bold text-center hover:bg-[#155420] transition">
+              <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-4 rounded-lg font-bold text-center text-lg hover:bg-[#155420] transition shadow-md">
                 無料体験を予約する
               </a>
             )}
             {gym.website_url && (
-              <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-3 rounded-lg font-bold text-center hover:bg-gray-200 transition">
+              <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-4 rounded-lg font-bold text-center text-lg hover:bg-gray-200 transition">
                 公式サイトを見る
               </a>
             )}
