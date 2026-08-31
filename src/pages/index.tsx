@@ -147,12 +147,13 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
+          <p className="mt-2 text-sm text-gray-500">無料体験・パーソナルトレーニング対応ジムも多数掲載</p>
           <div className="mt-8">
             <NextLink
               href="/all/"
               className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
             >
-              ジム一覧を見る →
+              ジムを探す →
             </NextLink>
           </div>
         </div>
