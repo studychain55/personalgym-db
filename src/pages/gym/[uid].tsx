@@ -100,16 +100,22 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
       {/* Sticky CTA Bar */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 shadow-lg z-40 md:hidden">
         <div className="flex gap-2">
-          {gym.trial_available && (
+          <a
+            href="#contact"
+            onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+            className="flex-1 bg-white border-2 border-[#1e782d] text-[#1e782d] py-2.5 rounded-lg font-bold text-center text-sm hover:bg-[#f0f6f0] transition"
+          >
+            ✉️ 無料相談
+          </a>
+          {gym.trial_available ? (
             <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-2.5 rounded-lg font-bold text-center text-sm hover:bg-[#155420] transition">
-              無料体験を予約
+              ✨ 無料体験を予約
             </a>
-          )}
-          {gym.website_url && (
-            <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-2.5 rounded-lg font-bold text-center text-sm hover:bg-gray-200 transition">
-              公式サイト
+          ) : gym.website_url ? (
+            <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-[#1e782d] text-white py-2.5 rounded-lg font-bold text-center text-sm hover:bg-[#155420] transition">
+              公式サイト →
             </a>
-          )}
+          ) : null}
         </div>
       </div>
 
