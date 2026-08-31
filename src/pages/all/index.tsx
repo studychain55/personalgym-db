@@ -269,7 +269,7 @@ export default function AllGyms({
         </section>
 
         {/* ソート・フィルタバー */}
-        <div className="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-4">
+        <div className="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-4 sticky top-16 z-10 bg-white shadow-sm">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             {/* ソートセレクト */}
             <div className="flex items-center gap-2">
