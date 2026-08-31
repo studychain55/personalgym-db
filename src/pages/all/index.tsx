@@ -385,19 +385,43 @@ export default function AllGyms({
           </div>
         </div>
 
-        {/* 検索結果表示 */}
-        <div className="mt-4 text-sm text-gray-600">
-          {activeFilterCount > 0 && (
-            <p>
-              フィルタ適用中: <span className="font-medium text-gray-900">{getSortLabel(sortBy)}</span>
-              {priceBand !== "all" && ` / ${getPriceBandLabel(priceBand)}`}
-              {features.hasFemaleOnly && " / 女性専用"}
-              {features.hasTrialAvailable && " / 体験あり"}
-              {features.hasMoneyBack && " / 返金保証"}
-              {features.hasDiet && " / 食事指導あり"}
-            </p>
-          )}
-        </div>
+        {/* アクティブフィルター pills */}
+        {activeFilterCount > 0 && (
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            <span className="text-xs text-gray-500 font-medium">絞り込み中:</span>
+            {priceBand !== "all" && (
+              <span className="inline-flex items-center gap-1 text-xs px-3 py-1 bg-[#e9f2ea] text-[#1e782d] rounded-full border border-[#1e782d]/30 font-medium">
+                {getPriceBandLabel(priceBand)}
+              </span>
+            )}
+            {features.hasFemaleOnly && (
+              <span className="inline-flex items-center gap-1 text-xs px-3 py-1 bg-[#e9f2ea] text-[#1e782d] rounded-full border border-[#1e782d]/30 font-medium">
+                女性専用
+              </span>
+            )}
+            {features.hasTrialAvailable && (
+              <span className="inline-flex items-center gap-1 text-xs px-3 py-1 bg-[#e9f2ea] text-[#1e782d] rounded-full border border-[#1e782d]/30 font-medium">
+                体験あり
+              </span>
+            )}
+            {features.hasMoneyBack && (
+              <span className="inline-flex items-center gap-1 text-xs px-3 py-1 bg-[#e9f2ea] text-[#1e782d] rounded-full border border-[#1e782d]/30 font-medium">
+                返金保証
+              </span>
+            )}
+            {features.hasDiet && (
+              <span className="inline-flex items-center gap-1 text-xs px-3 py-1 bg-[#e9f2ea] text-[#1e782d] rounded-full border border-[#1e782d]/30 font-medium">
+                食事指導あり
+              </span>
+            )}
+            <button
+              onClick={handleResetFilters}
+              className="text-xs text-[#E53935] hover:underline ml-1"
+            >
+              すべてクリア
+            </button>
+          </div>
+        )}
 
         {/* ジム一覧 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
