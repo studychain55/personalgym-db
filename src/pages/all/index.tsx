@@ -385,6 +385,27 @@ export default function AllGyms({
           </div>
         </div>
 
+        {/* クイックフィルタ */}
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <span className="text-xs font-bold text-gray-600 self-center mr-1">人気の条件:</span>
+          <button onClick={() => handleFeatureToggle("hasTrialAvailable")}
+            className={`text-xs px-3 py-1 rounded-full border transition-colors ${features.hasTrialAvailable ? "bg-[#1e782d] text-white border-[#1e782d]" : "bg-white text-gray-600 border-gray-300 hover:border-[#1e782d]"}`}>
+            無料体験あり
+          </button>
+          <button onClick={() => handleFeatureToggle("hasFemaleOnly")}
+            className={`text-xs px-3 py-1 rounded-full border transition-colors ${features.hasFemaleOnly ? "bg-[#1e782d] text-white border-[#1e782d]" : "bg-white text-gray-600 border-gray-300 hover:border-[#1e782d]"}`}>
+            女性専用
+          </button>
+          <button onClick={() => handleFeatureToggle("hasMoneyBack")}
+            className={`text-xs px-3 py-1 rounded-full border transition-colors ${features.hasMoneyBack ? "bg-[#1e782d] text-white border-[#1e782d]" : "bg-white text-gray-600 border-gray-300 hover:border-[#1e782d]"}`}>
+            返金保証
+          </button>
+          <button onClick={() => handleFeatureToggle("hasDiet")}
+            className={`text-xs px-3 py-1 rounded-full border transition-colors ${features.hasDiet ? "bg-[#1e782d] text-white border-[#1e782d]" : "bg-white text-gray-600 border-gray-300 hover:border-[#1e782d]"}`}>
+            食事指導あり
+          </button>
+        </div>
+
         {/* 検索結果表示 */}
         <div className="mt-4 text-sm text-gray-600">
           {activeFilterCount > 0 && (
