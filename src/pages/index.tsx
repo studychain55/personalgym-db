@@ -150,10 +150,11 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <div className="mt-8">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-orange-500 text-white font-bold text-lg px-10 py-4 rounded-lg shadow-md hover:opacity-90 transition-opacity no-underline"
             >
-              ジム一覧を見る →
+              無料でジムを探す →
             </NextLink>
+            <p className="text-sm text-gray-500 mt-2">全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}を無料で比較・検索</p>
           </div>
         </div>
       </section>

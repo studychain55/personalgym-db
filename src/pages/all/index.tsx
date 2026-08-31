@@ -244,6 +244,7 @@ export default function AllGyms({
           items={[{ label: "ジム一覧" }]}
         />
 
+        <p className="text-sm text-gray-600 mb-2">{totalCount.toLocaleString()}件のパーソナルジムが見つかりました</p>
         <h1 className="text-2xl font-bold text-gray-900 mt-4">
           全国のパーソナルジム一覧
           <span className="text-base font-normal text-gray-500 ml-2">
