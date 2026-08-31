@@ -147,13 +147,41 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
+
+          {/* クイックフィルターチップ */}
+          <div className="mt-6 flex flex-wrap justify-center gap-2">
+            {[
+              { label: "初心者向け", query: "?feature=beginner" },
+              { label: "女性専用", query: "?female=1" },
+              { label: "無料体験あり", query: "?trial=1" },
+              { label: "返金保証", query: "?moneyback=1" },
+              { label: "食事指導あり", query: "?diet=1" },
+            ].map((chip) => (
+              <NextLink
+                key={chip.label}
+                href={`/all/${chip.query}`}
+                className="inline-block bg-white border border-[#1e782d] text-[#1e782d] text-sm font-medium px-4 py-1.5 rounded-full hover:bg-[#1e782d] hover:text-white transition-colors no-underline"
+              >
+                {chip.label}
+              </NextLink>
+            ))}
+          </div>
+
+          <div className="mt-6">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#1e782d] text-white font-bold text-lg px-10 py-4 rounded-xl hover:bg-[#155420] transition-colors no-underline shadow-md"
             >
-              ジム一覧を見る →
+              ジムを全件検索する →
             </NextLink>
+          </div>
+
+          {/* 信頼バー */}
+          <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-gray-500">
+            <span className="flex items-center gap-1"><span className="text-[#1e782d] font-bold">{totalCount > 0 ? `${totalCount.toLocaleString()}件` : "多数"}</span>掲載中</span>
+            <span className="flex items-center gap-1"><span className="text-[#1e782d] font-bold">無料</span>で使える</span>
+            <span className="flex items-center gap-1"><span className="text-[#1e782d] font-bold">口コミ</span>・料金比較</span>
+            <span className="flex items-center gap-1"><span className="text-[#1e782d] font-bold">全国</span>対応</span>
           </div>
         </div>
       </section>
