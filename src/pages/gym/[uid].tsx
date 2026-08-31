@@ -1,4 +1,5 @@
 import type { GetServerSideProps } from "next";
+import NextLink from "next/link";
 import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
 import { JsonLDGymDetail, JsonLDFaq, JsonLDBreadcrumbList, JsonLDDynamicFaq } from "@/components/UI/JsonLD";
@@ -116,6 +117,19 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
       <div className="max-w-4xl mx-auto px-4 py-6 pb-24 md:pb-6">
         <Breadcrumb items={breadcrumbItems} />
 
+        {/* 一覧へ戻るリンク */}
+        <div className="mt-2 mb-2">
+          <NextLink
+            href="/all/"
+            className="inline-flex items-center gap-1 text-sm text-[#1e782d] hover:underline no-underline"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            ジム一覧に戻る
+          </NextLink>
+        </div>
+
         {/* Header */}
         <div className="mt-4">
           {gym.catchphrase && (
@@ -152,7 +166,7 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
                   </div>
                 )}
                 {c.conditions && <p className="text-xs text-gray-500 mt-1">{c.conditions}</p>}
-                {c.end_date && <p className="text-xs text-red-600 mt-1">〜{c.end_date}まで</p>}
+                {c.end_date && <p className="text-xs text-red-600 mt-1">～{c.end_date}まで</p>}
               </div>
             ))}
           </div>
@@ -384,7 +398,6 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {beforeAfters.map((ba) => (
                   <div key={ba.id} className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition">
-                    {/* Images */}
                     <div className="flex gap-2 mb-4">
                       <div className="w-1/2">
                         {ba.image_before ? (
@@ -403,15 +416,11 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
                         <p className="text-xs text-gray-500 text-center mt-1 font-bold">After</p>
                       </div>
                     </div>
-
-                    {/* Profile */}
                     <div className="flex flex-wrap gap-2 mb-3 text-xs text-gray-600">
                       {ba.gender && <span className="bg-gray-100 px-2.5 py-1 rounded-full">{ba.gender}</span>}
                       {ba.age && <span className="bg-gray-100 px-2.5 py-1 rounded-full">{ba.age}歳</span>}
                       {ba.duration_months && <span className="bg-[#e9f2ea] text-[#1e782d] px-2.5 py-1 rounded-full font-bold">{ba.duration_months}ヶ月</span>}
                     </div>
-
-                    {/* Results */}
                     <div className="space-y-2 py-3 border-t border-gray-100">
                       {ba.weight_before != null && ba.weight_after != null && (
                         <div className="flex justify-between items-center">
@@ -430,8 +439,6 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
                         </div>
                       )}
                     </div>
-
-                    {/* Comment */}
                     {ba.comment && <p className="text-xs text-gray-600 italic">{ba.comment}</p>}
                   </div>
                 ))}
@@ -579,8 +586,6 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
         {reviews.length > 0 && (
           <section className="mt-8">
             <h2 className="text-xl font-bold text-gray-900 mb-3">口コミ・評判</h2>
-
-            {/* Rating Distribution Bar */}
             {gym.review_average_rating > 0 && (
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-5 mb-6">
                 <div className="flex items-center gap-4 mb-4">
@@ -606,7 +611,6 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
                 </div>
               </div>
             )}
-
             <div className="space-y-4">
               {reviews.slice(0, 5).map((review) => (
                 <div key={review.id} className="bg-white border border-gray-200 rounded-lg p-5">
@@ -648,7 +652,6 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
                 </div>
               ))}
             </div>
-
             {reviews.length > 5 && (
               <div className="mt-4 text-center">
                 <a
@@ -686,7 +689,6 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
         <section className="mt-8">
           <h2 className="text-xl font-bold text-gray-900 mb-3">よくある質問（利用前のご不安をお答えします）</h2>
           <div className="space-y-3">
-            {/* 料金について */}
             {(gym.price_min || gym.price_max) && (
               <details className="bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200 rounded-lg overflow-hidden group">
                 <summary className="px-5 py-4 cursor-pointer font-medium text-gray-800 hover:bg-orange-100 list-none flex justify-between items-center">
@@ -704,8 +706,6 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
                 </div>
               </details>
             )}
-
-            {/* 体験レッスンについて */}
             {gym.trial_available && (
               <details className="bg-gradient-to-r from-green-50 to-green-100 border border-green-200 rounded-lg overflow-hidden group">
                 <summary className="px-5 py-4 cursor-pointer font-medium text-gray-800 hover:bg-green-100 list-none flex justify-between items-center">
@@ -722,8 +722,6 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
                 </div>
               </details>
             )}
-
-            {/* アクセスについて */}
             {(gym.nearest_station || gym.address) && (
               <details className="bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 rounded-lg overflow-hidden group">
                 <summary className="px-5 py-4 cursor-pointer font-medium text-gray-800 hover:bg-[#e9f2ea] list-none flex justify-between items-center">
@@ -772,71 +770,6 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
               <div className="text-xs font-semibold text-[#1e782d] bg-[#f0f6f0] px-2 py-1 rounded-full inline-block mb-2">ダイエット</div>
               <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">ダイエットにパーソナルジムをおすすめする理由</h3>
               <p className="text-xs text-gray-600 line-clamp-2">ダイエット成功率が高いパーソナルジムの秘訣を解説します。</p>
-            </a>
-            <a href="/column/women-gym/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#1e782d] hover:shadow-md transition">
-              <div className="text-xs font-semibold text-[#1e782d] bg-[#f0f6f0] px-2 py-1 rounded-full inline-block mb-2">女性向け</div>
-              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">女性専用パーソナルジムの選び方</h3>
-              <p className="text-xs text-gray-600 line-clamp-2">女性が安心して通えるジムの選び方を解説します。</p>
-            </a>
-            <a href="/column/gym-trial/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#1e782d] hover:shadow-md transition">
-              <div className="text-xs font-semibold text-[#1e782d] bg-[#f0f6f0] px-2 py-1 rounded-full inline-block mb-2">体験入会</div>
-              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">パーソナルジムの体験入会を活用しよう</h3>
-              <p className="text-xs text-gray-600 line-clamp-2">無料体験でジムの雰囲気を確認する方法を解説します。</p>
-            </a>
-            <a href="/column/gym-trainer/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#1e782d] hover:shadow-md transition">
-              <div className="text-xs font-semibold text-[#1e782d] bg-[#f0f6f0] px-2 py-1 rounded-full inline-block mb-2">トレーナー</div>
-              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">パーソナルトレーナーの選び方と資格の見方</h3>
-              <p className="text-xs text-gray-600 line-clamp-2">優秀なトレーナーを見極めるポイントと資格の重要性を解説。</p>
-            </a>
-            <a href="/column/gym-bodymake/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#1e782d] hover:shadow-md transition">
-              <div className="text-xs font-semibold text-[#1e782d] bg-[#f0f6f0] px-2 py-1 rounded-full inline-block mb-2">ボディメイク</div>
-              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">パーソナルジムで体が変わるまでの期間と目安</h3>
-              <p className="text-xs text-gray-600 line-clamp-2">効果が出るまでの期間と実感できるタイミングを解説します。</p>
-            </a>
-            <a href="/column/gym-diet/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#1e782d] hover:shadow-md transition">
-              <div className="text-xs font-semibold text-[#1e782d] bg-[#f0f6f0] px-2 py-1 rounded-full inline-block mb-2">ダイエット</div>
-              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">パーソナルジムでダイエットを成功させる方法</h3>
-              <p className="text-xs text-gray-600 line-clamp-2">ダイエット成功のための実践的な方法と継続のコツ。</p>
-            </a>
-            <a href="/column/gym-continuing/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#1e782d] hover:shadow-md transition">
-              <div className="text-xs font-semibold text-[#1e782d] bg-[#f0f6f0] px-2 py-1 rounded-full inline-block mb-2">継続のコツ</div>
-              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">パーソナルジムを続けるコツ</h3>
-              <p className="text-xs text-gray-600 line-clamp-2">モチベーション維持と挫折防止の実践的方法。</p>
-            </a>
-            <a href="/column/gym-compare/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#1e782d] hover:shadow-md transition">
-              <div className="text-xs font-semibold text-[#1e782d] bg-[#f0f6f0] px-2 py-1 rounded-full inline-block mb-2">ジム選び</div>
-              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">パーソナルジムを複数比較する方法</h3>
-              <p className="text-xs text-gray-600 line-clamp-2">体験レッスン活用と最適なジム選びの方法。</p>
-            </a>
-            <a href="/column/gym-rebound/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#1e782d] hover:shadow-md transition">
-              <div className="text-xs font-semibold text-[#1e782d] bg-[#f0f6f0] px-2 py-1 rounded-full inline-block mb-2">卒業後</div>
-              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">パーソナルジム卒業後のリバウンド防止</h3>
-              <p className="text-xs text-gray-600 line-clamp-2">食事管理と継続トレーニングでリバウンド防止。</p>
-            </a>
-            <a href="/column/gym-age/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#1e782d] hover:shadow-md transition">
-              <div className="text-xs font-semibold text-[#1e782d] bg-[#f0f6f0] px-2 py-1 rounded-full inline-block mb-2">年代別</div>
-              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">40代・50代からのパーソナルジム</h3>
-              <p className="text-xs text-gray-600 line-clamp-2">年齢別の効果と安全な始め方を完全解説。</p>
-            </a>
-            <a href="/column/gym-shokuji/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#1e782d] hover:shadow-md transition">
-              <div className="text-xs font-semibold text-[#1e782d] bg-[#f0f6f0] px-2 py-1 rounded-full inline-block mb-2">食事管理</div>
-              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">パーソナルジムの食事指導とは</h3>
-              <p className="text-xs text-gray-600 line-clamp-2">食事管理で筋トレ効果を最大化する方法を紹介。</p>
-            </a>
-            <a href="/column/gym-online/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#1e782d] hover:shadow-md transition">
-              <div className="text-xs font-semibold text-[#1e782d] bg-[#f0f6f0] px-2 py-1 rounded-full inline-block mb-2">ジム選び</div>
-              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">オンラインパーソナルジムのメリット・デメリット</h3>
-              <p className="text-xs text-gray-600 line-clamp-2">通いとの違いを徹底比較し、自分に合ったジムを選びましょう。</p>
-            </a>
-            <a href="/column/gym-stretch/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#1e782d] hover:shadow-md transition">
-              <div className="text-xs font-semibold text-[#1e782d] bg-[#f0f6f0] px-2 py-1 rounded-full inline-block mb-2">トレーニング方法</div>
-              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">パーソナルジムでのストレッチ・柔軟性向上</h3>
-              <p className="text-xs text-gray-600 line-clamp-2">硬い体をほぐすトレーニングの効果と方法を解説。</p>
-            </a>
-            <a href="/column/gym-back/" className="bg-white border border-blue-100 rounded-lg p-4 hover:border-[#1e782d] hover:shadow-md transition">
-              <div className="text-xs font-semibold text-[#1e782d] bg-[#f0f6f0] px-2 py-1 rounded-full inline-block mb-2">健康・症状改善</div>
-              <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">腰痛・肩こり改善のためのパーソナルジム活用</h3>
-              <p className="text-xs text-gray-600 line-clamp-2">姿勢矯正プログラムで根本から改善する方法。</p>
             </a>
           </div>
           <div className="text-center mt-5">
