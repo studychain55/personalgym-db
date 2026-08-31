@@ -74,7 +74,7 @@ const fmtPrice = (price: number | null, label: string) => {
 export default function GymDetail({ gym, reviews, images, faqs, plans, trainers, beforeAfters, campaigns, relatedGyms, prefectureName, prefectureSlug }: GymDetailProps) {
   const breadcrumbItems = [
     { label: "ジム一覧", href: "/all/" },
-    ...(prefectureName ? [{ label: prefectureName, href: `/p-${prefectureSlug}/` }] : []),
+    ...(prefectureName ? [{ label: prefectureName, href: `/prefecture/${prefectureSlug}/` }] : []),
     { label: gym.name },
   ];
 
@@ -222,6 +222,29 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
             </div>
           )}
         </div>
+
+        {/* Early CTA (desktop) — surfaced above the fold so users can act immediately */}
+        {(gym.trial_available || gym.website_url) && (
+          <div className="hidden md:flex items-center gap-3 mt-5 p-4 bg-[#f0f6f0] border border-[#bcd7c0] rounded-lg">
+            <div className="flex-1 text-sm text-gray-700">
+              {gym.trial_available
+                ? "まずは無料体験で実際のトレーニングを体感してみましょう。"
+                : "公式サイトで最新の料金・空き状況をご確認ください。"}
+            </div>
+            <div className="flex gap-2 flex-shrink-0">
+              {gym.trial_available && (
+                <a href={gym.website_url || "#"} className="bg-[#1e782d] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-[#155420] transition whitespace-nowrap">
+                  無料体験を予約
+                </a>
+              )}
+              {gym.website_url && (
+                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="bg-white border border-gray-300 text-gray-700 px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-gray-50 transition whitespace-nowrap">
+                  公式サイト
+                </a>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Description */}
         {gym.description && (

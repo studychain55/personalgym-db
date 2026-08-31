@@ -251,22 +251,41 @@ export default function AllGyms({
           </span>
         </h1>
 
-        {/* SEO Description Section */}
-        <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
-          <h2 className="text-xl font-bold text-gray-900 mb-3">
-            全国のパーソナルジムについて
-          </h2>
-          <p className="text-gray-700 mb-2">
-            全国には{totalCount}
-            件以上のパーソナルジムが存在します。ダイエット・ボディメイク・健康増進など、様々な目的に対応したジムが揃っています。プロのトレーナーによるマンツーマン指導で、効率的に目標を達成することができます。
-          </p>
-          <p className="text-gray-700 mb-2">
-            都心部から地方まで、異なる料金体系・設備・サービスを提供するジムが多くあります。体験レッスンを利用して、複数のジムを比較し、自分に合ったジムを見つけることをおすすめします。
-          </p>
-          <p className="text-gray-700">
-            当サイトでは、全国の主要パーソナルジムを掲載しており、料金・口コミ・評価・特徴を一覧で比較できます。フィルタ機能を使って、女性向け・初心者向け・返金保証ありなど、自分の条件に合ったジムを素早く見つけられます。
-          </p>
-        </section>
+        {/* よく使われる絞り込み（クイックフィルタ） */}
+        <div className="mt-4 flex flex-wrap gap-2">
+          <button
+            onClick={() => handleFeatureToggle("hasTrialAvailable")}
+            className={`text-sm px-4 py-1.5 rounded-full border font-medium transition-colors ${features.hasTrialAvailable ? "bg-[#1e782d] text-white border-[#1e782d]" : "bg-white text-gray-700 border-gray-300 hover:border-[#1e782d] hover:text-[#1e782d]"}`}
+          >
+            体験あり
+          </button>
+          <button
+            onClick={() => handleFeatureToggle("hasFemaleOnly")}
+            className={`text-sm px-4 py-1.5 rounded-full border font-medium transition-colors ${features.hasFemaleOnly ? "bg-pink-500 text-white border-pink-500" : "bg-white text-gray-700 border-gray-300 hover:border-pink-400 hover:text-pink-600"}`}
+          >
+            女性専用
+          </button>
+          <button
+            onClick={() => handleFeatureToggle("hasMoneyBack")}
+            className={`text-sm px-4 py-1.5 rounded-full border font-medium transition-colors ${features.hasMoneyBack ? "bg-orange-500 text-white border-orange-500" : "bg-white text-gray-700 border-gray-300 hover:border-orange-400 hover:text-orange-600"}`}
+          >
+            返金保証
+          </button>
+          <button
+            onClick={() => handleFeatureToggle("hasDiet")}
+            className={`text-sm px-4 py-1.5 rounded-full border font-medium transition-colors ${features.hasDiet ? "bg-[#1e782d] text-white border-[#1e782d]" : "bg-white text-gray-700 border-gray-300 hover:border-[#1e782d] hover:text-[#1e782d]"}`}
+          >
+            食事指導あり
+          </button>
+          {activeFilterCount > 0 && (
+            <button
+              onClick={handleResetFilters}
+              className="text-sm px-4 py-1.5 rounded-full border border-red-300 text-red-600 bg-white hover:bg-red-50 font-medium transition-colors"
+            >
+              × リセット
+            </button>
+          )}
+        </div>
 
         {/* ソート・フィルタバー */}
         <div className="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-4">
