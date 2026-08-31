@@ -40,6 +40,14 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {/* 信頼シグナル */}
+      <div className="flex flex-wrap gap-3 bg-[#f0f6f0] rounded-lg px-4 py-3 mb-2">
+        {['無料で相談できます', '24時間以内に返信', '勧誘一切なし'].map((text) => (
+          <span key={text} className="flex items-center gap-1 text-xs text-[#1e782d] font-bold">
+            <span>✓</span> {text}
+          </span>
+        ))}
+      </div>
       <div>
         <label className="block text-sm font-bold text-gray-700 mb-1">お名前 <span className="text-red-500">*</span></label>
         <input required value={form.name} onChange={e=>setForm(f=>({...f,name:e.target.value}))}
@@ -51,20 +59,23 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
           className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="example@email.com"/>
       </div>
       <div>
-        <label className="block text-sm font-bold text-gray-700 mb-1">電話番号</label>
+        <label className="block text-sm font-bold text-gray-700 mb-1">電話番号 <span className="text-xs text-gray-400 font-normal">（任意）</span></label>
         <input type="tel" value={form.phone} onChange={e=>setForm(f=>({...f,phone:e.target.value}))}
           className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="090-1234-5678"/>
       </div>
       <div>
         <label className="block text-sm font-bold text-gray-700 mb-1">お問い合わせ内容 <span className="text-red-500">*</span></label>
         <textarea required value={form.message} onChange={e=>setForm(f=>({...f,message:e.target.value}))}
-          rows={5} className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="ご質問・ご要望をご記入ください"/>
+          rows={4} className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="例：体験レッスンの希望日時・目標・現在の状況など、お気軽にご記入ください"/>
       </div>
-      {status==='error' && <p className="text-red-500 text-sm">送信に失敗しました。もう一度お試しください。</p>}
+      {status==='error' && <p className="text-red-500 text-sm bg-red-50 px-3 py-2 rounded-lg">送信に失敗しました。もう一度お試しください。</p>}
       <button type="submit" disabled={status==='loading'}
-        className="w-full bg-[#1e782d] text-white font-bold py-4 rounded-lg disabled:opacity-50">
-        {status==='loading'?'送信中...':'お問い合わせを送信する'}
+        className="w-full bg-[#E55E2F] text-white font-bold py-4 rounded-lg disabled:opacity-50 hover:bg-[#c94e25] transition-colors text-base shadow-md">
+        {status==='loading' ? '送信中...' : '無料で問い合わせを送る →'}
       </button>
+      <p className="text-[10px] text-gray-400 text-center">
+        送信いただいた情報はお問い合わせ対応のみに使用します。
+      </p>
     </form>
   );
 }
