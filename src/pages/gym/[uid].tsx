@@ -257,17 +257,28 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
 
         {/* CTA Section (Desktop) */}
         {(gym.trial_available || gym.website_url) && (
-          <div className="hidden md:flex gap-3 mt-6">
-            {gym.trial_available && (
-              <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-3 rounded-lg font-bold text-center hover:bg-[#155420] transition">
-                無料体験を予約する
-              </a>
-            )}
-            {gym.website_url && (
-              <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-3 rounded-lg font-bold text-center hover:bg-gray-200 transition">
-                公式サイトを見る
-              </a>
-            )}
+          <div className="hidden md:block mt-6">
+            <div className="bg-[#f0f6f0] border-2 border-[#1e782d] rounded-xl p-4">
+              {gym.review_average_rating > 0 && (
+                <div className="flex items-center gap-2 mb-3 justify-center">
+                  <span className="text-yellow-500 font-bold">★ {gym.review_average_rating.toFixed(1)}</span>
+                  <span className="text-xs text-gray-500">({gym.total_review_count}件の口コミ)</span>
+                </div>
+              )}
+              <div className="flex gap-3">
+                {gym.trial_available && (
+                  <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-3 rounded-lg font-bold text-center hover:bg-[#155420] transition text-sm">
+                    ✨ 無料体験を予約する
+                  </a>
+                )}
+                {gym.website_url && (
+                  <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-white border border-gray-300 text-gray-800 py-3 rounded-lg font-bold text-center hover:bg-gray-50 transition text-sm">
+                    公式サイトを見る →
+                  </a>
+                )}
+              </div>
+              <p className="text-[10px] text-gray-500 text-center mt-2">無料・予約後のキャンセルも可能</p>
+            </div>
           </div>
         )}
 
