@@ -387,6 +387,23 @@ export default function AllGyms({
 
         {/* 検索結果表示 */}
         <div className="mt-4 text-sm text-gray-600">
+          {gyms.length > 0 ? (
+            <div className="flex items-center gap-2 mb-4">
+              <span className="bg-[#1e782d] text-white text-xs font-bold px-2 py-0.5 rounded">
+                {totalCount.toLocaleString()}件
+              </span>
+              <p className="text-sm text-gray-500">
+                {(page - 1) * PER_PAGE + 1}〜{Math.min(page * PER_PAGE, totalCount)}件を表示中
+              </p>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2 mb-4">
+              <span className="bg-gray-400 text-white text-xs font-bold px-2 py-0.5 rounded">
+                0件
+              </span>
+              <p className="text-sm text-gray-500">条件に合うジムが見つかりませんでした</p>
+            </div>
+          )}
           {activeFilterCount > 0 && (
             <p>
               フィルタ適用中: <span className="font-medium text-gray-900">{getSortLabel(sortBy)}</span>
