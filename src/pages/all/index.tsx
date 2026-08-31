@@ -386,16 +386,25 @@ export default function AllGyms({
         </div>
 
         {/* 検索結果表示 */}
-        <div className="mt-4 text-sm text-gray-600">
-          {activeFilterCount > 0 && (
-            <p>
-              フィルタ適用中: <span className="font-medium text-gray-900">{getSortLabel(sortBy)}</span>
-              {priceBand !== "all" && ` / ${getPriceBandLabel(priceBand)}`}
-              {features.hasFemaleOnly && " / 女性専用"}
-              {features.hasTrialAvailable && " / 体験あり"}
-              {features.hasMoneyBack && " / 返金保証"}
-              {features.hasDiet && " / 食事指導あり"}
-            </p>
+        <div className="mt-4 flex items-center justify-between">
+          <p className="text-sm text-gray-600">
+            <span className="font-bold text-[#1e782d] text-base">{totalCount.toLocaleString()}</span>件のジム
+            {activeFilterCount > 0 && (
+              <span className="ml-2 text-xs text-gray-500">
+                （{getSortLabel(sortBy)}
+                {priceBand !== "all" && ` / ${getPriceBandLabel(priceBand)}`}
+                {features.hasFemaleOnly && " / 女性専用"}
+                {features.hasTrialAvailable && " / 体験あり"}
+                {features.hasMoneyBack && " / 返金保証"}
+                {features.hasDiet && " / 食事指導あり"}
+                ）
+              </span>
+            )}
+          </p>
+          {activeFilterCount === 0 && (
+            <span className="text-xs px-2 py-1 bg-green-50 text-[#1e782d] rounded-full font-medium border border-green-200">
+              {getSortLabel(sortBy)}で表示中
+            </span>
           )}
         </div>
 
