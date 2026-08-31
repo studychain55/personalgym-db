@@ -269,6 +269,7 @@ export default function PrefecturePage({
           <select
             value={currentSort}
             onChange={(e) => handleSortChange(e.target.value)}
+            aria-label="並び替え"
             className="px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#1e782d]"
           >
             {SORT_OPTIONS.map((opt) => (

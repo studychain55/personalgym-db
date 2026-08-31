@@ -158,6 +158,13 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
         </div>
       </section>
 
+      {/* スタット バー */}
+      {totalCount > 0 && (
+        <div className="bg-[#1e782d] text-white py-2 text-center text-sm font-bold">
+          全国 {totalCount.toLocaleString()} 件掲載中 ｜ 無料で比較・相談できます
+        </div>
+      )}
+
       {/* Featured Gyms */}
       {featuredGyms.length > 0 && (
         <section className="max-w-6xl mx-auto px-4 py-12">
