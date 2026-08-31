@@ -141,19 +141,39 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
       {/* Hero */}
       <section className="bg-gradient-to-br from-[#FFF3ED] to-white py-12 md:py-20">
         <div className="max-w-6xl mx-auto px-4 text-center">
+          <p className="text-xs md:text-sm font-bold text-[#1e782d] mb-2 tracking-widest uppercase">Personal Gym Navi</p>
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900">
             あなたに最適な<span className="text-[#1e782d]">パーソナルジム</span>が見つかる
           </h1>
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#155420] transition-colors no-underline shadow-md"
             >
               ジム一覧を見る →
             </NextLink>
+            <NextLink
+              href="/all/?trial=1"
+              className="inline-block bg-white text-[#1e782d] font-bold px-8 py-3 rounded-lg border-2 border-[#1e782d] hover:bg-[#f0f9f0] transition-colors no-underline"
+            >
+              無料体験を探す
+            </NextLink>
+          </div>
+          {/* 信頼シグナル */}
+          <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-gray-500">
+            {[
+              { icon: "✓", text: `全国${totalCount > 0 ? `${totalCount.toLocaleString()}件` : ""}掲載` },
+              { icon: "✓", text: "無料で比較できる" },
+              { icon: "✓", text: "口コミ・評価つき" },
+              { icon: "✓", text: "体験レッスン対応ジム多数" },
+            ].map(({ icon, text }) => (
+              <span key={text} className="flex items-center gap-1 font-medium">
+                <span className="text-[#1e782d]">{icon}</span> {text}
+              </span>
+            ))}
           </div>
         </div>
       </section>
