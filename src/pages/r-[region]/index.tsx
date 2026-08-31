@@ -149,10 +149,10 @@ export default function RegionPage({
 
         <h1 className="text-2xl font-bold text-gray-900 mt-4">
           {region.name}のパーソナルジム
-          <span className="text-base font-normal text-gray-500 ml-2">
-            ({totalCount.toLocaleString()}件)
-          </span>
         </h1>
+        <div className="mt-2 inline-flex items-center gap-1.5 bg-[#e9f2ea] text-[#1e782d] font-bold text-sm px-4 py-1.5 rounded-full">
+          <span>{totalCount.toLocaleString()}件のジムを掲載中</span>
+        </div>
         <p className="text-sm md:text-base text-gray-600 mt-3">
           {region.name}で料金・体験・食事指導・目的別の違いを比較しやすいように、主要情報が分かるジムを一覧化しています。
         </p>
@@ -196,8 +196,11 @@ export default function RegionPage({
         )}
 
         <section className="mt-8 rounded-xl border border-[#bcd7c0] bg-[#f0f6f0] p-5">
-          <h2 className="text-lg font-bold text-gray-900">目的から探す</h2>
-          <p className="text-sm text-gray-600 mt-2">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-xs font-bold text-white bg-[#1e782d] px-2 py-0.5 rounded">絞り込み</span>
+            <h2 className="text-lg font-bold text-gray-900">目的から探す</h2>
+          </div>
+          <p className="text-sm text-gray-600 mt-1">
             「ダイエット」「女性向け」「初心者向け」など、検討目的に近い一覧へすぐ移動できます。
           </p>
           <div className="mt-4 flex flex-wrap gap-2">

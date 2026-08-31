@@ -141,18 +141,26 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
       {/* Hero */}
       <section className="bg-gradient-to-br from-[#FFF3ED] to-white py-12 md:py-20">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900">
-            あなたに最適な<span className="text-[#1e782d]">パーソナルジム</span>が見つかる
+          <p className="text-sm font-semibold text-[#1e782d] mb-3 tracking-wide uppercase">全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}掲載</p>
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
+            料金・口コミ・特徴で比較して<br className="hidden md:block" />
+            <span className="text-[#1e782d]">最適なパーソナルジム</span>を見つけよう
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
+            目的・エリア・予算から、あなたにぴったりのジムを無料で検索・比較できます
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#1e782d] text-white font-bold px-10 py-4 rounded-xl text-lg shadow-lg hover:bg-[#155420] transition-colors no-underline"
             >
-              ジム一覧を見る →
+              ジム一覧をすべて見る →
+            </NextLink>
+            <NextLink
+              href="#area"
+              className="inline-block border-2 border-[#1e782d] text-[#1e782d] font-bold px-8 py-3.5 rounded-xl hover:bg-[#f0f6f0] transition-colors no-underline"
+            >
+              エリアから探す
             </NextLink>
           </div>
         </div>

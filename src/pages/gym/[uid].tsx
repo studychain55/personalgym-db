@@ -223,51 +223,24 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
           )}
         </div>
 
-        {/* Description */}
-        {gym.description && (
-          <section className="mt-8">
-            <h2 className="text-xl font-bold text-gray-900 mb-3">ジムについて</h2>
-            <p className="text-gray-600 whitespace-pre-line">{gym.description}</p>
-          </section>
-        )}
-
-        {/* Atmosphere */}
-        {gym.atmosphere && (
-          <section className="mt-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-2">雰囲気</h3>
-            <p className="text-gray-600">{gym.atmosphere}</p>
-          </section>
-        )}
-
-        {/* Video */}
-        {gym.video_url && (
-          <section className="mt-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-2">紹介動画</h3>
-            <div className="aspect-video rounded-lg overflow-hidden">
-              <iframe
-                src={gym.video_url}
-                className="w-full h-full"
-                allowFullScreen
-                loading="lazy"
-                title={`${gym.name}の紹介動画`}
-              />
-            </div>
-          </section>
-        )}
-
         {/* CTA Section (Desktop) */}
         {(gym.trial_available || gym.website_url) && (
-          <div className="hidden md:flex gap-3 mt-6">
-            {gym.trial_available && (
-              <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-3 rounded-lg font-bold text-center hover:bg-[#155420] transition">
-                無料体験を予約する
-              </a>
-            )}
-            {gym.website_url && (
-              <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-3 rounded-lg font-bold text-center hover:bg-gray-200 transition">
-                公式サイトを見る
-              </a>
-            )}
+          <div className="mt-6 rounded-xl border-2 border-[#1e782d] bg-[#f0f6f0] p-5">
+            <p className="text-sm text-gray-700 font-medium mb-3 text-center">
+              まずは無料カウンセリング・体験トレーニングからお気軽にどうぞ
+            </p>
+            <div className="flex gap-3 flex-col sm:flex-row">
+              {gym.trial_available && (
+                <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-3.5 rounded-lg font-bold text-center text-base hover:bg-[#155420] transition shadow">
+                  無料体験を予約する →
+                </a>
+              )}
+              {gym.website_url && (
+                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-white text-gray-800 py-3.5 rounded-lg font-bold text-center hover:bg-gray-100 transition border border-gray-300">
+                  公式サイトを見る
+                </a>
+              )}
+            </div>
           </div>
         )}
 
