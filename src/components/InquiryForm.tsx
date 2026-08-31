@@ -39,6 +39,15 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
   );
 
   return (
+    <div>
+      {/* トラストバッジ */}
+      <div className="flex flex-wrap gap-3 mb-5">
+        {['入力3分で完了', '返信は24時間以内', '無料で相談できます'].map((text) => (
+          <span key={text} className="flex items-center gap-1 text-xs text-[#1e782d] font-medium">
+            <span className="text-green-500">✓</span> {text}
+          </span>
+        ))}
+      </div>
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label className="block text-sm font-bold text-gray-700 mb-1">お名前 <span className="text-red-500">*</span></label>
@@ -62,9 +71,13 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
       </div>
       {status==='error' && <p className="text-red-500 text-sm">送信に失敗しました。もう一度お試しください。</p>}
       <button type="submit" disabled={status==='loading'}
-        className="w-full bg-[#1e782d] text-white font-bold py-4 rounded-lg disabled:opacity-50">
-        {status==='loading'?'送信中...':'お問い合わせを送信する'}
+        className="w-full bg-[#1e782d] text-white font-bold py-4 rounded-xl disabled:opacity-50 hover:bg-[#185e24] active:scale-95 transition-all text-base shadow-md">
+        {status==='loading'?'送信中...':'今すぐ無料で問い合わせる →'}
       </button>
+      <p className="text-xs text-gray-400 mt-2 text-center">
+        送信することでプライバシーポリシーに同意したものとみなします。
+      </p>
     </form>
+    </div>
   );
 }
