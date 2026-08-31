@@ -97,19 +97,43 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
       <JsonLDDynamicFaq gym={gym} />
       <JsonLDBreadcrumbList items={breadcrumbItems} />
 
-      {/* Sticky CTA Bar */}
+      {/* Sticky CTA Bar（モバイル） */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 shadow-lg z-40 md:hidden">
-        <div className="flex gap-2">
+        <div className="flex gap-2 max-w-sm mx-auto">
           {gym.trial_available && (
             <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-2.5 rounded-lg font-bold text-center text-sm hover:bg-[#155420] transition">
-              無料体験を予約
+              🎯 無料体験を予約
             </a>
           )}
           {gym.website_url && (
-            <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-2.5 rounded-lg font-bold text-center text-sm hover:bg-gray-200 transition">
+            <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-[#1e782d]/10 border border-[#1e782d] text-[#1e782d] py-2.5 rounded-lg font-bold text-center text-sm hover:bg-[#1e782d]/20 transition">
               公式サイト
             </a>
           )}
+        </div>
+      </div>
+
+      {/* デスクトップ: トップCTAバー */}
+      <div className="hidden md:block bg-white border-b border-gray-200 shadow-sm">
+        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+          <div>
+            <p className="font-bold text-gray-900 text-sm">{gym.name}</p>
+            {gym.price_min && (
+              <p className="text-xs text-gray-500">月額 ¥{gym.price_min.toLocaleString()}〜{gym.price_max ? `¥${gym.price_max.toLocaleString()}` : ""}</p>
+            )}
+          </div>
+          <div className="flex gap-2 flex-shrink-0">
+            {gym.trial_available && (
+              <a href={gym.website_url || "#"} className="bg-[#1e782d] text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-[#155420] transition">
+                🎯 無料体験を予約
+              </a>
+            )}
+            {gym.website_url && (
+              <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="border border-[#1e782d] text-[#1e782d] px-5 py-2 rounded-lg font-bold text-sm hover:bg-[#f0f6f0] transition">
+                公式サイト
+              </a>
+            )}
+          </div>
         </div>
       </div>
 

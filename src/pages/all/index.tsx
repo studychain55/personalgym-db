@@ -385,19 +385,45 @@ export default function AllGyms({
           </div>
         </div>
 
-        {/* 検索結果表示 */}
-        <div className="mt-4 text-sm text-gray-600">
-          {activeFilterCount > 0 && (
-            <p>
-              フィルタ適用中: <span className="font-medium text-gray-900">{getSortLabel(sortBy)}</span>
-              {priceBand !== "all" && ` / ${getPriceBandLabel(priceBand)}`}
-              {features.hasFemaleOnly && " / 女性専用"}
-              {features.hasTrialAvailable && " / 体験あり"}
-              {features.hasMoneyBack && " / 返金保証"}
-              {features.hasDiet && " / 食事指導あり"}
-            </p>
-          )}
-        </div>
+        {/* アクティブフィルタータグ（常時表示） */}
+        {activeFilterCount > 0 && (
+          <div className="flex flex-wrap items-center gap-2 mt-4 p-3 bg-[#f0f6f0] rounded-lg">
+            <span className="text-xs text-gray-500 font-medium">絞り込み中:</span>
+            {priceBand !== "all" && (
+              <button onClick={() => router.push(buildQueryString({ price: "all" }))}
+                className="flex items-center gap-1 text-xs px-2 py-1 bg-white border border-[#1e782d] text-[#1e782d] rounded-full hover:bg-red-50 hover:border-red-400 hover:text-red-600 transition-colors">
+                💴 {getPriceBandLabel(priceBand)} <span className="font-bold">×</span>
+              </button>
+            )}
+            {features.hasFemaleOnly && (
+              <button onClick={() => handleFeatureToggle("hasFemaleOnly")}
+                className="flex items-center gap-1 text-xs px-2 py-1 bg-white border border-[#1e782d] text-[#1e782d] rounded-full hover:bg-red-50 hover:border-red-400 hover:text-red-600 transition-colors">
+                👩 女性専用 <span className="font-bold">×</span>
+              </button>
+            )}
+            {features.hasTrialAvailable && (
+              <button onClick={() => handleFeatureToggle("hasTrialAvailable")}
+                className="flex items-center gap-1 text-xs px-2 py-1 bg-white border border-[#1e782d] text-[#1e782d] rounded-full hover:bg-red-50 hover:border-red-400 hover:text-red-600 transition-colors">
+                🆓 体験あり <span className="font-bold">×</span>
+              </button>
+            )}
+            {features.hasMoneyBack && (
+              <button onClick={() => handleFeatureToggle("hasMoneyBack")}
+                className="flex items-center gap-1 text-xs px-2 py-1 bg-white border border-[#1e782d] text-[#1e782d] rounded-full hover:bg-red-50 hover:border-red-400 hover:text-red-600 transition-colors">
+                💰 返金保証 <span className="font-bold">×</span>
+              </button>
+            )}
+            {features.hasDiet && (
+              <button onClick={() => handleFeatureToggle("hasDiet")}
+                className="flex items-center gap-1 text-xs px-2 py-1 bg-white border border-[#1e782d] text-[#1e782d] rounded-full hover:bg-red-50 hover:border-red-400 hover:text-red-600 transition-colors">
+                🥗 食事指導 <span className="font-bold">×</span>
+              </button>
+            )}
+            <button onClick={handleResetFilters} className="ml-auto text-xs text-red-500 hover:underline font-medium">
+              すべてクリア
+            </button>
+          </div>
+        )}
 
         {/* ジム一覧 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
