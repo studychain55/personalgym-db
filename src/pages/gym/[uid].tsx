@@ -881,8 +881,9 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
         {/* Final CTA */}
         {(gym.trial_available || gym.website_url) && (
           <div className="mt-10 bg-gradient-to-r from-[#1e782d] to-orange-600 rounded-xl p-6 text-center text-white">
-            <h3 className="text-lg font-bold mb-2">今すぐお問い合わせ</h3>
-            <p className="text-sm mb-4 opacity-95">無料カウンセリング・体験トレーニングを受けてみませんか？</p>
+            <h3 className="text-lg font-bold mb-2">お気軽にご相談ください</h3>
+            <p className="text-sm mb-1 opacity-95">無料カウンセリング・体験トレーニングを受けてみませんか？</p>
+            <p className="text-xs mb-4 opacity-80">お問い合わせから24時間以内にご連絡いたします</p>
             <div className="flex gap-3 flex-col md:flex-row">
               {gym.trial_available && (
                 <a href={gym.website_url || "#"} className="flex-1 bg-white text-[#1e782d] py-3 rounded-lg font-bold text-center hover:bg-gray-100 transition">
