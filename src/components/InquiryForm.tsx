@@ -61,10 +61,31 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
           rows={5} className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="ご質問・ご要望をご記入ください"/>
       </div>
       {status==='error' && <p className="text-red-500 text-sm">送信に失敗しました。もう一度お試しください。</p>}
+      {/* トラストバッジ */}
+      <div className="flex items-center justify-around py-3 px-2 bg-gray-50 rounded-lg border border-gray-200">
+        <div className="flex flex-col items-center gap-0.5 text-center">
+          <span className="text-lg">🔒</span>
+          <span className="text-[10px] text-gray-600 font-medium">SSL暗号化</span>
+        </div>
+        <div className="w-px h-8 bg-gray-200" />
+        <div className="flex flex-col items-center gap-0.5 text-center">
+          <span className="text-lg">📞</span>
+          <span className="text-[10px] text-gray-600 font-medium">24時間以内返信</span>
+        </div>
+        <div className="w-px h-8 bg-gray-200" />
+        <div className="flex flex-col items-center gap-0.5 text-center">
+          <span className="text-lg">✓</span>
+          <span className="text-[10px] text-gray-600 font-medium">無料相談OK</span>
+        </div>
+      </div>
       <button type="submit" disabled={status==='loading'}
-        className="w-full bg-[#1e782d] text-white font-bold py-4 rounded-lg disabled:opacity-50">
+        className="w-full bg-[#1e782d] text-white font-bold py-4 rounded-lg disabled:opacity-50 hover:bg-[#155420] transition-colors">
         {status==='loading'?'送信中...':'お問い合わせを送信する'}
       </button>
+      <p className="text-center text-xs text-gray-400 leading-relaxed">
+        送信いただいた個人情報は、お問い合わせへの対応にのみ使用し、第三者への提供はいたしません。
+        詳細は<a href="/privacy/" className="underline hover:text-gray-600">プライバシーポリシー</a>をご確認ください。
+      </p>
     </form>
   );
 }
