@@ -401,6 +401,17 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           </p>
         </div>
       </section>
+
+      {/* モバイル専用 固定下部CTA */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#1e782d] text-white py-3 px-4 flex items-center justify-between shadow-lg border-t border-[#155420]">
+        <span className="text-sm font-bold">近くのジムを探す</span>
+        <NextLink
+          href="/all/"
+          className="bg-white text-[#1e782d] text-sm font-bold px-4 py-1.5 rounded-lg hover:bg-gray-100 transition-colors no-underline flex-shrink-0"
+        >
+          無料で検索 →
+        </NextLink>
+      </div>
     </Layout>
   );
 }

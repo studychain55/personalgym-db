@@ -385,19 +385,66 @@ export default function AllGyms({
           </div>
         </div>
 
-        {/* 検索結果表示 */}
-        <div className="mt-4 text-sm text-gray-600">
-          {activeFilterCount > 0 && (
-            <p>
-              フィルタ適用中: <span className="font-medium text-gray-900">{getSortLabel(sortBy)}</span>
-              {priceBand !== "all" && ` / ${getPriceBandLabel(priceBand)}`}
-              {features.hasFemaleOnly && " / 女性専用"}
-              {features.hasTrialAvailable && " / 体験あり"}
-              {features.hasMoneyBack && " / 返金保証"}
-              {features.hasDiet && " / 食事指導あり"}
-            </p>
-          )}
-        </div>
+        {/* アクティブフィルターチップ */}
+        {activeFilterCount > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2 items-center">
+            <span className="text-xs text-gray-500 font-medium">絞り込み中:</span>
+            {sortBy !== "priority" && (
+              <NextLink
+                href={{ pathname: "/all/", query: buildQueryString({ price: priceBand, female: features.hasFemaleOnly ? "1" : undefined, moneyback: features.hasMoneyBack ? "1" : undefined, diet: features.hasDiet ? "1" : undefined, trial: features.hasTrialAvailable ? "1" : undefined }) }}
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#1e782d] text-white text-xs font-medium hover:bg-[#155420] transition-colors"
+              >
+                {getSortLabel(sortBy)} <span className="ml-0.5 opacity-80">✕</span>
+              </NextLink>
+            )}
+            {priceBand !== "all" && (
+              <NextLink
+                href={{ pathname: "/all/", query: buildQueryString({ sort: sortBy, female: features.hasFemaleOnly ? "1" : undefined, moneyback: features.hasMoneyBack ? "1" : undefined, diet: features.hasDiet ? "1" : undefined, trial: features.hasTrialAvailable ? "1" : undefined }) }}
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#1e782d] text-white text-xs font-medium hover:bg-[#155420] transition-colors"
+              >
+                月額: {getPriceBandLabel(priceBand)} <span className="ml-0.5 opacity-80">✕</span>
+              </NextLink>
+            )}
+            {features.hasFemaleOnly && (
+              <NextLink
+                href={{ pathname: "/all/", query: buildQueryString({ sort: sortBy, price: priceBand, moneyback: features.hasMoneyBack ? "1" : undefined, diet: features.hasDiet ? "1" : undefined, trial: features.hasTrialAvailable ? "1" : undefined }) }}
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#1e782d] text-white text-xs font-medium hover:bg-[#155420] transition-colors"
+              >
+                女性専用 <span className="ml-0.5 opacity-80">✕</span>
+              </NextLink>
+            )}
+            {features.hasTrialAvailable && (
+              <NextLink
+                href={{ pathname: "/all/", query: buildQueryString({ sort: sortBy, price: priceBand, female: features.hasFemaleOnly ? "1" : undefined, moneyback: features.hasMoneyBack ? "1" : undefined, diet: features.hasDiet ? "1" : undefined }) }}
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#1e782d] text-white text-xs font-medium hover:bg-[#155420] transition-colors"
+              >
+                体験あり <span className="ml-0.5 opacity-80">✕</span>
+              </NextLink>
+            )}
+            {features.hasMoneyBack && (
+              <NextLink
+                href={{ pathname: "/all/", query: buildQueryString({ sort: sortBy, price: priceBand, female: features.hasFemaleOnly ? "1" : undefined, diet: features.hasDiet ? "1" : undefined, trial: features.hasTrialAvailable ? "1" : undefined }) }}
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#1e782d] text-white text-xs font-medium hover:bg-[#155420] transition-colors"
+              >
+                返金保証 <span className="ml-0.5 opacity-80">✕</span>
+              </NextLink>
+            )}
+            {features.hasDiet && (
+              <NextLink
+                href={{ pathname: "/all/", query: buildQueryString({ sort: sortBy, price: priceBand, female: features.hasFemaleOnly ? "1" : undefined, moneyback: features.hasMoneyBack ? "1" : undefined, trial: features.hasTrialAvailable ? "1" : undefined }) }}
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#1e782d] text-white text-xs font-medium hover:bg-[#155420] transition-colors"
+              >
+                食事指導あり <span className="ml-0.5 opacity-80">✕</span>
+              </NextLink>
+            )}
+            <button
+              onClick={handleResetFilters}
+              className="text-xs text-gray-500 underline hover:text-gray-700 transition-colors"
+            >
+              すべてクリア
+            </button>
+          </div>
+        )}
 
         {/* ジム一覧 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
