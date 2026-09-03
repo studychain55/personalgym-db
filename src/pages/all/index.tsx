@@ -387,9 +387,12 @@ export default function AllGyms({
 
         {/* 検索結果表示 */}
         <div className="mt-4 text-sm text-gray-600">
+          <p className="mb-1 font-medium">
+            <span className="text-xl font-bold text-[#1e782d]">{gyms.length.toLocaleString()}</span>件のパーソナルジムが見つかりました
+          </p>
           {activeFilterCount > 0 && (
-            <p>
-              フィルタ適用中: <span className="font-medium text-gray-900">{getSortLabel(sortBy)}</span>
+            <p className="text-xs text-gray-500">
+              フィルタ適用中: <span className="font-medium text-gray-700">{getSortLabel(sortBy)}</span>
               {priceBand !== "all" && ` / ${getPriceBandLabel(priceBand)}`}
               {features.hasFemaleOnly && " / 女性専用"}
               {features.hasTrialAvailable && " / 体験あり"}

@@ -98,15 +98,18 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
       <JsonLDBreadcrumbList items={breadcrumbItems} />
 
       {/* Sticky CTA Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-3 shadow-lg z-40 md:hidden">
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 shadow-[0_-4px_12px_rgba(0,0,0,0.1)] z-40 md:hidden">
+        {gym.trial_available && (
+          <p className="text-[10px] text-center text-[#E53935] font-bold mb-1">🎯 無料体験受付中</p>
+        )}
         <div className="flex gap-2">
           {gym.trial_available && (
-            <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-2.5 rounded-lg font-bold text-center text-sm hover:bg-[#155420] transition">
-              無料体験を予約
+            <a href={gym.website_url || "#"} className="flex-[1.4] bg-[#E53935] text-white py-3 rounded-lg font-bold text-center text-sm hover:bg-[#C62828] transition shadow-md">
+              無料体験を予約する
             </a>
           )}
           {gym.website_url && (
-            <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-2.5 rounded-lg font-bold text-center text-sm hover:bg-gray-200 transition">
+            <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-white border-2 border-[#1e782d] text-[#1e782d] py-3 rounded-lg font-bold text-center text-sm hover:bg-[#f0f6f0] transition">
               公式サイト
             </a>
           )}
