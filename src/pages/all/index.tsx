@@ -388,13 +388,21 @@ export default function AllGyms({
         {/* 検索結果表示 */}
         <div className="mt-4 text-sm text-gray-600">
           {activeFilterCount > 0 && (
-            <p>
-              フィルタ適用中: <span className="font-medium text-gray-900">{getSortLabel(sortBy)}</span>
-              {priceBand !== "all" && ` / ${getPriceBandLabel(priceBand)}`}
-              {features.hasFemaleOnly && " / 女性専用"}
-              {features.hasTrialAvailable && " / 体験あり"}
-              {features.hasMoneyBack && " / 返金保証"}
-              {features.hasDiet && " / 食事指導あり"}
+            <p className="flex items-center gap-3 flex-wrap">
+              <span>
+                フィルタ適用中: <span className="font-medium text-gray-900">{getSortLabel(sortBy)}</span>
+                {priceBand !== "all" && ` / ${getPriceBandLabel(priceBand)}`}
+                {features.hasFemaleOnly && " / 女性専用"}
+                {features.hasTrialAvailable && " / 体験あり"}
+                {features.hasMoneyBack && " / 返金保証"}
+                {features.hasDiet && " / 食事指導あり"}
+              </span>
+              <NextLink
+                href="/all/"
+                className="text-[#1e782d] underline hover:no-underline font-medium whitespace-nowrap"
+              >
+                条件をリセット
+              </NextLink>
             </p>
           )}
         </div>

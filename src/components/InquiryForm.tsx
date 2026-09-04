@@ -58,7 +58,8 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
       <div>
         <label className="block text-sm font-bold text-gray-700 mb-1">お問い合わせ内容 <span className="text-red-500">*</span></label>
         <textarea required value={form.message} onChange={e=>setForm(f=>({...f,message:e.target.value}))}
-          rows={5} className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="ご質問・ご要望をご記入ください"/>
+          rows={5} maxLength={500} className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="ご質問・ご要望をご記入ください"/>
+        <p className="text-xs text-gray-400 text-right mt-1">{form.message.length}/500</p>
       </div>
       {status==='error' && <p className="text-red-500 text-sm">送信に失敗しました。もう一度お試しください。</p>}
       <button type="submit" disabled={status==='loading'}

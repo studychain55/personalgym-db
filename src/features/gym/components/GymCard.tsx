@@ -32,7 +32,7 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
   const recommendedTags = getRecommendedTags(gym, 4);
 
   return (
-    <NextLink href={`/gym/${gym.uid}/`} className="block no-underline group">
+    <NextLink href={`/gym/${gym.uid}/`} className="block no-underline group" aria-label={`${gym.name}の詳細を見る`}>
       <article className="bg-white rounded-xl border border-[#e9e9e9] overflow-hidden hover:shadow-lg hover:border-[#1e782d]/30 transition-all duration-200 hover:-translate-y-0.5 flex flex-col h-full">
         {/* 画像エリア */}
         <div className="relative aspect-[16/9] bg-[#f0f6f0] overflow-hidden flex-shrink-0">
@@ -180,7 +180,7 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
 
           {/* CTAボタン */}
           <div className="mt-auto pt-2">
-            <div className="w-full text-center text-xs font-bold py-2 px-3 rounded-lg bg-[#1e782d] text-white group-hover:bg-[#155420] transition-colors">
+            <div className="w-full text-center text-xs font-bold py-2 px-3 rounded-lg bg-[#1e782d] text-white group-hover:bg-[#155420] transition-colors min-h-[44px] flex items-center justify-center">
               詳細を見る →
             </div>
           </div>
