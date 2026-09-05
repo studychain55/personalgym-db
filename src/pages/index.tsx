@@ -147,13 +147,27 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col items-center gap-4">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#1e782d] text-white font-bold px-10 py-4 rounded-lg hover:bg-[#155420] transition-colors no-underline text-lg shadow-md"
             >
-              ジム一覧を見る →
+              パーソナルジムをすべて見る →
             </NextLink>
+            <div className="flex flex-wrap justify-center gap-2 mt-2">
+              <NextLink href="/all/?female=1" className="inline-block bg-white text-pink-700 border border-pink-300 font-medium px-4 py-2 rounded-full text-sm hover:bg-pink-50 transition-colors no-underline">
+                👩 女性専用
+              </NextLink>
+              <NextLink href="/all/?trial=1" className="inline-block bg-white text-[#1e782d] border border-[#1e782d] font-medium px-4 py-2 rounded-full text-sm hover:bg-[#e9f2ea] transition-colors no-underline">
+                🎯 体験あり
+              </NextLink>
+              <NextLink href="/all/?moneyback=1" className="inline-block bg-white text-emerald-700 border border-emerald-400 font-medium px-4 py-2 rounded-full text-sm hover:bg-emerald-50 transition-colors no-underline">
+                ✅ 返金保証あり
+              </NextLink>
+              <NextLink href="/all/?diet=1" className="inline-block bg-white text-orange-700 border border-orange-300 font-medium px-4 py-2 rounded-full text-sm hover:bg-orange-50 transition-colors no-underline">
+                🥗 食事指導あり
+              </NextLink>
+            </div>
           </div>
         </div>
       </section>
@@ -379,7 +393,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <div className="text-center mt-8">
             <NextLink
               href="/column/"
-              className="inline-block border-2 border-blue-700 text-[#1e782d] font-bold px-8 py-3 rounded-lg hover:bg-[#1e782d] hover:text-white transition-colors no-underline"
+              className="inline-block border-2 border-[#1e782d] text-[#1e782d] font-bold px-8 py-3 rounded-lg hover:bg-[#1e782d] hover:text-white transition-colors no-underline"
             >
               すべてのコラムを見る
             </NextLink>
