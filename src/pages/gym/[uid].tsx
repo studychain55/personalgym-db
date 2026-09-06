@@ -880,18 +880,20 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
 
         {/* Final CTA */}
         {(gym.trial_available || gym.website_url) && (
-          <div className="mt-10 bg-gradient-to-r from-[#1e782d] to-orange-600 rounded-xl p-6 text-center text-white">
-            <h3 className="text-lg font-bold mb-2">今すぐお問い合わせ</h3>
-            <p className="text-sm mb-4 opacity-95">無料カウンセリング・体験トレーニングを受けてみませんか？</p>
+          <div className="mt-10 bg-gradient-to-r from-[#1e782d] to-[#2a9c3f] rounded-xl p-6 text-center text-white">
+            <p className="text-xs font-semibold uppercase tracking-widest opacity-80 mb-1">STEP 1</p>
+            <h3 className="text-xl font-bold mb-1">まずは無料体験から始めよう</h3>
+            <p className="text-sm mb-1 opacity-95">カウンセリング・体験トレーニングで相性を確認できます</p>
+            <p className="text-xs opacity-75 mb-5">※ 公式サイトよりお申し込みください。通常24時間以内にご案内いたします。</p>
             <div className="flex gap-3 flex-col md:flex-row">
               {gym.trial_available && (
-                <a href={gym.website_url || "#"} className="flex-1 bg-white text-[#1e782d] py-3 rounded-lg font-bold text-center hover:bg-gray-100 transition">
-                  無料体験を予約
+                <a href={gym.website_url || "#"} className="flex-1 bg-white text-[#1e782d] py-3 rounded-lg font-bold text-center hover:bg-gray-100 transition shadow-sm">
+                  無料体験を予約する
                 </a>
               )}
               {gym.website_url && (
-                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-white bg-opacity-20 text-white py-3 rounded-lg font-bold text-center hover:bg-opacity-30 transition border border-white border-opacity-30">
-                  公式サイトへ
+                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-white bg-opacity-20 text-white py-3 rounded-lg font-bold text-center hover:bg-opacity-30 transition border border-white border-opacity-50">
+                  公式サイトで詳細を見る →
                 </a>
               )}
             </div>

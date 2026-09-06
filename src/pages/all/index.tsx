@@ -407,16 +407,17 @@ export default function AllGyms({
         </div>
 
         {gyms.length === 0 && (
-          <div className="text-center py-20">
+          <div className="text-center py-20 bg-gray-50 rounded-xl border border-gray-200">
             <svg className="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
-            <p className="text-gray-500">条件に合うパーソナルジムが見つかりませんでした。</p>
+            <p className="text-gray-700 font-bold text-lg mb-1">条件に合うパーソナルジムが見つかりませんでした</p>
+            <p className="text-gray-500 text-sm mb-6">フィルタ条件を変えるか、リセットしてすべてのジムから探してみましょう。</p>
             <button
               onClick={handleResetFilters}
-              className="mt-4 px-4 py-2 bg-[#1e782d] text-white rounded-lg text-sm font-medium hover:bg-[#e55a25] transition-colors"
+              className="px-6 py-3 bg-[#1e782d] text-white rounded-lg text-sm font-bold hover:bg-[#155420] transition-colors shadow-sm"
             >
-              フィルタをリセット
+              フィルタをリセットして全件表示
             </button>
           </div>
         )}
