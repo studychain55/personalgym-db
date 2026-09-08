@@ -65,6 +65,10 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
         className="w-full bg-[#1e782d] text-white font-bold py-4 rounded-lg disabled:opacity-50">
         {status==='loading'?'送信中...':'お問い合わせを送信する'}
       </button>
+      <p className="text-xs text-gray-400 text-center mt-3">
+        🔒 SSL暗号化通信で安全に送信されます。<br/>
+        <a href="/privacy/" className="underline hover:text-gray-600">プライバシーポリシー</a>に同意の上、送信してください。
+      </p>
     </form>
   );
 }
