@@ -39,6 +39,18 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
   );
 
   return (
+    <div>
+      {/* 安心バナー */}
+      <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-3 mb-5">
+        <p className="text-xs font-bold text-[#1e782d] mb-1.5">ジムへ直接送信 · すべて無料</p>
+        <div className="flex flex-wrap gap-x-4 gap-y-1">
+          {['入力3分で完了', '返信は通常24時間以内', '強引な営業は一切なし'].map((text) => (
+            <span key={text} className="flex items-center gap-1 text-xs text-gray-600">
+              <span className="text-[#1e782d] font-bold">✓</span> {text}
+            </span>
+          ))}
+        </div>
+      </div>
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label className="block text-sm font-bold text-gray-700 mb-1">お名前 <span className="text-red-500">*</span></label>
@@ -60,11 +72,13 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
         <textarea required value={form.message} onChange={e=>setForm(f=>({...f,message:e.target.value}))}
           rows={5} className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]" placeholder="ご質問・ご要望をご記入ください"/>
       </div>
-      {status==='error' && <p className="text-red-500 text-sm">送信に失敗しました。もう一度お試しください。</p>}
+      {status==='error' && <p className="text-red-500 text-sm bg-red-50 px-3 py-2 rounded-lg">送信に失敗しました。もう一度お試しください。</p>}
       <button type="submit" disabled={status==='loading'}
-        className="w-full bg-[#1e782d] text-white font-bold py-4 rounded-lg disabled:opacity-50">
-        {status==='loading'?'送信中...':'お問い合わせを送信する'}
+        className="w-full bg-[#1e782d] text-white font-bold py-4 rounded-lg disabled:opacity-50 hover:bg-[#185e24] transition-colors">
+        {status==='loading'?'送信中...':'無料でお問い合わせする →'}
       </button>
+      <p className="text-[10px] text-gray-400 text-center">送信内容はジムへの問い合わせ対応にのみ使用します</p>
     </form>
+    </div>
   );
 }

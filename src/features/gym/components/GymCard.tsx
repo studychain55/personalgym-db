@@ -179,8 +179,13 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
           </div>
 
           {/* CTAボタン */}
-          <div className="mt-auto pt-2">
-            <div className="w-full text-center text-xs font-bold py-2 px-3 rounded-lg bg-[#1e782d] text-white group-hover:bg-[#155420] transition-colors">
+          <div className="mt-auto pt-2 flex gap-2">
+            {gym.trial_available && (
+              <div className="flex-1 text-center text-xs font-bold py-2 px-2 rounded-lg bg-orange-500 text-white group-hover:bg-orange-600 transition-colors">
+                無料体験を申込む
+              </div>
+            )}
+            <div className={`text-center text-xs font-bold py-2 px-3 rounded-lg bg-[#1e782d] text-white group-hover:bg-[#155420] transition-colors ${gym.trial_available ? "" : "w-full"}`}>
               詳細を見る →
             </div>
           </div>
