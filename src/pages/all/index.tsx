@@ -244,12 +244,14 @@ export default function AllGyms({
           items={[{ label: "ジム一覧" }]}
         />
 
-        <h1 className="text-2xl font-bold text-gray-900 mt-4">
-          全国のパーソナルジム一覧
-          <span className="text-base font-normal text-gray-500 ml-2">
-            ({totalCount.toLocaleString()}件)
-          </span>
-        </h1>
+        <div className="flex items-baseline justify-between mt-4 flex-wrap gap-2">
+          <h1 className="text-2xl font-bold text-gray-900">
+            全国のパーソナルジム一覧
+          </h1>
+          <p className="text-sm text-gray-500">
+            <span className="font-bold text-gray-800 text-base">{totalCount.toLocaleString()}</span>件のジムが見つかりました
+          </p>
+        </div>
 
         {/* SEO Description Section */}
         <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">

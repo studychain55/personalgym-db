@@ -139,20 +139,43 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#FFF3ED] to-white py-12 md:py-20">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900">
-            あなたに最適な<span className="text-[#1e782d]">パーソナルジム</span>が見つかる
+      <section className="bg-gradient-to-br from-[#FFF3ED] to-[#FFF9F6] py-12 md:py-16 border-b border-orange-100">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <span className="inline-block bg-orange-100 text-orange-700 text-xs font-bold tracking-wide px-3 py-1 rounded-full mb-4">
+            全国{totalCount > 0 ? `${totalCount.toLocaleString()}件` : ""}掲載 · 無料で比較
+          </span>
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-900 leading-tight">
+            あなたに最適な<span className="text-[#1e782d]">パーソナルジム</span>が<br className="hidden md:block" />料金・口コミ・特徴で見つかる
           </h1>
-          <p className="mt-4 text-lg text-gray-600">
-            全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
+          <p className="mt-3 text-base text-gray-600">
+            無料体験・食事指導・女性専用など、条件で絞り込み比較
           </p>
-          <div className="mt-8">
+
+          {/* クイックリンク */}
+          <div className="mt-6 flex flex-wrap justify-center gap-2">
+            {[
+              { label: "エリアから探す", href: "#area" },
+              { label: "無料体験あり", href: "/all/?trial=1" },
+              { label: "女性専用", href: "/all/?female=1" },
+              { label: "食事指導あり", href: "/all/?diet=1" },
+              { label: "返金保証あり", href: "/all/?money_back=1" },
+            ].map((item) => (
+              <NextLink
+                key={item.label}
+                href={item.href}
+                className="text-sm px-4 py-2 bg-white border border-gray-200 rounded-full hover:border-[#1e782d] hover:text-[#1e782d] transition-colors no-underline text-gray-700 shadow-sm"
+              >
+                {item.label}
+              </NextLink>
+            ))}
+          </div>
+
+          <div className="mt-6">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3.5 rounded-lg hover:bg-[#185e24] transition-colors no-underline shadow-sm"
             >
-              ジム一覧を見る →
+              全ジムを検索する（{totalCount > 0 ? `${totalCount.toLocaleString()}件` : ""}）→
             </NextLink>
           </div>
         </div>
