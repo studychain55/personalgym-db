@@ -257,17 +257,26 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
 
         {/* CTA Section (Desktop) */}
         {(gym.trial_available || gym.website_url) && (
-          <div className="hidden md:flex gap-3 mt-6">
-            {gym.trial_available && (
-              <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-3 rounded-lg font-bold text-center hover:bg-[#155420] transition">
-                無料体験を予約する
-              </a>
-            )}
-            {gym.website_url && (
-              <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-100 text-gray-800 py-3 rounded-lg font-bold text-center hover:bg-gray-200 transition">
-                公式サイトを見る
-              </a>
-            )}
+          <div className="hidden md:block mt-6 bg-[#f0f6f0] border border-[#1e782d] border-opacity-30 rounded-xl p-5">
+            <p className="text-center text-sm text-gray-600 mb-3">
+              まずは<span className="font-bold text-[#1e782d]">無料カウンセリング</span>から始めてみませんか？ 当日予約OK・手ぶらでOK
+            </p>
+            <div className="flex gap-3">
+              {gym.trial_available ? (
+                <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-3.5 rounded-lg font-bold text-center hover:bg-[#155420] transition text-lg shadow-sm">
+                  無料体験を予約する →
+                </a>
+              ) : (
+                <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-3.5 rounded-lg font-bold text-center hover:bg-[#155420] transition text-lg shadow-sm">
+                  お問い合わせ・予約はこちら →
+                </a>
+              )}
+              {gym.website_url && (
+                <a href={gym.website_url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0 bg-gray-100 text-gray-800 py-3.5 px-5 rounded-lg font-bold text-center hover:bg-gray-200 transition">
+                  公式サイト
+                </a>
+              )}
+            </div>
           </div>
         )}
 
