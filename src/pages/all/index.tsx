@@ -386,16 +386,25 @@ export default function AllGyms({
         </div>
 
         {/* 検索結果表示 */}
-        <div className="mt-4 text-sm text-gray-600">
-          {activeFilterCount > 0 && (
-            <p>
-              フィルタ適用中: <span className="font-medium text-gray-900">{getSortLabel(sortBy)}</span>
-              {priceBand !== "all" && ` / ${getPriceBandLabel(priceBand)}`}
-              {features.hasFemaleOnly && " / 女性専用"}
-              {features.hasTrialAvailable && " / 体験あり"}
-              {features.hasMoneyBack && " / 返金保証"}
-              {features.hasDiet && " / 食事指導あり"}
-            </p>
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm text-gray-600">
+          <p>
+            <span className="font-medium text-gray-900">{totalCount.toLocaleString()}件</span>中{" "}
+            <span className="font-medium text-gray-900">
+              {((page - 1) * PER_PAGE + 1).toLocaleString()}〜{Math.min(page * PER_PAGE, totalCount).toLocaleString()}件
+            </span>を表示
+            {activeFilterCount > 0 && (
+              <span className="ml-2 text-xs text-[#1e782d] font-medium">
+                （フィルタ適用中: {getSortLabel(sortBy)}
+                {priceBand !== "all" && ` / ${getPriceBandLabel(priceBand)}`}
+                {features.hasFemaleOnly && " / 女性専用"}
+                {features.hasTrialAvailable && " / 体験あり"}
+                {features.hasMoneyBack && " / 返金保証"}
+                {features.hasDiet && " / 食事指導あり"}）
+              </span>
+            )}
+          </p>
+          {totalPages > 1 && (
+            <span className="text-xs text-gray-400">{page} / {totalPages}ページ</span>
           )}
         </div>
 
