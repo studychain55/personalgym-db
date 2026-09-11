@@ -152,8 +152,21 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
               href="/all/"
               className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
             >
-              ジム一覧を見る →
+              全{totalCount.toLocaleString()}件から探す →
             </NextLink>
+          </div>
+          {/* 人気のキーワード */}
+          <div className="mt-5 flex flex-wrap justify-center gap-2 items-center">
+            <span className="text-sm text-gray-500">人気のキーワード：</span>
+            {["ダイエット特化", "女性専用", "返金保証あり", "体験無料"].map((tag) => (
+              <NextLink
+                key={tag}
+                href={`/all/?kw=${encodeURIComponent(tag)}`}
+                className="text-xs px-3 py-1 bg-white border border-gray-300 rounded-full hover:border-[#1e782d] hover:text-[#1e782d] transition-colors no-underline text-gray-600"
+              >
+                {tag}
+              </NextLink>
+            ))}
           </div>
         </div>
       </section>

@@ -257,7 +257,7 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
 
         {/* CTA Section (Desktop) */}
         {(gym.trial_available || gym.website_url) && (
-          <div className="hidden md:flex gap-3 mt-6">
+          <div className="hidden md:flex gap-3 mt-6 p-4 bg-white rounded-lg border border-gray-100 shadow-lg">
             {gym.trial_available && (
               <a href={gym.website_url || "#"} className="flex-1 bg-[#1e782d] text-white py-3 rounded-lg font-bold text-center hover:bg-[#155420] transition">
                 無料体験を予約する
