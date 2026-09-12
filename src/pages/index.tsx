@@ -158,6 +158,15 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
         </div>
       </section>
 
+      {/* トラストバー */}
+      <div className="bg-[#1e782d] text-white text-xs py-2 px-4 text-center">
+        <span className="font-bold">全国{totalCount.toLocaleString()}件掲載</span>
+        <span className="mx-2 opacity-50">|</span>
+        無料で比較できる
+        <span className="mx-2 opacity-50">|</span>
+        無料体験受付中
+      </div>
+
       {/* Featured Gyms */}
       {featuredGyms.length > 0 && (
         <section className="max-w-6xl mx-auto px-4 py-12">

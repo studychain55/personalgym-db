@@ -140,7 +140,7 @@ export default function AllGyms({
 }: AllGymsProps) {
   const router = useRouter();
   const totalPages = Math.ceil(totalCount / PER_PAGE);
-  const [isFilterExpanded, setIsFilterExpanded] = useState(false);
+  const [isFilterExpanded, setIsFilterExpanded] = useState(true);
 
   const handlePageChange = (_: unknown, value: number) => {
     const query = buildQueryString({
