@@ -270,6 +270,9 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
             )}
           </div>
         )}
+        {(gym.trial_available || gym.website_url) && (
+          <p className="hidden md:block text-xs text-gray-500 text-center mt-1">※無料でご相談いただけます</p>
+        )}
 
         {/* Plans Table */}
         {plans.length > 0 && (

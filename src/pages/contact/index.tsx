@@ -1,6 +1,7 @@
 import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
 import Breadcrumb from "@/components/UI/BreadCrumb";
+import NextLink from "next/link";
 
 export default function Contact() {
   return (
@@ -18,8 +19,14 @@ export default function Contact() {
             パーソナルジムDBに関するお問い合わせは、以下のメールアドレスまでご連絡ください。
           </p>
           <p className="text-gray-800 font-medium">
-            メール: info@personalgym-db.jp
+            メール: <a href="mailto:info@personalgym-db.jp" className="text-[#1e782d] hover:underline">info@personalgym-db.jp</a>
           </p>
+        </div>
+        <div className="mt-8 p-6 bg-gray-50 rounded-xl text-center">
+          <p className="font-bold text-lg mb-3">まずは無料でジムを探してみましょう</p>
+          <NextLink href="/all/" className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-full hover:bg-[#155420] transition-colors">
+            今すぐ無料で探す →
+          </NextLink>
         </div>
       </div>
     </Layout>
