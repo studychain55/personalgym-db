@@ -222,7 +222,14 @@ export default function RegionPage({
 
         {gyms.length === 0 && (
           <div className="text-center py-20 text-gray-500">
-            {region.name}にはまだパーソナルジムが登録されていません。
+            <p className="mb-2">{region.name}にはまだパーソナルジムが登録されていません。</p>
+            <p className="text-sm mb-4">条件を変えて再検索してください。</p>
+            <NextLink
+              href="/all/"
+              className="inline-block bg-[#1e782d] text-white font-bold px-6 py-2 rounded-lg hover:bg-[#155420] transition-colors no-underline text-sm"
+            >
+              全国のジムから探す →
+            </NextLink>
           </div>
         )}
 
