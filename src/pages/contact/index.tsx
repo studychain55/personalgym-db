@@ -1,6 +1,7 @@
 import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
 import Breadcrumb from "@/components/UI/BreadCrumb";
+import NextLink from "next/link";
 
 export default function Contact() {
   return (
@@ -20,6 +21,7 @@ export default function Contact() {
           <p className="text-gray-800 font-medium">
             メール: info@personalgym-db.jp
           </p>
+          <p className="text-xs text-gray-500 mt-4 text-center">送信後1〜2営業日以内にご返信します。<NextLink href="/privacy-policy/" className="underline hover:text-gray-700">プライバシーポリシー</NextLink>に同意のうえご連絡ください。</p>
         </div>
       </div>
     </Layout>
