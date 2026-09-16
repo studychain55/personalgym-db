@@ -158,6 +158,30 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
         </div>
       </section>
 
+      {/* かんたん3ステップ */}
+      <section className="bg-white py-10 border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-8 text-center">かんたん3ステップで理想のジムへ</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-14 h-14 rounded-full bg-[#1e782d] text-white flex items-center justify-center text-xl font-bold mb-4">1</div>
+              <h3 className="font-bold text-gray-900 mb-2">条件を入力して検索</h3>
+              <p className="text-sm text-gray-600">エリア・料金・目的など、あなたの条件でパーソナルジムを絞り込めます。</p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="w-14 h-14 rounded-full bg-[#1e782d] text-white flex items-center justify-center text-xl font-bold mb-4">2</div>
+              <h3 className="font-bold text-gray-900 mb-2">詳細・口コミを確認</h3>
+              <p className="text-sm text-gray-600">料金プラン・トレーナー情報・口コミを比較して、気になるジムをチェック。</p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="w-14 h-14 rounded-full bg-[#1e782d] text-white flex items-center justify-center text-xl font-bold mb-4">3</div>
+              <h3 className="font-bold text-gray-900 mb-2">無料でお問い合わせ</h3>
+              <p className="text-sm text-gray-600">気に入ったジムに無料で問い合わせ。強引な勧誘は一切なく、安心して相談できます。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Gyms */}
       {featuredGyms.length > 0 && (
         <section className="max-w-6xl mx-auto px-4 py-12">

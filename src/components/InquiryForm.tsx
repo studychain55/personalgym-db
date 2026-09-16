@@ -65,6 +65,13 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
         className="w-full bg-[#1e782d] text-white font-bold py-4 rounded-lg disabled:opacity-50">
         {status==='loading'?'送信中...':'お問い合わせを送信する'}
       </button>
+      <ul className="mt-3 space-y-1">
+        {['入力3分で完了', '返信は24時間以内', '無料で相談できます', '強引な勧誘は一切なし'].map((item) => (
+          <li key={item} className="flex items-center gap-2 text-xs text-gray-500">
+            <span className="text-[#1e782d] font-bold">✓</span>{item}
+          </li>
+        ))}
+      </ul>
     </form>
   );
 }
