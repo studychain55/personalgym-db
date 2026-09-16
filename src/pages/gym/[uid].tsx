@@ -270,6 +270,11 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
             )}
           </div>
         )}
+        {/* Trust signals (Desktop) */}
+        <div className="hidden md:flex flex-col gap-1 mt-3">
+          <p className="text-xs text-gray-500 flex items-center gap-1"><span className="text-[#1e782d] font-bold">✓</span> 強引な営業・勧誘は一切なし</p>
+          <p className="text-xs text-gray-500 flex items-center gap-1"><span className="text-[#1e782d] font-bold">✓</span> 無料でご相談いただけます</p>
+        </div>
 
         {/* Plans Table */}
         {plans.length > 0 && (
