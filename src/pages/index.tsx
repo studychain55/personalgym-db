@@ -128,9 +128,9 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
             "@context": "https://schema.org",
             "@type": "FAQPage",
             "mainEntity": [
-              {"@type": "Question", "name": "パーソナルジムに通う費用はどのくらいですか？", "acceptedAnswer": {"@type": "Answer", "text": "パーソナルジムの費用はコースにより異なりますが、1～3ヶ月のダイエットコースで15万～60万円、都度払い（1回）で8,000～15,000円が一般的な相場です。無料体験レッスンを活用して自分に合ったジムを選びましょう。"}},
-              {"@type": "Question", "name": "パーソナルジムはどのくらいの期間通えば効果が出ますか？", "acceptedAnswer": {"@type": "Answer", "text": "個人差はありますが、週2回以上のトレーニングで2～3ヶ月が一つの目安です。食事管理も合わせて行うことで効果が出やすくなります。多くのパーソナルジムでは2～3ヶ月の短期集中コースを提供しています。"}},
-              {"@type": "Question", "name": "パーソナルジムと普通のジムの違いは何ですか？", "acceptedAnswer": {"@type": "Answer", "text": "パーソナルジムは専属トレーナーが個人の目標・体型・体力に合わせてプログラムを設計し、マンツーマンで指導します。普通のジムに比べて費用は高めですが、効率的に目標達成できます。食事管理・栄養指導が含まれるコースも多いです。"}},
+              {"@type": "Question", "name": "パーソナルジムに通う費用はどのくらいですか？", "acceptedAnswer": {"@type": "Answer", "text": "パーソナルジムの費用はコースにより異なりますが、1～3か月のダイエットコースで５15万～60万円、都度払い（1回）で：8,000～15,000円が一般的な相場です。無料体験レッスンを活用して自分に合ったジムを選びましょう。"}},
+              {"@type": "Question", "name": "パーソナルジムはどのくらいの期間通えば効果が出ますか？", "acceptedAnswer": {"@type": "Answer", "text": "個人差はありますが、週２回以上のトレーニングで２～３か月が一つの目安です。餐事管理も合わせて行うことで効果が出やすくなります。多くのパーソナルジムでは２～３か月の短期集中コースを提供しています。"}},
+              {"@type": "Question", "name": "パーソナルジムと普通のジムの違いは何ですか？", "acceptedAnswer": {"@type": "Answer", "text": "パーソナルジムは専属トレーナーが個人の目標・体型・体力に合わせてプログラムを設計し、マンツーマンで指導します。普通のジムに比べて費用は高めですが、効率的に目標達成できます。餐事管理・栄養指導が含まれるコースも多いです。"}},
               {"@type": "Question", "name": "初心者でもパーソナルジムに通えますか？", "acceptedAnswer": {"@type": "Answer", "text": "はい、パーソナルジムは運動未経験・初心者の方こそ活用いただける施設です。トレーナーが基礎から丁寧に指導するため、正しいフォームを身につけながら安全にトレーニングを始められます。"}},
               {"@type": "Question", "name": "パーソナルジムの選び方のポイントは？", "acceptedAnswer": {"@type": "Answer", "text": "①目的（ダイエット・筋力アップなど）に合ったコースがあるか、②トレーナーの資格・実績、③立地・通いやすさ、④費用と契約条件の透明性、⑤無料体験の有無を確認しましょう。複数のジムを体験してから選ぶことをおすすめします。"}},
             ]
@@ -147,13 +147,22 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
+          <div className="mt-8 space-y-4">
             <NextLink
               href="/all/"
               className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
             >
               ジム一覧を見る →
             </NextLink>
+            <div>
+              <p className="text-sm text-gray-500 mb-2">目的から探す</p>
+              <div className="flex flex-wrap justify-center gap-2">
+                <NextLink href="/all/?female=1" className="text-xs px-4 py-1.5 bg-white border border-gray-300 rounded-full hover:border-[#1e782d] hover:text-[#1e782d] transition-colors no-underline text-gray-700 font-medium">女性向け</NextLink>
+                <NextLink href="/all/?trial=1" className="text-xs px-4 py-1.5 bg-white border border-gray-300 rounded-full hover:border-[#1e782d] hover:text-[#1e782d] transition-colors no-underline text-gray-700 font-medium">体験あり</NextLink>
+                <NextLink href="/all/?moneyback=1" className="text-xs px-4 py-1.5 bg-white border border-gray-300 rounded-full hover:border-[#1e782d] hover:text-[#1e782d] transition-colors no-underline text-gray-700 font-medium">返金保証</NextLink>
+                <NextLink href="/all/?diet=1" className="text-xs px-4 py-1.5 bg-white border border-gray-300 rounded-full hover:border-[#1e782d] hover:text-[#1e782d] transition-colors no-underline text-gray-700 font-medium">餐事指導あり</NextLink>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -192,7 +201,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
               <p className="text-gray-600">掲載パーソナルジム数</p>
             </div>
             <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
-              <div className="text-4xl font-bold text-gray-700 mb-2">2～3ヶ月</div>
+              <div className="text-4xl font-bold text-gray-700 mb-2">2～3か月</div>
               <p className="text-gray-600">効果が出始める目安期間</p>
             </div>
             <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
@@ -216,7 +225,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
                 <span className="text-lg group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="text-gray-700 mt-3 ml-4">
-                パーソナルジムの費用はコースにより異なりますが、1～3ヶ月のダイエットコースで15万～60万円、都度払い（1回）で8,000～15,000円が一般的な相場です。無料体験レッスンを活用して自分に合ったジムを選びましょう。
+                パーソナルジムの費用はコースにより異なりますが、1～3か月のダイエットコースで５15万～60万円、都度払い（1回）で：8,000～15,000円が一般的な相場です。無料体験レッスンを活用して自分に合ったジムを選びましょう。
               </p>
             </details>
             <details className="border border-gray-200 rounded-lg p-4 cursor-pointer group">
@@ -225,7 +234,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
                 <span className="text-lg group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="text-gray-700 mt-3 ml-4">
-                個人差はありますが、週2回以上のトレーニングで2～3ヶ月が一つの目安です。食事管理も合わせて行うことで効果が出やすくなります。多くのパーソナルジムでは2～3ヶ月の短期集中コースを提供しています。
+                個人差はありますが、週２回以上のトレーニングで２～３か月が一つの目安です。餐事管理も合わせて行うことで効果が出やすくなります。多くのパーソナルジムでは２～３か月の短期集中コースを提供しています。
               </p>
             </details>
             <details className="border border-gray-200 rounded-lg p-4 cursor-pointer group">
@@ -234,7 +243,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
                 <span className="text-lg group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <p className="text-gray-700 mt-3 ml-4">
-                パーソナルジムは専属トレーナーが個人の目標・体型・体力に合わせてプログラムを設計し、マンツーマンで指導します。普通のジムに比べて費用は高めですが、効率的に目標達成できます。食事管理・栄養指導が含まれるコースも多いです。
+                パーソナルジムは専属トレーナーが個人の目標・体型・体力に合わせてプログラムを設計し、マンツーマンで指導します。普通のジムに比べて費用は高めですが、効率的に目標達成できます。餐事管理・栄養指導が含まれるコースも多いです。
               </p>
             </details>
             <details className="border border-gray-200 rounded-lg p-4 cursor-pointer group">
@@ -393,7 +402,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
         <div className="prose prose-gray max-w-none text-gray-600">
           <p>
             パーソナルジムは、専属トレーナーがマンツーマンで指導する完全個室型のトレーニングジムです。
-            一人ひとりの目標・体力・生活スタイルに合わせたオーダーメイドのトレーニングプログラムと食事指導を受けることができます。
+            一人ひとりの目標・体力・生活スタイルに合わせたオーダーメイドのトレーニングプログラムと餐事指導を受けることができます。
           </p>
           <p>
             {siteName}では、料金・口コミ・設備・プログラム内容など多角的な情報で全国のパーソナルジムを比較できます。
