@@ -880,7 +880,7 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
 
         {/* Final CTA */}
         {(gym.trial_available || gym.website_url) && (
-          <div className="mt-10 bg-gradient-to-r from-[#1e782d] to-orange-600 rounded-xl p-6 text-center text-white">
+          <div className="mt-10 bg-gradient-to-r from-[#1e782d] to-[#155420] rounded-xl p-6 text-center text-white">
             <h3 className="text-lg font-bold mb-2">今すぐお問い合わせ</h3>
             <p className="text-sm mb-4 opacity-95">無料カウンセリング・体験トレーニングを受けてみませんか？</p>
             <div className="flex gap-3 flex-col md:flex-row">
