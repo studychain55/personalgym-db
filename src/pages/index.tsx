@@ -139,21 +139,52 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#FFF3ED] to-white py-12 md:py-20">
-        <div className="max-w-6xl mx-auto px-4 text-center">
+      <section
+        className="bg-gradient-to-br from-[#FFF3ED] to-white flex items-center"
+        style={{ minHeight: "clamp(380px, 52vw, 560px)" }}
+      >
+        <div className="max-w-6xl mx-auto px-4 py-12 text-center w-full">
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900">
             あなたに最適な<span className="text-[#1e782d]">パーソナルジム</span>が見つかる
           </h1>
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#155420] transition-colors no-underline"
             >
               ジム一覧を見る →
             </NextLink>
+            <NextLink
+              href="/all/?female=1"
+              className="inline-block border-2 border-pink-500 text-pink-600 font-bold px-6 py-3 rounded-lg hover:bg-pink-50 transition-colors no-underline"
+            >
+              女性専用ジムを探す
+            </NextLink>
+          </div>
+          {/* クイックリンク */}
+          <div className="mt-8">
+            <p className="text-sm text-gray-500 mb-3">人気エリアから探す</p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {[
+                { label: "東京", href: "/prefecture/tokyo/" },
+                { label: "大阪", href: "/prefecture/osaka/" },
+                { label: "神奈川", href: "/prefecture/kanagawa/" },
+                { label: "愛知", href: "/prefecture/aichi/" },
+                { label: "福岡", href: "/prefecture/fukuoka/" },
+                { label: "北海道", href: "/prefecture/hokkaido/" },
+              ].map((item) => (
+                <NextLink
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm px-4 py-1.5 bg-white border border-[#1e782d] text-[#1e782d] rounded-full hover:bg-[#1e782d] hover:text-white transition-colors no-underline"
+                >
+                  {item.label}
+                </NextLink>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -299,7 +330,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
                 <NextLink
                   key={city.slug}
                   href={`/c-${city.slug}/`}
-                  className="text-center py-2 px-3 bg-white border border-gray-200 rounded-lg text-xs hover:border-orange-400 hover:text-orange-700 transition-colors"
+                  className="text-center py-2 px-3 bg-white border border-gray-200 rounded-lg text-xs hover:border-[#1e782d] hover:text-[#1e782d] transition-colors"
                 >
                   <span className="block font-medium">{city.title}</span>
                   <span className="text-gray-400 text-[10px]">{city.entity_count}件</span>
@@ -318,7 +349,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
               {topStations.map((s) => (
                 <NextLink key={s.station} href={`/station/${encodeURIComponent(s.station)}/`}
-                  className="text-center py-2 px-3 bg-white border border-gray-200 rounded-lg text-xs hover:border-orange-400 hover:text-orange-700 transition-colors">
+                  className="text-center py-2 px-3 bg-white border border-gray-200 rounded-lg text-xs hover:border-[#1e782d] hover:text-[#1e782d] transition-colors">
                   <span className="block font-medium">{s.station}</span>
                   <span className="text-gray-400 text-[10px]">{s.count}件</span>
                 </NextLink>
@@ -379,7 +410,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <div className="text-center mt-8">
             <NextLink
               href="/column/"
-              className="inline-block border-2 border-blue-700 text-[#1e782d] font-bold px-8 py-3 rounded-lg hover:bg-[#1e782d] hover:text-white transition-colors no-underline"
+              className="inline-block border-2 border-[#1e782d] text-[#1e782d] font-bold px-8 py-3 rounded-lg hover:bg-[#1e782d] hover:text-white transition-colors no-underline"
             >
               すべてのコラムを見る
             </NextLink>
