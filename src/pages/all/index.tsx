@@ -246,10 +246,18 @@ export default function AllGyms({
 
         <h1 className="text-2xl font-bold text-gray-900 mt-4">
           全国のパーソナルジム一覧
-          <span className="text-base font-normal text-gray-500 ml-2">
-            ({totalCount.toLocaleString()}件)
-          </span>
         </h1>
+        <div className="mt-2 flex items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 bg-[#e9f2ea] text-[#1e782d] text-sm font-bold px-3 py-1 rounded-full">
+            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+            </svg>
+            {totalCount.toLocaleString()}件掲載中
+          </span>
+          {page > 1 && (
+            <span className="text-sm text-gray-500">{page}ページ目</span>
+          )}
+        </div>
 
         {/* SEO Description Section */}
         <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
