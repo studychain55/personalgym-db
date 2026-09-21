@@ -147,10 +147,18 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           <p className="mt-4 text-lg text-gray-600">
             全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
           </p>
-          <div className="mt-8">
+          {/* 安心ポイント */}
+          <div className="flex flex-wrap justify-center gap-4 mt-4 mb-2">
+            {['掲載実績No.1クラス', '口コミ・評価を掲載', '無料で相談できます'].map((t) => (
+              <span key={t} className="flex items-center gap-1 text-xs font-medium text-gray-700 bg-white border border-gray-200 px-3 py-1 rounded-full shadow-sm">
+                <span className="text-[#1e782d]">✓</span>{t}
+              </span>
+            ))}
+          </div>
+          <div className="mt-6">
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline ring-2 ring-offset-2 ring-[#1e782d]"
             >
               ジム一覧を見る →
             </NextLink>
