@@ -250,6 +250,7 @@ export default function AllGyms({
             ({totalCount.toLocaleString()}件)
           </span>
         </h1>
+        <p className="text-xs text-gray-500 mt-1">複数のジムを比べて、あなたに合った1件を見つけましょう</p>
 
         {/* SEO Description Section */}
         <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
