@@ -295,15 +295,15 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
-              <div className="text-4xl font-bold text-gray-700 mb-2">{totalCount.toLocaleString()}件</div>
+              <div className="text-4xl font-bold text-[#1e782d] mb-2">{totalCount.toLocaleString()}件</div>
               <p className="text-gray-600">掲載パーソナルジム数</p>
             </div>
             <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
-              <div className="text-4xl font-bold text-gray-700 mb-2">2～3ヶ月</div>
+              <div className="text-4xl font-bold text-[#1e782d] mb-2">2～3ヶ月</div>
               <p className="text-gray-600">効果が出始める目安期間</p>
             </div>
             <div className="bg-white rounded-lg p-6 text-center border border-gray-200">
-              <div className="text-4xl font-bold text-gray-700 mb-2">15万～60万円</div>
+              <div className="text-4xl font-bold text-[#1e782d] mb-2">15万～60万円</div>
               <p className="text-gray-600">短期集中コースの費用相場</p>
             </div>
           </div>

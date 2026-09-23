@@ -39,6 +39,17 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
   );
 
   return (
+    <div>
+      <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+        無料でご相談いただけます。お気軽にどうぞ。通常24時間以内にご返答いたします。
+      </p>
+      <div className="flex flex-wrap gap-3 mb-5">
+        {['入力3分で完了', '返信は24時間以内', '無料で相談できます'].map((text) => (
+          <span key={text} className="flex items-center gap-1 text-xs text-[#1e782d] font-medium">
+            <span className="text-green-500">✓</span> {text}
+          </span>
+        ))}
+      </div>
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label className="block text-sm font-bold text-gray-700 mb-1">お名前 <span className="text-red-500">*</span></label>
@@ -66,5 +77,6 @@ export default function InquiryForm({ siteId, facilityTable, facilityId, facilit
         {status==='loading'?'送信中...':'お問い合わせを送信する'}
       </button>
     </form>
+    </div>
   );
 }
