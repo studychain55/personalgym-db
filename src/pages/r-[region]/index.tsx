@@ -10,7 +10,7 @@ import { PURPOSE_DEFINITIONS } from "@/constants/purposes";
 import Pagination from "@mui/material/Pagination";
 import { fetchGymsByRegion } from "@/utils/supabase/fetchGyms";
 import { fetchRegionByName, fetchPrefecturesByRegionId } from "@/utils/supabase/fetchPrefectures";
-import { getRegionName, getRegionSlug } from "@/utils/regionMapping";
+import { getRegionName } from "@/utils/regionMapping";
 import { setConditionalCacheHeaders } from "@/utils/cacheHeaders";
 import type { GymListItem, Region, PrefectureWithCount, GymFaq } from "@/types";
 
@@ -118,9 +118,10 @@ export default function RegionPage({
   const router = useRouter();
   const totalPages = Math.ceil(totalCount / PER_PAGE);
   const basePath = `/r-${region.slug}/`;
+  const regionLabel = region.name.endsWith("地方") ? region.name : `${region.name}地方`;
   const breadcrumbItems = [
     { label: "ジム一覧", href: "/all/" },
-    { label: `${region.name}地方` },
+    { label: regionLabel },
   ];
 
   const handlePageChange = (_: unknown, value: number) => {
@@ -195,7 +196,7 @@ export default function RegionPage({
           </section>
         )}
 
-        <section className="mt-8 rounded-xl border border-[#bcd7c0] bg-[#f0f6f0] p-5">
+        <section className="mt-8 rounded-xl border border-[#ffedd5] bg-[#fff7ed] p-5">
           <h2 className="text-lg font-bold text-gray-900">目的から探す</h2>
           <p className="text-sm text-gray-600 mt-2">
             「ダイエット」「女性向け」「初心者向け」など、検討目的に近い一覧へすぐ移動できます。
@@ -205,7 +206,7 @@ export default function RegionPage({
               <NextLink
                 key={purpose.slug}
                 href={`${basePath}${purpose.slug}/`}
-                className="inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-medium text-[#1e782d] no-underline hover:bg-orange-100 transition-colors"
+                className="inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-medium text-[#ea580c] no-underline hover:bg-orange-100 transition-colors"
               >
                 {purpose.shortLabel}
               </NextLink>

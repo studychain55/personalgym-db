@@ -9,6 +9,7 @@ import Breadcrumb from "@/components/UI/BreadCrumb";
 import { PURPOSE_DEFINITIONS } from "@/constants/purposes";
 import Pagination from "@mui/material/Pagination";
 import { fetchGymsByStation } from "@/utils/supabase/fetchStations";
+import { fetchGyms } from "@/utils/supabase/fetchGyms";
 import { setConditionalCacheHeaders } from "@/utils/cacheHeaders";
 import type { GymListItem, GymFaq } from "@/types";
 
@@ -18,9 +19,11 @@ interface StationPageProps {
   stationName: string;
   decodedStationName: string;
   gyms: GymListItem[];
+  fallbackGyms: GymListItem[];
   totalCount: number;
   page: number;
   faqs: GymFaq[];
+  isUnavailable: boolean;
 }
 
 /**
@@ -78,16 +81,25 @@ export const getServerSideProps: GetServerSideProps<StationPageProps> = async ({
 }) => {
   const encodedStation = String(params?.station || "");
   const decodedStationName = decodeURIComponent(encodedStation);
-
-  // Check if station exists by fetching 1 result
-  const checkResult = await fetchGymsByStation(decodedStationName, 1, 1);
-
-  if (checkResult.totalCount === 0) {
-    return { notFound: true };
-  }
-
   const page = Math.max(1, parseInt(String(query.page || "1"), 10) || 1);
   const gymResult = await fetchGymsByStation(decodedStationName, page, PER_PAGE);
+
+  if (gymResult.totalCount === 0) {
+    const { gyms: fallbackGyms } = await fetchGyms({ page: 1, limit: 6 });
+    res.statusCode = 200;
+    return {
+      props: {
+        stationName: decodedStationName,
+        decodedStationName,
+        gyms: [],
+        fallbackGyms,
+        totalCount: 0,
+        page: 1,
+        faqs: [],
+        isUnavailable: true,
+      },
+    };
+  }
 
   // Generate FAQs dynamically
   const faqs: GymFaq[] = generateStationFaqs(decodedStationName, gymResult.totalCount);
@@ -99,20 +111,23 @@ export const getServerSideProps: GetServerSideProps<StationPageProps> = async ({
       stationName: decodedStationName,
       decodedStationName,
       gyms: gymResult.gyms,
+      fallbackGyms: [],
       totalCount: gymResult.totalCount,
       page,
       faqs,
+      isUnavailable: false,
     },
   };
 };
 
 export default function StationPage({
-  stationName,
   decodedStationName,
   gyms,
+  fallbackGyms,
   totalCount,
   page,
   faqs,
+  isUnavailable,
 }: StationPageProps) {
   const router = useRouter();
   const totalPages = Math.ceil(totalCount / PER_PAGE);
@@ -126,6 +141,50 @@ export default function StationPage({
   const handlePageChange = (_: unknown, value: number) => {
     router.push({ pathname: basePath, query: value > 1 ? { page: value } : {} });
   };
+
+  if (isUnavailable) {
+    return (
+      <Layout>
+        <SEO
+          title="掲載駅情報を確認できません"
+          description="対象の駅ページは現在表示できません。ジム一覧やエリア一覧から再度お探しください。"
+          path="/station/"
+          noindex
+        />
+        <div className="max-w-6xl mx-auto px-4 py-6">
+          <Breadcrumb items={[{ label: "駅から探す", href: "/station/" }, { label: "掲載駅情報を確認できません" }]} />
+          <section className="mt-4 rounded-xl border border-gray-200 bg-white p-6 md:p-8">
+            <span className="inline-flex items-center rounded-full bg-[#fff7ed] px-3 py-1 text-xs font-bold text-[#ea580c]">
+              駅ページを復旧中
+            </span>
+            <h1 className="mt-3 text-2xl font-bold text-gray-900">この駅のジム一覧は現在表示できません</h1>
+            <p className="mt-3 text-sm leading-7 text-gray-600">
+              駅名の揺れや掲載データの不足により、対象ページを生成できませんでした。ジム一覧やエリア一覧から再度お探しください。
+            </p>
+            {decodedStationName && <p className="mt-2 break-all text-xs text-gray-400">対象駅: {decodedStationName}</p>}
+            <div className="mt-5 flex flex-wrap gap-3">
+              <NextLink href="/all/" className="inline-flex items-center justify-center rounded-lg bg-[#ea580c] px-5 py-3 text-sm font-bold text-white hover:bg-[#c2410c] transition">
+                ジム一覧へ戻る
+              </NextLink>
+              <NextLink href="/area/" className="inline-flex items-center justify-center rounded-lg border border-[#ea580c] bg-white px-5 py-3 text-sm font-bold text-[#ea580c] hover:bg-[#fff7ed] transition">
+                エリアから探す
+              </NextLink>
+            </div>
+          </section>
+          {fallbackGyms.length > 0 && (
+            <section className="mt-8">
+              <h2 className="mb-4 text-xl font-bold text-gray-900">代わりに見られるジム</h2>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {fallbackGyms.map((gym) => (
+                  <GymCard key={gym.id} gym={gym} />
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
@@ -174,7 +233,7 @@ export default function StationPage({
           </p>
         </section>
 
-        <section className="mt-8 rounded-xl border border-[#bcd7c0] bg-[#f0f6f0] p-5">
+        <section className="mt-8 rounded-xl border border-[#ffedd5] bg-[#fff7ed] p-5">
           <h2 className="text-lg font-bold text-gray-900">目的から探す</h2>
           <p className="text-sm text-gray-600 mt-2">
             「ダイエット」「女性向け」「初心者向け」など、検討目的に近い一覧へすぐ移動できます。
@@ -184,7 +243,7 @@ export default function StationPage({
               <NextLink
                 key={purpose.slug}
                 href={`/${purpose.slug}/`}
-                className="inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-medium text-[#1e782d] no-underline hover:bg-orange-100 transition-colors"
+                className="inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-medium text-[#ea580c] no-underline hover:bg-orange-100 transition-colors"
               >
                 {purpose.shortLabel}
               </NextLink>

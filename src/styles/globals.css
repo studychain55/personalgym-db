@@ -6,9 +6,9 @@
 }
 
 @theme inline {
-  --color-primary: #1e782d;
-  --color-primary-light: #e9f2ea;
-  --color-primary-dark: #155420;
+  --color-primary: #ea580c;
+  --color-primary-light: #ffedd5;
+  --color-primary-dark: #c2410c;
 }
 
 body {
@@ -18,3 +18,30 @@ body {
   letter-spacing: 0.04em;
   -webkit-font-smoothing: antialiased;
 }
+
+/* ── studychain typography standards ── */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+p, li, dd, dt {
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+}
+/* section title accent bar */
+.section-title {
+  position: relative;
+  padding-left: 0.875rem;
+}
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 1.2em;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+}
+

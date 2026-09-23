@@ -89,7 +89,7 @@ export async function fetchGymsByFeature(
   }
 
   // Filter gyms that have this program
-  const filteredGyms = (allGyms || []).filter((gym: any) => {
+  const filteredGyms = (allGyms || []).filter((gym: { programs?: string[] | null }) => {
     if (!gym.programs || !Array.isArray(gym.programs)) return false;
     return gym.programs.some(
       (p: string) => p.toLowerCase().replace(/\s+/g, "-") === featureSlug.toLowerCase()
@@ -129,7 +129,7 @@ export async function fetchAllCitiesWithCount(): Promise<CityWithCountGlobal[]> 
 
   return (cities as CityWithCountGlobal[])
     .map((c) => ({ ...c, gym_count: countMap[c.id] || 0 }))
-    .filter((c) => c.gym_count > 0)
+    .filter((c) => c.gym_count > 0 && Boolean(c.slug))
     .sort((a, b) => b.gym_count - a.gym_count);
 }
 

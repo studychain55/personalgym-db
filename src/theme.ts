@@ -34,7 +34,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: `var(--font-noto-sans-jp), 'Noto Sans JP', sans-serif`,
+    fontFamily: `-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif`,
     fontWeightBold: 700,
     fontWeightRegular: 400,
   },

@@ -1,9 +1,10 @@
 import supabase from "./index";
 import type { GymListItem } from "@/types";
+import { matchesGymPurpose } from "@/utils/gymPurpose";
 
 const LIST_COLUMNS = `
   id, uid, name, catchphrase, address,
-  price_min, price_max, price_trial, price_per_session,
+  price_enrollment, price_min, price_max, price_trial, price_per_session,
   trial_available, online_available, options_diet,
   has_female_only, has_money_back,
   session_duration, trainer_count,
@@ -32,6 +33,14 @@ interface FetchGymsOptions {
 interface FetchGymsResult {
   gyms: GymListItem[];
   totalCount: number;
+}
+
+interface FetchGymsByPurposeOptions {
+  purposeSlug: string;
+  prefectureId?: number;
+  regionId?: number;
+  page?: number;
+  limit?: number;
 }
 
 export async function fetchGyms(options: FetchGymsOptions = {}): Promise<FetchGymsResult> {
@@ -91,6 +100,66 @@ export async function fetchGyms(options: FetchGymsOptions = {}): Promise<FetchGy
   };
 }
 
+export async function fetchGymsByPurpose(
+  options: FetchGymsByPurposeOptions,
+): Promise<FetchGymsResult> {
+  const {
+    purposeSlug,
+    prefectureId,
+    regionId,
+    page = 1,
+    limit = 20,
+  } = options;
+
+  let prefectureIds: number[] | undefined;
+
+  if (regionId) {
+    const { data: prefectures, error: prefectureError } = await supabase
+      .from("Prefecture")
+      .select("id")
+      .eq("region_id", regionId);
+
+    if (prefectureError || !prefectures || prefectures.length === 0) {
+      return { gyms: [], totalCount: 0 };
+    }
+
+    prefectureIds = prefectures.map((prefecture: { id: number }) => prefecture.id);
+  }
+
+  let query = supabase
+    .from("gym_locations")
+    .select(LIST_COLUMNS)
+    .eq("is_display", true)
+    .order("search_priority", { ascending: false })
+    .order("review_average_rating", { ascending: false });
+
+  if (prefectureId) {
+    query = query.eq("prefecture_id", prefectureId);
+  }
+
+  if (prefectureIds) {
+    query = query.in("prefecture_id", prefectureIds);
+  }
+
+  const { data, error } = await query;
+
+  if (error) {
+    console.error("fetchGymsByPurpose error:", error);
+    return { gyms: [], totalCount: 0 };
+  }
+
+  const filteredGyms = ((data as unknown as GymListItem[]) || []).filter((gym) =>
+    matchesGymPurpose(gym, purposeSlug),
+  );
+  const from = (page - 1) * limit;
+  const to = from + limit;
+
+  return {
+    gyms: filteredGyms.slice(from, to),
+    totalCount: filteredGyms.length,
+  };
+}
+
 export async function fetchAllGymUids(): Promise<{ uid: string }[]> {
   const { data, error } = await supabase
     .from("gym_locations")
@@ -107,7 +176,8 @@ export async function fetchAllGymUids(): Promise<{ uid: string }[]> {
 export async function fetchGymsByRegion(
   regionId: number,
   page: number = 1,
-  limit: number = 20
+  limit: number = 20,
+  purposeSlug?: string,
 ): Promise<FetchGymsResult> {
   const from = (page - 1) * limit;
   const to = from + limit - 1;
@@ -122,7 +192,7 @@ export async function fetchGymsByRegion(
     return { gyms: [], totalCount: 0 };
   }
 
-  const prefectureIds = prefectures.map((p: any) => p.id);
+  const prefectureIds = prefectures.map((p: { id: number }) => p.id);
 
   // Then fetch gyms for these prefectures
   let query = supabase
@@ -133,6 +203,10 @@ export async function fetchGymsByRegion(
     .range(from, to)
     .order("search_priority", { ascending: false })
     .order("review_average_rating", { ascending: false });
+
+  if (purposeSlug) {
+    query = query.contains("purposes", [purposeSlug]);
+  }
 
   const { data, count, error } = await query;
 

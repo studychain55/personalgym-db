@@ -1,6 +1,7 @@
 import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
 import Breadcrumb from "@/components/UI/BreadCrumb";
+import { contactEmail } from "@/utils/config";
 
 export default function Contact() {
   return (
@@ -18,7 +19,7 @@ export default function Contact() {
             パーソナルジムDBに関するお問い合わせは、以下のメールアドレスまでご連絡ください。
           </p>
           <p className="text-gray-800 font-medium">
-            メール: info@personalgym-db.jp
+            メール: {contactEmail}
           </p>
         </div>
       </div>

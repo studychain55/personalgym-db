@@ -141,7 +141,7 @@ export default function GuidePage({
         {/* パーソナルジムとは */}
         <section className="mt-10">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">パーソナルジムとは</h2>
-          <div className="bg-[#f0f6f0] border border-blue-200 rounded-lg p-6">
+          <div className="bg-[#fff7ed] border border-blue-200 rounded-lg p-6">
             <p className="text-gray-700 mb-3">
               パーソナルジムは、専門的なトレーニング知識を持つトレーナーが、あなたの目標や体力に合わせて、マンツーマンでトレーニング指導を行うジムです。
             </p>
@@ -325,7 +325,7 @@ export default function GuidePage({
                 <NextLink
                   key={feature.slug}
                   href={`/f-${feature.slug}/`}
-                  className="inline-block px-4 py-2 rounded-lg border border-blue-300 bg-[#f0f6f0] text-[#1e782d] font-medium no-underline hover:bg-[#e9f2ea] transition-colors"
+                  className="inline-block px-4 py-2 rounded-lg border border-blue-300 bg-[#fff7ed] text-[#ea580c] font-medium no-underline hover:bg-[#ffedd5] transition-colors"
                 >
                   {feature.label}
                 </NextLink>
@@ -350,7 +350,7 @@ export default function GuidePage({
                   <NextLink
                     key={region.id}
                     href={`/r-${slug}/`}
-                    className="inline-block px-4 py-2 rounded-lg border border-[#1e782d]/30 bg-[#f0f6f0] text-[#1e782d] font-medium no-underline hover:bg-purple-100 transition-colors"
+                    className="inline-block px-4 py-2 rounded-lg border border-[#ea580c]/30 bg-[#fff7ed] text-[#ea580c] font-medium no-underline hover:bg-purple-100 transition-colors"
                   >
                     {region.name}
                     <span className="text-xs ml-1">({totalGyms})</span>

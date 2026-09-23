@@ -1,0 +1,30 @@
+<svg width="400" height="80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1E3A8A"/>
+    </linearGradient>
+  </defs>
+  <!-- アイコンボックス -->
+  <rect x="0" y="8" width="64" height="64" rx="14" fill="url(#ic)"/>
+  <text x="32" y="52"
+        font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif"
+        font-size="36"
+        font-weight="bold"
+        fill="white"
+        text-anchor="middle"
+        dominant-baseline="auto">ジ</text>
+  <!-- サイト名 -->
+  <text x="80" y="38"
+        font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif"
+        font-size="18"
+        font-weight="bold"
+        fill="#1F2937"
+        dominant-baseline="auto">ジムナビ</text>
+  <!-- ドメイン -->
+  <text x="80" y="58"
+        font-family="'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif"
+        font-size="11"
+        fill="#9CA3AF"
+        dominant-baseline="auto">gym-navi.jp</text>
+</svg>

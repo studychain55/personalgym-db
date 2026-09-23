@@ -50,7 +50,7 @@ export async function fetchCitiesWithCountByPrefecture(
 
   return (cities as City[])
     .map((c) => ({ ...c, gym_count: countMap[c.id] || 0 }))
-    .filter((c) => c.gym_count > 0)
+    .filter((c) => c.gym_count > 0 && Boolean(c.slug))
     .sort((a, b) => b.gym_count - a.gym_count);
 }
 
@@ -65,8 +65,8 @@ export async function fetchRegionsWithPrefecturesAndCities(): Promise<
   ] = await Promise.all([
     supabase
       .from("Region")
-      .select("id, name, sort_order")
-      .order("sort_order", { ascending: true }),
+      .select("id, name")
+      .order("id", { ascending: true }),
     supabase
       .from("Prefecture")
       .select("id, title, slug, region_id")
@@ -108,7 +108,7 @@ export async function fetchRegionsWithPrefecturesAndCities(): Promise<
         cities: cityList
           .filter((c) => c.prefecture_id === p.id)
           .map((c) => ({ ...c, gym_count: cityCountMap[c.id] || 0 }))
-          .filter((c) => c.gym_count > 0)
+          .filter((c) => c.gym_count > 0 && Boolean(c.slug))
           .sort((a, b) => b.gym_count - a.gym_count),
       })),
   }));

@@ -218,7 +218,7 @@ export default function PrefecturePage({
           </section>
         )}
 
-        <section className="mt-8 rounded-xl border border-[#bcd7c0] bg-[#f0f6f0] p-5">
+        <section className="mt-8 rounded-xl border border-[#ffedd5] bg-[#fff7ed] p-5">
           <h2 className="text-lg font-bold text-gray-900">目的から探す</h2>
           <p className="text-sm text-gray-600 mt-2">
             「ダイエット」「女性向け」「初心者向け」など、検討目的に近い一覧へすぐ移動できます。
@@ -228,7 +228,7 @@ export default function PrefecturePage({
               <NextLink
                 key={purpose.slug}
                 href={`${basePath}${purpose.slug}/`}
-                className="inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-medium text-[#1e782d] no-underline hover:bg-orange-100 transition-colors"
+                className="inline-flex items-center rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-medium text-[#ea580c] no-underline hover:bg-orange-100 transition-colors"
               >
                 {purpose.shortLabel}
               </NextLink>
@@ -269,7 +269,7 @@ export default function PrefecturePage({
           <select
             value={currentSort}
             onChange={(e) => handleSortChange(e.target.value)}
-            className="px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#1e782d]"
+            className="px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#ea580c]"
           >
             {SORT_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -287,7 +287,7 @@ export default function PrefecturePage({
             <p className="text-gray-500 text-lg mb-3">{prefecture.title}のパーソナルジムはまだ登録されていません</p>
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white px-6 py-2.5 rounded-lg font-bold hover:bg-[#155420] transition no-underline text-sm"
+              className="inline-block bg-[#ea580c] text-white px-6 py-2.5 rounded-lg font-bold hover:bg-[#c2410c] transition no-underline text-sm"
             >
               全国のジムを探す
             </NextLink>

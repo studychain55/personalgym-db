@@ -42,7 +42,7 @@ export default function ReservationCalendar({ siteId, facilityTable, facilityId,
 
   if(step==='done') return (
     <div className="p-6 bg-green-50 rounded-xl text-center">
-      <p className="text-[#1e782d] font-bold text-xl mb-2">予約が完了しました!</p>
+      <p className="text-[#ea580c] font-bold text-xl mb-2">予約が完了しました!</p>
       <p className="text-gray-600">{fmt(selectedDate)} {selectedTime}〜</p>
       <p className="text-gray-500 text-sm mt-3">確認のご連絡をお送りします。</p>
     </div>
@@ -56,7 +56,7 @@ export default function ReservationCalendar({ siteId, facilityTable, facilityId,
           <div className="grid grid-cols-4 gap-2">
             {dates.map(d=>(
               <button key={d} onClick={()=>{setSelectedDate(d);setStep('time');}}
-                className="py-2 px-1 text-sm border rounded-lg hover:border-[#1e782d] hover:text-[#1e782d] transition-colors">
+                className="py-2 px-1 text-sm border rounded-lg hover:border-[#ea580c] hover:text-[#ea580c] transition-colors">
                 {fmt(d)}
               </button>
             ))}
@@ -70,7 +70,7 @@ export default function ReservationCalendar({ siteId, facilityTable, facilityId,
           <div className="grid grid-cols-3 gap-2">
             {TIME_SLOTS.map(t=>(
               <button key={t} onClick={()=>{setSelectedTime(t);setStep('form');}}
-                className="py-3 border rounded-lg hover:border-[#1e782d] hover:text-[#1e782d] font-bold transition-colors">
+                className="py-3 border rounded-lg hover:border-[#ea580c] hover:text-[#ea580c] font-bold transition-colors">
                 {t}
               </button>
             ))}
@@ -80,31 +80,31 @@ export default function ReservationCalendar({ siteId, facilityTable, facilityId,
       {step==='form' && (
         <form onSubmit={handleSubmit} className="space-y-4">
           <button type="button" onClick={()=>setStep('time')} className="text-sm text-gray-500">← 時間を変更</button>
-          <div className="bg-green-50 rounded-lg p-3 text-sm text-[#1e782d] font-bold">
+          <div className="bg-green-50 rounded-lg p-3 text-sm text-[#ea580c] font-bold">
             {fmt(selectedDate)} {selectedTime}〜 の体験予約
           </div>
           <div>
             <label className="block text-sm font-bold text-gray-700 mb-1">お名前 <span className="text-red-500">*</span></label>
             <input required value={form.name} onChange={e=>setForm(f=>({...f,name:e.target.value}))}
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]"/>
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#ea580c]"/>
           </div>
           <div>
             <label className="block text-sm font-bold text-gray-700 mb-1">メールアドレス <span className="text-red-500">*</span></label>
             <input required type="email" value={form.email} onChange={e=>setForm(f=>({...f,email:e.target.value}))}
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]"/>
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#ea580c]"/>
           </div>
           <div>
             <label className="block text-sm font-bold text-gray-700 mb-1">電話番号</label>
             <input type="tel" value={form.phone} onChange={e=>setForm(f=>({...f,phone:e.target.value}))}
-              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]"/>
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#ea580c]"/>
           </div>
           <div>
             <label className="block text-sm font-bold text-gray-700 mb-1">ご質問・備考</label>
             <textarea value={form.notes} onChange={e=>setForm(f=>({...f,notes:e.target.value}))}
-              rows={3} className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#1e782d]"/>
+              rows={3} className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[#ea580c]"/>
           </div>
           <button type="submit" disabled={loading}
-            className="w-full bg-[#1e782d] text-white font-bold py-4 rounded-lg disabled:opacity-50">
+            className="w-full bg-[#ea580c] text-white font-bold py-4 rounded-lg disabled:opacity-50">
             {loading?'予約中...':'予約を確定する'}
           </button>
         </form>

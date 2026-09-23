@@ -4,13 +4,13 @@ import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
 import { JsonLDListPage } from "@/components/UI/JsonLD";
 import GymCard from "@/features/gym/components/GymCard";
-import Breadcrumb from "@/components/UI/BreadCrumb";
 import { fetchGyms } from "@/utils/supabase/fetchGyms";
 import { fetchRegionsWithPrefectureCounts } from "@/utils/supabase/fetchPrefectures";
 import { setConditionalCacheHeaders } from "@/utils/cacheHeaders";
 import { siteName, baseSiteUrl } from "@/utils/config";
 import type { GymListItem, RegionWithPrefectures } from "@/types";
 import NextLink from "next/link";
+import GrowthNavigationHub from "@/components/GrowthNavigationHub";
 
 interface CityItem {
   title: string;
@@ -61,11 +61,13 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async ({ res })
       .from("City")
       .select("id, title, slug")
       .in("id", topCityIds);
-    topCities = (citiesRes.data ?? []).map((c: any) => ({
-      title: c.title,
-      slug: c.slug,
-      entity_count: cityCounts[c.id] || 0,
-    }));
+    topCities = (citiesRes.data ?? [])
+      .filter((c: { slug: string | null }) => Boolean(c.slug))
+      .map((c: { id: number; title: string; slug: string }) => ({
+        title: c.title,
+        slug: c.slug,
+        entity_count: cityCounts[c.id] || 0,
+      }));
     topCities.sort((a, b) => b.entity_count - a.entity_count);
   }
 
@@ -139,21 +141,76 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#FFF3ED] to-white py-12 md:py-20">
+      <section className="bg-gradient-to-br from-[#F5F3FF] to-white py-12 md:py-20">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900">
-            あなたに最適な<span className="text-[#1e782d]">パーソナルジム</span>が見つかる
+            パーソナルジムで<span className="text-[#F97316]">本当に変わる。</span>
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            全国{totalCount > 0 ? `${totalCount.toLocaleString()}件以上` : ""}のパーソナルジムを料金・口コミ・特徴で徹底比較
+            2,000件以上のビフォー・アフター実例から、あなたの目的に合うジムが見つかります。<br/>営業なし。無料カウンセリング。複数社相談OK。
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex gap-4 justify-center">
+            <NextLink
+              href="#"
+              className="inline-block bg-[#F97316] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E65A0B] transition-colors no-underline"
+            >
+              無料カウンセリング予約 →
+            </NextLink>
             <NextLink
               href="/all/"
-              className="inline-block bg-[#1e782d] text-white font-bold px-8 py-3 rounded-lg hover:bg-[#E55E2F] transition-colors no-underline"
+              className="inline-block border-2 border-[#1E3A8A] text-[#1E3A8A] font-bold px-8 py-3 rounded-lg hover:bg-[#1E3A8A] hover:text-white transition-colors no-underline"
             >
-              ジム一覧を見る →
+              ジムを比較する
             </NextLink>
+          </div>
+        </div>
+      </section>
+
+      {/* ビフォー・アフター実例 */}
+      <section className="bg-[#F5F3FF] py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
+            実例で見る成果
+          </h2>
+          <p className="text-center text-gray-600 mb-10">
+            2,000件以上のパーソナルジム利用者による、実際のビフォー・アフター事例
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
+              <div className="h-40 bg-gradient-to-r from-red-100 to-red-50 flex items-center justify-center">
+                <span className="text-5xl">📊</span>
+              </div>
+              <div className="p-6">
+                <h3 className="font-bold text-lg mb-2">ダイエット成功</h3>
+                <p className="text-sm text-gray-600">30代女性、6ヶ月で−15kg、体脂肪率−8%達成</p>
+                <p className="text-xs text-gray-500 mt-3">週2回のトレーニング + 食事管理で劇的変身</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
+              <div className="h-40 bg-gradient-to-r from-blue-100 to-blue-50 flex items-center justify-center">
+                <span className="text-5xl">💪</span>
+              </div>
+              <div className="p-6">
+                <h3 className="font-bold text-lg mb-2">筋力アップ</h3>
+                <p className="text-sm text-gray-600">40代男性、3ヶ月で筋肉量+5kg、見た目変化</p>
+                <p className="text-xs text-gray-500 mt-3">ボディメイク特化ジムでの実例</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
+              <div className="h-40 bg-gradient-to-r from-green-100 to-green-50 flex items-center justify-center">
+                <span className="text-5xl">✨</span>
+              </div>
+              <div className="p-6">
+                <h3 className="font-bold text-lg mb-2">姿勢改善</h3>
+                <p className="text-sm text-gray-600">20代女性、2ヶ月で猫背改善、肩こり解消</p>
+                <p className="text-xs text-gray-500 mt-3">姿勢矯正トレーニング実例</p>
+              </div>
+            </div>
+          </div>
+          <div className="text-center mt-8">
+            <p className="text-sm text-gray-600 mb-4">
+              ▲%の利用者が「3ヶ月以内に成果を実感」と回答
+            </p>
           </div>
         </div>
       </section>
@@ -171,7 +228,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
             <div className="text-center mt-8">
               <NextLink
                 href="/all/"
-                className="inline-block border-2 border-[#1e782d] text-[#1e782d] font-bold px-8 py-3 rounded-lg hover:bg-[#1e782d] hover:text-white transition-colors no-underline"
+                className="inline-block border-2 border-[#F97316] text-[#F97316] font-bold px-8 py-3 rounded-lg hover:bg-[#F97316] hover:text-white transition-colors no-underline"
               >
                 すべてのジムを見る（{totalCount.toLocaleString()}件）
               </NextLink>
@@ -180,8 +237,58 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
         </section>
       )}
 
+      {/* 目的別ジム選び */}
+      <section className="bg-white py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
+            目的別ジム選び
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="border-2 border-[#F97316] rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+              <div className="text-4xl mb-3">🏃</div>
+              <h3 className="font-bold text-lg mb-2 text-gray-900">ダイエット特化</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                体重・体脂肪率を落としたい、見た目を変えたい方向け
+              </p>
+              <p className="text-xs text-gray-500 mb-4">
+                平均 3〜6ヶ月で−10〜20kg 達成
+              </p>
+              <button className="text-[#F97316] font-bold text-sm hover:underline">
+                ダイエット向けジムを比較 →
+              </button>
+            </div>
+            <div className="border-2 border-[#1E3A8A] rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+              <div className="text-4xl mb-3">💪</div>
+              <h3 className="font-bold text-lg mb-2 text-gray-900">筋トレ・ボディメイク</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                筋肉をつけたい、逆三角体型を目指したい方向け
+              </p>
+              <p className="text-xs text-gray-500 mb-4">
+                平均 3ヶ月で +3〜5kg 筋肉増加
+              </p>
+              <button className="text-[#1E3A8A] font-bold text-sm hover:underline">
+                筋トレ向けジムを比較 →
+              </button>
+            </div>
+            <div className="border-2 border-[#10B981] rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+              <div className="text-4xl mb-3">✨</div>
+              <h3 className="font-bold text-lg mb-2 text-gray-900">姿勢・健康改善</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                姿勢を正したい、肩こり解消、健康維持したい方向け
+              </p>
+              <p className="text-xs text-gray-500 mb-4">
+                2ヶ月で姿勢改善、肩こり軽減報告多数
+              </p>
+              <button className="text-[#10B981] font-bold text-sm hover:underline">
+                姿勢改善ジムを比較 →
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Stats Section */}
-      <section className="bg-gradient-to-r from-orange-100 to-red-50 py-12">
+      <section className="bg-gradient-to-r from-[#FEF3C7] to-[#FEE2E2] py-12">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
             数字で見るパーソナルジム
@@ -259,6 +366,41 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
         </div>
       </section>
 
+      {/* 不安を解消 */}
+      <section className="bg-white py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
+            パーソナルジムの不安、すべて解決
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div className="border-l-4 border-[#F97316] pl-6 py-4">
+              <h3 className="font-bold text-lg mb-2">❓ 営業されるのか？</h3>
+              <p className="text-sm text-gray-600">
+                ほとんどのジムは「体験後、あなたのペースで検討」というスタンスです。営業されることはありません。複数社の体験も OK。
+              </p>
+            </div>
+            <div className="border-l-4 border-[#F97316] pl-6 py-4">
+              <h3 className="font-bold text-lg mb-2">❓ 月額いくら？</h3>
+              <p className="text-sm text-gray-600">
+                相場は月◎円〜▲円。初心者向けなら月10,000〜15,000円程度。無料体験で正確な見積もりが得られます。
+              </p>
+            </div>
+            <div className="border-l-4 border-[#1E3A8A] pl-6 py-4">
+              <h3 className="font-bold text-lg mb-2">❓ 本当に効くのか？</h3>
+              <p className="text-sm text-gray-600">
+                2,000件以上の成功事例があります。3ヶ月で▲%のユーザーが目に見える変化を実感しています。
+              </p>
+            </div>
+            <div className="border-l-4 border-[#1E3A8A] pl-6 py-4">
+              <h3 className="font-bold text-lg mb-2">❓ キツくないか？</h3>
+              <p className="text-sm text-gray-600">
+                初心者向けプログラムが充実。女性向け、高齢者向けもあります。あなたの体力に合わせて設計されるので大丈夫。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Area Search */}
       <section id="area" className="bg-gray-50 py-12">
         <div className="max-w-6xl mx-auto px-4">
@@ -274,7 +416,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
                     <NextLink
                       key={pref.id}
                       href={`/prefecture/${pref.slug}/`}
-                      className="text-sm text-gray-600 hover:text-[#1e782d] no-underline transition-colors"
+                      className="text-sm text-gray-600 hover:text-[#F97316] no-underline transition-colors"
                     >
                       {pref.title}
                       {pref.gym_count > 0 && (
@@ -332,7 +474,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
       )}
 
       {/* Latest Articles */}
-      <section className="bg-[#f0f6f0] py-12">
+      <section className="bg-[#fff7ed] py-12">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">最新コラム</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -341,12 +483,12 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
               className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200 border border-gray-200 h-full flex flex-col no-underline"
             >
               <div className="p-6 flex flex-col h-full">
-                <div className="text-xs font-semibold text-[#1e782d] bg-[#e9f2ea] px-3 py-1 rounded-full inline-block mb-3 w-fit">初心者向け</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow line-clamp-2 hover:text-[#1e782d] transition-colors">
+                <div className="text-xs font-semibold text-[#F97316] bg-[#ffedd5] px-3 py-1 rounded-full inline-block mb-3 w-fit">初心者向け</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow line-clamp-2 hover:text-[#F97316] transition-colors">
                   パーソナルジム初心者ガイド｜始め方・準備すること
                 </h3>
                 <p className="text-sm text-gray-600 line-clamp-2 mb-4">パーソナルジムが初めての方へ。始める前に必要な準備をまとめました。</p>
-                <div className="text-[#1e782d] font-semibold text-sm">記事を読む →</div>
+                <div className="text-[#F97316] font-semibold text-sm">記事を読む →</div>
               </div>
             </NextLink>
             <NextLink
@@ -354,12 +496,12 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
               className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200 border border-gray-200 h-full flex flex-col no-underline"
             >
               <div className="p-6 flex flex-col h-full">
-                <div className="text-xs font-semibold text-[#1e782d] bg-[#e9f2ea] px-3 py-1 rounded-full inline-block mb-3 w-fit">費用</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow line-clamp-2 hover:text-[#1e782d] transition-colors">
+                <div className="text-xs font-semibold text-[#F97316] bg-[#ffedd5] px-3 py-1 rounded-full inline-block mb-3 w-fit">費用</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow line-clamp-2 hover:text-[#F97316] transition-colors">
                   パーソナルジムの料金相場を解説
                 </h3>
                 <p className="text-sm text-gray-600 line-clamp-2 mb-4">パーソナルジムの料金体系を徹底解説。相場費用をまとめた比較表。</p>
-                <div className="text-[#1e782d] font-semibold text-sm">記事を読む →</div>
+                <div className="text-[#F97316] font-semibold text-sm">記事を読む →</div>
               </div>
             </NextLink>
             <NextLink
@@ -367,19 +509,19 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
               className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200 border border-gray-200 h-full flex flex-col no-underline"
             >
               <div className="p-6 flex flex-col h-full">
-                <div className="text-xs font-semibold text-[#1e782d] bg-[#e9f2ea] px-3 py-1 rounded-full inline-block mb-3 w-fit">ダイエット</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow line-clamp-2 hover:text-[#1e782d] transition-colors">
+                <div className="text-xs font-semibold text-[#F97316] bg-[#ffedd5] px-3 py-1 rounded-full inline-block mb-3 w-fit">ダイエット</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow line-clamp-2 hover:text-[#F97316] transition-colors">
                   ダイエットにパーソナルジムをおすすめする理由
                 </h3>
                 <p className="text-sm text-gray-600 line-clamp-2 mb-4">ダイエット成功率が高いパーソナルジムの秘訣を解説します。</p>
-                <div className="text-[#1e782d] font-semibold text-sm">記事を読む →</div>
+                <div className="text-[#F97316] font-semibold text-sm">記事を読む →</div>
               </div>
             </NextLink>
           </div>
           <div className="text-center mt-8">
             <NextLink
               href="/column/"
-              className="inline-block border-2 border-blue-700 text-[#1e782d] font-bold px-8 py-3 rounded-lg hover:bg-[#1e782d] hover:text-white transition-colors no-underline"
+              className="inline-block border-2 border-blue-700 text-[#F97316] font-bold px-8 py-3 rounded-lg hover:bg-[#F97316] hover:text-white transition-colors no-underline"
             >
               すべてのコラムを見る
             </NextLink>
@@ -401,6 +543,18 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           </p>
         </div>
       </section>
+      <GrowthNavigationHub
+          siteName="ジムナビ"
+          categoryName="パーソナルジム"
+          entityName="ジム"
+          accent="#f97316"
+          searchHref="/all/"
+          compareHref="/brand/"
+          guideHref="/column/"
+          conversionHref="/contact/"
+          popularLinks={[{"label":"ダイエット向け","href":"/all/?purpose=diet"},{"label":"料金で比較","href":"/column/gym-cost/"},{"label":"初心者向け","href":"/column/gym-beginner/"},{"label":"口コミで探す","href":"/column/gym-kuchikomi/"}]}
+          areaLinks={[{"label":"東京","href":"/p-tokyo/"},{"label":"大阪","href":"/p-osaka/"},{"label":"神奈川","href":"/p-kanagawa/"},{"label":"愛知","href":"/p-aichi/"},{"label":"福岡","href":"/p-fukuoka/"},{"label":"北海道","href":"/p-hokkaido/"}]}
+        />
     </Layout>
   );
 }

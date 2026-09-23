@@ -93,7 +93,7 @@ const PREFECTURE_REGIONS = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 mt-auto border-t border-[#1e782d]">
+    <footer className="bg-gray-900 text-gray-300 mt-auto border-t border-[#ea580c]">
       <div className="max-w-6xl mx-auto px-4 py-10">
         {/* Prefecture Links */}
         <div className="mb-8">
@@ -145,12 +145,15 @@ const Footer: React.FC = () => {
           <h3 className="text-white font-bold text-sm mb-3">おすすめサービス</h3>
           <div className="flex flex-wrap gap-x-4 gap-y-1">
             <a href="https://studychain.jp" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">Studychain</a>
+            <a href="https://mitsukaru-next.com/" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">ミツカル転職</a>
+            <a href="https://mitsukaru-career.com/" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">ミツカル就職</a>
             <a href="https://pilates-station.jp" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">ピラティスステーション</a>
             <a href="https://ohaka-station.com" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">お墓ステーション</a>
             <a href="https://photo-navi.jp" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">フォトスタジオナビ</a>
             <a href="https://tantei-navi.jp" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">探偵ナビ</a>
             <a href="https://sigyo-navi.com" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">士業ナビ</a>
             <a href="https://hakenstation.jp" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">派遣ステーション</a>
+            <a href="https://mendan-kakutoku.com/" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">求職者面談獲得くん</a>
             <a href="https://driverstation.jp" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">ドライバーステーション</a>
             <a href="https://internationalschool-navi.com" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">インターナショナルスクールナビ</a>
             <a href="https://ryugakustation.com" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">留学ステーション</a>
@@ -178,6 +181,11 @@ const Footer: React.FC = () => {
             <a href="https://kekkon-soudanjo-navi.com" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">結婚相談所ナビ</a>
             <a href="https://karaoke-navi.com" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">カラオケナビ</a>
             <a href="https://solarsystem-navi.com" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">太陽光ナビ</a>
+            <a href="https://kobetsu-station.com" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">個別指導塾比較ナビ</a>
+            <a href="https://chugaku-station.com" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">中学受験塾比較ナビ</a>
+            <a href="https://koko-station.com" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">高校受験塾比較ナビ</a>
+            <a href="https://daigaku-station.com" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">大学受験予備校比較ナビ</a>
+            <a href="https://onlinetutor-station.com" target="_blank" rel="noopener noreferrer" className="text-xs hover:text-white transition-colors">オンライン家庭教師比較ナビ</a>
           </div>
         </div>
 

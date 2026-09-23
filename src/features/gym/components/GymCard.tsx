@@ -1,12 +1,23 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import NextLink from "next/link";
-import Image from "next/image";
 import type { GymListItem } from "@/types";
 import { getRecommendedTags } from "@/utils/gymPurpose";
+import {
+  buildGymDetailHref,
+  formatGymPrice,
+  formatStationAccess,
+  normalizeImageSrc,
+} from "@/utils/gymRouting";
 
-const formatPrice = (price: number | null) => {
-  if (!price) return null;
-  return `¥${price.toLocaleString()}`;
+const isValidImageUrl = (url: string | null): url is string => {
+  if (!url) return false;
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === "http:" || parsed.protocol === "https:";
+  } catch {
+    return false;
+  }
 };
 
 interface GymCardProps {
@@ -26,26 +37,35 @@ const TrainIcon = () => (
 );
 
 const GymCard: React.FC<GymCardProps> = ({ gym }) => {
+  const [imageError, setImageError] = React.useState(false);
   const prefName = gym.prefecture?.title || "";
   const cityName = gym.city?.title || "";
   const area = [prefName, cityName].filter(Boolean).join(" ");
   const recommendedTags = getRecommendedTags(gym, 4);
+  const imageSrc =
+    !imageError && isValidImageUrl(gym.image_url)
+      ? normalizeImageSrc(gym.image_url)
+      : null;
+  const monthlyPrice = formatGymPrice(gym.price_min);
+  const maxMonthlyPrice = formatGymPrice(gym.price_max);
+  const sessionPrice = formatGymPrice(gym.price_per_session);
+  const stationAccess = formatStationAccess(gym.nearest_station, gym.walk_minutes);
 
   return (
-    <NextLink href={`/gym/${gym.uid}/`} className="block no-underline group">
-      <article className="bg-white rounded-xl border border-[#e9e9e9] overflow-hidden hover:shadow-lg hover:border-[#1e782d]/30 transition-all duration-200 hover:-translate-y-0.5 flex flex-col h-full">
+    <NextLink href={buildGymDetailHref(gym.uid)} className="block no-underline group">
+      <article className="bg-white rounded-xl border border-[#e9e9e9] overflow-hidden hover:shadow-lg hover:border-[#ea580c]/30 transition-all duration-200 hover:-translate-y-0.5 flex flex-col h-full">
         {/* 画像エリア */}
-        <div className="relative aspect-[16/9] bg-[#f0f6f0] overflow-hidden flex-shrink-0">
-          {gym.image_url ? (
-            <Image
-              src={gym.image_url}
+        <div className="relative aspect-[16/9] bg-[#fff7ed] overflow-hidden flex-shrink-0">
+          {imageSrc ? (
+            <img
+              src={imageSrc}
               alt={gym.name}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+              loading="lazy"
+              onError={() => setImageError(true)}
             />
           ) : (
-            <div className="flex flex-col items-center justify-center h-full text-[#8fbc96]">
+            <div className="flex flex-col items-center justify-center h-full text-[#ffedd5]">
               <svg className="w-10 h-10 mb-1" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" />
               </svg>
@@ -57,7 +77,7 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
           {/* バッジ（左上） */}
           <div className="absolute top-2 left-2 flex flex-col gap-1">
             {gym.trial_available && (
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#1e782d] text-white shadow-sm">
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#ea580c] text-white shadow-sm">
                 無料体験あり
               </span>
             )}
@@ -81,65 +101,61 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
           )}
 
           {/* 料金バッジ（右下） */}
-          {gym.price_min && (
+          {monthlyPrice && (
             <div className="absolute bottom-2 right-2 bg-white/95 backdrop-blur-sm rounded-lg px-2.5 py-1 shadow-sm">
-              <span className="text-xs font-bold text-[#1e782d]">{formatPrice(gym.price_min)}〜/月</span>
+              <span className="text-xs font-bold text-[#ea580c]">{monthlyPrice}〜/月</span>
             </div>
           )}
         </div>
 
         {/* コンテンツエリア */}
-        <div className="p-3 flex flex-col flex-1 gap-1.5">
+        <div className="p-3 flex flex-col flex-1 gap-1.5 min-w-0">
           {/* 名前 */}
-          <h3 className="font-bold text-sm leading-snug line-clamp-2 text-[#121212] group-hover:text-[#1e782d] transition-colors">
+          <h3 className="font-bold text-sm leading-snug line-clamp-2 break-words text-[#121212] group-hover:text-[#ea580c] transition-colors">
             {gym.name}
           </h3>
 
           {/* 場所 */}
           <div className="flex flex-col gap-0.5">
             {area && (
-              <p className="text-xs text-[#828282] flex items-center gap-1">
+              <p className="text-xs text-[#828282] flex items-center gap-1 min-w-0">
                 <PinIcon />
-                <span>{area}</span>
+                <span className="truncate">{area}</span>
               </p>
             )}
-            {gym.nearest_station && (
-              <p className="text-xs text-[#828282] flex items-center gap-1">
+            {stationAccess && (
+              <p className="text-xs text-[#828282] flex items-center gap-1 min-w-0">
                 <TrainIcon />
-                <span>
-                  {gym.nearest_station}駅
-                  {gym.walk_minutes != null && (
-                    <span className="ml-1">徒歩{gym.walk_minutes}分</span>
-                  )}
-                </span>
+                <span className="truncate">{stationAccess}</span>
               </p>
             )}
           </div>
 
           {/* キャッチフレーズ */}
           {gym.catchphrase && (
-            <p className="text-[11px] text-[#595959] line-clamp-2 pl-2 border-l-2 border-[#1e782d]">
+            <p className="text-[11px] text-[#595959] line-clamp-2 break-words pl-2 border-l-2 border-[#ea580c]">
               {gym.catchphrase}
             </p>
           )}
 
           {/* 月額料金ブロック */}
-          {(gym.price_min || gym.price_max) && (
-            <div className="p-2 bg-[#f0f6f0] rounded-lg border border-[#bcd7c0]">
+          {(monthlyPrice || maxMonthlyPrice) && (
+            <div className="p-2 bg-[#fff7ed] rounded-lg border border-[#ffedd5]">
               <div className="text-[10px] text-[#828282] mb-0.5">月額料金</div>
               <div className="flex items-baseline gap-1">
-                <span className="text-base font-bold text-[#1e782d]">
-                  {formatPrice(gym.price_min)}
+                <span className="text-base font-bold text-[#ea580c]">
+                  {monthlyPrice ?? maxMonthlyPrice}
                 </span>
-                {gym.price_max && gym.price_min !== gym.price_max && (
+                {maxMonthlyPrice &&
+                  gym.price_max !== gym.price_min && (
                   <span className="text-xs text-[#595959]">
-                    〜{formatPrice(gym.price_max)}
+                    〜{maxMonthlyPrice}
                   </span>
                 )}
               </div>
-              {gym.price_per_session && (
+              {sessionPrice && (
                 <div className="text-[10px] text-[#828282] mt-0.5">
-                  1回あたり {formatPrice(gym.price_per_session)}
+                  1回あたり {sessionPrice}
                 </div>
               )}
             </div>
@@ -159,19 +175,19 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
           {/* サービスバッジ */}
           <div className="flex flex-wrap gap-1">
             {gym.price_trial != null && gym.price_trial === 0 && (
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#e9f2ea] text-[#1e782d] font-medium">
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#ffedd5] text-[#ea580c] font-medium">
                 無料体験
               </span>
             )}
             {gym.options_diet && (
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#f0f6f0] text-[#1e782d] font-medium">
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#fff7ed] text-[#ea580c] font-medium">
                 食事指導
               </span>
             )}
             {recommendedTags.map((tag) => (
               <span
                 key={tag}
-                className="text-[10px] px-2 py-0.5 rounded-full bg-[#e9f2ea] text-[#1e782d] font-medium"
+                className="text-[10px] px-2 py-0.5 rounded-full bg-[#ffedd5] text-[#ea580c] font-medium"
               >
                 {tag}
               </span>
@@ -180,7 +196,7 @@ const GymCard: React.FC<GymCardProps> = ({ gym }) => {
 
           {/* CTAボタン */}
           <div className="mt-auto pt-2">
-            <div className="w-full text-center text-xs font-bold py-2 px-3 rounded-lg bg-[#1e782d] text-white group-hover:bg-[#155420] transition-colors">
+            <div className="w-full text-center text-xs font-bold py-2 px-3 rounded-lg bg-[#ea580c] text-white group-hover:bg-[#c2410c] transition-colors">
               詳細を見る →
             </div>
           </div>

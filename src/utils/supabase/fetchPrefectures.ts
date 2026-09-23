@@ -1,6 +1,10 @@
 import supabase from "./index";
 import type { Prefecture, Region, PrefectureWithCount, RegionWithPrefectures } from "@/types";
 
+function normalizeRegionLabel(value: string) {
+  return value.replace(/\s+/g, "").replace(/地方$/, "");
+}
+
 export async function fetchPrefectures(): Promise<Prefecture[]> {
   const { data, error } = await supabase
     .from("Prefecture")
@@ -26,8 +30,8 @@ export async function fetchRegionsWithPrefectureCounts(): Promise<RegionWithPref
   // Fetch regions
   const { data: regions, error: regErr } = await supabase
     .from("Region")
-    .select("id, name, sort_order")
-    .order("sort_order", { ascending: true });
+    .select("id, name")
+    .order("id", { ascending: true });
 
   if (regErr || !regions) return [];
 
@@ -63,14 +67,35 @@ export async function fetchRegionsWithPrefectureCounts(): Promise<RegionWithPref
 }
 
 export async function fetchRegionByName(regionName: string): Promise<Region | null> {
+  const normalizedRegionName = normalizeRegionLabel(regionName);
+  const candidates = Array.from(
+    new Set([regionName, normalizedRegionName, `${normalizedRegionName}地方`]),
+  );
+
+  for (const candidate of candidates) {
+    const { data, error } = await supabase
+      .from("Region")
+      .select("id, name")
+      .eq("name", candidate)
+      .maybeSingle();
+
+    if (!error && data) {
+      return data as Region;
+    }
+  }
+
   const { data, error } = await supabase
     .from("Region")
-    .select("id, name, sort_order")
-    .eq("name", regionName)
-    .single();
+    .select("id, name")
+    .order("id", { ascending: true });
 
   if (error || !data) return null;
-  return data as Region;
+
+  const matchedRegion = (data as Region[]).find(
+    (region) => normalizeRegionLabel(region.name) === normalizedRegionName,
+  );
+
+  return matchedRegion || null;
 }
 
 export async function fetchPrefecturesByRegionId(regionId: number): Promise<PrefectureWithCount[]> {

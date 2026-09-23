@@ -77,6 +77,7 @@ export interface GymListItem {
   name: string;
   catchphrase: string | null;
   address: string | null;
+  price_enrollment: number | null;
   price_min: number | null;
   price_max: number | null;
   price_trial: number | null;
@@ -225,7 +226,7 @@ export interface Prefecture {
 export interface Region {
   id: number;
   name: string;
-  sort_order: number;
+  sort_order?: number | null;
 }
 
 export interface City {

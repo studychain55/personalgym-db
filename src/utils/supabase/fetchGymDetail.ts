@@ -1,16 +1,51 @@
 import supabase from "./index";
 import type { GymLocation, GymReview, GymImage, GymFaq, GymPlan, GymTrainer, GymBeforeAfter, GymCampaign } from "@/types";
+import { normalizeRouteParam } from "@/utils/gymRouting";
 
-export async function fetchGymByUid(uid: string): Promise<GymLocation | null> {
+async function fetchGymByColumn(
+  column: "uid" | "id",
+  value: string | number
+): Promise<GymLocation | null> {
   const { data, error } = await supabase
     .from("gym_locations")
     .select("*")
-    .eq("uid", uid)
+    .eq(column, value)
     .eq("is_display", true)
-    .single();
+    .maybeSingle();
 
   if (error || !data) return null;
   return data as GymLocation;
+}
+
+export async function fetchGymByUid(uid: string): Promise<GymLocation | null> {
+  const normalizedUid = normalizeRouteParam(uid);
+  if (!normalizedUid) {
+    return null;
+  }
+
+  const uidCandidates = Array.from(
+    new Set(
+      [
+        normalizedUid,
+        normalizedUid.replace(/\.html?$/i, ""),
+        normalizedUid.toLowerCase(),
+        normalizedUid.replace(/^gym[-_/]+/i, ""),
+      ].filter(Boolean)
+    )
+  );
+
+  for (const candidate of uidCandidates) {
+    const gymByUid = await fetchGymByColumn("uid", candidate);
+    if (gymByUid) {
+      return gymByUid;
+    }
+  }
+
+  if (/^\d+$/.test(normalizedUid)) {
+    return fetchGymByColumn("id", Number(normalizedUid));
+  }
+
+  return null;
 }
 
 export async function fetchGymReviews(gymId: number): Promise<GymReview[]> {

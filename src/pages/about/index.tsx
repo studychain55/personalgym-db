@@ -1,7 +1,7 @@
 import Layout from "@/components/UI/Layout";
 import SEO from "@/components/UI/SEO";
 import Breadcrumb from "@/components/UI/BreadCrumb";
-import { siteName } from "@/utils/config";
+import { baseSiteUrl, siteName } from "@/utils/config";
 
 export default function About() {
   return (
@@ -23,7 +23,7 @@ export default function About() {
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-3 font-medium text-gray-600">URL</td>
-                <td className="py-3">https://personalgym-db.jp</td>
+                <td className="py-3">{baseSiteUrl}</td>
               </tr>
               <tr>
                 <td className="py-3 font-medium text-gray-600">お問い合わせ</td>

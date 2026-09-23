@@ -24,7 +24,7 @@ export const SLUG_TO_REGION_MAP: Record<string, string> = Object.fromEntries(
  * Get slug from region name
  */
 export function getRegionSlug(regionName: string): string | undefined {
-  return REGION_SLUG_MAP[regionName];
+  return REGION_SLUG_MAP[regionName.replace(/地方$/, "")];
 }
 
 /**

@@ -1,13 +1,13 @@
 import React from "react";
 import NextLink from "next/link";
 import type { GymListItem } from "@/types";
+import { buildGymDetailHref, formatGymPrice } from "@/utils/gymRouting";
 
 interface GymCompareTableProps {
   gyms: GymListItem[];
   title?: string;
 }
 
-const fmt = (price: number | null) => price != null ? `¥${price.toLocaleString()}` : "-";
 const yes = (v: boolean) => v ? "✓" : "-";
 
 const GymCompareTable: React.FC<GymCompareTableProps> = ({ gyms, title }) => {
@@ -35,18 +35,24 @@ const GymCompareTable: React.FC<GymCompareTableProps> = ({ gyms, title }) => {
             {gyms.map((gym) => (
               <tr key={gym.id} className="border-b border-gray-100 hover:bg-orange-50/30">
                 <td className="py-3 px-3 sticky left-0 bg-white z-10">
-                  <NextLink href={`/gym/${gym.uid}/`} className="text-[#1e782d] font-medium hover:underline no-underline">
+                  <NextLink href={buildGymDetailHref(gym.uid)} className="text-[#ea580c] font-medium hover:underline no-underline">
                     {gym.name}
                   </NextLink>
                   {gym.brand && <div className="text-xs text-gray-400">{gym.brand.name}</div>}
                 </td>
-                <td className="py-3 px-3 text-right font-bold text-[#1e782d]">
-                  {gym.price_min ? fmt(gym.price_min) : "-"}
-                  {gym.price_max && gym.price_min !== gym.price_max && <span className="text-xs text-gray-400">〜{fmt(gym.price_max)}</span>}
+                <td className="py-3 px-3 text-right font-bold text-[#ea580c]">
+                  {formatGymPrice(gym.price_min) ?? "-"}
+                  {gym.price_max != null &&
+                    gym.price_max !== gym.price_min &&
+                    formatGymPrice(gym.price_max) && (
+                      <span className="text-xs text-gray-400">〜{formatGymPrice(gym.price_max)}</span>
+                    )}
                 </td>
-                <td className="py-3 px-3 text-right">{fmt(gym.price_trial)}</td>
+                <td className="py-3 px-3 text-right">{formatGymPrice(gym.price_enrollment) ?? "-"}</td>
                 <td className="py-3 px-3 text-right">
-                  {gym.price_trial != null ? (gym.price_trial === 0 ? <span className="text-green-600 font-bold">無料</span> : fmt(gym.price_trial)) : "-"}
+                  {gym.price_trial != null ? (
+                    gym.price_trial === 0 ? <span className="text-green-600 font-bold">無料</span> : formatGymPrice(gym.price_trial)
+                  ) : "-"}
                 </td>
                 <td className="py-3 px-3 text-center">{yes(gym.options_diet)}</td>
                 <td className="py-3 px-3 text-center">{yes(gym.has_money_back)}</td>
