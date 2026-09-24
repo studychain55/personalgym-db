@@ -250,6 +250,9 @@ export default function AllGyms({
             ({totalCount.toLocaleString()}件)
           </span>
         </h1>
+        <p className="text-sm text-gray-500 mb-3">
+          {totalCount.toLocaleString()}件の検索結果
+        </p>
 
         {/* SEO Description Section */}
         <section className="mt-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
