@@ -209,7 +209,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
           </div>
           <div className="text-center mt-8">
             <p className="text-sm text-gray-600 mb-4">
-              ▲%の利用者が「3ヶ月以内に成果を実感」と回答
+              多くの利用者が「3ヶ月以内に成果を実感」と回答
             </p>
           </div>
         </div>
@@ -244,7 +244,7 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
             目的別ジム選び
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="border-2 border-[#F97316] rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+            <NextLink href="/all/?purpose=diet" className="border-2 border-[#F97316] rounded-lg p-6 text-center hover:shadow-lg transition-shadow no-underline block">
               <div className="text-4xl mb-3">🏃</div>
               <h3 className="font-bold text-lg mb-2 text-gray-900">ダイエット特化</h3>
               <p className="text-sm text-gray-600 mb-4">
@@ -253,11 +253,11 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
               <p className="text-xs text-gray-500 mb-4">
                 平均 3〜6ヶ月で−10〜20kg 達成
               </p>
-              <button className="text-[#F97316] font-bold text-sm hover:underline">
+              <span className="text-[#F97316] font-bold text-sm">
                 ダイエット向けジムを比較 →
-              </button>
-            </div>
-            <div className="border-2 border-[#1E3A8A] rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+              </span>
+            </NextLink>
+            <NextLink href="/all/" className="border-2 border-[#1E3A8A] rounded-lg p-6 text-center hover:shadow-lg transition-shadow no-underline block">
               <div className="text-4xl mb-3">💪</div>
               <h3 className="font-bold text-lg mb-2 text-gray-900">筋トレ・ボディメイク</h3>
               <p className="text-sm text-gray-600 mb-4">
@@ -266,11 +266,11 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
               <p className="text-xs text-gray-500 mb-4">
                 平均 3ヶ月で +3〜5kg 筋肉増加
               </p>
-              <button className="text-[#1E3A8A] font-bold text-sm hover:underline">
+              <span className="text-[#1E3A8A] font-bold text-sm">
                 筋トレ向けジムを比較 →
-              </button>
-            </div>
-            <div className="border-2 border-[#10B981] rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+              </span>
+            </NextLink>
+            <NextLink href="/all/" className="border-2 border-[#10B981] rounded-lg p-6 text-center hover:shadow-lg transition-shadow no-underline block">
               <div className="text-4xl mb-3">✨</div>
               <h3 className="font-bold text-lg mb-2 text-gray-900">姿勢・健康改善</h3>
               <p className="text-sm text-gray-600 mb-4">
@@ -279,10 +279,10 @@ export default function Home({ featuredGyms, totalCount, regions, topCities, top
               <p className="text-xs text-gray-500 mb-4">
                 2ヶ月で姿勢改善、肩こり軽減報告多数
               </p>
-              <button className="text-[#10B981] font-bold text-sm hover:underline">
+              <span className="text-[#10B981] font-bold text-sm">
                 姿勢改善ジムを比較 →
-              </button>
-            </div>
+              </span>
+            </NextLink>
           </div>
         </div>
       </section>
