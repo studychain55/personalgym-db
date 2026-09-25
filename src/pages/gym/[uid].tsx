@@ -341,6 +341,30 @@ export default function GymDetail({ gym, reviews, images, faqs, plans, trainers,
           )}
         </div>
 
+        {/* Early CTA — shown on all screen sizes, above description */}
+        {(gym.trial_available || gym.website_url) && (
+          <div className="mt-6 flex flex-col sm:flex-row gap-3">
+            {gym.trial_available && (
+              <a
+                href={inquiryHref}
+                className="flex-1 bg-[#ea580c] text-white py-3 rounded-lg font-bold text-center hover:bg-[#c2410c] transition text-sm"
+              >
+                {inquiryLabelLong}
+              </a>
+            )}
+            {gym.website_url && (
+              <a
+                href={gym.website_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 bg-gray-100 text-gray-800 py-3 rounded-lg font-bold text-center hover:bg-gray-200 transition text-sm"
+              >
+                公式サイトを見る
+              </a>
+            )}
+          </div>
+        )}
+
         {/* Description */}
         {gym.description && (
           <section className="mt-8">
